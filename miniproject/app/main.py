@@ -1,81 +1,119 @@
-#-------------------------------------------------* MENTOR FUNCTIONALITIES *----------------------------------------------------------
 
+#----------------------------------------------------------* MENTOR FUNCTIONALITIES *--------------------------------------------------------
 
 import psycopg2
 from psycopg2 import sql
 from flask import Flask,request,jsonify
-from miniproject.config import db_params
+from config import db_params
+
+#Database parameters
 
 
-app=Flask(__name__)
 
-#-----------------------------------------------------FUNCTIONS------------------------------------------------------------------------
+
+app = Flask(__name__)
+
+
+
+#-----------------------------------------------------------* FUNCTIONS *--------------------------------------------------------------------
+
 
 # Function to update mentor profile
-def update_mentor_profile(m_id,qualification):
+def update_mentor_profile(username,qualification):
     try:
         with psycopg2.connect(**db_params) as conn:
             with conn.cursor() as cursor:
-                cursor.execute('''UPDATE mentor SET qualification=%s WHERE m_id=%s''',(qualification,m_id))
+                cursor.execute('''UPDATE mentor SET qualification=%s WHERE m_id=%s''',(qualification,username))
                 conn.commit()
         return True
-    except psycopg2.error as e:
+    except psycopg2.Error as e:
         return False
-    
 
 # Function to fetch projects under a mentor
-def get_mentor_projects(mentorid):
+def get_mentor_projects(mentor_id):
     try:
         with psycopg2.connect(**db_params) as conn:
             with conn.cursor() as cursor:
-                cursor.execute('''SELECT * FROM project WHERE m_id=%s''',(mentorid))
-                projects=cursor.fetchall()
+                cursor.execute('''SELECT * FROM project WHERE m_id=%s''',(mentor_id,))
+                projects = cursor.fetchall()
         return projects
     except psycopg2.Error as e:
         return None
 
-#Function to fetch students under each projects
+# Function to fetch students under each project
 def get_project_students(project_id):
     try:
         with psycopg2.connect(**db_params) as conn:
             with conn.cursor() as cursor:
-                cursor.execute('SELECT * FROM student WHERE st_id IN(SELECT st_id FROM st_project WHERE prj_id=%s)',(project_id))
-                students_in_project=cursor.fetchall()
+                cursor.execute('SELECT * FROM student WHERE st_id IN (SELECT st_id FROM st_project WHERE prj_id=%s)',(project_id,))
+                students_in_project = cursor.fetchall()
         return students_in_project
     except psycopg2.Error as e:
         return None
 
-#------------------------------------------------------ROUTES-------------------------------------------------------------------------------
-    
+# Function to add a new student under a project
+def add_student_to_project(student_id,project_id):
+    try:
+        with psycopg2.connect(**db_params) as conn:
+            with conn.cursor() as cursor:
+                cursor.execute('INSERT INTO st_project(st_id,prj_id) VALUES (%s,%s)',(student_id,project_id))
+                conn.commit()
+        return jsonify({'message': 'Student added successfully!'})
+    except psycopg2.Error as e:
+        return jsonify({'error': 'Error adding student! Please try again...'}),500
+
+# Function to remove a student from a project
+def remove_student_from_project(student_id, project_id):
+    try:
+        with psycopg2.connect(**db_params) as conn:
+            with conn.cursor() as cursor:
+                cursor.execute('DELETE FROM st_project WHERE st_id=%s AND prj_id=%s', (student_id, project_id))
+                conn.commit()
+        return jsonify({'message': 'Student removed successfully!'})
+    except psycopg2.Error as e:
+        return jsonify({'error': 'Couldn\'t remove student! Please try again...'}), 500  # Corrected line
+
+
+#---------------------------------------------------------------* ROUTES *--------------------------------------------------------------------------
+
+
 # Route to update mentor profile
-@app.route('/mentor/<string:username>/profile',method=['PUT'])
-def update_profile(m_id):
-    request_data=request.json
-    new_qual=request_data.get('qualification')
+@app.route('/mentor/<string:username>/profile',methods=['PUT'])
+def update_profile(username):
+    request_data = request.json
+    new_qual = request_data.get('qualification')
     if new_qual is None:
-        return jsonify({'error':'Qualification not provided!'}),400
-    
-    success=update_mentor_profile(m_id,new_qual)
+        return jsonify({'error': 'Qualification not provided!'}),400
+
+    success = update_mentor_profile(username,new_qual)
     if success:
-        return jsonify({'message':'Profile updated successfully!'})
+        return jsonify({'message': 'Profile updated successfully!'})
     else:
-        return jsonify({'error':'failed to update mentor profile!'}),500
-    
-#Route to get projects under the logged in mentor
-@app.route('/mentor/<string:mentor_id>/projects',method=['GET'])
-def mentor_projects():
-    mentor_id=request.args.get('mentor_id') # Fetches the corresponding value for mentor_id from the URL
-    projects=get_mentor_projects(mentor_id)
+        return jsonify({'error': 'Failed to update mentor profile!'}),500
+
+# Route to get projects under the logged-in mentor
+@app.route('/mentor/<string:mentor_id>/projects',methods=['GET'])
+def mentor_projects(mentor_id):
+    projects = get_mentor_projects(mentor_id)
     return jsonify(projects)
 
-#Route to get students under a given project
-@app.route('/mentor/<string:m_id/projects/<string:project_id>',methods=['GET'])
-def project_students():
-    projectid=request.args.get('project_id')
-    students=get_project_students(projectid)
+# Route to get students under a given project
+@app.route('/mentor/<string:m_id>/projects/<string:project_id>',methods=['GET'])
+def project_students(m_id,project_id):
+    students = get_project_students(project_id)
     return jsonify(students)
 
+# Route to add a new student under a project
+@app.route('/mentor/<string:m_id>/projects/<string:project_id>/add_student',methods=['POST'])
+def student_to_project(m_id,project_id):
+    student_id = request.json.get('student_id')
+    return add_student_to_project(student_id,project_id)
 
+# Route to remove a student from a project
+@app.route('/mentor/<string:m_id>/projects/<string:project_id>/remove_student',methods=['DELETE'])
+def remove_student(m_id,project_id):
+    student_id = request.json.get('student_id')
+    return remove_student_from_project(student_id,project_id)
 
-if __name__=='__main__':
+if __name__ == '__main__':
     app.run(debug=True)

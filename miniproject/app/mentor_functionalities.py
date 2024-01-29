@@ -1,16 +1,7 @@
 import psycopg2
 from flask import Flask, request, jsonify
-# from miniproject.config import db_params
+from config import db_params
 
-#Database parameters
-
-db_params={
-    'dbname': 'postgres',
-    'user': 'thej',
-    'password': 'thej123',
-    'host': 'localhost',
-    'port': '5432',
-}
 
 
 
@@ -74,6 +65,20 @@ def remove_student_from_project(student_id, project_id):
         return jsonify({'message': 'Student removed successfully!'})
     except psycopg2.Error as e:
         return jsonify({'error': 'Couldn\'t remove student! Please try again...'}), 500
+    
+
+# Function to add an achievement for a student
+def add_student_achievement(student_id, achievement_id):
+    try:
+        with psycopg2.connect(**db_params) as conn:
+            with conn.cursor() as cursor:
+                cursor.execute('INSERT INTO std_ach(st_id, ach_id) VALUES (%s, %s)', (student_id, achievement_id))
+                conn.commit()
+        return jsonify({'message': 'Achievement added to student'})
+    except psycopg2.Error as e:
+        return jsonify({'error': 'Couldn\'t add achievement. Please try again...'})
+
+    
 
 # Route to update mentor profile
 @app.route('/mentor/<string:username>/profile', methods=['PUT'])
@@ -112,6 +117,12 @@ def student_to_project(m_id, project_id):
 def remove_student(m_id, project_id):
     student_id = request.json.get('student_id')
     return remove_student_from_project(student_id, project_id)
+
+@app.route('/mentor/<string:m_id>/add_achievement', methods=['POST'])
+def student_achievement(m_id):
+    student_id = request.json.get('st_id')
+    achievement_id = request.json.get('ach_id')
+    return add_student_achievement(student_id, achievement_id)
 
 if __name__ == '__main__':
     app.run(debug=True)

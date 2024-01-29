@@ -6,4 +6,8 @@ db_params={
     'password': 'thej123',
     'host': 'localhost',
     'port': '5432',
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> geo

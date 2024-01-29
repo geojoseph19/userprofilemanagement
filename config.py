@@ -2,8 +2,8 @@
 
 db_params={
     'dbname': 'postgres',
-    'user': 'thej',
-    'password': 'thej123',
+    'user': 'geo',
+    'password': 'geo',
     'host': 'localhost',
     'port': '5432',
 }

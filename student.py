@@ -4,9 +4,14 @@ from config import db_params
 
 app=Flask(__name__)
 
+
+#----------------FUNCTIONS------------------------------------------------
+
 #Display all student details
-@app.route('/student/<string:st_id>/home', methods=['GET'])
-def student_home(st_id):
+def fun_student_home():
+
+    data = request.json
+    st_id = data.get('st_id')
     with psycopg2.connect(**db_params) as conn:
         with conn.cursor() as cursor:
             cursor.execute('''SELECT * FROM student WHERE st_id=%s''', (st_id,))
@@ -19,8 +24,7 @@ def student_home(st_id):
     
 
 #Update student details
-@app.route('/student/editprofile', methods=['PUT'])
-def update_student():
+def fun_update_student():
 
     data = request.json
 
@@ -56,8 +60,7 @@ def update_student():
 
 
 #View student achievements
-@app.route('/student/achievements', methods=['GET'])
-def view_student_achievements():
+def fun_view_student_achievements():
 
     data = request.json
     st_id = data.get('st_id')
@@ -90,8 +93,7 @@ def view_student_achievements():
 
 
 #View assigned project
-@app.route('/student/project', methods=['GET'])
-def view_assigned_project():
+def fun_view_assigned_project():
 
     data = request.json
     st_id = data.get('st_id')
@@ -125,6 +127,34 @@ def view_assigned_project():
 
 
 
+
+
+#-----------------ROUTES---------------------------------------------------
+
+#Display all student details
+@app.route('/student/home', methods=['GET'])
+def student_home():
+    return fun_student_home()
+    
+
+#Update student details
+@app.route('/student/editprofile', methods=['PUT'])
+def update_student():
+    return fun_update_student()
+
+
+#View student achievements
+@app.route('/student/achievements', methods=['GET'])
+def view_student_achievements():
+    return fun_view_student_achievements()
+   
+
+#View assigned project
+@app.route('/student/project', methods=['GET'])
+def view_assigned_project():
+    return fun_view_assigned_project()
+
+                                      
 
 
 

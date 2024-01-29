@@ -1,11 +1,32 @@
-from admin import *
-from mentor_functionalities import *
 from student import *
-from mail2 import *
-from flask import Flask
-
+from mentor_functionalities import *
 
 app=Flask(__name__)
+
+#-----------------------------STUDENT-PAGE-------------------------------------------
+
+#View student home details
+@app.route('/student/home', methods=['GET'])
+def student_home():
+    return fun_student_home()
+
+
+#Update student details
+@app.route('/student/editprofile', methods=['PUT'])
+def update_student():
+    return fun_update_student()
+
+
+#View student achievements
+@app.route('/student/achievements', methods=['GET'])
+def view_student_achievements():
+    return fun_view_student_achievements()
+
+#View assigned project
+@app.route('/student/project', methods=['GET'])
+def view_assigned_project():
+    return fun_view_assigned_project()
+
 
 # ----------------------------------------------ROUTES FOR MENTOR---------------------------------------------------------------------------------
 
@@ -59,6 +80,8 @@ def student_achievement(m_id):
 
 
 
-
-if __name__=="__main__":
+if __name__ == '__main__':
     app.run(debug=True)
+
+
+

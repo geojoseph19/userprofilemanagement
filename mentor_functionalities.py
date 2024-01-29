@@ -7,6 +7,9 @@ from config import db_params
 
 app = Flask(__name__)
 
+
+# --------------------------------------------------------------* FUNCTIONS *---------------------------------------------------------------------------
+
 # Function to update mentor profile
 def update_mentor_profile(username, qualification):
     try:
@@ -78,7 +81,7 @@ def add_student_achievement(student_id, achievement_id):
     except psycopg2.Error as e:
         return jsonify({'error': 'Couldn\'t add achievement. Please try again...'})
 
-    
+#------------------------------------------------------------------*ROUTES*----------------------------------------------------------------------------------
 
 # Route to update mentor profile
 @app.route('/mentor/<string:username>/profile', methods=['PUT'])

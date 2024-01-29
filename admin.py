@@ -4,7 +4,7 @@ import psycopg2
 app = Flask(__name__)
 
 def db_conn():
-    conn = psycopg2.connect(database="postgres", host="localhost", user="adil", password="root", port="5432")
+    conn = psycopg2.connect(database="postgres", host="localhost", user="thej", password="thej123", port="5432")
     return conn
 
 conn = db_conn()
@@ -46,7 +46,7 @@ def update_student(student_id, data):
 
 # ... (similar functions for mentor)
 
-@app.route('/api/admin/login', methods=['POST'])
+@app.route('/admin/login', methods=['POST'])
 def admin_login():
     try:
         data = request.json
@@ -61,7 +61,7 @@ def admin_login():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
-@app.route('/api/admin/create_student', methods=['POST'])
+@app.route('/admin/create_student', methods=['POST'])
 def admin_create_student():
     try:
         data = request.json
@@ -84,5 +84,5 @@ def admin_update_student(student_id):
 
 # ... (similar routes for mentor)
 
-if __name__ == '__main__':
-    app.run(debug=True)
+# if __name__ == '__main__':
+#     app.run(debug=True)

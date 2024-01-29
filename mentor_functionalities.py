@@ -80,6 +80,8 @@ def add_student_achievement(student_id, achievement_id):
         return jsonify({'message': 'Achievement added to student'})
     except psycopg2.Error as e:
         return jsonify({'error': 'Couldn\'t add achievement. Please try again...'})
+    
+# Function to add a new project
 
 #------------------------------------------------------------------*ROUTES*----------------------------------------------------------------------------------
 
@@ -127,5 +129,5 @@ def student_achievement(m_id):
     achievement_id = request.json.get('ach_id')
     return add_student_achievement(student_id, achievement_id)
 
-if __name__ == '__main__':
-    app.run(debug=True)
+# if __name__ == '__main__':
+#     app.run(debug=True)

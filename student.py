@@ -1,5 +1,4 @@
 import psycopg2
-from psycopg2 import sql
 from flask import Flask,request,jsonify
 from config import db_params
 
@@ -19,12 +18,12 @@ def student_home(st_id):
         return jsonify({'error': 'Student not found'}), 404
     
 
+#Update student details
 @app.route('/student/editprofile', methods=['PUT'])
 def update_student():
-    # Extract data from the request
+
     data = request.json
 
-    # Extract student ID and fields to update
     st_id = data.get('st_id')
     update_fields = {
         'fname': data.get('fname'),
@@ -38,15 +37,11 @@ def update_student():
         'gphoneno': data.get('gphoneno')
     }
 
-    # Connect to the database
     with psycopg2.connect(**db_params) as conn:
         with conn.cursor() as cursor:
             # Construct SQL UPDATE statement dynamically based on provided fields
-            update_query = '''
-                UPDATE student
-                SET {}
-                WHERE st_id = %s
-            '''.format(', '.join([f'{key} = %s' for key in update_fields if update_fields[key] is not None]))
+            update_query = '''UPDATE student SET {} WHERE 
+                st_id = %s'''.format(', '.join([f'{key} = %s' for key in update_fields if update_fields[key] is not None]))
 
             # Extract values for the fields to update
             update_values = [update_fields[key] for key in update_fields if update_fields[key] is not None]
@@ -55,11 +50,83 @@ def update_student():
             # Execute the dynamic SQL UPDATE statement
             cursor.execute(update_query, update_values)
 
-    # Commit the transaction
     conn.commit()
 
-    # Return a success message
     return jsonify({'message': 'Student information updated successfully'})
+
+
+#View student achievements
+@app.route('/student/achievements', methods=['GET'])
+def view_student_achievements():
+
+    data = request.json
+    st_id = data.get('st_id')
+
+    try:
+        # Connect to the database
+        with psycopg2.connect(**db_params) as conn:
+            with conn.cursor() as cursor:
+                # Execute SQL query to retrieve achievement details for the student
+                cursor.execute('''
+                    SELECT a.ach_id, a.ach_name, a.desc, a.points
+                    FROM achievements a
+                    INNER JOIN std_ach sa ON a.ach_id = sa.ach_id
+                    WHERE sa.st_id = %s
+                ''', (st_id,))
+                
+                # Fetch all the rows
+                achievements = cursor.fetchall()
+
+                # Convert the result to a list of dictionaries
+                achievements_list = [
+                    {'achievement_id': row[0], 'achievement_name': row[1], 'description': row[2], 'points': row[3]}
+                    for row in achievements
+                ]
+
+        return jsonify({'achievements': achievements_list}), 200
+
+    except psycopg2.Error as e:
+        return jsonify({'error': str(e)}), 500
+
+
+#View assigned project
+@app.route('/student/project', methods=['GET'])
+def view_assigned_project():
+
+    data = request.json
+    st_id = data.get('st_id')
+
+    with psycopg2.connect(**db_params) as conn:
+        with conn.cursor() as cursor:
+            cursor.execute('''
+                            SELECT p.prj_id, p.pr_name, p.start_date, p.end_date,
+                            m.m_id, m.m_fname, m.m_mname, m.m_lname
+                        FROM 
+                            st_project sp
+                        INNER JOIN 
+                            project p ON sp.prj_id = p.prj_id
+                        INNER JOIN 
+                            mentor m ON p.m_id = m.m_id
+                        WHERE 
+                            sp.st_id = %s''', (st_id,))
+            
+            project = cursor.fetchall()
+            
+            project_details = [
+                    {'project_id': row[0], 'project_name': row[1], 'start_date': row[2], 'end_date': row[3], 
+                     'mentor_id': row[4], 'mentor_fname':row[5], 'mentor_mname':row[6], 'mentor_lname':row[7] }
+                    for row in project
+                ]
+            
+            
+
+        return jsonify({'project': project_details}), 200
+                                      
+
+
+
+
+
 
 
 

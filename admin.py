@@ -1,20 +1,22 @@
-from flask import Flask, jsonify, request
 import psycopg2
-
+from flask import Flask,request,jsonify
+from config import db_params
+ 
 app = Flask(__name__)
-
+ 
 def db_conn():
-    conn = psycopg2.connect(database="postgres", host="localhost", user="adil", password="root", port="5432")
+    conn = psycopg2.connect(database="postgres", host="localhost", user="geo", password="geo", port="5432")
     return conn
-
+ 
 conn = db_conn()
 cursor = conn.cursor()
-
+ 
 def is_admin(username, password):
     # Check if the provided username and password correspond to an admin in the credentials table
     select_admin_query = "SELECT 1 FROM credentials WHERE username = %s AND password = %s AND is_admin = TRUE"
     cursor.execute(select_admin_query, (username, password))
     return cursor.fetchone() is not None
+ 
 def create_student(data):
     # Execute the SQL query to add a new student with the 'dob' field
     insert_student_query = """
@@ -29,6 +31,7 @@ def create_student(data):
     new_student_id = cursor.fetchone()[0]
     conn.commit()
     return new_student_id
+ 
 def update_student(student_id, data):
     # Execute the SQL query to update an existing student
     update_student_query = """
@@ -43,10 +46,9 @@ def update_student(student_id, data):
         data['guardian'], data['gphoneno'], data['cred_id'], data['dept_id'], data['dob'], student_id
     ))
     conn.commit()
-
-# ... (similar functions for mentor)
-
-@app.route('/api/admin/login', methods=['POST'])
+ 
+ 
+@app.route('/admin/login', methods=['POST'])
 def admin_login():
     try:
         data = request.json
@@ -57,11 +59,11 @@ def admin_login():
             return jsonify({'message': 'Admin login successful'}), 200
         else:
             return jsonify({'error': 'Invalid admin credentials'}), 401
-
+ 
     except Exception as e:
         return jsonify({'error': str(e)}), 500
-
-@app.route('/api/admin/create_student', methods=['POST'])
+ 
+@app.route('/admin/create_student', methods=['POST'])
 def admin_create_student():
     try:
         data = request.json
@@ -78,11 +80,33 @@ def admin_update_student(student_id):
         data = request.json
         update_student(student_id, data)
         return jsonify({'message': 'Student updated successfully'}), 200
-
+ 
     except Exception as e:
         return jsonify({'error': str(e)}), 500
+ 
 
-# ... (similar routes for mentor)
 
+
+#--------------------------MODIFY-MENTOR------------------------------------
+    
+
+
+#Add new mentor
+@app.route('/admin/addmentor', methods=['PUT'])
+def admin_create_mentor():
+    with psycopg2.connect(**db_params) as conn:
+        with conn.cursor() as cursor:
+            cursor.execute('')
+
+
+
+
+
+
+
+
+
+
+ 
 if __name__ == '__main__':
     app.run(debug=True)

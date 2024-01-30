@@ -40,23 +40,24 @@ def fun_update_student():
         'guardian': data.get('guardian'),
         'gphoneno': data.get('gphoneno')
     }
+    try:
+        with psycopg2.connect(**db_params) as conn:
+            with conn.cursor() as cursor:
+                # Construct SQL UPDATE statement dynamically based on provided fields
+                update_query = '''UPDATE student SET {} WHERE 
+                    st_id = %s'''.format(', '.join([f'{key} = %s' for key in update_fields if update_fields[key] is not None]))
 
-    with psycopg2.connect(**db_params) as conn:
-        with conn.cursor() as cursor:
-            # Construct SQL UPDATE statement dynamically based on provided fields
-            update_query = '''UPDATE student SET {} WHERE 
-                st_id = %s'''.format(', '.join([f'{key} = %s' for key in update_fields if update_fields[key] is not None]))
+                # Extract values for the fields to update
+                update_values = [update_fields[key] for key in update_fields if update_fields[key] is not None]
+                update_values.append(st_id)
 
-            # Extract values for the fields to update
-            update_values = [update_fields[key] for key in update_fields if update_fields[key] is not None]
-            update_values.append(st_id)
+                cursor.execute(update_query, update_values)
 
-            # Execute the dynamic SQL UPDATE statement
-            cursor.execute(update_query, update_values)
+        conn.commit()
 
-    conn.commit()
-
-    return jsonify({'message': 'Student information updated successfully'})
+        return jsonify({'message': 'Student information updated successfully'})
+    except Exception as e:
+        return jsonify({'Error': 'Nothing to update'})
 
 
 #View student achievements

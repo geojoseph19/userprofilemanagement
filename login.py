@@ -11,13 +11,19 @@ def db_conn():
 conn = db_conn()
 cursor = conn.cursor()
  
- 
+def validate_login_data(data):
+    if not data:
+        raise ValueError('No data provided for login')
+    if 'username' not in data:
+        raise ValueError('No username provided for login')
+    if 'password' not in data:
+        raise ValueError('No password provided for login')
+    return data['username'], data['password']
  
 def fun_login():
     try:
         data = request.json
-        username = data.get('username')
-        password = data.get('password')
+        username, password = validate_login_data(data)
  
         # Execute the SQL query to fetch the user by username
         select_query = "SELECT cred_id, username, password_hash FROM credentials WHERE username = %s"
@@ -58,19 +64,20 @@ def fun_login():
                         return jsonify({'error': 'Invalid credentials'}), 401
             else:
                 # If the password is incorrect
-                return jsonify({'error': 'Invalid credentials'}), 401
+                return jsonify({'error': 'Invalid password'}), 401
         else:
             # If the user is not found
-            return jsonify({'error': 'Invalid credentials'}), 401
+            return jsonify({'error': 'User not found'}), 401
  
+    except ValueError as ve:
+        return jsonify({'error': f'Invalid input: {str(ve)}'}), 400
     except Exception as e:
         return jsonify({'error': str(e)}), 500
-# Call the function to update existing passwords
+ 
  
 @app.route('/login', methods=['POST'])
 def login():
     return fun_login()
-
  
 if __name__ == '__main__':
     app.run(debug=True)

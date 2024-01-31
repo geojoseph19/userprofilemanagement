@@ -1,4 +1,5 @@
 from login import *
+from adminmentor import *
 from student import *
 from mentor_functionalities import *
 
@@ -10,6 +11,14 @@ app=Flask(__name__)
 @app.route('/login', methods=['POST'])
 def login():
     return fun_login()
+
+#-----------------------------ADMIN-MENTOR------------------------------------------
+#Admin - Add new mentor
+@app.route('/admin/addmentor', methods=['PUT'])
+def admin_create_mentor():
+    return fun_admin_create_mentor()
+
+
 
 #-----------------------------STUDENT-PAGE-------------------------------------------
 
@@ -60,19 +69,19 @@ def mentor_projects(mentor_id):
  
 # Route to get students under a given project
 @app.route('/mentor/<string:m_id>/projects/<string:project_id>/students', methods=['GET'])
-def project_students(m_id, project_id):
+def project_students(project_id):
     students = get_project_students(project_id)
     return jsonify(students)
  
 # Route to add a new student under a project
 @app.route('/mentor/<string:m_id>/projects/<string:project_id>/add_student', methods=['POST'])
-def student_to_project(m_id, project_id):
+def student_to_project(project_id):
     student_id = request.json.get('student_id')
     return add_student_to_project(student_id, project_id)
  
 # Route to remove a student from a project
 @app.route('/mentor/<string:m_id>/projects/<string:project_id>/remove_student', methods=['DELETE'])
-def remove_student(m_id, project_id):
+def remove_student(project_id):
     student_id = request.json.get('student_id')
     return remove_student_from_project(student_id, project_id)
  

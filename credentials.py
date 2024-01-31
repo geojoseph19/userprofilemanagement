@@ -1,8 +1,10 @@
+import psycopg2
 from config import db_params
-import random
+import random, datetime
 import string
 
-#generate random temporary password
+
+#Generate random temporary password
 def generate_password(length):
 
     characters = string.ascii_letters + string.digits + string.punctuation
@@ -22,19 +24,35 @@ def generate_password(length):
 
     return password
 
+#Generate username
+def generate_username():
+    #USRX231001
+    centurycode = {2:"X",3:"Y",4:"Z"}
+ 
+    current_year = datetime.datetime.now().year
+    current_year = int(str(current_year)[0])
 
+    with psycopg2.connect(**db_params) as conn:
+        with conn.cursor() as cursor:
+            cursor.execute('''SELECT username FROM credentials ORDER BY timestamp DESC''')
+            last_username = cursor.fetchone()
 
+    last_username = last_username[0]
+    id_number = int(last_username[4:]) + 1
+           
+    username = "USR"+ centurycode[current_year] + str(id_number)
 
-#---------TESTAREA----------
+    return username
 
-def generate_userid(acc_type):
-    userid =""
-    # 1 = student
-    # 2 = mentor
+#Generate new credentials id 
+def generate_cred_id():
+    with psycopg2.connect(**db_params) as conn:
+        with conn.cursor() as cursor:
+            cursor.execute('''SELECT cred_id FROM credentials ORDER BY timestamp DESC''')
+            last_credid = cursor.fetchone()
 
+            credid = last_credid[0]
+            credid = int(credid[1:]) + 1
 
+            return credid
 
-    return userid
-
-x = 2
-generate_userid(x)

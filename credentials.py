@@ -2,6 +2,7 @@ import psycopg2
 from config import db_params
 import random, datetime
 import string
+import bcrypt
 
 
 #Generate random temporary password
@@ -53,6 +54,11 @@ def generate_cred_id():
 
             credid = last_credid[0]
             credid = int(credid[1:]) + 1
+            credid = "c"+ str(credid)
 
             return credid
 
+#Password Encryption
+def hash_password(password):
+    
+    return bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())

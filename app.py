@@ -12,9 +12,22 @@ app=Flask(__name__)
 def login():
     return fun_login()
 
+#------------------------------ADMIN-ADMIN-----------------------------------------
+
+ # Route to add an admin
+@app.route('/api/v1/admin/add_admin', methods=['POST'])
+def add_admin():
+    return add_new_admin()
+ 
+# Route to remove an admin
+@app.route('/api/v1/admin/', methods=['DELETE'])
+def remove_admin_route():
+    return remove_admin()
+
+
 #-----------------------------ADMIN-MENTOR------------------------------------------
 #Admin - Add new mentor
-@app.route('/admin/addmentor', methods=['PUT'])
+@app.route('/admin/addmentor', methods=['POST'])
 def admin_create_mentor():
     return fun_admin_create_mentor()
 

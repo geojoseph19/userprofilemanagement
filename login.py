@@ -26,7 +26,9 @@ def fun_login():
 
                     if bcrypt.checkpw(password.encode('utf-8'), password_hash.encode('utf-8')):
 
-                        return jsonify({'message': 'Authentication successful'}), 200
+
+
+                        return jsonify({'message': f'Authentication successful! Logging in as {username},{roles[role_id]}'}), 200
                     else:
                         return jsonify({'error': 'Incorrect password'}), 401
 

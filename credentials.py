@@ -60,5 +60,5 @@ def generate_cred_id():
 
 #Password Encryption
 def hash_password(password):
-    
-    return bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
+
+    return repr(bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt()))

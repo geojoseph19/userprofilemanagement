@@ -2,7 +2,7 @@ import psycopg2
 from psycopg2 import errors
 from flask import Flask, request, jsonify
 from config import db_params
-
+from session_manager import *
 
 
 
@@ -10,6 +10,23 @@ app = Flask(__name__)
 
 
 # --------------------------------------------------------------* FUNCTIONS *---------------------------------------------------------------------------
+
+#Display mentor details
+def fun_mentor_home():
+
+    m_id = get_session_data('username')
+    if not m_id:
+        return jsonify({'error': 'Mentor not found'}), 404
+
+    with psycopg2.connect(**db_params) as conn:
+        with conn.cursor() as cursor:
+            cursor.execute('''SELECT * FROM mentor WHERE m_id=%s''', (m_id,))
+            mentor = cursor.fetchone()
+
+    if mentor:
+        return jsonify({'mentor': mentor})
+    else:
+        return jsonify({'error': 'Mentor not found'}), 404
 
 # Function to update mentor profile
 def update_mentor_profile(username, qualification):

@@ -1,14 +1,34 @@
 import psycopg2
 import re
-from flask import Flask,request,jsonify
+from flask import Flask,request,jsonify, session
+from flask_session import Session
 from config import db_params
 from credentials import *
 from mailconn import *
+from session_manager import *
 
 app=Flask(__name__)
 
+
 #--------------------------MODIFY-ADMIN-------------------------------------
 #----------------------------FUNCTIONS--------------------------------------
+
+#Display admin details
+def fun_admin_home():
+
+    admin_id = get_session_data('username')
+    if not admin_id:
+        return jsonify({'error': 'Admin not found'}), 404
+
+    with psycopg2.connect(**db_params) as conn:
+        with conn.cursor() as cursor:
+            cursor.execute('''SELECT * FROM admins WHERE admin_id=%s''', (admin_id,))
+            admin = cursor.fetchone()
+
+    if admin:
+        return jsonify({'admin': admin})
+    else:
+        return jsonify({'error': 'Admin not found'}), 404
 
 # Function to validate email format
 def is_valid_email(email):
@@ -86,7 +106,7 @@ def remove_admin():
         username = request.json.get('username')
         with psycopg2.connect(**db_params) as conn:
             with conn.cursor() as cursor:
-                cursor.execute('DELETE FROM(SELECT * FROM admins JOIN credentials ON admins.cred_id=credentials.cred_id) WHERE admins.admin_id=%s', (username))
+                cursor.execute('DELETE FROM admins WHERE admin_id=%s', (username,))
         return jsonify({'message': 'Admin removed successfully!', 'status': 200}), 200
     except AttributeError:
         return jsonify({'error': 'Invalid ID provided', 'message': 'Please provide a valid admin ID'}), 400

@@ -6,11 +6,12 @@ from mentor_functionalities import *
 
 app=Flask(__name__)
 app.config['SESSION_TYPE'] = 'filesystem'  
+app.secret_key = 'secret_key'
 Session(app)
 
 #-------------------------------LOGIN/LOGOUT-----------------------------------------------
 #Login function
-@app.route('/login', methods=['GET','POST'])
+@app.route('/login', methods=['POST'])
 def login():
     return fun_login()
 
@@ -19,7 +20,16 @@ def login():
 def logout():
     return fun_logout()
 
-#------------------------------ADMIN-ADMIN-----------------------------------------
+@app.route('/temp', methods=['GET','POST'])
+def temp():
+    return jsonify({'Redirect': 'Redirected to a temporary page!'})
+
+#--------------------------------ADMIN-----------------------------------------
+#-----------------------------ADMIN-ADMIN--------------------------------------
+#View admin home details
+@app.route('/admin/home', methods=['GET'])
+def admin_home():
+    return fun_admin_home()
 
  # Route to add an admin
 @app.route('/api/v1/admin/add_admin', methods=['POST'])
@@ -38,6 +48,7 @@ def admin_update(admin_id):
 
 
 #-----------------------------ADMIN-MENTOR------------------------------------------
+
 #Admin - Add new mentor
 @app.route('/admin/addmentor', methods=['POST'])
 def admin_create_mentor():
@@ -71,6 +82,11 @@ def view_assigned_project():
 
 
 # ----------------------------------------------ROUTES FOR MENTOR---------------------------------------------------------------------------------
+
+#View admin home details
+@app.route('/mentor/home', methods=['GET'])
+def mentor_home():
+    return fun_mentor_home()
 
 # Route to update mentor profile
 @app.route('/mentor/profile', methods=['PUT'])
@@ -111,19 +127,22 @@ def student_to_project(project_id):
 def remove_student(project_id):
     student_id = request.json.get('student_id')
     return remove_student_from_project(student_id, project_id)
- 
+
+#Add achievement 
 @app.route('/mentor/<string:m_id>/add_achievement', methods=['POST'])
 def student_achievement(m_id):
     student_id = request.json.get('st_id')
     achievement_id = request.json.get('ach_id')
     return add_student_achievement(student_id, achievement_id)
  
+ #Remove achievement
 @app.route('/mentor/<string:m_id>/remove_achievement', methods=['DELETE'])
 def del_student_achievement(m_id):
     student_id = request.json.get('st_id')
     achievement_id = request.json.get('ach_id')
     return remove_student_achievement(student_id, achievement_id)
  
+ #Add project
 @app.route('/mentor/<string:m_id>/add_project', methods=['POST'])
 def add_project_route(m_id):
     m_id = session.get('username')
@@ -135,7 +154,7 @@ def add_project_route(m_id):
     
     return add_project(m_id,project_id, project_name, start_date, end_date)
  
- 
+ #Delete project
 @app.route('/mentor/<string:m_id>/projects/<string:project_id>', methods=['DELETE'])
 def delete_project_route(m_id, project_id):
     return delete_project(m_id, project_id)

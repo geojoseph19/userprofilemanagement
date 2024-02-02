@@ -16,7 +16,7 @@ def update_mentor_profile(username, qualification):
     try:
         with psycopg2.connect(**db_params) as conn:
             with conn.cursor() as cursor:
-                cursor.execute('''UPDATE mentor SET qualification=%s WHERE m_id=%s''', (qualification, username))
+                cursor.execute('''UPDATE mentor SET qualifctn=%s WHERE m_id=%s''', (qualification, username))
                 conn.commit()
         return True
     except psycopg2.Error as e:
@@ -121,13 +121,13 @@ def remove_student_achievement(student_id, achievement_id):
     
  
 # Function to add a new project
-def add_project(m_id, project_name, start_date, end_date):
+def add_project(m_id,project_id, project_name, start_date, end_date):
     try:
         with psycopg2.connect(**db_params) as conn:
             with conn.cursor() as cursor:
                 # Insert new project into the project table
-                cursor.execute('INSERT INTO project(pr_name, start_date, end_date, m_id) VALUES (%s, %s, %s, %s)',
-                               (project_name, start_date, end_date, m_id))
+                cursor.execute('INSERT INTO project(pr_name,project_id, start_date, end_date, m_id) VALUES (%s,%s, %s, %s, %s)',
+                               (project_name,project_id, start_date, end_date, m_id))
                 conn.commit()
                 
         return jsonify({'message': 'Project added successfully!'})

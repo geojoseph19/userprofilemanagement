@@ -57,6 +57,19 @@ def generate_cred_id():
             credid = "c"+ str(credid)
 
             return credid
+        
+#Generate new project id
+def generate_project_id():
+    with psycopg2.connect(**db_params) as conn:
+        with conn.cursor() as cursor:
+            cursor.execute('''SELECT project_id FROM credentials ORDER BY timestamp DESC''')
+            last_projectid = cursor.fetchone()
+
+            projectid = last_projectid[2]
+            projectid = int(projectid[3:]) + 1
+            projectid = "PRJ"+ str(projectid)
+
+            return projectid 
 
 #Password Encryption
 def hash_password(password):

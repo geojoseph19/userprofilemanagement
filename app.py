@@ -1,16 +1,23 @@
+from flask import redirect, url_for, session
 from login import *
-from adminmentor import *
+from admin import *
 from student import *
 from mentor_functionalities import *
 
 app=Flask(__name__)
+app.config['SESSION_TYPE'] = 'filesystem'  
+Session(app)
 
-
-#-------------------------------LOGIN-----------------------------------------------
+#-------------------------------LOGIN/LOGOUT-----------------------------------------------
 #Login function
-@app.route('/login', methods=['POST'])
+@app.route('/login', methods=['GET','POST'])
 def login():
     return fun_login()
+
+#Logout function
+@app.route('/logout', methods=['POST'])
+def logout():
+    return fun_logout()
 
 #------------------------------ADMIN-ADMIN-----------------------------------------
 
@@ -23,6 +30,11 @@ def add_admin():
 @app.route('/api/v1/admin/', methods=['DELETE'])
 def remove_admin_route():
     return remove_admin()
+
+#Route to update admin info
+@app.route('/api/v1/admin/<string:admin_id>',methods=['PUT'])
+def admin_update(admin_id):
+    return update_admin_details(admin_id)
 
 
 #-----------------------------ADMIN-MENTOR------------------------------------------
@@ -61,9 +73,10 @@ def view_assigned_project():
 # ----------------------------------------------ROUTES FOR MENTOR---------------------------------------------------------------------------------
 
 # Route to update mentor profile
-@app.route('/mentor/<string:username>/profile', methods=['PUT'])
-def update_profile(username):
+@app.route('/mentor/profile', methods=['PUT'])
+def update_profile():
     request_data = request.json
+    username = session.get('username')
     new_qual = request_data.get('qualification')
     if new_qual is None:
         return jsonify({'error': 'Qualification not provided!'}), 400
@@ -72,12 +85,13 @@ def update_profile(username):
     if success:
         return jsonify({'message': 'Profile updated successfully!'})
     else:
-        return jsonify({'error': 'Failed to update mentor profile!'}), 500
+        return jsonify({'error': f'Failed to update {username} mentor profile!'}), 500
  
 # Route to get projects under the logged-in mentor
 @app.route('/mentor/<string:mentor_id>/projects', methods=['GET'])
 def mentor_projects(mentor_id):
-    projects = get_mentor_projects(mentor_id)
+    username = session.get('username')
+    projects = get_mentor_projects(username)
     return jsonify(projects)
  
 # Route to get students under a given project
@@ -112,12 +126,14 @@ def del_student_achievement(m_id):
  
 @app.route('/mentor/<string:m_id>/add_project', methods=['POST'])
 def add_project_route(m_id):
+    m_id = session.get('username')
     request_data = request.json
     project_name = request_data.get('project_name')
     start_date = request_data.get('start_date')
     end_date = request_data.get('end_date')
+    project_id = generate_project_id()
     
-    return add_project(m_id, project_name, start_date, end_date)
+    return add_project(m_id,project_id, project_name, start_date, end_date)
  
  
 @app.route('/mentor/<string:m_id>/projects/<string:project_id>', methods=['DELETE'])

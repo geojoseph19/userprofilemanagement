@@ -1,5 +1,5 @@
 import psycopg2
-from flask import Flask,request,jsonify
+from flask import Flask,request,jsonify, session
 from config import db_params
 
 app=Flask(__name__)
@@ -10,8 +10,8 @@ app=Flask(__name__)
 #Display all student details
 def fun_student_home():
 
-    data = request.json
-    st_id = data.get('st_id')
+    st_id = session.get('username')
+
     with psycopg2.connect(**db_params) as conn:
         with conn.cursor() as cursor:
             cursor.execute('''SELECT * FROM student WHERE st_id=%s''', (st_id,))

@@ -16,7 +16,7 @@ def send_mail(email,username,password,fname,mname,lname):
     port = 587
     smtp_username = 'admn17843@gmail.com'
     smtp_password = 'AdtfBJznNx6cCOX0' 
-    smtp_sender_email = 'admn17843@gmail.com'
+    smtp_sender_email = 'admin@university.com'
 
     # Create a multipart message
     message = MIMEMultipart()
@@ -43,7 +43,11 @@ For security reasons, please keep your login credentials confidential.
 Best regards,
  
 X University
-Tower C - 11th Floor, IBC KNOWLEDGE PARK, 4/1, Bannerghatta Rd, Bhavani Nagar, S.G. Palya, Bengaluru, Karnataka 560029
+Tower C - 11th Floor, 
+IBC KNOWLEDGE PARK, 
+4/1, Bannerghatta Rd, 
+Bhavani Nagar, S.G. Palya, 
+Bengaluru, Karnataka 560029
 """
     message.attach(MIMEText(body, 'plain'))
 

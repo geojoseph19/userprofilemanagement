@@ -2,7 +2,7 @@ import psycopg2
 from psycopg2 import errors
 from flask import Flask, request, jsonify
 from config import db_params
-from session_manager import *
+from ..utils.session_manager import *
 
 
 

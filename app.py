@@ -1,14 +1,19 @@
 from flask import redirect, url_for, session
-from login import *
-from admin import *
-from student import *
-from mentor_functionalities import *
+from app.services.login import *
+from app.services.admin import *
+from app.services.student import *
+from app.services.mentor_functionalities import *
+from app.services.userAccountServices import *
 
 app=Flask(__name__)
 app.config['SESSION_TYPE'] = 'filesystem'  
 app.secret_key = 'secret_key'
 
 Session(app)
+
+import logging
+# Configure logging
+logging.basicConfig(filename='error.log', level=logging.ERROR)
 
 #-------------------------------LOGIN/LOGOUT-----------------------------------------------
 #Login function
@@ -25,6 +30,25 @@ def logout():
 def temp():
     return jsonify({'Redirect': 'Redirected to a temporary page!'})
 
+#-----------------------------ACCOUNT-SETTINGS--------------------------------
+
+#Route to request for OTP to recover account
+@app.route('/api/v1/accountRecovery',methods=['POST'])
+def request_otp():
+    return otp_mail()
+
+#Route to verify OTP
+@app.route('/api/v1/verifyOTP',methods=['GET'])
+def otp_verificate():
+    return verify_otp()
+
+
+#Route to reset password
+@app.route('/api/v1/resetPassw/<string:username>',methods=['POST'])
+def reset_user_password(username):
+    return reset_password(username)
+
+#Update password
 @app.route('/updatepwd', methods=['POST'])
 def updatepwd():
     return fun_updatepwd()
@@ -169,10 +193,14 @@ def delete_project_route(m_id, project_id):
 #Error Handler
 @app.errorhandler(Exception)
 def handle_error(error):
+    # Log the error to the error.log file
+    logging.exception("An error occurred:")
+
     # Extract the status code from the exception, if available
     status_code = getattr(error, 'code', 500)
     error_message = str(error)
-    
+
+
     # Extracting the error code from the error message if available
     error_code = None
     if ':' in error_message:
@@ -180,8 +208,8 @@ def handle_error(error):
 
     if ':' in error_message:
         error_message = error_message.split(':')[1].strip()
-    
-    return jsonify({'error': error_message}), status_code
+    print("error :",error_message)
+    return jsonify({'error': 'An error occured'}), status_code
 
     #return jsonify({'success': False, 'error': error_message, 'error_code': error_code}), status_code
 

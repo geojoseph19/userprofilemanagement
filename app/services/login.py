@@ -4,8 +4,8 @@ import psycopg2
 import bcrypt
 import json
 from config import db_params
-from credentials import hash_password
-from session_manager import *
+from ..utils.credentials import hash_password
+from ..utils.session_manager import *
 
 def fun_login():
     try:
@@ -94,10 +94,13 @@ def fun_updatepwd():
         
         old_pwd = data.get('old_password')
         new_pwd = data.get('new_password')
+        new_pwd_retype = data.get('new_password_retype')
         if old_pwd is None:
             raise ValueError('Missing old password field in JSON data')
         elif new_pwd is None:
             raise ValueError('Missing new password field in JSON data')
+        elif new_pwd_retype is None:
+            raise ValueError('Missing re-enter new password field in JSON data')
         
     except ValueError as e:
         return jsonify({'error': str(e)}), 400
@@ -107,44 +110,49 @@ def fun_updatepwd():
             return jsonify({'error':'Old password field empty'})
         if not new_pwd:
             return jsonify({'error':'New password field empty'})
+        if not new_pwd_retype:
+            return jsonify({'error':'Re-enter new password field empty'})
         else:
 
             username = get_session_data('username')
 
-            try:
-                with psycopg2.connect(**db_params) as conn:
-                    with conn.cursor() as cursor:
-                        cursor.execute('''SELECT password_hash FROM credentials WHERE username = %s''', (username,))
-                        stored_pwd = cursor.fetchone()
-            except psycopg2.Error as e:
-                    return jsonify({'error': 'Error fetching password from credentials'}),e
-            else:
-                
-                stored_pwd = stored_pwd[0]
 
-                #taking the str hash from database and converting to byte
-                stored_pwd = repr(stored_pwd)
-                stored_pwd = stored_pwd[3:-2]
-                
-                #checking if pwd is correct
-                if bcrypt.checkpw(old_pwd.encode('utf-8'), stored_pwd.encode('utf-8')):
-
-                    new_pwd = hash_password(new_pwd)
-
-                    try:
-                        with psycopg2.connect(**db_params) as conn:
-                            with conn.cursor() as cursor:
-                                cursor.execute('''UPDATE credentials SET password_hash=%s WHERE username=%s''', (new_pwd, username,))
-                                conn.commit()
-                    except psycopg2.Error as e:
-                            return jsonify({'error': 'Error updating password in credentials'})
-
-                    else:
-                        return jsonify({'Success': 'Password updated successfully!'}), 200
+            if new_pwd == new_pwd_retype:
+                try:
+                    with psycopg2.connect(**db_params) as conn:
+                        with conn.cursor() as cursor:
+                            cursor.execute('''SELECT password_hash FROM credentials WHERE username = %s''', (username,))
+                            stored_pwd = cursor.fetchone()
+                except psycopg2.Error as e:
+                        return jsonify({'error': 'Error fetching password from credentials'}),e
                 else:
-                    return jsonify({'error': 'Incorrect password'}), 401
-                
+                    
+                    stored_pwd = stored_pwd[0]
 
+                    #taking the str hash from database and converting to byte
+                    stored_pwd = repr(stored_pwd)
+                    stored_pwd = stored_pwd[3:-2]
+                    
+                    #checking if pwd is correct
+                    if bcrypt.checkpw(old_pwd.encode('utf-8'), stored_pwd.encode('utf-8')):
+
+                        new_pwd = hash_password(new_pwd)
+
+                        try:
+                            with psycopg2.connect(**db_params) as conn:
+                                with conn.cursor() as cursor:
+                                    cursor.execute('''UPDATE credentials SET password_hash=%s WHERE username=%s''', (new_pwd, username,))
+                                    conn.commit()
+                        except psycopg2.Error as e:
+                                return jsonify({'error': 'Error updating password in credentials'})
+
+                        else:
+                            return jsonify({'Success': 'Password updated successfully!'}), 200
+                    else:
+                        return jsonify({'error': 'Incorrect password'}), 401
+                
+            else:
+                return jsonify({'error': 'New password and re-enter new password fields does not match'}), 401
                 #check if two textboxes of new & retype password is same
 
 

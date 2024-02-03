@@ -3,9 +3,9 @@ import re
 from flask import Flask,request,jsonify, session
 from flask_session import Session
 from config import db_params
-from credentials import *
-from mailconn import *
-from session_manager import *
+from ..utils.credentials import *
+from ..utils.mailconn import *
+from ..utils.session_manager import *
 
 app=Flask(__name__)
 
@@ -152,6 +152,50 @@ def fun_admin_create_mentor():
     send_mail(email,username,password,m_fname,m_mname,m_lname)
 
     return jsonify({'message': 'Mentor record added'})
+
+#--------------------------MODIFY-STUDENT------------------------------------
+#----------------------------FUNCTIONS---------------------------------------
+
+#Create a mentor account
+def fun_admin_create_student():
+
+    role_id = 1
+
+    data = request.json
+    m_fname = data.get('student_first_name')
+    m_mname = data.get('student_middle_name')
+    m_lname = data.get('student_last_name')
+    sex= data.get('sex')
+    phoneno = data.get('phone_number')
+    address = data.get('address')
+    dob = data.get('dob')
+    email = data.get('email')
+
+    cred_id = generate_cred_id()
+    username = generate_username()
+    password = generate_password(8)
+
+
+    try:
+        hashed_password = hash_password(password)
+    except:
+        return jsonify({'error':'Password encryption error'})
+            
+
+    with psycopg2.connect(**db_params) as conn:
+        with conn.cursor() as cursor:
+            cursor.execute('INSERT INTO credentials(cred_id, username, password_hash, role_id) VALUES (%s,%s,%s,%s)', 
+                           (cred_id,username,hashed_password,role_id))
+
+            cursor.execute('INSERT INTO mentor(m_id, m_fname, m_mname, m_lname, dept_id, qualifctn, cred_id, email) VALUES (%s,%s,%s,%s,%s,%s,%s,%s)', 
+                           (username,m_fname,m_mname,m_lname,dept_id,qualifctn,cred_id,email))
+
+
+    send_mail(email,username,password,m_fname,m_mname,m_lname)
+
+    return jsonify({'message': 'Mentor record added'})
+
+
     
 
 #-----------------------------ROUTES----------------------------------------

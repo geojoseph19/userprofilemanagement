@@ -7,6 +7,7 @@ from mentor_functionalities import *
 app=Flask(__name__)
 app.config['SESSION_TYPE'] = 'filesystem'  
 app.secret_key = 'secret_key'
+
 Session(app)
 
 #-------------------------------LOGIN/LOGOUT-----------------------------------------------
@@ -23,6 +24,10 @@ def logout():
 @app.route('/temp', methods=['GET','POST'])
 def temp():
     return jsonify({'Redirect': 'Redirected to a temporary page!'})
+
+@app.route('/updatepwd', methods=['POST'])
+def updatepwd():
+    return fun_updatepwd()
 
 #--------------------------------ADMIN-----------------------------------------
 #-----------------------------ADMIN-ADMIN--------------------------------------
@@ -161,6 +166,26 @@ def delete_project_route(m_id, project_id):
 
 #----------------------------------------------------------------------------------------------------------------------------------------------------------
 
+#Error Handler
+@app.errorhandler(Exception)
+def handle_error(error):
+    # Extract the status code from the exception, if available
+    status_code = getattr(error, 'code', 500)
+    error_message = str(error)
+    
+    # Extracting the error code from the error message if available
+    error_code = None
+    if ':' in error_message:
+        error_code = error_message.split(':')[0].strip()
+
+    if ':' in error_message:
+        error_message = error_message.split(':')[1].strip()
+    
+    return jsonify({'error': error_message}), status_code
+
+    #return jsonify({'success': False, 'error': error_message, 'error_code': error_code}), status_code
+
+#--------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 if __name__ == '__main__':

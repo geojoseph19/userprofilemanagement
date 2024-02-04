@@ -4,7 +4,7 @@ import psycopg2
 import bcrypt
 import json
 from config import db_params
-from ..utils.credentials import hash_password
+from ..utils.credential_generators import hash_password
 from ..utils.session_manager import *
 
 def fun_login():
@@ -52,13 +52,13 @@ def fun_login():
                         set_session_data('username',username)
 
                         if role_id == 0:
-                            return redirect(url_for('admin_home'))
+                            return redirect(url_for('admin.admin_home'))
                         
                         elif role_id == 1:
-                            return redirect(url_for('mentor_home'))
+                            return redirect(url_for('mentor.mentor_home'))
                         
                         elif role_id == 2:
-                            return redirect(url_for('student_home'))
+                            return redirect(url_for('student.student_home'))
                         
                         else:
                             return jsonify({'error':'Role id not found in dict'})
@@ -78,7 +78,7 @@ def fun_login():
 def fun_logout():
     try:
         session.clear()
-        return redirect(url_for('temp'))
+        return redirect(url_for('login.temp'))
     
     except Exception as e:
         # Log the exception or handle it as needed
@@ -153,6 +153,6 @@ def fun_updatepwd():
                 
             else:
                 return jsonify({'error': 'New password and re-enter new password fields does not match'}), 401
-                #check if two textboxes of new & retype password is same
+    
 
 

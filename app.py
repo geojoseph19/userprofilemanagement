@@ -2,8 +2,8 @@ from flask import redirect, url_for, session
 from app.services.login import *
 from app.services.admin import *
 from app.services.student import *
-from app.services.mentor_functionalities import *
-from app.services.userAccountServices import *
+from app.services.mentor import *
+from app.services.account import *
 
 app=Flask(__name__)
 app.config['SESSION_TYPE'] = 'filesystem'  

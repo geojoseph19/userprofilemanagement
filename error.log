@@ -279,3 +279,355 @@ INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userpr
 INFO:werkzeug: * Restarting with stat
 WARNING:werkzeug: * Debugger is active!
 INFO:werkzeug: * Debugger PIN: 379-541-606
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 379-541-606
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 379-541-606
+INFO:werkzeug:127.0.0.1 - - [03/Feb/2024 23:37:49] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [03/Feb/2024 23:37:49] "GET /mentor/home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Feb/2024 23:38:09] "POST /logout HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/controller/account_controller.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 379-541-606
+INFO:werkzeug:127.0.0.1 - - [03/Feb/2024 23:41:57] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [03/Feb/2024 23:41:57] "GET /mentor/home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Feb/2024 23:42:07] "POST /logout HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/services/userAccountServices.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 379-541-606
+INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/services/userAccountServices.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 379-541-606
+INFO:werkzeug:127.0.0.1 - - [03/Feb/2024 23:43:15] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [03/Feb/2024 23:43:15] "GET /mentor/home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Feb/2024 23:43:26] "POST /logout HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Feb/2024 23:43:36] "[31m[1mPOST /updatepwd HTTP/1.1[0m" 401 -
+INFO:werkzeug:127.0.0.1 - - [03/Feb/2024 23:43:49] "[31m[1mPOST /updatepwd HTTP/1.1[0m" 401 -
+ERROR:root:An error occurred:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "/home/geojoseph/Desktop/Mini Project/userprofilemanagement/run.py", line 46, in updatepwd
+    return fun_updatepwd()
+  File "/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/services/userAccountServices.py", line 194, in fun_updatepwd
+    stored_pwd = stored_pwd[0]
+TypeError: 'NoneType' object is not subscriptable
+INFO:werkzeug:127.0.0.1 - - [03/Feb/2024 23:43:56] "[35m[1mPOST /updatepwd HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [03/Feb/2024 23:47:17] "POST /logout HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Feb/2024 23:47:23] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [03/Feb/2024 23:47:23] "GET /mentor/home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Feb/2024 23:47:34] "POST /updatepwd HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Feb/2024 23:47:47] "POST /logout HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/services/login.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 379-541-606
+INFO:werkzeug:127.0.0.1 - - [03/Feb/2024 23:50:42] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [03/Feb/2024 23:50:42] "GET /mentor/home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Feb/2024 23:50:45] "[32mPOST /logout HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [03/Feb/2024 23:50:45] "GET /temp HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/services/login.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 379-541-606
+INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/run.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 379-541-606
+INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/run.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 379-541-606
+INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/controller/account_controller.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 379-541-606
+INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/controller/account_controller.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 379-541-606
+INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/run.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 379-541-606
+INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/run.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 379-541-606
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 379-541-606
+INFO:werkzeug:127.0.0.1 - - [04/Feb/2024 12:13:22] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [04/Feb/2024 12:13:22] "GET /mentor/home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Feb/2024 12:13:32] "[32mPOST /logout HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [04/Feb/2024 12:13:32] "GET /temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Feb/2024 12:13:50] "[32mPOST /logout HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [04/Feb/2024 12:13:50] "GET /temp HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/controller/mentor_contoller.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 379-541-606
+INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/run.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 379-541-606
+INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/run.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 379-541-606
+INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/run.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 379-541-606
+INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/run.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 379-541-606
+INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/run.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 379-541-606
+ERROR:root:An error occurred:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/controller/login_controller.py", line 10, in login
+    return fun_login()
+  File "/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/services/login.py", line 58, in fun_login
+    return redirect(url_for('mentor_home'))
+  File "/usr/local/lib/python3.8/dist-packages/flask/helpers.py", line 225, in url_for
+    return current_app.url_for(
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1697, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1686, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/routing/map.py", line 950, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'mentor_home'. Did you mean 'account.otp_verificate' instead?
+INFO:werkzeug:127.0.0.1 - - [04/Feb/2024 12:37:51] "[35m[1mPOST /login HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 379-541-606
+INFO:werkzeug:127.0.0.1 - - [04/Feb/2024 12:40:59] "[31m[1mPOST /login HTTP/1.1[0m" 401 -
+ERROR:root:An error occurred:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/controller/login_controller.py", line 10, in login
+    return fun_login()
+  File "/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/services/login.py", line 58, in fun_login
+    return redirect(url_for('mentor_home'))
+  File "/usr/local/lib/python3.8/dist-packages/flask/helpers.py", line 225, in url_for
+    return current_app.url_for(
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1697, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1686, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/routing/map.py", line 950, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'mentor_home'. Did you mean 'account.otp_verificate' instead?
+INFO:werkzeug:127.0.0.1 - - [04/Feb/2024 12:41:03] "[35m[1mPOST /login HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/services/login.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 379-541-606
+ERROR:root:An error occurred:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/controller/login_controller.py", line 10, in login
+    return fun_login()
+  File "/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/services/login.py", line 58, in fun_login
+    return redirect(url_for('mentor.mentor_home'))
+  File "/usr/local/lib/python3.8/dist-packages/flask/helpers.py", line 225, in url_for
+    return current_app.url_for(
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1697, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1686, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/routing/map.py", line 950, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'mentor.mentor_home'. Did you mean 'account.reset_user_password' instead?
+INFO:werkzeug:127.0.0.1 - - [04/Feb/2024 12:41:59] "[35m[1mPOST /login HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/controller/mentor_contoller.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 379-541-606
+INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/services/login.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 379-541-606
+ERROR:root:An error occurred:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/controller/login_controller.py", line 10, in login
+    return fun_login()
+  File "/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/services/login.py", line 58, in fun_login
+    return redirect(url_for('mentor.mentor/home'))
+  File "/usr/local/lib/python3.8/dist-packages/flask/helpers.py", line 225, in url_for
+    return current_app.url_for(
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1697, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1686, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/routing/map.py", line 950, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'mentor.mentor/home'. Did you mean 'login.temp' instead?
+INFO:werkzeug:127.0.0.1 - - [04/Feb/2024 12:44:30] "[35m[1mPOST /login HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/services/login.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 379-541-606
+ERROR:root:An error occurred:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/controller/login_controller.py", line 10, in login
+    return fun_login()
+  File "/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/services/login.py", line 58, in fun_login
+    return redirect(url_for('mentor.mentor_home'))
+  File "/usr/local/lib/python3.8/dist-packages/flask/helpers.py", line 225, in url_for
+    return current_app.url_for(
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1697, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1686, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/routing/map.py", line 950, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'mentor.mentor_home'. Did you mean 'account.reset_user_password' instead?
+INFO:werkzeug:127.0.0.1 - - [04/Feb/2024 12:47:59] "[35m[1mPOST /login HTTP/1.1[0m" 500 -
+ERROR:root:An error occurred:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/controller/login_controller.py", line 10, in login
+    return fun_login()
+  File "/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/services/login.py", line 55, in fun_login
+    return redirect(url_for('admin.admin_home'))
+  File "/usr/local/lib/python3.8/dist-packages/flask/helpers.py", line 225, in url_for
+    return current_app.url_for(
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1697, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1686, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/routing/map.py", line 950, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'admin.admin_home'. Did you mean 'login.login' instead?
+INFO:werkzeug:127.0.0.1 - - [04/Feb/2024 12:48:15] "[35m[1mPOST /login HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/run.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 379-541-606
+INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/controller/mentor_contoller.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 379-541-606
+INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/services/admin.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 379-541-606
+INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/services/admin.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 379-541-606
+INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/services/admin.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 379-541-606
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 379-541-606
+INFO:werkzeug:127.0.0.1 - - [04/Feb/2024 12:51:56] "[32mPOST /logout HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [04/Feb/2024 12:51:56] "GET /temp HTTP/1.1" 200 -
+ERROR:root:An error occurred:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/controller/login_controller.py", line 10, in login
+    return fun_login()
+  File "/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/services/login.py", line 55, in fun_login
+    return redirect(url_for('admin.admin_home'))
+  File "/usr/local/lib/python3.8/dist-packages/flask/helpers.py", line 225, in url_for
+    return current_app.url_for(
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1697, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1686, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/routing/map.py", line 950, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'admin.admin_home'. Did you mean 'login.login' instead?
+INFO:werkzeug:127.0.0.1 - - [04/Feb/2024 12:52:01] "[35m[1mPOST /login HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [04/Feb/2024 12:52:09] "POST /updatepwd HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/services/login.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 379-541-606
+INFO:werkzeug:127.0.0.1 - - [04/Feb/2024 12:53:37] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [04/Feb/2024 12:53:37] "GET /temp HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/services/login.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 379-541-606
+INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/services/admin.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 379-541-606
+INFO:werkzeug:127.0.0.1 - - [04/Feb/2024 12:59:17] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [04/Feb/2024 12:59:17] "GET /mentor/home HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/services/admin.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 379-541-606
+INFO:werkzeug:127.0.0.1 - - [04/Feb/2024 12:59:57] "[32mPOST /logout HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [04/Feb/2024 12:59:57] "GET /temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Feb/2024 13:00:04] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [04/Feb/2024 13:00:04] "GET /admin/home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Feb/2024 13:00:10] "[32mPOST /logout HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [04/Feb/2024 13:00:10] "GET /temp HTTP/1.1" 200 -

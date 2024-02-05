@@ -1,7 +1,7 @@
 from flask import Blueprint
 from app.services.login import *
 
-login_controller = Blueprint('login', __name__)
+login_controller = Blueprint('login', __name__, url_prefix="/api/v1")
 
 #-------------------------------LOGIN/LOGOUT-----------------------------------------------
 #Login function

@@ -12,7 +12,7 @@ otp_database={}
 
 # Generate OTP
 def generate_otp():
-    otp=''.join(random.choices('0123456789',k=6))
+    otp=''.join(random.choices('123456789',k=6))
     
     return otp
 

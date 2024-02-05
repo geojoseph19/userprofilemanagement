@@ -34,7 +34,7 @@ def fun_login():
                         cursor.execute('''SELECT cred_id, password_hash, role_id FROM credentials WHERE username = %s''', (username,))
                         results = cursor.fetchone()
             except psycopg2.Error as e:
-                    return jsonify({'error': 'Error adding project! Please try again...'}),e
+                    return jsonify({'error': 'Error fetching credentials'}),e
             else:
                 roles = {0:'admin',1:'mentor',3:'student'}
 
@@ -62,7 +62,6 @@ def fun_login():
                         
                         else:
                             return jsonify({'error':'Role id not found in dict'})
-                        
                     
                         # return jsonify({'message': f'Authentication successful! Logging in as {username},{roles[role_id]}'}), 200
                     else:

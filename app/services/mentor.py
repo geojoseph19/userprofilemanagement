@@ -1,5 +1,6 @@
 import psycopg2
 from psycopg2 import errors
+from datetime import datetime
 from flask import Flask, request, jsonify
 from config import db_params
 from ..utils.session_manager import *
@@ -33,7 +34,7 @@ def update_mentor_profile(username, qualification):
     try:
         with psycopg2.connect(**db_params) as conn:
             with conn.cursor() as cursor:
-                cursor.execute('''UPDATE mentor SET qualifctn=%s WHERE m_id=%s''', (qualification, username))
+                cursor.execute('''UPDATE mentor SET qualification=%s WHERE m_id=%s''', (qualification, username))
                 conn.commit()
         return True
     except psycopg2.Error as e:
@@ -51,7 +52,9 @@ def get_mentor_projects(mentor_id):
         return None
  
 # Function to fetch students under each project
-def get_project_students(project_id):
+def get_project_students():
+    data = request.json
+    project_id = data.get('project_id')
     try:
         with psycopg2.connect(**db_params) as conn:
             with conn.cursor() as cursor:
@@ -69,7 +72,15 @@ def get_project_students(project_id):
  
 # Import traceback module
  
-def add_student_to_project(student_id, project_id):
+def add_student_to_project():
+    try:
+        project_id = request.json.get('project_id')
+        student_id = request.json.get('student_id')
+    except: return jsonify({'error': 'Invalid inputs'})
+    if not project_id:
+        return jsonify({'error': 'Project ID not found'})
+    if not student_id:
+        return jsonify({'error': 'Student ID not found'})
     try:
         with psycopg2.connect(**db_params) as conn:
             with conn.cursor() as cursor:
@@ -85,13 +96,21 @@ def add_student_to_project(student_id, project_id):
                 
         return jsonify({'message': 'Student added successfully!'})
     except errors.UniqueViolation as e:
-        return jsonify({'error':'The student is already assigned to this project'})
+        return jsonify({'error':f'Student {student_id} is already assigned a project'})
     except psycopg2.Error as e:
-        return jsonify({'error': 'Error adding student! Please try again...'}), 500
+        return jsonify({'error': 'Error adding student'}), 500
  
  
 # Function to remove a student from a project
-def remove_student_from_project(student_id, project_id):
+def remove_student_from_project():
+    try:
+        project_id = request.json.get('project_id')
+        student_id = request.json.get('student_id')
+    except: return jsonify({'error': 'Invalid inputs'})
+    if not project_id:
+        return jsonify({'error': 'Project ID not found'})
+    if not student_id:
+        return jsonify({'error': 'Student ID not found'})
     try:
         with psycopg2.connect(**db_params) as conn:
             with conn.cursor() as cursor:
@@ -143,20 +162,20 @@ def add_project(m_id,project_id, project_name, start_date, end_date):
         with psycopg2.connect(**db_params) as conn:
             with conn.cursor() as cursor:
                 # Insert new project into the project table
-                cursor.execute('INSERT INTO project(pr_name,project_id, start_date, end_date, m_id) VALUES (%s,%s, %s, %s, %s)',
+             
+                cursor.execute('INSERT INTO project(pr_name,prj_id, start_date, end_date, m_id) VALUES (%s,%s, %s, %s, %s)',
                                (project_name,project_id, start_date, end_date, m_id))
                 conn.commit()
                 
-        return jsonify({'message': 'Project added successfully!'})
+        return jsonify({'message': f'Project {project_id}, {project_name} added successfully!'})
     except errors.UniqueViolation as e:
         return jsonify({'error':'Project already exists!'})
     except psycopg2.Error as e:
         return jsonify({'error': 'Error adding project! Please try again...'}), 500
     
  
- 
 # Function to delete a project
-def delete_project(m_id, project_id):
+def delete_project(project_id):
     try:
         with psycopg2.connect(**db_params) as conn:
             with conn.cursor() as cursor:

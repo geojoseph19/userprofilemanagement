@@ -1,36 +1,43 @@
 from flask import Blueprint
 from app.services.admin import *
+from app.services.student import *
 
-admin_controller = Blueprint('admin', __name__)
+admin_controller = Blueprint('admin', __name__, url_prefix="/api/v1")
 
-#--------------------------------ADMIN-----------------------------------------
-#-----------------------------ADMIN-ADMIN--------------------------------------
+#--------------------------------ADMIN--------------------------------------------
+
+#Admin - update user
+@admin_controller.route('/admin/updateUser', methods=['POST'])
+def admin_update_user():
+    return fun_admin_update_user()
+
+#Admin - remove user
+@admin_controller.route('/admin/removeUser', methods=['DELETE'])
+def admin_remove_user():
+    return fun_admin_delete_user()
+
+#-----------------------------ADMIN-ADMIN------------------------------------------
+
 #View admin home details
 @admin_controller.route('/admin/home', methods=['GET'])
 def admin_home():
     return fun_admin_home()
 
  # Route to add an admin
-@admin_controller.route('/api/v1/admin/add_admin', methods=['POST'])
+@admin_controller.route('/admin/addAdmin', methods=['POST'])
 def add_admin():
     return add_new_admin()
  
-# Route to remove an admin
-@admin_controller.route('/api/v1/admin/', methods=['DELETE'])
-def remove_admin_route():
-    return remove_admin()
-
-#Route to update admin info
-@admin_controller.route('/api/v1/admin/<string:admin_id>',methods=['PUT'])
-def admin_update(admin_id):
-    return update_admin_details(admin_id)
-
-
 #-----------------------------ADMIN-MENTOR------------------------------------------
 
 #Admin - Add new mentor
-@admin_controller.route('/admin/addmentor', methods=['POST'])
+@admin_controller.route('/admin/addMentor', methods=['POST'])
 def admin_create_mentor():
     return fun_admin_create_mentor()
 
+#-----------------------------ADMIN-STUDENT------------------------------------------
 
+#Add new student
+@admin_controller.route('/admin/addStudent', methods=['POST'])
+def admin_create_student():
+    return fun_admin_create_student()

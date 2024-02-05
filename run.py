@@ -3,11 +3,10 @@ from flask import Flask, jsonify, redirect, url_for, session
 from flask_session import Session
 
 from app.controller.login_controller import login_controller
-from app.controller.admin_controller import admin_controller
 from app.controller.account_controller import account_controller
+from app.controller.admin_controller import admin_controller
 from app.controller.mentor_contoller import mentor_controller
 from app.controller.student_controller import student_controller
-
 
 app=Flask(__name__)
 app.config['SESSION_TYPE'] = 'filesystem'  
@@ -20,15 +19,14 @@ logging.basicConfig(filename='error.log', level=logging.ERROR)
 
 #Blueprint registration
 app.register_blueprint(login_controller)
-app.register_blueprint(admin_controller)
 app.register_blueprint(account_controller)
+app.register_blueprint(admin_controller)
 app.register_blueprint(mentor_controller)
 app.register_blueprint(student_controller)
 
-
 #----------------------------------------------------------------------------------------------------------------------------------------------------------
 
-#Error Handler
+#Global Error Handler
 @app.errorhandler(Exception)
 def handle_error(error):
     # Log the error to the error.log file
@@ -37,7 +35,6 @@ def handle_error(error):
     # Extract the status code from the exception, if available
     status_code = getattr(error, 'code', 500)
     error_message = str(error)
-
 
     # Extracting the error code from the error message if available
     error_code = None
@@ -52,7 +49,6 @@ def handle_error(error):
     #return jsonify({'success': False, 'error': error_message, 'error_code': error_code}), status_code
 
 #--------------------------------------------------------------------------------------------------------------------------------------------------------
-
 
 if __name__ == '__main__':
     app.run(debug=True)

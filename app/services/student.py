@@ -1,6 +1,7 @@
 import psycopg2
 from flask import Flask,request,jsonify, session
 from config import db_params
+from ..utils.validation_utils import is_valid_phone
 
 app=Flask(__name__)
 
@@ -30,16 +31,19 @@ def fun_update_student():
     st_id = data.get('st_id')
 
     update_fields = {
-        'fname': data.get('fname'),
-        'mname': data.get('mname'),
-        'lname': data.get('lname'),
+        'fname': data.get('student_first_name'),
+        'mname': data.get('student_middle_name'),
+        'lname': data.get('student_last_name'),
         'sex': data.get('sex'),
         'email': data.get('email'),
-        'sphoneno': data.get('sphoneno'),
+        'sphoneno': data.get('student_phone_no'),
         'address': data.get('address'),
         'guardian': data.get('guardian'),
-        'gphoneno': data.get('gphoneno')
+        'gphoneno': data.get('guardian_phone_no')
     }
+    if not is_valid_phone(update_fields['sphoneno']):
+        return jsonify({'Error': 'Invalid phone number'})
+
     try:
         with psycopg2.connect(**db_params) as conn:
             with conn.cursor() as cursor:
@@ -124,7 +128,30 @@ def fun_view_assigned_project():
         return jsonify({'project': project_details}), 200
 
 
+#View student progress
+def fun_fetch_progress():
+    try:
+        username=session.get('username')
+        with psycopg2.connect(**db_params) as conn:
+            with conn.cursor() as cursor:
+                cursor.execute('SELECT semester FROM student WHERE st_id=%s',(username,))
+                currentSemester=cursor.fetchone()
+                cursor.execute('SELECT d.total_semester_count FROM student s JOIN departments d ON s.dept_id=d.dept_id WHERE s.st_id=%s',(username,))
+                total_semesters=cursor.fetchone()
 
+                cursor.execute('SELECT c.course_id, c.course_name FROM student s join courses c ON s.dept_id = c.dept_id AND c.semester < s.semester WHERE s.st_id = %s',(username,))  
+                courses_completed=cursor.fetchall()
+
+                courses_completed = {key: value for key, value in courses_completed}
+
+        return jsonify({'progress': f'Progress : {currentSemester[0]}/{total_semesters[0]}', 'Courses completed': courses_completed})
+
+    except Exception as e:
+        response = jsonify({'error': 'No data available', 'status': 'failed'})
+        response.status_code = 200  # Set the status code to 401 (Unauthorized)
+        return response
+
+ 
 
 
 

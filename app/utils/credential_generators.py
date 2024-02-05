@@ -62,12 +62,17 @@ def generate_cred_id():
 def generate_project_id():
     with psycopg2.connect(**db_params) as conn:
         with conn.cursor() as cursor:
-            cursor.execute('''SELECT project_id FROM credentials ORDER BY timestamp DESC''')
+            cursor.execute('''SELECT prj_id FROM project ORDER BY timestamp DESC''')
             last_projectid = cursor.fetchone()
 
-            projectid = last_projectid[2]
+            print(last_projectid)
+            projectid = last_projectid[0]
+            print(projectid)
             projectid = int(projectid[3:]) + 1
+            print(projectid)
             projectid = "PRJ"+ str(projectid)
+
+            print(projectid)
 
             return projectid 
 

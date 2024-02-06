@@ -13,7 +13,6 @@ def admin_create_user():
         response = jsonify({'error': 'Unauthorized access! Please login first', 'status': 'failed'})
         response.status_code = 401  
         return response
-    
     return fun_admin_create_user()
 
 #Admin - update user

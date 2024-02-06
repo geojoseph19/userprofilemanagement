@@ -371,6 +371,16 @@ def fun_admin_delete_user():
     elif role_type == "mentor":
         delete_query = mentor_delete_query
     elif role_type == "student":
+
+        try:
+            with psycopg2.connect(**db_params) as conn:
+                with conn.cursor() as cursor:
+                    cursor.execute('DELETE FROM st_project WHERE st_id=%s', (username,))
+                    cursor.execute('DELETE FROM std_ach WHERE st_id=%s', (username,))
+        except psycopg2.Error as e:
+            return jsonify({'error': f'Unable to delete {role_type} {username}'})
+
+
         delete_query = student_delete_query
     else : return jsonify({'error': 'Role type not found'})
 
@@ -381,11 +391,9 @@ def fun_admin_delete_user():
                 cursor.execute('DELETE FROM credentials WHERE username=%s', (username,))
     except psycopg2.Error as e:
         return jsonify({'error': f'Unable to delete {role_type} {username}'})
+    
  
     return jsonify({'message': f'{role_type} record {username} deleted'})
-
-
-
 
 
 #Admin - Create User

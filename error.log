@@ -189,3 +189,184 @@ INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userpr
 INFO:werkzeug: * Restarting with stat
 WARNING:werkzeug: * Debugger is active!
 INFO:werkzeug: * Debugger PIN: 379-541-606
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 379-541-606
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 11:38:37] "POST /api/v1/accountRecovery HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 11:39:03] "GET /api/v1/verifyOTP HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 11:39:06] "GET /api/v1/verifyOTP HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/services/student.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 379-541-606
+INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/services/student.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 379-541-606
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 12:02:08] "[32mPOST /api/v1/logout HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 12:02:08] "GET /api/v1/temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 12:02:27] "GET /api/v1/student/progress HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 12:02:32] "GET /api/v1/student/project HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 12:02:37] "GET /api/v1/student/achievements HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/services/student.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 379-541-606
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 12:04:20] "[31m[1mGET /api/v1/student/project HTTP/1.1[0m" 401 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 12:04:42] "[32mPOST /api/v1/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 12:04:42] "GET /api/v1/student/home HTTP/1.1" 200 -
+ERROR:root:An error occurred:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/controller/student_controller.py", line 26, in view_assigned_project
+    return fun_view_assigned_project()
+  File "/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/services/student.py", line 105, in fun_view_assigned_project
+    data = request.json
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/wrappers/request.py", line 561, in json
+    return self.get_json()
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/wrappers/request.py", line 607, in get_json
+    return self.on_json_loading_failed(None)
+  File "/usr/local/lib/python3.8/dist-packages/flask/wrappers.py", line 130, in on_json_loading_failed
+    return super().on_json_loading_failed(e)
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/wrappers/request.py", line 650, in on_json_loading_failed
+    raise UnsupportedMediaType(
+werkzeug.exceptions.UnsupportedMediaType: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 12:04:46] "[31m[1mGET /api/v1/student/project HTTP/1.1[0m" 415 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 12:04:51] "GET /api/v1/student/progress HTTP/1.1" 200 -
+ERROR:root:An error occurred:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/controller/student_controller.py", line 21, in view_student_achievements
+    return fun_view_student_achievements()
+  File "/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/services/student.py", line 71, in fun_view_student_achievements
+    data = request.json
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/wrappers/request.py", line 561, in json
+    return self.get_json()
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/wrappers/request.py", line 607, in get_json
+    return self.on_json_loading_failed(None)
+  File "/usr/local/lib/python3.8/dist-packages/flask/wrappers.py", line 130, in on_json_loading_failed
+    return super().on_json_loading_failed(e)
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/wrappers/request.py", line 650, in on_json_loading_failed
+    raise UnsupportedMediaType(
+werkzeug.exceptions.UnsupportedMediaType: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 12:05:01] "[31m[1mGET /api/v1/student/achievements HTTP/1.1[0m" 415 -
+INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/services/student.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 379-541-606
+INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/services/student.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 379-541-606
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 12:06:18] "GET /api/v1/student/project HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/services/student.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 379-541-606
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 12:07:15] "GET /api/v1/student/achievements HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 12:07:26] "PUT /api/v1/student/editProfile HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 12:07:31] "[32mPOST /api/v1/logout HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 12:07:31] "GET /api/v1/temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 12:07:44] "[32mPOST /api/v1/logout HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 12:07:44] "GET /api/v1/temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 12:07:48] "[31m[1mGET /api/v1/student/project HTTP/1.1[0m" 401 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 12:08:13] "[32mPOST /api/v1/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 12:08:13] "GET /api/v1/admin/home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 12:08:20] "GET /api/v1/student/progress HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 12:08:25] "GET /api/v1/student/project HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 12:08:31] "[32mPOST /api/v1/logout HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 12:08:31] "GET /api/v1/temp HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/controller/admin_controller.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 379-541-606
+INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/controller/admin_controller.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 379-541-606
+INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/services/student.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 379-541-606
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 379-541-606
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 12:12:38] "[32mPOST /api/v1/logout HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 12:12:38] "GET /api/v1/temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 12:12:45] "[31m[1mPOST /api/v1/admin/createUser HTTP/1.1[0m" 401 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 12:12:57] "[31m[1mPOST /api/v1/admin/updateUser HTTP/1.1[0m" 401 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 12:13:01] "[32mPOST /api/v1/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 12:13:01] "GET /api/v1/admin/home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 12:13:10] "POST /api/v1/admin/updateUser HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/controller/mentor_contoller.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 379-541-606
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 12:16:01] "[32mPOST /api/v1/logout HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 12:16:01] "GET /api/v1/temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 12:16:06] "[31m[1mGET /api/v1/mentor/projects HTTP/1.1[0m" 401 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 12:16:19] "[31m[1mDELETE /api/v1/mentor/removeAchievement?student_id=USRX241011&achievement_id=ach012 HTTP/1.1[0m" 401 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 12:16:45] "POST /api/v1/updatepwd HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 12:16:56] "[32mPOST /api/v1/logout HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 12:16:56] "GET /api/v1/temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 12:17:18] "[32mPOST /api/v1/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 12:17:18] "GET /api/v1/mentor/home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 12:17:26] "PUT /api/v1/mentor/profile HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 12:17:30] "GET /api/v1/mentor/projects HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 12:17:37] "GET /api/v1/mentor/projects/students HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 12:17:55] "[32mPOST /api/v1/logout HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 12:17:55] "GET /api/v1/temp HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/controller/account_controller.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 379-541-606
+INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/services/student.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 379-541-606
+INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/services/student.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 379-541-606
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 379-541-606
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 12:20:39] "[32mPOST /api/v1/logout HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 12:20:39] "GET /api/v1/temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 12:20:45] "[31m[1mPUT /api/v1/student/editProfile HTTP/1.1[0m" 401 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 12:20:50] "[31m[1mGET /api/v1/student/achievements HTTP/1.1[0m" 401 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 12:20:53] "[31m[1mGET /api/v1/student/project HTTP/1.1[0m" 401 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 12:20:58] "[31m[1mGET /api/v1/student/progress HTTP/1.1[0m" 401 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 12:21:49] "[32mPOST /api/v1/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 12:21:49] "GET /api/v1/mentor/home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 12:21:53] "GET /api/v1/student/achievements HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 12:22:18] "POST /api/v1/admin/createUser HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 12:22:38] "[32mPOST /api/v1/logout HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 12:22:38] "GET /api/v1/temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 12:26:56] "[31m[1mGET /api/v1/student/achievements HTTP/1.1[0m" 401 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 12:27:26] "[32mPOST /api/v1/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 12:27:26] "GET /api/v1/student/home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 12:27:31] "GET /api/v1/student/achievements HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 12:27:36] "GET /api/v1/student/project HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 12:27:47] "[32mPOST /api/v1/logout HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 12:27:47] "GET /api/v1/temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 12:27:52] "[32mPOST /api/v1/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 12:27:52] "GET /api/v1/student/home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 12:27:56] "GET /api/v1/student/progress HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 12:28:11] "[32mPOST /api/v1/logout HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 12:28:11] "GET /api/v1/temp HTTP/1.1" 200 -

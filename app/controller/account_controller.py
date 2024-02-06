@@ -28,18 +28,34 @@ def updatepwd():
 
 @account_controller.route('/uploadProfilePic', methods=['POST'])
 def user_upload_profile_picture():
+    if session.get('logged_in') != True:
+        response = jsonify({'error': 'Unauthorized access! Please login first', 'status': 'failed'})
+        response.status_code = 401  
+        return response
     return upload_profile_picture()
 
 @account_controller.route('/viewProfilePic/<string:cred_id>', methods=['GET'])
 def view_profile_pic(cred_id):
+    if session.get('logged_in') != True:
+        response = jsonify({'error': 'Unauthorized access! Please login first', 'status': 'failed'})
+        response.status_code = 401  
+        return response
     return view_profile_picture(cred_id)
 
 @account_controller.route('/updateProfilePic', methods=['POST'])
 def user_update_profile_pic():
+    if session.get('logged_in') != True:
+        response = jsonify({'error': 'Unauthorized access! Please login first', 'status': 'failed'})
+        response.status_code = 401  
+        return response
     return update_profile_pic()
 
 @account_controller.route('/deleteProfilePic', methods=['POST'])
 def user_delete_profile_pic():
+    if session.get('logged_in') != True:
+        response = jsonify({'error': 'Unauthorized access! Please login first', 'status': 'failed'})
+        response.status_code = 401  
+        return response
     return delete_profile_pic()
 
 

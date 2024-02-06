@@ -9,11 +9,19 @@ mentor_controller = Blueprint('mentor', __name__, url_prefix="/api/v1")
 #View mentor home details
 @mentor_controller.route('/mentor/home', methods=['GET'])
 def mentor_home():
+    if session.get('logged_in') != True:
+        response = jsonify({'error': 'Unauthorized access! Please login first', 'status': 'failed'})
+        response.status_code = 401  
+        return response
     return fun_mentor_home()
 
 # Route to update mentor profile
 @mentor_controller.route('/mentor/profile', methods=['PUT'])
 def update_profile():
+    if session.get('logged_in') != True:
+        response = jsonify({'error': 'Unauthorized access! Please login first', 'status': 'failed'})
+        response.status_code = 401  
+        return response
     request_data = request.json
     username = session.get('username')
     new_qual = request_data.get('qualification')
@@ -29,6 +37,10 @@ def update_profile():
 # Route to get projects under the logged-in mentor
 @mentor_controller.route('/mentor/projects', methods=['GET'])
 def mentor_projects():
+    if session.get('logged_in') != True:
+        response = jsonify({'error': 'Unauthorized access! Please login first', 'status': 'failed'})
+        response.status_code = 401  
+        return response
     username = session.get('username')
     projects = get_mentor_projects(username)
     return jsonify(projects)
@@ -36,22 +48,38 @@ def mentor_projects():
 # Route to get students under a given project
 @mentor_controller.route('/mentor/projects/students', methods=['GET'])
 def project_students():
+    if session.get('logged_in') != True:
+        response = jsonify({'error': 'Unauthorized access! Please login first', 'status': 'failed'})
+        response.status_code = 401  
+        return response
     students = get_project_students()
     return jsonify(students)
  
 # Route to add a new student under a project
 @mentor_controller.route('/mentor/projects/addStudent', methods=['POST'])
 def student_to_project():
+    if session.get('logged_in') != True:
+        response = jsonify({'error': 'Unauthorized access! Please login first', 'status': 'failed'})
+        response.status_code = 401  
+        return response
     return add_student_to_project()
  
 # Route to remove a student from a project
 @mentor_controller.route('/mentor/projects/removeStudent', methods=['DELETE'])
 def remove_student():
+    if session.get('logged_in') != True:
+        response = jsonify({'error': 'Unauthorized access! Please login first', 'status': 'failed'})
+        response.status_code = 401  
+        return response
     return remove_student_from_project()
 
 #Add achievement 
 @mentor_controller.route('/mentor/addAchievement', methods=['POST'])
 def student_achievement():
+    if session.get('logged_in') != True:
+        response = jsonify({'error': 'Unauthorized access! Please login first', 'status': 'failed'})
+        response.status_code = 401  
+        return response
     try:
         student_id = request.json.get('student_id')
         achievement_id = request.json.get('achievement_id')
@@ -65,6 +93,10 @@ def student_achievement():
  #Remove achievement
 @mentor_controller.route('/mentor/removeAchievement', methods=['DELETE'])
 def del_student_achievement():
+    if session.get('logged_in') != True:
+        response = jsonify({'error': 'Unauthorized access! Please login first', 'status': 'failed'})
+        response.status_code = 401  
+        return response
     try:
         student_id = request.args.get('student_id')
         achievement_id = request.args.get('achievement_id')
@@ -78,6 +110,10 @@ def del_student_achievement():
  #Add project
 @mentor_controller.route('/mentor/addProject', methods=['POST'])
 def add_project_route():
+    if session.get('logged_in') != True:
+        response = jsonify({'error': 'Unauthorized access! Please login first', 'status': 'failed'})
+        response.status_code = 401  
+        return response
     m_id = session.get('username')
     request_data = request.json
     try:
@@ -93,6 +129,10 @@ def add_project_route():
  #Delete project
 @mentor_controller.route('/mentor/removeProject', methods=['DELETE'])
 def delete_project_route():
+    if session.get('logged_in') != True:
+        response = jsonify({'error': 'Unauthorized access! Please login first', 'status': 'failed'})
+        response.status_code = 401  
+        return response
     try:
         project_id = request.json.get('project_id')
     except: return jsonify({'error': 'Invalid inputs'})

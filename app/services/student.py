@@ -11,6 +11,11 @@ app=Flask(__name__)
 #Display all student details
 def fun_student_home():
 
+    if session.get('logged_in') != True:
+        response = jsonify({'error': 'Unauthorized access! Please login first', 'status': 'failed'})
+        response.status_code = 401  
+        return response
+
     st_id = session.get('username')
 
     with psycopg2.connect(**db_params) as conn:
@@ -27,8 +32,13 @@ def fun_student_home():
 #Update student details
 def fun_update_student():
 
+    if session.get('logged_in') != True:
+        response = jsonify({'error': 'Unauthorized access! Please login first', 'status': 'failed'})
+        response.status_code = 401  
+        return response
+
     data = request.json
-    st_id = data.get('st_id')
+    st_id = session.get('username')
 
     update_fields = {
         'fname': data.get('student_first_name'),
@@ -67,8 +77,12 @@ def fun_update_student():
 #View student achievements
 def fun_view_student_achievements():
 
-    data = request.json
-    st_id = data.get('st_id')
+    if session.get('logged_in') != True:
+        response = jsonify({'error': 'Unauthorized access! Please login first', 'status': 'failed'})
+        response.status_code = 401  
+        return response
+
+    st_id = session.get('username')
 
     try:
         # Connect to the database
@@ -99,9 +113,16 @@ def fun_view_student_achievements():
 
 #View assigned project
 def fun_view_assigned_project():
+    if session.get('logged_in') != True:
+        response = jsonify({'error': 'Unauthorized access! Please login first', 'status': 'failed'})
+        response.status_code = 401  
+        return response
         
-    data = request.json
-    st_id = data.get('st_id')
+    st_id = session.get('username')
+    if not st_id:
+        response = jsonify({'error': 'Unauthorized access! Please login first', 'status': 'failed'})
+        response.status_code = 401  # Set the status code to 401 (Unauthorized)
+        return response
 
     with psycopg2.connect(**db_params) as conn:
         with conn.cursor() as cursor:
@@ -130,6 +151,11 @@ def fun_view_assigned_project():
 
 #View student progress
 def fun_fetch_progress():
+    if session.get('logged_in') != True:
+        response = jsonify({'error': 'Unauthorized access! Please login first', 'status': 'failed'})
+        response.status_code = 401  # Set the status code to 401 (Unauthorized)
+        return response
+
     try:
         username=session.get('username')
         with psycopg2.connect(**db_params) as conn:

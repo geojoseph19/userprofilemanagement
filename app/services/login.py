@@ -51,17 +51,24 @@ def fun_login():
                         set_session_data('logged_in',True)
                         set_session_data('username',username)
 
-                        if role_id == 0:
+                        try:
+                            with psycopg2.connect(**db_params) as conn:
+                                with conn.cursor() as cursor:
+                                    cursor.execute('''SELECT r.role_type
+                                                        FROM credentials c
+                                                        INNER JOIN roles r ON c.role_id = r.role_id
+                                                        WHERE c.username = %s''', (username,))
+                                    role_type = cursor.fetchone()[0]
+                        except psycopg2.Error as e:
+                            return jsonify({'error': 'Unable to fetch role type'}),e
+
+                        if role_type == "admin":
                             return redirect(url_for('admin.admin_home'))
-                        
-                        elif role_id == 1:
+                        elif role_type == "mentor":
                             return redirect(url_for('mentor.mentor_home'))
-                        
-                        elif role_id == 2:
+                        elif role_type == "student":
                             return redirect(url_for('student.student_home'))
-                        
-                        else:
-                            return jsonify({'error':'Role id not found in dict'})
+                        else : return jsonify({'error': 'Role type not found'})
                     
                         # return jsonify({'message': f'Authentication successful! Logging in as {username},{roles[role_id]}'}), 200
                     else:

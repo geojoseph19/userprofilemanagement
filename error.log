@@ -4,169 +4,188 @@ INFO:werkzeug:[33mPress CTRL+C to quit[0m
 INFO:werkzeug: * Restarting with stat
 WARNING:werkzeug: * Debugger is active!
 INFO:werkzeug: * Debugger PIN: 379-541-606
-INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/services/mentor.py', reloading
+INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/services/admin.py', reloading
 INFO:werkzeug: * Restarting with stat
 WARNING:werkzeug: * Debugger is active!
 INFO:werkzeug: * Debugger PIN: 379-541-606
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 379-541-606
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 01:35:27] "POST /api/v1/admin/createUser HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 01:35:35] "POST /api/v1/admin/createUser HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 09:02:50] "[32mPOST /api/v1/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 09:02:50] "GET /api/v1/student/home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 09:02:58] "[31m[1mPOST /api/v1/login HTTP/1.1[0m" 401 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 09:03:16] "POST /api/v1/accountRecovery HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 09:04:33] "POST /api/v1/accountRecovery HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 09:04:45] "POST /api/v1/accountRecovery HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 09:05:05] "[32mPOST /api/v1/logout HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 09:05:05] "GET /api/v1/temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 09:07:17] "POST /api/v1/admin/createUser HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 09:10:10] "DELETE /api/v1/admin/removeUser HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 09:10:13] "DELETE /api/v1/admin/removeUser HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 09:10:47] "POST /api/v1/admin/createUser HTTP/1.1" 200 -
 ERROR:root:An error occurred:
 Traceback (most recent call last):
   File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1484, in full_dispatch_request
     rv = self.dispatch_request()
   File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1469, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-  File "/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/controller/mentor_contoller.py", line 91, in add_project_route
-    return add_project(m_id,project_id, project_name, start_date, end_date)
-  File "/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/services/mentor.py", line 165, in add_project
-    cursor.execute('INSERT INTO project(pr_name,prj_id, start_date, end_date, m_id,timestamp) VALUES (%s,%s, %s, %s, %s, %s)',
-IndexError: tuple index out of range
-INFO:werkzeug:127.0.0.1 - - [05/Feb/2024 23:06:35] "[35m[1mPOST /api/v1/mentor/addProject HTTP/1.1[0m" 500 -
-INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/services/mentor.py', reloading
+  File "/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/controller/admin_controller.py", line 21, in admin_remove_user
+    return fun_admin_delete_user()
+  File "/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/services/admin.py", line 362, in fun_admin_delete_user
+    role_type = cursor.fetchone()[0]
+TypeError: 'NoneType' object is not subscriptable
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 09:11:06] "[35m[1mDELETE /api/v1/admin/removeUser HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 09:11:13] "DELETE /api/v1/admin/removeUser HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/utils/mail_utils.py', reloading
 INFO:werkzeug: * Restarting with stat
 WARNING:werkzeug: * Debugger is active!
 INFO:werkzeug: * Debugger PIN: 379-541-606
-INFO:werkzeug:127.0.0.1 - - [05/Feb/2024 23:07:46] "POST /api/v1/mentor/addProject HTTP/1.1" 200 -
-INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/services/mentor.py', reloading
+INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/utils/mail_utils.py', reloading
 INFO:werkzeug: * Restarting with stat
 WARNING:werkzeug: * Debugger is active!
 INFO:werkzeug: * Debugger PIN: 379-541-606
-INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/services/mentor.py', reloading
+INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/utils/mail_utils.py', reloading
 INFO:werkzeug: * Restarting with stat
 WARNING:werkzeug: * Debugger is active!
 INFO:werkzeug: * Debugger PIN: 379-541-606
-INFO:werkzeug:127.0.0.1 - - [05/Feb/2024 23:09:11] "POST /api/v1/mentor/addProject HTTP/1.1" 200 -
-INFO:werkzeug:127.0.0.1 - - [05/Feb/2024 23:09:17] "POST /api/v1/mentor/addProject HTTP/1.1" 200 -
-INFO:werkzeug:127.0.0.1 - - [05/Feb/2024 23:10:33] "POST /api/v1/mentor/addProject HTTP/1.1" 200 -
-INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/services/mentor.py', reloading
+INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/services/account.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
 INFO:werkzeug: * Restarting with stat
 WARNING:werkzeug: * Debugger is active!
 INFO:werkzeug: * Debugger PIN: 379-541-606
-INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/services/mentor.py', reloading
+INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/controller/account_controller.py', reloading
 INFO:werkzeug: * Restarting with stat
 WARNING:werkzeug: * Debugger is active!
 INFO:werkzeug: * Debugger PIN: 379-541-606
-INFO:werkzeug:127.0.0.1 - - [05/Feb/2024 23:14:09] "POST /api/v1/mentor/addProject HTTP/1.1" 200 -
-INFO:werkzeug:127.0.0.1 - - [05/Feb/2024 23:14:16] "POST /api/v1/mentor/addProject HTTP/1.1" 200 -
-INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/services/mentor.py', reloading
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 09:56:30] "POST /api/v1/uploadProfilePic HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 09:57:38] "GET /api/v1/viewProfilePic/c1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 09:59:12] "POST /api/v1/updateProfilePic HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/services/account.py', reloading
 INFO:werkzeug: * Restarting with stat
 WARNING:werkzeug: * Debugger is active!
 INFO:werkzeug: * Debugger PIN: 379-541-606
-INFO:werkzeug:127.0.0.1 - - [05/Feb/2024 23:16:21] "[35m[1mPOST /api/v1/mentor/addProject HTTP/1.1[0m" 500 -
-INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/services/mentor.py', reloading
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 10:00:43] "POST /api/v1/updateProfilePic HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 10:01:01] "POST /api/v1/updateProfilePic HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 10:02:38] "POST /api/v1/deleteProfilePic HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 10:02:44] "POST /api/v1/deleteProfilePic HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 10:05:40] "GET /api/v1/viewProfilePic/c1 HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/services/account.py', reloading
 INFO:werkzeug: * Restarting with stat
 WARNING:werkzeug: * Debugger is active!
 INFO:werkzeug: * Debugger PIN: 379-541-606
-INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/controller/mentor_contoller.py', reloading
+INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/services/account.py', reloading
 INFO:werkzeug: * Restarting with stat
 WARNING:werkzeug: * Debugger is active!
 INFO:werkzeug: * Debugger PIN: 379-541-606
-INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/services/mentor.py', reloading
+INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/services/account.py', reloading
 INFO:werkzeug: * Restarting with stat
 WARNING:werkzeug: * Debugger is active!
 INFO:werkzeug: * Debugger PIN: 379-541-606
-INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/services/mentor.py', reloading
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 10:07:18] "GET /api/v1/viewProfilePic/c1 HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
 INFO:werkzeug: * Restarting with stat
 WARNING:werkzeug: * Debugger is active!
 INFO:werkzeug: * Debugger PIN: 379-541-606
-ERROR:root:An error occurred:
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1484, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1469, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-  File "/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/controller/mentor_contoller.py", line 91, in add_project_route
-    return add_project(m_id, project_name, start_date, end_date)
-  File "/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/services/mentor.py", line 167, in add_project
-    timestamp = datetime.now().replace(tzinfo=None)
-AttributeError: module 'datetime' has no attribute 'now'
-INFO:werkzeug:127.0.0.1 - - [05/Feb/2024 23:17:31] "[35m[1mPOST /api/v1/mentor/addProject HTTP/1.1[0m" 500 -
-INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/services/mentor.py', reloading
-INFO:werkzeug: * Restarting with stat
-WARNING:werkzeug: * Debugger is active!
-INFO:werkzeug: * Debugger PIN: 379-541-606
-INFO:werkzeug:127.0.0.1 - - [05/Feb/2024 23:18:10] "POST /api/v1/mentor/addProject HTTP/1.1" 200 -
-INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/services/mentor.py', reloading
-INFO:werkzeug: * Restarting with stat
-WARNING:werkzeug: * Debugger is active!
-INFO:werkzeug: * Debugger PIN: 379-541-606
-INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/controller/mentor_contoller.py', reloading
-INFO:werkzeug: * Restarting with stat
-WARNING:werkzeug: * Debugger is active!
-INFO:werkzeug: * Debugger PIN: 379-541-606
-INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/services/mentor.py', reloading
-INFO:werkzeug: * Restarting with stat
-WARNING:werkzeug: * Debugger is active!
-INFO:werkzeug: * Debugger PIN: 379-541-606
-INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/services/mentor.py', reloading
-INFO:werkzeug: * Restarting with stat
-WARNING:werkzeug: * Debugger is active!
-INFO:werkzeug: * Debugger PIN: 379-541-606
-INFO:werkzeug:127.0.0.1 - - [05/Feb/2024 23:20:10] "POST /api/v1/mentor/addProject HTTP/1.1" 200 -
-INFO:werkzeug:127.0.0.1 - - [05/Feb/2024 23:20:13] "POST /api/v1/mentor/addProject HTTP/1.1" 200 -
-INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/services/mentor.py', reloading
-INFO:werkzeug: * Restarting with stat
-WARNING:werkzeug: * Debugger is active!
-INFO:werkzeug: * Debugger PIN: 379-541-606
-ERROR:root:An error occurred:
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.8/dist-packages/werkzeug/wrappers/request.py", line 614, in get_json
-    rv = self.json_module.loads(data)
-  File "/usr/local/lib/python3.8/dist-packages/flask/json/provider.py", line 188, in loads
-    return json.loads(s, **kwargs)
-  File "/usr/lib/python3.8/json/__init__.py", line 357, in loads
-    return _default_decoder.decode(s)
-  File "/usr/lib/python3.8/json/decoder.py", line 337, in decode
-    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
-  File "/usr/lib/python3.8/json/decoder.py", line 353, in raw_decode
-    obj, end = self.scan_once(s, idx)
-json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 5 column 1 (char 73)
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1484, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1469, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-  File "/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/controller/mentor_contoller.py", line 82, in add_project_route
-    request_data = request.json
-  File "/usr/local/lib/python3.8/dist-packages/werkzeug/wrappers/request.py", line 561, in json
-    return self.get_json()
-  File "/usr/local/lib/python3.8/dist-packages/werkzeug/wrappers/request.py", line 623, in get_json
-    rv = self.on_json_loading_failed(e)
-  File "/usr/local/lib/python3.8/dist-packages/flask/wrappers.py", line 130, in on_json_loading_failed
-    return super().on_json_loading_failed(e)
-  File "/usr/local/lib/python3.8/dist-packages/werkzeug/wrappers/request.py", line 648, in on_json_loading_failed
-    raise BadRequest(f"Failed to decode JSON object: {e}")
-werkzeug.exceptions.BadRequest: 400 Bad Request: Failed to decode JSON object: Expecting property name enclosed in double quotes: line 5 column 1 (char 73)
-INFO:werkzeug:127.0.0.1 - - [05/Feb/2024 23:21:32] "[31m[1mPOST /api/v1/mentor/addProject HTTP/1.1[0m" 400 -
-INFO:werkzeug:127.0.0.1 - - [05/Feb/2024 23:21:42] "POST /api/v1/mentor/addProject HTTP/1.1" 200 -
-INFO:werkzeug:127.0.0.1 - - [05/Feb/2024 23:21:58] "POST /api/v1/mentor/addProject HTTP/1.1" 200 -
-INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/services/mentor.py', reloading
-INFO:werkzeug: * Restarting with stat
-WARNING:werkzeug: * Debugger is active!
-INFO:werkzeug: * Debugger PIN: 379-541-606
-INFO:werkzeug:127.0.0.1 - - [05/Feb/2024 23:22:40] "POST /api/v1/mentor/addProject HTTP/1.1" 200 -
-INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/services/mentor.py', reloading
-INFO:werkzeug: * Restarting with stat
-WARNING:werkzeug: * Debugger is active!
-INFO:werkzeug: * Debugger PIN: 379-541-606
-INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/controller/mentor_contoller.py', reloading
-INFO:werkzeug: * Restarting with stat
-WARNING:werkzeug: * Debugger is active!
-INFO:werkzeug: * Debugger PIN: 379-541-606
-INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/services/mentor.py', reloading
-INFO:werkzeug: * Restarting with stat
-WARNING:werkzeug: * Debugger is active!
-INFO:werkzeug: * Debugger PIN: 379-541-606
-INFO:werkzeug:127.0.0.1 - - [05/Feb/2024 23:25:42] "DELETE /api/v1/mentor/removeProject HTTP/1.1" 200 -
-INFO:werkzeug:127.0.0.1 - - [05/Feb/2024 23:26:03] "DELETE /api/v1/mentor/removeProject HTTP/1.1" 200 -
-INFO:werkzeug:127.0.0.1 - - [05/Feb/2024 23:26:14] "DELETE /api/v1/mentor/removeProject HTTP/1.1" 200 -
-INFO:werkzeug:127.0.0.1 - - [05/Feb/2024 23:26:23] "DELETE /api/v1/mentor/removeProject HTTP/1.1" 200 -
-INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/services/mentor.py', reloading
+INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/controller/admin_controller.py', reloading
 INFO:werkzeug: * Restarting with stat
 WARNING:werkzeug: * Debugger is active!
 INFO:werkzeug: * Debugger PIN: 379-541-606
 INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/services/admin.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 379-541-606
+INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/services/admin.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 379-541-606
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 10:57:43] "[32mPOST /api/v1/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 10:57:43] "GET /api/v1/admin/home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 10:57:48] "POST /api/v1/admin/createUser HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 10:58:29] "POST /api/v1/admin/createUser HTTP/1.1" 200 -
+ERROR:root:An error occurred:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/controller/admin_controller.py", line 21, in admin_remove_user
+    return fun_admin_delete_user()
+  File "/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/services/admin.py", line 361, in fun_admin_delete_user
+    role_type = cursor.fetchone()[0]
+TypeError: 'NoneType' object is not subscriptable
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 10:58:45] "[35m[1mDELETE /api/v1/admin/removeUser HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 10:59:22] "DELETE /api/v1/admin/removeUser?username=USRX241014 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 11:01:32] "DELETE /api/v1/admin/removeUser?username=USRX241014 HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/services/admin.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 379-541-606
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 11:02:28] "DELETE /api/v1/admin/removeUser?username=USRX241014 HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/services/admin.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 379-541-606
+INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/services/admin.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 379-541-606
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 11:03:02] "DELETE /api/v1/admin/removeUser HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 11:03:08] "DELETE /api/v1/admin/removeUser HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/services/admin.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 379-541-606
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 11:05:47] "POST /api/v1/admin/createUser HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 11:06:15] "DELETE /api/v1/admin/removeUser?username=USRX241015 HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/services/admin.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 379-541-606
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 11:09:42] "POST /api/v1/admin/createUser HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 11:10:36] "[32mPOST /api/v1/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 11:10:36] "GET /api/v1/student/home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 11:10:47] "POST /api/v1/updatepwd HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/services/mentor.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 379-541-606
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 379-541-606
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 11:21:31] "DELETE /api/v1/mentor/projects/removeStudent?student_id=USRX241008&project_id=PRJ1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 11:21:57] "POST /api/v1/mentor/projects/addStudent HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/services/mentor.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 379-541-606
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 11:24:07] "GET /api/v1/student/achievements HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 11:24:18] "GET /api/v1/student/achievements HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 11:24:31] "POST /api/v1/mentor/addAchievement HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 11:25:02] "GET /api/v1/student/achievements HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 11:25:15] "POST /api/v1/mentor/addAchievement HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 11:25:21] "GET /api/v1/student/achievements HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 11:26:20] "DELETE /api/v1/mentor/removeAchievement?student_id=USRX241011&achievement_id=ach012 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 11:26:27] "DELETE /api/v1/mentor/removeAchievement?student_id=USRX241011&achievement_id=ach12 HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/controller/mentor_contoller.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 379-541-606
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 11:27:20] "DELETE /api/v1/mentor/removeAchievement?student_id=USRX241011&achievement_id=ach012 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2024 11:29:18] "GET /api/v1/student/achievements HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/services/mentor.py', reloading
 INFO:werkzeug: * Restarting with stat
 WARNING:werkzeug: * Debugger is active!
 INFO:werkzeug: * Debugger PIN: 379-541-606

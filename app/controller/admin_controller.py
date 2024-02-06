@@ -5,6 +5,10 @@ from app.services.student import *
 admin_controller = Blueprint('admin', __name__, url_prefix="/api/v1")
 
 #--------------------------------ADMIN--------------------------------------------
+#Admin - create user
+@admin_controller.route('/admin/createUser', methods=['POST'])
+def admin_create_user():
+    return fun_admin_create_user()
 
 #Admin - update user
 @admin_controller.route('/admin/updateUser', methods=['POST'])
@@ -15,6 +19,7 @@ def admin_update_user():
 @admin_controller.route('/admin/removeUser', methods=['DELETE'])
 def admin_remove_user():
     return fun_admin_delete_user()
+
 
 #-----------------------------ADMIN-ADMIN------------------------------------------
 

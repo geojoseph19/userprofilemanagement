@@ -66,8 +66,8 @@ def student_achievement():
 @mentor_controller.route('/mentor/removeAchievement', methods=['DELETE'])
 def del_student_achievement():
     try:
-        student_id = request.json.get('student_id')
-        achievement_id = request.json.get('achievement_id')
+        student_id = request.args.get('student_id')
+        achievement_id = request.args.get('achievement_id')
     except: return jsonify({'error': 'Invalid inputs'})
     if not achievement_id:
         return jsonify({'error': 'Achievement ID not found'})

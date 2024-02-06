@@ -104,8 +104,8 @@ def add_student_to_project():
 # Function to remove a student from a project
 def remove_student_from_project():
     try:
-        project_id = request.json.get('project_id')
-        student_id = request.json.get('student_id')
+        project_id = request.args.get('project_id')
+        student_id = request.args.get('student_id')
     except: return jsonify({'error': 'Invalid inputs'})
     if not project_id:
         return jsonify({'error': 'Project ID not found'})

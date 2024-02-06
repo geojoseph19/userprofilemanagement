@@ -31,12 +31,12 @@ Dear {fname} {mname} {lname},
 Welcome to the University Portal! We are excited to have you on board. Below are your login credentials:
  
 Username: {username}
-Temporary Password: {password}
+Password: {password}
  
 To access the portal, please follow these steps:
 1. Visit the University Portal login page: http://127.0.0.1:5000/login
 2. Enter your username and temporary password.
-3. Upon first login, you will be prompted to change your password.
+3. Change your password from Edit profile --> Update password.
  
 For security reasons, please keep your login credentials confidential.
  

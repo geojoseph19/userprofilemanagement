@@ -37,10 +37,10 @@ def add_new_admin():
         username = generate_username()  
         password = generate_password(8)  
         hashed_password = hash_password(password)
-        admin_fname = request.json.get('firstName')
-        admin_mname = request.json.get('middleName')
-        admin_lname = request.json.get('lastName')
-        adminMail = request.json.get('mailID')
+        admin_fname = request.json.get('first_name')
+        admin_mname = request.json.get('middle_name')
+        admin_lname = request.json.get('last_name')
+        adminMail = request.json.get('email')
  
         if not is_valid_email(adminMail):
             return jsonify({'error': 'Invalid email', 'message': 'Please enter a valid email'})
@@ -53,7 +53,9 @@ def add_new_admin():
                                (username,
                                admin_fname, admin_mname, admin_lname, adminMail, credID))
  
-        send_mail(adminMail, username, password, admin_fname, admin_mname, admin_lname)
+        content_type = "newuser"
+        data = password
+        send_mail(adminMail,username,admin_fname,admin_mname,admin_lname,content_type,data)
         return jsonify({'status': 'Success!', 'message': 'New admin added!'}), 200
     except AttributeError as e:
         return jsonify({'error': 'Missing data', 'message': 'Please provide complete data'}), 400
@@ -116,9 +118,9 @@ def fun_admin_create_mentor():
     role_id = 1
 
     data = request.json
-    m_fname = data.get('mentor_first_name')
-    m_mname = data.get('mentor_middle_name')
-    m_lname = data.get('mentor_last_name')
+    m_fname = data.get('first_name')
+    m_mname = data.get('middle_name')
+    m_lname = data.get('last_name')
     dept_id = data.get('department_id')
     qualification = data.get('qualification')
     email = data.get('email')
@@ -169,13 +171,13 @@ def fun_admin_create_student():
     data = request.json
  
     # Validate required fields
-    required_fields = ['student_first_name', 'student_last_name', 'email']
+    required_fields = ['first_name', 'last_name', 'email']
     for field in required_fields:
         if field not in data or not data[field]:
             return jsonify({'error': f'Missing or empty {field}', 'message': f'Please provide {field}'}), 400
  
-    fname = data['student_first_name']
-    lname = data['student_last_name']
+    fname = data['first_name']
+    lname = data['last_name']
     email = data['email']
     if not is_valid_email(email):
         return jsonify({'error':'Invalid email address',
@@ -184,7 +186,7 @@ def fun_admin_create_student():
                         })
  
     # Other optional fields
-    mname = data.get('student_middle_name')
+    mname = data.get('middle_name')
     sex = data.get('sex')
     sphoneno = data.get('student_phone_no')
     address = data.get('address')
@@ -285,7 +287,6 @@ def fun_admin_update_user():
                 role_type = cursor.fetchone()[0]
     except psycopg2.Error as e:
         return jsonify({'error': 'Unable to fetch role type'}),e
-    
 
     update_fields = {
         'fname': data.get('first_name'),
@@ -348,8 +349,7 @@ def fun_admin_update_user():
 #Admin - delete user  
 def fun_admin_delete_user():
 
-    data = request.json
-    username = data.get('username')
+    username=request.args.get('username')
 
     try:
         with psycopg2.connect(**db_params) as conn:
@@ -383,3 +383,30 @@ def fun_admin_delete_user():
         return jsonify({'error': f'Unable to delete {role_type} {username}'})
  
     return jsonify({'message': f'{role_type} record {username} deleted'})
+
+
+
+
+
+#Admin - Create User
+def fun_admin_create_user():
+    data = request.json
+    role_type = data.get('role_type')
+
+    if role_type not in ['admin', 'mentor', 'student']:
+        return jsonify({'error': 'Invalid role type'})
+
+    try:
+        with psycopg2.connect(**db_params) as conn:
+            with conn.cursor() as cursor:
+                # Insert user into the appropriate table based on role type
+                if role_type == 'admin':
+                    return add_new_admin()
+                elif role_type == 'mentor':
+                    return fun_admin_create_mentor()
+                elif role_type == 'student':
+                    return fun_admin_create_student()
+    except Exception as e:
+        return jsonify({'Error':'Unexpected error'})
+               
+

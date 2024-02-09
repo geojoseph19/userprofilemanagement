@@ -36,6 +36,7 @@ def handle_error(error):
     status_code = getattr(error, 'code', 500)
     error_message = str(error)
 
+    
     # Extracting the error code from the error message if available
     error_code = None
     if ':' in error_message:
@@ -43,10 +44,10 @@ def handle_error(error):
 
     if ':' in error_message:
         error_message = error_message.split(':')[1].strip()
-    print("error :",error_message)
-    return jsonify({'error': 'An error occured'}), status_code
 
-    #return jsonify({'success': False, 'error': error_message, 'error_code': error_code}), status_code
+    #return jsonify({'error': error_message}), status_code   
+
+    return jsonify({'error': error_message, 'error_code': error_code}), status_code
 
 #--------------------------------------------------------------------------------------------------------------------------------------------------------
 

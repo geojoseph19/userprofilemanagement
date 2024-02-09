@@ -37,13 +37,8 @@ def update_profile():
 # Route to get projects under the logged-in mentor
 @mentor_controller.route('/mentor/projects', methods=['GET'])
 def mentor_projects():
-    if session.get('logged_in') != True:
-        response = jsonify({'error': 'Unauthorized access! Please login first', 'status': 'failed'})
-        response.status_code = 401  
-        return response
     username = session.get('username')
-    projects = get_mentor_projects(username)
-    return jsonify(projects)
+    return get_mentor_projects(username)
  
 # Route to get students under a given project
 @mentor_controller.route('/mentor/projects/students', methods=['GET'])

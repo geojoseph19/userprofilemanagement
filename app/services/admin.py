@@ -1,4 +1,5 @@
 import psycopg2
+import psycopg.errors
 import re
 from flask import Flask,request,jsonify, session
 from flask_session import Session
@@ -7,6 +8,7 @@ from ..utils.credential_generators import *
 from ..utils.mail_utils import *
 from ..utils.session_manager import *
 from ..utils.validation_utils import *
+from ..utils.response_utils import *
 
 
 #--------------------------MODIFY-ADMIN-------------------------------------
@@ -15,22 +17,36 @@ from ..utils.validation_utils import *
 #Display admin details
 def fun_admin_home():
 
+    if not check_login('admin'): return generate_response('Unauthorized access! Please login first',401)
+
     admin_id = get_session_data('username')
     if not admin_id:
         return jsonify({'error': 'Admin not found'}), 404
 
     with psycopg2.connect(**db_params) as conn:
         with conn.cursor() as cursor:
-            cursor.execute('''SELECT * FROM admins WHERE admin_id=%s''', (admin_id,))
-            admin = cursor.fetchone()
 
-    if admin:
-        return jsonify({'admin': admin})
+            cursor.execute('''SELECT * FROM admins WHERE admin_id=%s''', (admin_id,))
+            user = cursor.fetchone()
+
+    response = {
+        'Username':user[5],
+        'First_Name':user[0],
+        'Middle_Name':user[1],
+        'Last_Name':user[2],
+        'Email_ID':user[3] 
+    }
+
+    if user:
+        return generate_response(response,200)
     else:
         return jsonify({'error': 'Admin not found'}), 404
  
 # Function to add new admin
 def add_new_admin():
+
+    if not check_login('admin'): return generate_response('Unauthorized access! Please login first',401)
+
     try:
         roleID = 0
         credID = generate_cred_id()  
@@ -62,58 +78,14 @@ def add_new_admin():
     except Exception as e:
         return jsonify({'error': 'An error has occurred!', 'message': str(e)}), 500
     
-# Function to update the mentor details
-def update_admin_details(admin_id):
-   try:
-    data=request.get_json()
- 
-    admin_fname=data.get('adminFname')
-    admin_mname=data.get('adminMname')
-    admin_lname=data.get('adminLname')
-    email=data.get('adminMail')
- 
-    if not is_valid_email(email):
-        return jsonify({'error':'Invalid email address',
-                        'message':'Please provide a valid mail address',
-                        'status':'failed'
-                        })
- 
-    with psycopg2.connect(**db_params) as conn:
-        with conn.cursor() as cursor:
-            cursor.excecute('UPDATE admins SET admin_fname=%s,admin_mname=%s,admin_lname=%s,email=%s, WHERE admin_id=%s',(admin_fname,admin_mname,admin_lname,email,admin_id))
-            conn.commit()
-    return jsonify({'message':'Admin details updated successfully!',
-                    'status':'success'
-                    })
-   except AttributeError as e:
-       return jsonify({'error':'Invalid value for attribute',
-                       'message':'Please provide valid values',
-                       'status':'failed'
-                       })
-   except Exception as e:
-       return jsonify({
-           'message':'An unexpected error has occured!',
-           'status':'failed'
-       })
- 
-# Function to remove an admin
-def remove_admin():
-    try:
-        username = request.json.get('username')
-        with psycopg2.connect(**db_params) as conn:
-            with conn.cursor() as cursor:
-                cursor.execute('DELETE FROM admins WHERE admin_id=%s', (username,))
-        return jsonify({'message': 'Admin removed successfully!', 'status': 200}), 200
-    except AttributeError:
-        return jsonify({'error': 'Invalid ID provided', 'message': 'Please provide a valid admin ID'}), 400
-    except Exception as e:
-        return jsonify({'error': 'An error has occurred!', 'message': str(e)}), 500
 
 #--------------------------MODIFY-MENTOR------------------------------------
 #----------------------------FUNCTIONS--------------------------------------
 
 #Create a mentor account
 def fun_admin_create_mentor():
+
+    if not check_login('admin'): return generate_response('Unauthorized access! Please login first',401)
 
     role_id = 1
 
@@ -148,24 +120,14 @@ def fun_admin_create_mentor():
 
     return jsonify({'message': 'Mentor record added'})
 
-# Delete a mentor account
-def fun_admin_delete_mentor():
-
-    data = request.json
-    username = data.get('username')
-    with psycopg2.connect(**db_params) as conn:
-        with conn.cursor() as cursor:
-            cursor.execute('DELETE FROM mentor WHERE m_id=%s', (username,))
-            cursor.execute('DELETE FROM credentials WHERE cred_id=%s', (username,))
- 
-    return jsonify({'message': 'Mentor record deleted'})
-
 
 #--------------------------MODIFY-STUDENT------------------------------------
 #----------------------------FUNCTIONS---------------------------------------
 
 # Create a student account
 def fun_admin_create_student():
+
+    if not check_login('admin'): return generate_response('Unauthorized access! Please login first',401)
     role_id = 2
  
     data = request.json
@@ -221,58 +183,41 @@ def fun_admin_create_student():
     send_mail(email,username,fname,mname,lname,content_type,data)
  
     return jsonify({'message': 'Student record added'})
- 
-#Update student details
-def fun_admin_update_student():
+
+
+#------------------------------------------------------------------------------------------------------
+#-----------------------------------ADMIN-DYNAMIC-CONTROLS---------------------------------------------
+#------------------------------------------------------------------------------------------------------
+
+#Admin - Create User
+def fun_admin_create_user():
+
+    if not check_login('admin'): return generate_response('Unauthorized access! Please login first',401)
 
     data = request.json
-    st_id = data.get('username')
+    role_type = data.get('role_type')
 
-    update_fields = {
-        'student_first_name': data.get('student_first_name'),
-        'student_middle_name': data.get('student_middle_name'),
-        'lname': data.get('lname'),
-        'sex': data.get('sex'),
-        'email': data.get('email'),
-        'sphoneno': data.get('sphoneno'),
-        'address': data.get('address'),
-        'guardian': data.get('guardian'),
-        'gphoneno': data.get('gphoneno')
-    }
+    if role_type not in ['admin', 'mentor', 'student']:
+        return jsonify({'error': 'Invalid role type'})
+
     try:
         with psycopg2.connect(**db_params) as conn:
             with conn.cursor() as cursor:
-                # Construct SQL UPDATE statement dynamically based on provided fields
-                update_query = '''UPDATE student SET {} WHERE 
-                    st_id = %s'''.format(', '.join([f'{key} = %s' for key in update_fields if update_fields[key] is not None]))
-
-                # Extract values for the fields to update
-                update_values = [update_fields[key] for key in update_fields if update_fields[key] is not None]
-                update_values.append(st_id)
-
-                cursor.execute(update_query, update_values)
-
-        conn.commit()
-
-        return jsonify({'message': 'Student information updated successfully'})
+                # Insert user into the appropriate table based on role type
+                if role_type == 'admin':
+                    return add_new_admin()
+                elif role_type == 'mentor':
+                    return fun_admin_create_mentor()
+                elif role_type == 'student':
+                    return fun_admin_create_student()
     except Exception as e:
-        return jsonify({'Error': 'Nothing to update'})
- 
-# Delete a student account
-def fun_admin_delete_student():
-
-    data = request.json
-    username = data.get('username')
-    with psycopg2.connect(**db_params) as conn:
-        with conn.cursor() as cursor:
-            cursor.execute('DELETE FROM student WHERE st_id=%s', (username,))
-            cursor.execute('DELETE FROM credentials WHERE cred_id=%s', (username,))
- 
-    return jsonify({'message': 'Student record deleted'})
+        return jsonify({'Error':'Unexpected error'})
 
 
 #Admin - Update User
 def fun_admin_update_user():
+
+    if not check_login('admin'): return generate_response('Unauthorized access! Please login first',401)
     
     data = request.json
     username = data.get('username')
@@ -349,6 +294,8 @@ def fun_admin_update_user():
 #Admin - delete user  
 def fun_admin_delete_user():
 
+    if not check_login('admin'): return generate_response('Unauthorized access! Please login first',401)
+
     username=request.args.get('username')
 
     try:
@@ -396,25 +343,5 @@ def fun_admin_delete_user():
     return jsonify({'message': f'{role_type} record {username} deleted'})
 
 
-#Admin - Create User
-def fun_admin_create_user():
-    data = request.json
-    role_type = data.get('role_type')
-
-    if role_type not in ['admin', 'mentor', 'student']:
-        return jsonify({'error': 'Invalid role type'})
-
-    try:
-        with psycopg2.connect(**db_params) as conn:
-            with conn.cursor() as cursor:
-                # Insert user into the appropriate table based on role type
-                if role_type == 'admin':
-                    return add_new_admin()
-                elif role_type == 'mentor':
-                    return fun_admin_create_mentor()
-                elif role_type == 'student':
-                    return fun_admin_create_student()
-    except Exception as e:
-        return jsonify({'Error':'Unexpected error'})
                
 

@@ -4,6 +4,7 @@ from datetime import datetime
 from flask import Flask, request, jsonify
 from config import db_params
 from ..utils.session_manager import *
+from ..utils.response_utils import *
 
 
 
@@ -47,9 +48,13 @@ def get_mentor_projects(mentor_id):
             with conn.cursor() as cursor:
                 cursor.execute('''SELECT * FROM project WHERE m_id=%s''', (mentor_id,))
                 projects = cursor.fetchall()
-        return projects
+                if projects:
+                    response=format_query_results(projects)
+                    return generate_response(response)
     except psycopg2.Error as e:
-        return None
+        error_message=get_database_error_message(e.pgcode)
+        return generate_response(error=error_message,status_code=500)
+ 
  
 # Function to fetch students under each project
 def get_project_students():

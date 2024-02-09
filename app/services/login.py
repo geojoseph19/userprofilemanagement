@@ -42,8 +42,11 @@ def fun_login():
                     cred_id, password_hash, role_id = results
 
                     #taking the str hash from database and converting to byte
+                    print(password_hash)
                     password_hash = repr(password_hash)
+                    print(password_hash)
                     password_hash = password_hash[3:-2]
+                    print(password_hash)
                     
                     #checking if pwd is correct
                     if bcrypt.checkpw(password.encode('utf-8'), password_hash.encode('utf-8')):
@@ -59,6 +62,8 @@ def fun_login():
                                                         INNER JOIN roles r ON c.role_id = r.role_id
                                                         WHERE c.username = %s''', (username,))
                                     role_type = cursor.fetchone()[0]
+
+                                    set_session_data('role_type',role_type)
                         except psycopg2.Error as e:
                             return jsonify({'error': 'Unable to fetch role type'}),e
 

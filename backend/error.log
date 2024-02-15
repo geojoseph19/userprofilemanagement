@@ -1,0 +1,86 @@
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 379-541-606
+INFO:werkzeug:127.0.0.1 - - [15/Feb/2024 17:01:43] "OPTIONS /api/v1/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Feb/2024 17:01:43] "[32mPOST /api/v1/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [15/Feb/2024 17:01:43] "OPTIONS /api/v1/admin/home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Feb/2024 17:01:43] "[31m[1mGET /api/v1/admin/home HTTP/1.1[0m" 401 -
+INFO:werkzeug:127.0.0.1 - - [15/Feb/2024 17:02:15] "OPTIONS /api/v1/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Feb/2024 17:02:15] "[31m[1mPOST /api/v1/login HTTP/1.1[0m" 401 -
+INFO:werkzeug:127.0.0.1 - - [15/Feb/2024 17:08:23] "[32mPOST /api/v1/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [15/Feb/2024 17:08:23] "GET /api/v1/mentor/home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Feb/2024 17:08:28] "[32mPOST /api/v1/logout HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [15/Feb/2024 17:08:28] "GET /api/v1/temp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Feb/2024 17:08:33] "[32mPOST /api/v1/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [15/Feb/2024 17:08:33] "GET /api/v1/mentor/home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Feb/2024 17:09:13] "OPTIONS /api/v1/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Feb/2024 17:09:13] "[32mPOST /api/v1/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [15/Feb/2024 17:09:13] "OPTIONS /api/v1/mentor/home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Feb/2024 17:09:13] "[31m[1mGET /api/v1/mentor/home HTTP/1.1[0m" 401 -
+INFO:werkzeug:127.0.0.1 - - [15/Feb/2024 17:09:21] "OPTIONS /api/v1/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Feb/2024 17:09:21] "[32mPOST /api/v1/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [15/Feb/2024 17:09:21] "[31m[1mGET /api/v1/mentor/home HTTP/1.1[0m" 401 -
+INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/backend/run.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 379-541-606
+INFO:werkzeug:127.0.0.1 - - [15/Feb/2024 17:10:15] "OPTIONS /api/v1/login HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/backend/run.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 379-541-606
+INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/backend/run.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 379-541-606
+INFO:werkzeug:127.0.0.1 - - [15/Feb/2024 17:15:08] "OPTIONS /api/v1/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Feb/2024 17:15:08] "[32mPOST /api/v1/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [15/Feb/2024 17:15:08] "[31m[1mGET /api/v1/mentor/home HTTP/1.1[0m" 401 -
+INFO:werkzeug:127.0.0.1 - - [15/Feb/2024 17:15:32] "OPTIONS /api/v1/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Feb/2024 17:15:32] "[32mPOST /api/v1/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [15/Feb/2024 17:15:32] "[31m[1mGET /api/v1/admin/home HTTP/1.1[0m" 401 -
+INFO:werkzeug:127.0.0.1 - - [15/Feb/2024 17:16:01] "OPTIONS /api/v1/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Feb/2024 17:16:01] "[32mPOST /api/v1/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [15/Feb/2024 17:16:01] "[31m[1mGET /api/v1/admin/home HTTP/1.1[0m" 401 -
+INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/backend/run.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 379-541-606
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 379-541-606
+ERROR:root:An error occurred:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "/home/geojoseph/Desktop/Mini Project/userprofilemanagement/backend/app/controller/login_controller.py", line 10, in login
+    return fun_login()
+  File "/home/geojoseph/Desktop/Mini Project/userprofilemanagement/backend/app/services/login.py", line 12, in fun_login
+    data = request.json
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/wrappers/request.py", line 561, in json
+    return self.get_json()
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/wrappers/request.py", line 607, in get_json
+    return self.on_json_loading_failed(None)
+  File "/usr/local/lib/python3.8/dist-packages/flask/wrappers.py", line 130, in on_json_loading_failed
+    return super().on_json_loading_failed(e)
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/wrappers/request.py", line 650, in on_json_loading_failed
+    raise UnsupportedMediaType(
+werkzeug.exceptions.UnsupportedMediaType: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+INFO:werkzeug:127.0.0.1 - - [15/Feb/2024 17:23:43] "[31m[1mPOST /api/v1/login HTTP/1.1[0m" 415 -
+INFO:werkzeug:127.0.0.1 - - [15/Feb/2024 17:26:50] "OPTIONS /api/v1/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Feb/2024 17:26:50] "[32mPOST /api/v1/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [15/Feb/2024 17:26:50] "[31m[1mGET /api/v1/admin/home HTTP/1.1[0m" 401 -
+INFO:werkzeug:127.0.0.1 - - [15/Feb/2024 17:27:21] "OPTIONS /api/v1/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Feb/2024 17:27:21] "[32mPOST /api/v1/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [15/Feb/2024 17:27:21] "[31m[1mGET /api/v1/admin/home HTTP/1.1[0m" 401 -
+INFO:werkzeug:127.0.0.1 - - [15/Feb/2024 17:27:59] "OPTIONS /api/v1/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Feb/2024 17:27:59] "[32mPOST /api/v1/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [15/Feb/2024 17:27:59] "[31m[1mGET /api/v1/admin/home HTTP/1.1[0m" 401 -

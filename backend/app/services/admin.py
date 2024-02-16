@@ -17,6 +17,9 @@ from ..utils.response_utils import *
 #Display admin details
 def fun_admin_home():
 
+    print("usrnme:",get_session_data('username'))
+    print("log:",get_session_data('logged_in'))
+
     if not check_login('admin'): return generate_response('Unauthorized access! Please login first',401)
 
     admin_id = get_session_data('username')

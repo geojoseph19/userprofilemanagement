@@ -11,13 +11,14 @@ from app.controller.student_controller import student_controller
 
 app=Flask(__name__)
 
-CORS(app)  # Enable CORS for all routes
+CORS(app,supports_credentials=True)  # Enable CORS for all routes
 
-app.config['SESSION_TYPE'] = 'filesystem'  
-app.config['SESSION_COOKIE_SAMESITE'] = 'Lax'
-app.secret_key = 'secret_key'
+app.secret_key = 'your_secret_key'
+app.config['SESSION_TYPE'] = 'filesystem'
+app.config['SESSION_COOKIE_SAMESITE'] = 'None'
+app.config['SESSION_COOKIE_SECURE'] = True
 
-Session(app)
+server_session = Session(app)
 
 #Error logs
 logging.basicConfig(filename='error.log', level=logging.ERROR)

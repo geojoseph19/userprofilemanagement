@@ -1,5 +1,0 @@
-flask
-postgresql
-smtplib
-re
-logging

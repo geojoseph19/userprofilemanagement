@@ -9,10 +9,7 @@ mentor_controller = Blueprint('mentor', __name__, url_prefix="/api/v1")
 #View mentor home details
 @mentor_controller.route('/mentor/home', methods=['GET'])
 def mentor_home():
-    if session.get('logged_in') != True:
-        response = jsonify({'error': 'Unauthorized access! Please login first', 'status': 'failed'})
-        response.status_code = 401  
-        return response
+
     return fun_mentor_home()
 
 # Route to update mentor profile

@@ -1060,3 +1060,12 @@ INFO:werkzeug:127.0.0.1 - - [16/Feb/2024 15:36:49] "OPTIONS /api/v1/login HTTP/1
 INFO:werkzeug:127.0.0.1 - - [16/Feb/2024 15:36:50] "[32mPOST /api/v1/login HTTP/1.1[0m" 302 -
 INFO:werkzeug:127.0.0.1 - - [16/Feb/2024 15:36:50] "GET /api/v1/admin/home HTTP/1.1" 200 -
 INFO:werkzeug:127.0.0.1 - - [16/Feb/2024 15:37:34] "GET /api/v1/admin/home HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 542-712-054
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2024 17:39:58] "[31m[1mPOST /api/v1/login HTTP/1.1[0m" 401 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2024 17:40:06] "[32mPOST /api/v1/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2024 17:40:06] "GET /api/v1/mentor/home HTTP/1.1" 200 -

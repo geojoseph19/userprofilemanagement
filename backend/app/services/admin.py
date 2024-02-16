@@ -1,5 +1,5 @@
 import psycopg2
-import psycopg.errors
+import psycopg2.errors
 import re
 from flask import Flask,request,jsonify, session
 from flask_session import Session

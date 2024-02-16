@@ -300,7 +300,7 @@ def fun_update_username():
 
 
 
-conn = psycopg2.connect(host='localhost', user='geo', password='geo', database='postgres')
+conn = psycopg2.connect(host='localhost', user='thej', password='thej123', database='postgres')
 cursor = conn.cursor()
  
 

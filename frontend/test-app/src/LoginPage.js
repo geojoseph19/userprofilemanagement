@@ -1,3 +1,4 @@
+// LoginPage.js
 import React, { useState } from 'react';
 import './LoginPage.css'; // Import the CSS file
 import axios from 'axios'; // Import Axios
@@ -14,8 +15,11 @@ function LoginPage() {
       console.log(response);
 
       if (response.status === 200) {
-        // Redirect to SecondPage on successful login
-        window.location.href = '/second';
+        // Extract the role from the response (assuming it's included in the response)
+        const role = response.data.role_type; // Change 'role' to the actual key in the response object
+
+        // Redirect to home page with the role as a query parameter
+        window.location.href = `/home?role=${role}`;
       } else {
         // Handle invalid username or password
         alert('Invalid username or password');

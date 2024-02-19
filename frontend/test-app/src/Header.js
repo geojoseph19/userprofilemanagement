@@ -8,16 +8,16 @@ function Header() {
   const location = useLocation();
 
   // Check if the current route is the SecondPage
-  const isSecondPage = location.pathname === '/second';
+  const isSecondPage = location.pathname === '/home';
 
   return (
     <header className="header">
       <div className="container">
-        <h1 className="logo"></h1>
+        <h1 className="logo">X University</h1>
         <nav>
           <ul className="nav-links">
             <li><a href="/">Home</a></li>
-            <li><a href="/second">About</a></li>
+            <li><a href="/home">About</a></li>
             {isSecondPage && <li><Logout /></li>} {/* Render the Logout component only on the SecondPage */}
           </ul>
         </nav>

@@ -1,17 +1,32 @@
 import React, { useState } from 'react';
 import './LoginPage.css'; // Import the CSS file
+import axios from 'axios'; // Import Axios
+axios.defaults.withCredentials = true;
 
 function LoginPage() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleLogin = () => {
-    // Validate username and password (dummy validation for demonstration)
-    if (username === 'admin' && password === 'admin') {
-      // Redirect to SecondPage on successful login
-      window.location.href = '/second';
-    } else {
-      alert('Invalid username or password');
+  const handleLogin = async () => {
+    if (!username || !password) {
+      alert('Please enter both username and password.');
+      return;
+    }
+
+    try {
+      const response = await axios.post('http://127.0.0.1:5000/api/v1/login', { username, password });
+
+      console.log(response);
+
+      if (response.status === 200) {
+        // Redirect to SecondPage on successful login
+        window.location.href = '/second';
+      } else {
+        // Handle invalid username or password
+        alert('Invalid username or password');
+      }
+    } catch (error) {
+      console.error('Error logging in:', error.message);
     }
   };
 

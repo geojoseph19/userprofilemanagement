@@ -1,15 +1,13 @@
-// Logout.js
 import React from 'react';
 import './Logout.css'; // Import the CSS file for the modern styling
+import axios from 'axios'; // Import Axios
 
 function Logout() {
   const handleLogout = async () => {
     try {
-      const response = await fetch('http://127.0.0.1:5000/api/v1/logout', {
-        method: 'POST',
-      });
+      const response = await axios.post('http://127.0.0.1:5000/api/v1/logout');
 
-      if (response.ok) {
+      if (response.status === 200) {
         // Redirect to the login page or do any other necessary action
         window.location.href = '/';
       } else {

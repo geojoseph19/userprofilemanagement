@@ -2,6 +2,7 @@ import logging
 from flask import Flask, jsonify, redirect, url_for, session
 from flask_session import Session
 from flask_cors import CORS
+from datetime import timedelta
 
 from app.controller.login_controller import login_controller
 from app.controller.account_controller import account_controller
@@ -15,7 +16,9 @@ CORS(app,supports_credentials=True)  # Enable CORS for all routes
 
 app.secret_key = 'your_secret_key'
 app.config['SESSION_TYPE'] = 'filesystem'
-app.config['SESSION_COOKIE_SAMESITE'] = 'None'
+app.config['SESSION_COOKIE_SAMESITE'] = 'none'
+app.config['SESSION_COOKIE_SECURE'] = True
+app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(days=1)
 app.config['SESSION_COOKIE_SECURE'] = True
 
 server_session = Session(app)

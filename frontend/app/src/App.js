@@ -5,7 +5,13 @@ import LoginPage from './LoginPage';
 import StudentHome from './student/StudentHome';
 import AdminHome from './admin/AdminHome';
 import MentorHome from './mentor/MentorHome';
+import StudentSidebar from './student/StudentSidebar';
+import StudentProfile from './student/StudentProfile';
+import Progress from './student/Progress';
+import StudentProjects from './student/StudentProjects';
+import Achievements from './student/Achievements';
 import Header from './Header'; // Import the Header component
+import './App.css'
 
 function App() {
   return (
@@ -13,8 +19,8 @@ function App() {
       <div>
         <Header /> {/* Include the Header component */}
         <Routes>
-          <Route path="/" element={<LoginPage />} />
-          <Route path="/home" element={<Home />} />
+          <Route exact path="/" element={<LoginPage />} />
+          <Route path="/home/*" element={<Home />} />
         </Routes>
       </div>
     </Router>
@@ -29,7 +35,22 @@ function Home() {
   // Render different home pages based on user role
   switch (userRole) {
     case 'student':
-      return <StudentHome />;
+      return (
+        <div className='studentPage'>
+         <StudentSidebar />
+          <Routes>
+            <Route index element={<StudentHome />} />
+            <Route path='/home/*' element={<StudentHome />} />
+            <Route path='/profile' element={<StudentProfile />} />
+            <Route path='/progress' element={<Progress />} />
+            <Route path='/projects' element={<StudentProjects />} />
+            <Route path='/achievements' element={<Achievements />} />
+
+          </Routes>
+          
+        {/* </Router> */}
+        </div>
+      );
     case 'admin':
       return <AdminHome />;
     case 'mentor':

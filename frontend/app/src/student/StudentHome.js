@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate hook
-import './StudentHome.css'; 
+import { useNavigate } from 'react-router-dom'; // Import useNavigate 
+import './Student.css'; 
 import axios from 'axios'; 
 axios.defaults.withCredentials = true;
 
@@ -25,15 +25,28 @@ function StudentHome() {
   }, [navigate]); // Include navigate in dependencies array
 
   return (
-    <div className="second-page-container">
+    <div className="infoContainer">
       {studentData ? (
-        <div>
-          <h2>Student Home</h2>
-          <p>Username: {studentData.username}</p>
-          <p>Name: {studentData.first_name} {studentData.middle_name} {studentData.last_name}</p>
-          <p>Department: {studentData.department}</p>
-          <p>Phone: {studentData.student_phone_no}</p>
-          <p>Email ID: {studentData.email_id}</p>
+        <div className='container'>  
+        <div className='data_panel'>
+          <div className='panelTop'>
+            <div className='profile-pic'>
+              <img src=''/>
+            </div>
+          </div>
+          
+            <div className='userInfo'>
+            <h2><u>Student Profile</u></h2>
+              <p><strong>Username </strong>: {studentData.username}</p>
+              <p><strong>Name</strong> : {studentData.first_name} {studentData.middle_name} {studentData.last_name}</p>
+              <p><strong>Department</strong>: {studentData.department}</p>
+              <p><strong>Semester</strong> : {studentData.semester}</p>
+            </div>
+          
+         
+          
+        </div>
+
         </div>
       ) : (
         <p>Loading admin home data...</p>

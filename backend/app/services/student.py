@@ -59,7 +59,7 @@ def fun_student_home():
         'guardian_name':user[8],
         'guardian_phone_no':user[9],
         'department':dept,
-        'semester':user[13]    
+        'semester':user[12]    
     }
 
     if user:

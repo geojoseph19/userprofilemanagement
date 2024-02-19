@@ -20,7 +20,10 @@ def fun_admin_home():
     print("usrnme:",get_session_data('username'))
     print("log:",get_session_data('logged_in'))
 
-    if not check_login('admin'): return generate_response('Unauthorized access! Please login first',401)
+    if session.get('logged_in') != True:
+        response = jsonify({'error': 'Unauthorized access! Please login first', 'status': 'failed'})
+        response.status_code = 401  
+        return response
 
     admin_id = get_session_data('username')
     if not admin_id:

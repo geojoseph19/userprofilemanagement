@@ -1,0 +1,39 @@
+
+/* AdminHome.css */
+.second-page-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    text-align: center;
+  }
+  
+  .second-page-container h2 {
+    color: #242424;
+    margin-bottom: 20px;
+  }
+  
+  .second-page-container p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #333;
+  }
+  
+  .second-page-container button {
+    padding: 12px 20px;
+    margin-top: 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .second-page-container button:hover {
+    background-color: #0056b3;
+  }
+  

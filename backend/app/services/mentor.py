@@ -12,7 +12,6 @@ app = Flask(__name__)
  
  
 # --------------------------------------------------------------* FUNCTIONS *---------------------------------------------------------------------------
- 
 
 #Display mentor details
 def fun_mentor_home():
@@ -33,22 +32,29 @@ def fun_mentor_home():
         with conn.cursor() as cursor:
             cursor.execute('''SELECT * FROM mentor WHERE m_id=%s''', (cred_id,))
             mentor = cursor.fetchone()
- 
+            print(mentor)
+    with psycopg2.connect(**db_params) as conn:
+        with conn.cursor() as cursor:
+            cursor.execute('''SELECT dept_name FROM departments WHERE dept_id=%s''', (mentor[4],))
+            dept = cursor.fetchone()[0]
     if mentor:
         response={
+            'username': mentor[0],
             'first_name' : mentor[1],
             'middle_name' : mentor[2],
             'last_name' : mentor[3],
-            'qualification' : mentor[4],
-            'email' : mentor[5]
+            'department' : dept,
+            'qualification' : mentor[5],
+            'email' : mentor[6]
         }
- 
+        #print(response)
         return generate_response(response)
     else:
         return generate_response(None,404)
  
 # Function to update mentor profile
 def update_mentor_profile(username, qualification):
+
     try:
         with psycopg2.connect(**db_params) as conn:
             with conn.cursor() as cursor:

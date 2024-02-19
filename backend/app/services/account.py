@@ -451,7 +451,7 @@ def upload_profile_picture():
         filename = f"{cred_id}_profile_picture_{str(uuid.uuid4().hex[:8])}.jpg"
  
         # Save the file to the temporary folder
-        folder_path = '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/static/images'
+        folder_path = '/home/thejkiranp/Desktop/miniproject/backend/app/static/images'
         os.makedirs(folder_path, exist_ok=True)  # Ensure the folder exists
         file_path = os.path.join(folder_path, filename)
         file.save(file_path)
@@ -506,7 +506,7 @@ def update_profile_pic():
         filename = f"{cred_id}_profile_picture_{str(uuid.uuid4().hex[:8])}.jpg"
  
         # Save the file to the temporary folder
-        folder_path = '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/app/static/images'
+        folder_path = '/home/thejkiranp/Desktop/miniproject/backend/app/static/images'
         os.makedirs(folder_path, exist_ok=True)  # Ensure the folder exists
         file_path = os.path.join(folder_path, filename)
         file.save(file_path)

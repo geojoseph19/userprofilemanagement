@@ -9,15 +9,24 @@ import Header from './Header'; // Import the Header component
 
 function App() {
   return (
-    <Router>
-      <div>
-        <Header /> {/* Include the Header component */}
-        <Routes>
-          <Route path="/" element={<LoginPage />} />
-          <Route path="/home" element={<Home />} />
-        </Routes>
-      </div>
+    <Router> {/* Wrap the entire App component inside a Router */}
+      <AppContent />
     </Router>
+  );
+}
+
+function AppContent() {
+  const location = useLocation();
+  const isLoginPage = location.pathname === '/';
+
+  return (
+    <div>
+      {!isLoginPage && <Header />} {/* Include the Header component if not on the login page */}
+      <Routes>
+        <Route path="/" element={<LoginPage />} />
+        <Route path="/home" element={<Home />} />
+      </Routes>
+    </div>
   );
 }
 

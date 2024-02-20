@@ -1,4 +1,3 @@
-
 /* AdminHome.css */
 .second-page-container {
   max-width: 600px;
@@ -35,4 +34,26 @@
 
 .second-page-container button:hover {
   background-color: #0056b3;
+}
+
+/* Left Navigation */
+.left-nav {
+  position: fixed;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  padding: 20px;
+  background-color: #f4f4f4;
+  border-right: 1px solid #ddd;
+}
+
+.left-nav a {
+  display: block;
+  margin-bottom: 10px;
+  text-decoration: none;
+  color: #333;
+}
+
+.left-nav a:hover {
+  color: #007bff;
 }

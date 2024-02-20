@@ -1,6 +1,8 @@
 // LoginPage.js
 import React, { useState } from 'react';
 import './LoginPage.css'; // Import the CSS file
+import { TypingAnimation } from './Animations.js';
+//import styles from './bootstrap.module.css';
 import axios from 'axios'; // Import Axios
 axios.defaults.withCredentials = true;
 
@@ -30,19 +32,34 @@ function LoginPage() {
   };
 
   return (
+    <div className='body-container'>
     <div className="login-container"> {/* Apply CSS class */}
-      <h2>Login</h2>
-      <form className="login-form" onSubmit={(e) => { e.preventDefault(); handleLogin(); }}> {/* Apply CSS class */}
-        <div>
-          <label htmlFor="username">Username:</label>
-          <input className="login-input" type="text" id="username" value={username} onChange={(e) => setUsername(e.target.value)} /> {/* Apply CSS class */}
-        </div>
-        <div>
-          <label htmlFor="password">Password:</label>
-          <input className="login-input" type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} /> {/* Apply CSS class */}
-        </div>
-        <button className="login-button" type="submit">Login</button> {/* Apply CSS class */}
-      </form>
+      <div className='login-left-container'>
+        <h1>Login</h1>
+        <form className="login-form" onSubmit={(e) => { e.preventDefault(); handleLogin(); }}> {/* Apply CSS class */}
+          <div className='input-set'>
+            <label className="input-label" htmlFor="username">Username</label>
+            <input className="login-input" type="text" id="username" placeholder='Enter your username' value={username} onChange={(e) => setUsername(e.target.value)} /> {/* Apply CSS class */}
+          </div>
+          <div className='input-set'>
+            <label className="input-label" htmlFor="password">Password</label>
+            <input className="login-input" type="password" id="password" placeholder='Enter your password' value={password} onChange={(e) => setPassword(e.target.value)} /> {/* Apply CSS class */}
+          </div>
+          <div className='input-set'>
+          <button className="login-button" type="submit">Sign in</button> {/* Apply CSS class */}
+          </div>
+        </form>
+      </div>
+      <div className='login-right-container'>
+
+      {/* <h1><TypingAnimation text="Tarento University." speed={100} /></h1> */}
+      <h1>Hogwarts University.</h1> 
+      <p><TypingAnimation text="Igniting Futures, Inspiring Minds.." speed={100} initialDelay={1500} /></p>
+      
+
+      </div>
+
+    </div>
     </div>
   );
 }

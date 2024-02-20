@@ -4,45 +4,43 @@ import './AdminHome.css';
 import axios from 'axios'; 
 axios.defaults.withCredentials = true;
 
-function MentorHome() {
-  const [adminData, setAdminData] = useState(null);
+function StudentHome() {
+  const [userData, setUserData] = useState(null); // Changed variable name to userData
   const navigate = useNavigate(); // Initialize useNavigate
 
   useEffect(() => {
-    // Function to fetch admin home data
-    const fetchAdminData = async () => {
+    // Function to fetch user data
+    const fetchUserData = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:5000/api/v1/admin/home');
-        setAdminData(response.data.response); // Update to set the response data
+        const response = await axios.get('http://127.0.0.1:5000/api/v1/mentor/home');
+        setUserData(response.data.response); // Update to set the response data
       } catch (error) {
-        console.error('Error fetching admin data:', error);
-        // Redirect to login page if there's an error fetching admin data
+        console.error('Error fetching user data:', error);
+        // Redirect to login page if there's an error fetching user data
         navigate('/'); // Redirect to login page
       } 
     };
 
-    fetchAdminData(); // Call the fetchAdminData function when the component mounts
+    fetchUserData(); // Call the fetchUserData function when the component mounts
   }, [navigate]); // Include navigate in dependencies array
 
   return (
     <div className="second-page-container">
-      {adminData ? (
+      {userData ? (
         <div>
-          <h2>Admin Home</h2>
-          <p>Username: {adminData.Username}</p>
-          <p>First Name: {adminData.First_Name}</p>
-          <p>Middle Name: {adminData.Middle_Name}</p>
-          <p>Last Name: {adminData.Last_Name}</p>
-          <p>Email ID: {adminData.Email_ID}</p>
+          <h2>Mentor Home</h2>
+          <p>First Name: {userData.first_name}</p>
+          <p>Last Name: {userData.last_name}</p>
+          <p>Middle Name: {userData.middle_name}</p>
+          <p>Email: {userData.email}</p>
+          <p>Department: {userData.department}</p>
+          {userData.qualification && <p>Qualification: {userData.qualification}</p>}
         </div>
       ) : (
-        <p>Loading admin home data...</p>
+        <p>Loading user data...</p>
       )}
     </div>
   );
 }
 
-export default MentorHome;
-
-
-
+export default StudentHome;

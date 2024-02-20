@@ -1,56 +1,159 @@
 /* Global styles */
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f0f0f0; /* Light gray background */
-    color: #333; /* Dark text color */
-  }
+  font-family: 'Poppins', sans-serif; /* Specify Poppins as the preferred font family */
+  margin: 0;
+}
+
+
+.body-container{
+  background-image: url(../assets/unv.jpeg);
+  background-size: cover; /* Zoom and fill the screen as needed */
+
+}
+
+
+.login-container {
+  display: flex;
+  justify-content: center; /* Horizontally center content */
+  align-items: center;
+  height: 100vh; 
   
-  /* Login container styles */
-  .login-container {
-    max-width: 400px;
-    margin: 50px auto; /* Center the container vertically and horizontally */
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Soft shadow effect */
-    background-color: #fff; /* White background */
+}
+
+.login-left-container {
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
+  height: 50%;
+  background-color: rgba(4, 15, 73, 0.199);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a box shadow for depth */
+  width: 445px;
+  height: 572px;
+  top: 219px;
+  left: 289px;
+  padding: 5% 20px 20px 5%; /* top right bottom left */
+
+  /* Add blur effect */
+  backdrop-filter: blur(4px); /* Adjust the blur radius as needed */
+  animation: slideInFromBottom 1s ease forwards;
+}
+
+.login-right-container {
+  padding: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+  height: 50%;
+  background-color: rgba(4, 15, 73, 0.65);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a box shadow for depth */
+  width: 445px;
+  height: 572px;
+  top: 219px;
+  left: 734px;
+  padding: 5% 20px 20px 5%; /* top right bottom left */
+
+  display: block; /* Use Flexbox */
+  align-items: center; /* Vertically center the content */
+  animation: slideInFromBottom 1.5s ease forwards;
+
+}
+
+h1{
+  color: aliceblue;
+  font-size: 55px;
+  font-weight: 700;
+  line-height: 83px;
+  text-align: left;
+  width: 249px;
+  top: 301px;
+  left: 347px;
+}
+
+.login-right-container h1 {
+  padding-top: 110px;
+}
+
+p{
+  color: white;
+}
+
+.input-label{
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 27px;
+  letter-spacing: 0em;
+  text-align: left;
+  border-bottom: 5px;
+}
+
+.login-input {
+  display: block;
+  width: 273px;
+  height: 43px;
+  top: 432px;
+  left: 347px;
+  border-radius: 12px;
+  border: 1px solid rgba(245, 245, 245, 0.5);
+  background-color: rgba(4, 15, 73, 0.63);
+  color: rgba(245, 245, 245, 0.5);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Add a drop shadow */
+  margin-top: 10px; /* Set space above the block */
+  padding-left: 15px;
+  font-size: 16px;
+  color: white;
+}
+.login-input::placeholder {
+ 
+  color: rgba(255, 255, 255, 1); /* Change the color of the placeholder text */
+/* Apply italic style to the placeholder text */
+  font-size: 14px; /* Set the font size of the placeholder text */
+  /* Add any additional styles you want to apply to the placeholder text */
+}
+
+.login-button{
+  width: 288px;
+  height: 43px;
+  top: 647px;
+  left: 347px;
+  border-radius: 12px;
+  border: 2px solid rgba(255, 255, 255, 0.75);
+ 
+  background-color: rgba(0, 0, 0, 0.25);
+  color: rgba(255, 255, 255, 0.75);
+ 
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 27px;
+  transition:transform 0.3s ease;
+}
+ 
+.login-button:hover{
+  background-color: rgba(255, 255, 255, 0.911);
+  color: rgba(4, 15, 73, 0.65);
+  border: 2px solid rgba(4, 15, 73, 0.65);
+  transform:scale(1.03);
+}
+
+.input-set{
+  margin-bottom: 30px;
+}
+.login-button{
+  margin-bottom: 60px;
+  margin-top: 30px;
+}
+
+
+
+/* Add a slide-in-from-bottom animation */
+@keyframes slideInFromBottom {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
   }
-  
-  /* Login form styles */
-  .login-container h2 {
-    text-align: center;
-    margin-bottom: 30px;
-    color: #313131; /* Blue heading color */
+  100% {
+    transform: translateY(0);
+    opacity: 1;
   }
-  
-  .login-container form label {
-    display: block;
-    margin-bottom: 10px;
-    font-size: 16px; /* Larger font size */
-    color: #555; /* Gray label color */
-  }
-  
-  .login-container form input {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-  }
-  
-  .login-container form button {
-    width: 100%;
-    padding: 12px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s; /* Smooth hover transition */
-  }
-  
-  .login-container form button:hover {
-    background-color: #0056b3; /* Darker blue on hover */
-  }
-  
+}
+

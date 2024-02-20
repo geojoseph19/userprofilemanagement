@@ -12,15 +12,21 @@ import StudentProjects from './student/StudentProjects';
 import Achievements from './student/Achievements';
 import Header from './Header'; // Import the Header component
 import './App.css'
+import Layout from './Layout';
 
 function App() {
   return (
     <Router>
       <div>
-        <Header /> {/* Include the Header component */}
+       {/* Include the Header component */}
         <Routes>
           <Route exact path="/" element={<LoginPage />} />
           <Route path="/home/*" element={<Home />} />
+          <Route path="/student" >
+            <Route path='home' element={<Layout childComponent={<StudentHome />}/>}/>
+            <Route path='projects' element={<Layout childComponent={<StudentProjects />} />} />
+            <Route path='achievements' element={<Layout childComponent={<Achievements />} />} />
+          </Route>
         </Routes>
       </div>
     </Router>
@@ -37,18 +43,15 @@ function Home() {
     case 'student':
       return (
         <div className='studentPage'>
-         <StudentSidebar />
+         <Layout childComponent={<StudentHome />}/>
           <Routes>
-            <Route index element={<StudentHome />} />
-            <Route path='/home/*' element={<StudentHome />} />
-            <Route path='/profile' element={<StudentProfile />} />
-            <Route path='/progress' element={<Progress />} />
-            <Route path='/projects' element={<StudentProjects />} />
-            <Route path='/achievements' element={<Achievements />} />
+            <Route path='/home/*' element={<Layout childComponent={<StudentHome />}/>} />
+            <Route path='/profile' element={<Layout childComponent={<StudentProfile />}/>} />
+            <Route path='/progress' element={<Layout childComponent={<Progress />}/>} />
+            <Route path='/projects' element={<Layout childComponent={<StudentProjects />} />} />
+            <Route path='/achievements' element={<Layout childComponent={<Achievements />} />} />
 
           </Routes>
-          
-        {/* </Router> */}
         </div>
       );
     case 'admin':
@@ -60,5 +63,6 @@ function Home() {
       return <LoginPage />;
   }
 }
+
 
 export default App;

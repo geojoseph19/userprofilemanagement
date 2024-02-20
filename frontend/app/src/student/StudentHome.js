@@ -30,8 +30,8 @@ function StudentHome() {
         <div className='container'>  
         <div className='data_panel'>
           <div className='panelTop'>
-            <div className='profile-pic'>
-              <img src=''/>
+            <div className='profile-pic-container'>
+              <img className='.profile-pic' src='https://t4.ftcdn.net/jpg/05/89/93/27/360_F_589932782_vQAEAZhHnq1QCGu5ikwrYaQD0Mmurm0N.jpg'/>
             </div>
           </div>
           

@@ -2,7 +2,7 @@ import React from 'react'
 
 const DisplayBoard = ({childComponent}) => {
   return (
-    <div className='.userData'>
+    <div className='userData'>
         {childComponent}
     </div>
   )

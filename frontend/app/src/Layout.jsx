@@ -5,7 +5,8 @@ import Header from "./Header";
 
 const Layout = ({ childComponent }) => {
   return (
-    <div>
+    <div className="mainContainer">
+    
       <Header />
       <div className="layout-container">
         <StudentSidebar />
@@ -14,6 +15,7 @@ const Layout = ({ childComponent }) => {
         </div>
       </div>
     </div>
+    
   );
 };
 

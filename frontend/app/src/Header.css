@@ -1,22 +1,32 @@
 /* Header.css */
+
 .header {
-  background-color: #333;
-  color: #fff;
-  padding: 20px 0;
+  background-color: white;
+  color: black;
+  padding: 10px 0;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  width: 100vw;
 }
 
 .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
+  width: 100vw;
+  margin: 0 10px;
+  padding: 0 10px;
+  height: inherit;
 }
 
 .logo {
   font-size: 1.5rem;
   margin: 0;
+}
+
+nav{
+  margin-right: 20;
 }
 
 .nav-links {
@@ -35,7 +45,7 @@
 }
 
 .nav-links li a {
-  color: #fff;
+  color: black;
   text-decoration: none;
   transition: color 0.3s ease;
 }

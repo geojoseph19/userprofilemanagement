@@ -15,7 +15,7 @@ function StudentHome() {
         const response = await axios.get('http://127.0.0.1:5000/api/v1/student/home');
         setStudentData(response.data.response); // Update to set the response data
       } catch (error) {
-        console.error('Error fetching admin data:', error);
+        console.error('Error fetching student data:', error);
         // Redirect to login page if there's an error fetching admin data
         navigate('/'); // Redirect to login page
       } 
@@ -25,33 +25,28 @@ function StudentHome() {
   }, [navigate]); // Include navigate in dependencies array
 
   return (
-    <div className="infoContainer">
+    <>
       {studentData ? (
-        <div className='container'>  
-        <div className='data_panel'>
-          <div className='panelTop'>
-            <div className='profile-pic-container'>
-              <img className='.profile-pic' src='https://t4.ftcdn.net/jpg/05/89/93/27/360_F_589932782_vQAEAZhHnq1QCGu5ikwrYaQD0Mmurm0N.jpg'/>
-            </div>
-          </div>
-          
-            <div className='userInfo'>
-            <h2><u>Student Profile</u></h2>
-              <p><strong>Username </strong>: {studentData.username}</p>
-              <p><strong>Name</strong> : {studentData.first_name} {studentData.middle_name} {studentData.last_name}</p>
-              <p><strong>Department</strong>: {studentData.department}</p>
-              <p><strong>Semester</strong> : {studentData.semester}</p>
-            </div>
-          
          
-          
-        </div>
+         <div class="main">
+         <h2>Outer Div</h2>
+         <p>This is the outer div.</p>
+         <div class="info">
+         <div className='profile-pic-container'>
+              <img className='.profile-pic' src='https://t4.ftcdn.net/jpg/05/89/93/27/360_F_589932782_vQAEAZhHnq1QCGu5ikwrYaQD0Mmurm0N.jpg'/>
+          </div>
+          <div className='info1'>
+          <h2><strong>{studentData.first_name} {studentData.middle_name} {studentData.last_name}</strong></h2>
+          <p>Student</p>
 
-        </div>
+          </div>
+         </div>
+       </div>
+       
       ) : (
-        <p>Loading admin home data...</p>
+        <p>Loading data...</p>
       )}
-    </div>
+    </>
   );
 }
 

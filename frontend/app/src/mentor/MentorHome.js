@@ -25,20 +25,33 @@ function MentorHome() {
   }, [navigate]); // Include navigate in dependencies array
 
   return (
-    <div className="second-page-container">
-      {mentorData ? (
-        <div>
-          <h2>Mentor Home</h2>
-          <p>Username : {mentorData.username}</p>
-          <p>Name : {mentorData.first_name} {mentorData.middle_name} {mentorData.last_name}</p>
-          <p>Department : {mentorData.department}</p>
-          <p>Qualification : {mentorData.qualification}</p>
-          <p>Email ID : {mentorData.email}</p>
+    <div className="infoContainer">
+    {mentorData ? (
+      <div className='container'>  
+      <div className='data_panel'>
+        <div className='panelTop'>
+          <div className='profile-pic-container'>
+            <img className='.profile-pic' src='https://t4.ftcdn.net/jpg/05/89/93/27/360_F_589932782_vQAEAZhHnq1QCGu5ikwrYaQD0Mmurm0N.jpg'/>
+          </div>
         </div>
-      ) : (
-        <p>Loading admin home data...</p>
-      )}
-    </div>
+        
+          <div className='userInfo'>
+          <h2><u>Student Profile</u></h2>
+            <p><strong>Username </strong>: {mentorData.username}</p>
+            <p><strong>Name</strong> : {mentorData.first_name} {mentorData.middle_name} {mentorData.last_name}</p>
+            <p><strong>Department</strong>: {mentorData.department}</p>
+            <p><strong>Semester</strong> : {mentorData.semester}</p>
+          </div>
+        
+       
+        
+      </div>
+
+      </div>
+    ) : (
+      <p>Loading data...</p>
+    )}
+  </div>
   );
 }
 

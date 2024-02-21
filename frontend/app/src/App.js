@@ -24,6 +24,8 @@ function App() {
           <Route path="/home/*" element={<Home />} />
           <Route path="/student" >
             <Route path='home' element={<Layout childComponent={<StudentHome />}/>}/>
+            <Route path='profile' element={<Layout childComponent={<StudentProfile />}/>} />
+            <Route path='progress' element={<Layout childComponent={<Progress />}/>} />
             <Route path='projects' element={<Layout childComponent={<StudentProjects />} />} />
             <Route path='achievements' element={<Layout childComponent={<Achievements />} />} />
           </Route>

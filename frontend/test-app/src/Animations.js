@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState,useRef, useEffect } from 'react';
+import lottie from 'lottie-web';
+import animationData from './assets/icons/icons8-success.json';
 
 export function TypingAnimation({ text, speed, initialDelay }) {
   const [displayText, setDisplayText] = useState('');
@@ -35,3 +37,23 @@ export function TypingAnimation({ text, speed, initialDelay }) {
 
   return <div>{displayText}</div>;
 }
+
+const LottieAnimation = () => {
+  const container = useRef(null);
+
+  useEffect(() => {
+    if (container.current) {
+      lottie.loadAnimation({
+        container: container.current,
+        animationData: animationData,
+        renderer: 'svg', // Use SVG renderer
+        loop: true, // Optional
+        autoplay: true, // Optional
+      });
+    }
+  }, []);
+
+  return <div ref={container}></div>;
+};
+
+export default LottieAnimation;

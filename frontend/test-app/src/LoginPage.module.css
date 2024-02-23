@@ -5,11 +5,20 @@ body {
 }
 
 
-.body-container{
-  background-image: url(../assets/unv.jpeg);
-  background-size: cover; /* Zoom and fill the screen as needed */
-
+/* Add a slide-in-from-bottom animation */
+@keyframes slideInFromBottom {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
+
+
+
 
 
 .login-container {
@@ -112,6 +121,7 @@ p{
 }
 
 .login-button{
+  cursor: pointer;
   width: 288px;
   height: 43px;
   top: 647px;
@@ -139,21 +149,54 @@ p{
   margin-bottom: 30px;
 }
 .login-button{
-  margin-bottom: 60px;
+
   margin-top: 30px;
 }
 
 
+.password-input-container {
+  position: relative;
+}
 
-/* Add a slide-in-from-bottom animation */
-@keyframes slideInFromBottom {
+.eye-icon {
+  position: absolute;
+  top: 55%;
+  right: 170px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: white;
+}
+
+.error-message {
+  width: 283px;
+  border-radius: 12px;
+  border: 2px solid rgba(255, 0, 0, 0.75);
+  background-color: rgba(0, 0, 0, 0.25);
+  color: rgba(255, 255, 255, 0.75);
+  text-align: center;
+  animation: pop 0.5s ease-out;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+@keyframes pop {
   0% {
-    transform: translateY(100%);
+    transform: scale(0);
     opacity: 0;
   }
+  70% {
+    transform: scale(1.1);
+  }
   100% {
-    transform: translateY(0);
+    transform: scale(1);
     opacity: 1;
   }
+}
+
+.input-set .error-message{
+  margin-top: 30px;
 }
 

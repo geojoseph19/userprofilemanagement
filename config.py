@@ -1,13 +1,9 @@
 #Database parameters
 
 db_params={
-    'dbname': 'postgres',
-    'user': 'thej',
-    'password': 'thej123',
+    'dbname': 'postgress',
+    'user': 'adil',
+    'password': 'root',
     'host': 'localhost',
     'port': '5432',
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> geo

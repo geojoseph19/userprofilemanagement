@@ -1,62 +1,63 @@
-from flask import Flask, jsonify
-from flask_sqlalchemy import SQLAlchemy
+import logging
+from flask import Flask, jsonify, redirect, url_for, session
+from flask_session import Session
+from flask_cors import CORS
 
-app = Flask(__name__)
+from app.controller.login_controller import login_controller
+from app.controller.account_controller import account_controller
+from app.controller.admin_controller import admin_controller
+from app.controller.mentor_contoller import mentor_controller
+from app.controller.student_controller import student_controller
 
-# Replace 'postgresql://username:password@localhost/database_name' with your PostgreSQL connection string
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://geo:geo@localhost/postgres'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app=Flask(__name__)
 
-db = SQLAlchemy(app)
+CORS(app, supports_credentials=True)  # Enable CORS for all routes
 
-class Mentor(db.Model):
-    __tablename__ = 'mentor'
+app.config['SESSION_TYPE'] = 'filesystem'  
+app.config['SESSION_COOKIE_SAMESITE'] = 'None'
+app.config['SESSION_COOKIE_SECURE'] = True
+app.secret_key = 'secret_key'
+
+Session(app)
+
+#Error logs
+logging.basicConfig(filename='error.log', level=logging.ERROR)
+
+#Blueprint registration
+app.register_blueprint(login_controller)
+app.register_blueprint(account_controller)
+app.register_blueprint(admin_controller)
+app.register_blueprint(mentor_controller)
+app.register_blueprint(student_controller)
+
+#----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+#Global Error Handler
+@app.errorhandler(Exception)
+def handle_error(error):
+    # Log the error to the error.log file
+    logging.exception("An error occurred:")
+
+    # Extract the status code from the exception, if available
+    status_code = getattr(error, 'code', 500)
+    error_message = str(error)
+
     
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(50))
-    # Add other columns as needed
+    # Extracting the error code from the error message if available
+    error_code = None
+    if ':' in error_message:
+        error_code = error_message.split(':')[0].strip()
 
-@app.route('/mentors')
-def display_mentors():
-    mentors = Mentor.query.all()
+    if ':' in error_message:
+        error_message = error_message.split(':')[1].strip()
 
-    # Create a list of dictionaries from the objects
-    mentors_list = [mentor.__dict__ for mentor in mentors]
+    #return jsonify({'error': error_message}), status_code   
 
-    # Remove the internal attribute added by SQLAlchemy
-    for mentor in mentors_list:
-        mentor.pop('_sa_instance_state', None)
+    return jsonify({'error': error_message, 'error_code': error_code}), status_code
 
-    # Return the data as a JSON response
-    return jsonify(mentors_list)
-from flask import Flask, jsonify
-from flask_sqlalchemy import SQLAlchemy
+#--------------------------------------------------------------------------------------------------------------------------------------------------------
 
-app = Flask(__name__)
+if __name__ == '__main__':
+    app.run(debug=True)
 
-# Replace 'postgresql://username:password@localhost/database_name' with your PostgreSQL connection string
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://geo:geo@localhost/postgres'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-db = SQLAlchemy(app)
-
-class Mentor(db.Model):
-    __tablename__ = 'mentor'
-    
-    id = db.Column(db.String, primary_key=True)
-    name = db.Column(db.String(50))
-    # Add other columns as needed
-
-@app.route('/mentors')
-def display_mentors():
-    mentors = Mentor.query.all()
-
-    # Create a list of dictionaries from the objects
-    mentors_list = [mentor.__dict__ for mentor in mentors]
-
-    # Remove the internal attribute added by SQLAlchemy
-    for mentor in mentors_list:
-        mentor.pop('_sa_instance_state', None)
-
-    # Return the data as a JSON response
-    return jsonify(mentors_list)

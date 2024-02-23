@@ -17,9 +17,6 @@ from ..utils.response_utils import *
 #Display admin details
 def fun_admin_home():
 
-    print("usrnme:",get_session_data('username'))
-    print("log:",get_session_data('logged_in'))
-
     if session.get('logged_in') != True:
         response = jsonify({'error': 'Unauthorized access! Please login first', 'status': 'failed'})
         response.status_code = 401  

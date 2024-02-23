@@ -92,3 +92,11 @@ Bengaluru, Karnataka 560029
 
     return f'Email sent to {recipient_email}!'
 
+
+def hide_email(email):
+    parts = email.split('@')
+    username = parts[0]
+    domain = parts[1]
+    hidden_username = username[0] + '*'*(len(username)-2) + username[-1] if len(username) > 2 else '*'*len(username)
+    hidden_email = hidden_username + '@' + domain
+    return hidden_email

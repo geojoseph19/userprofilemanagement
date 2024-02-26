@@ -4858,3 +4858,152 @@ INFO:werkzeug:127.0.0.1 - - [23/Feb/2024 14:42:16] "OPTIONS /api/v1/resetPasswor
 INFO:werkzeug:127.0.0.1 - - [23/Feb/2024 14:42:16] "[31m[1mPOST /api/v1/resetPassword HTTP/1.1[0m" 400 -
 INFO:werkzeug:127.0.0.1 - - [23/Feb/2024 14:43:01] "OPTIONS /api/v1/resetPassword HTTP/1.1" 200 -
 INFO:werkzeug:127.0.0.1 - - [23/Feb/2024 14:43:01] "[31m[1mPOST /api/v1/resetPassword HTTP/1.1[0m" 400 -
+INFO:werkzeug:127.0.0.1 - - [23/Feb/2024 14:55:58] "OPTIONS /api/v1/resetPassword HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Feb/2024 14:55:58] "[31m[1mPOST /api/v1/resetPassword HTTP/1.1[0m" 400 -
+INFO:werkzeug:127.0.0.1 - - [23/Feb/2024 14:57:11] "OPTIONS /api/v1/accountRecovery HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Feb/2024 14:57:12] "POST /api/v1/accountRecovery HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Feb/2024 14:57:30] "OPTIONS /api/v1/verifyOTP HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Feb/2024 14:57:30] "POST /api/v1/verifyOTP HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Feb/2024 15:27:51] "OPTIONS /api/v1/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Feb/2024 15:27:51] "POST /api/v1/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Feb/2024 15:27:52] "GET /api/v1/admin/home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Feb/2024 15:33:32] "POST /api/v1/logout HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Feb/2024 15:33:45] "OPTIONS /api/v1/accountRecovery HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Feb/2024 15:33:45] "POST /api/v1/accountRecovery HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Feb/2024 15:33:51] "OPTIONS /api/v1/verifyOTP HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Feb/2024 15:33:51] "POST /api/v1/verifyOTP HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Feb/2024 15:39:18] "OPTIONS /api/v1/accountRecovery HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Feb/2024 15:39:18] "POST /api/v1/accountRecovery HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Feb/2024 15:39:25] "OPTIONS /api/v1/verifyOTP HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Feb/2024 15:39:25] "POST /api/v1/verifyOTP HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/backend/app/services/account.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 379-541-606
+INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/backend/app/services/account.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 379-541-606
+INFO:werkzeug:127.0.0.1 - - [23/Feb/2024 15:47:07] "OPTIONS /api/v1/accountRecovery HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Feb/2024 15:47:07] "POST /api/v1/accountRecovery HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Feb/2024 15:47:30] "OPTIONS /api/v1/verifyOTP HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Feb/2024 15:47:30] "POST /api/v1/verifyOTP HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Feb/2024 16:03:19] "OPTIONS /api/v1/accountRecovery HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Feb/2024 16:03:19] "[31m[1mPOST /api/v1/accountRecovery HTTP/1.1[0m" 400 -
+INFO:werkzeug:127.0.0.1 - - [23/Feb/2024 16:03:24] "POST /api/v1/accountRecovery HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Feb/2024 16:31:53] "OPTIONS /api/v1/accountRecovery HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Feb/2024 16:31:53] "POST /api/v1/accountRecovery HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Feb/2024 16:31:57] "POST /api/v1/accountRecovery HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Feb/2024 16:32:04] "OPTIONS /api/v1/accountRecovery HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Feb/2024 16:32:04] "POST /api/v1/accountRecovery HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Feb/2024 16:32:12] "OPTIONS /api/v1/accountRecovery HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Feb/2024 16:32:12] "POST /api/v1/accountRecovery HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Feb/2024 16:32:52] "OPTIONS /api/v1/accountRecovery HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Feb/2024 16:32:52] "POST /api/v1/accountRecovery HTTP/1.1" 200 -
+ERROR:root:An error occurred:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1458, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1440, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/flask/ctx.py", line 353, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/routing/map.py", line 655, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+INFO:werkzeug:127.0.0.1 - - [23/Feb/2024 16:33:07] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [23/Feb/2024 16:33:14] "OPTIONS /api/v1/accountRecovery HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Feb/2024 16:33:14] "POST /api/v1/accountRecovery HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Feb/2024 16:33:28] "OPTIONS /api/v1/verifyOTP HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Feb/2024 16:33:28] "[31m[1mPOST /api/v1/verifyOTP HTTP/1.1[0m" 400 -
+ERROR:root:An error occurred:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1458, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1440, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/flask/ctx.py", line 353, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/routing/map.py", line 655, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+INFO:werkzeug:127.0.0.1 - - [23/Feb/2024 17:29:17] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [23/Feb/2024 17:29:25] "OPTIONS /api/v1/accountRecovery HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Feb/2024 17:29:25] "POST /api/v1/accountRecovery HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Feb/2024 17:30:00] "OPTIONS /api/v1/accountRecovery HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Feb/2024 17:30:00] "POST /api/v1/accountRecovery HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Feb/2024 17:46:46] "OPTIONS /api/v1/accountRecovery HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Feb/2024 17:46:46] "[31m[1mPOST /api/v1/accountRecovery HTTP/1.1[0m" 400 -
+INFO:werkzeug:127.0.0.1 - - [23/Feb/2024 17:46:48] "POST /api/v1/accountRecovery HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Feb/2024 17:48:19] "OPTIONS /api/v1/verifyOTP HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Feb/2024 17:48:19] "POST /api/v1/verifyOTP HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Feb/2024 18:02:26] "OPTIONS /api/v1/accountRecovery HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Feb/2024 18:02:26] "POST /api/v1/accountRecovery HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Feb/2024 18:05:28] "OPTIONS /api/v1/accountRecovery HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Feb/2024 18:05:28] "POST /api/v1/accountRecovery HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Feb/2024 18:05:44] "OPTIONS /api/v1/verifyOTP HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Feb/2024 18:05:44] "POST /api/v1/verifyOTP HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Feb/2024 18:06:04] "OPTIONS /api/v1/resetPassword HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Feb/2024 18:06:04] "[31m[1mPOST /api/v1/resetPassword HTTP/1.1[0m" 400 -
+INFO:werkzeug:127.0.0.1 - - [23/Feb/2024 18:06:14] "OPTIONS /api/v1/resetPassword HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Feb/2024 18:06:14] "POST /api/v1/resetPassword HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2024 09:51:48] "OPTIONS /api/v1/accountRecovery HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2024 09:51:48] "POST /api/v1/accountRecovery HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2024 09:52:19] "OPTIONS /api/v1/accountRecovery HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2024 09:52:19] "POST /api/v1/accountRecovery HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2024 09:52:42] "OPTIONS /api/v1/accountRecovery HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2024 09:52:42] "POST /api/v1/accountRecovery HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2024 09:52:58] "OPTIONS /api/v1/accountRecovery HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2024 09:52:58] "POST /api/v1/accountRecovery HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2024 09:53:17] "OPTIONS /api/v1/accountRecovery HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2024 09:53:17] "POST /api/v1/accountRecovery HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2024 09:53:37] "OPTIONS /api/v1/verifyOTP HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2024 09:53:37] "[31m[1mPOST /api/v1/verifyOTP HTTP/1.1[0m" 400 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2024 09:54:02] "OPTIONS /api/v1/verifyOTP HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2024 09:54:02] "POST /api/v1/verifyOTP HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2024 09:55:00] "OPTIONS /api/v1/resetPassword HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2024 09:55:00] "[31m[1mPOST /api/v1/resetPassword HTTP/1.1[0m" 400 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2024 09:55:10] "OPTIONS /api/v1/resetPassword HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2024 09:55:11] "POST /api/v1/resetPassword HTTP/1.1" 200 -
+ERROR:root:An error occurred:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1458, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1440, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/flask/ctx.py", line 353, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/routing/map.py", line 655, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+INFO:werkzeug:127.0.0.1 - - [26/Feb/2024 09:29:27] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [26/Feb/2024 09:29:47] "OPTIONS /api/v1/accountRecovery HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [26/Feb/2024 09:29:47] "POST /api/v1/accountRecovery HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [26/Feb/2024 09:29:57] "OPTIONS /api/v1/verifyOTP HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [26/Feb/2024 09:29:57] "POST /api/v1/verifyOTP HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [26/Feb/2024 09:30:25] "OPTIONS /api/v1/resetPassword HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [26/Feb/2024 09:30:25] "POST /api/v1/resetPassword HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [26/Feb/2024 09:30:35] "OPTIONS /api/v1/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [26/Feb/2024 09:30:35] "POST /api/v1/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [26/Feb/2024 09:30:36] "GET /api/v1/admin/home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [26/Feb/2024 09:30:45] "POST /api/v1/logout HTTP/1.1" 200 -
+ERROR:root:An error occurred:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1458, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1440, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/flask/ctx.py", line 353, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/routing/map.py", line 655, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+INFO:werkzeug:127.0.0.1 - - [26/Feb/2024 09:30:45] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -

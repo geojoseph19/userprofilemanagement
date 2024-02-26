@@ -20,29 +20,6 @@ function ForgotPassword() {
   const [showNewPasswordInput, setShowNewPasswordInput] = useState(false); // State to manage showing new password input
   const [mailSuccess,setMailSuccess] = useState('');
   const [showResetSuccess, setShowResetSuccess ] = useState(false);
-  const [resendTimer, setResendTimer] = useState(300); // 5 minutes in seconds
-  const [isResendEnabled, setIsResendEnabled] = useState(false); // Initially disabled
-  const [resendButtonText, setResendButtonText] = useState('Resend');
-
-  useEffect(() => {
-    let interval;
-    if (resendTimer > 0) {
-      interval = setInterval(() => {
-        setResendTimer((prevTimer) => prevTimer - 1);
-      }, 1000);
-    } else {
-      setIsResendEnabled(true); // Enable the button after countdown finishes
-      setResendButtonText('Resend');
-    }
-    // Clean up the interval
-    return () => clearInterval(interval);
-  }, [resendTimer]);
-
-  const handleResendClick = () => {
-    // Reset timer and disable button
-    setResendTimer(300);
-    setIsResendEnabled(false);
-  };
 
   useEffect(() => {
     if (errorMessage) {
@@ -82,33 +59,6 @@ function ForgotPassword() {
     }
   };
 
-  const resendOTP = async () => {
-    try {
-      const response = await axios.post('http://127.0.0.1:5000/api/v1/accountRecovery', { username });
-      
-      if (response.status === 200) {
-        // Request successful, toggle to show OTP input
-        setMailSuccess(response.data.message);
-        setShowForgotPassword(false);
-        setShowOtpInput(true);
-      } else {
-        // Handle invalid username or password
-        setErrorMessage('Invalid username or password');
-        setIsErrorMessageVisible(true); // Show error message container
-      }
-    } catch (error) {
-      console.error('Error logging in:', error.message);
-      // Check if the error response contains a message from the backend
-      if (error.response && error.response.data && error.response.data.error) {
-        setErrorMessage(error.response.data.error);
-        setIsErrorMessageVisible(true); // Show error message container
-      } else {
-        setErrorMessage('An error occurred while logging in. Please try again.');
-        setIsErrorMessageVisible(true); // Show error message container
-      }
-    }
-  };
- 
   const verifyOTP = async () => {
     try {
       // Send OTP to backend for verification
@@ -116,6 +66,8 @@ function ForgotPassword() {
       
       if (response.status === 200) {
         // Request successful, toggle to show new password input
+        console.log(otp);
+        
         setShowNewPasswordInput(true);
         setShowOtpInput(false);
       } else {
@@ -172,19 +124,17 @@ function ForgotPassword() {
     <div className={styles['body-container']}>
       <div className={styles['login-container']}>
         <div className={styles['login-left-container']}>
-         <Link to="/" style={{ display:'flex', alignItems:'center', cursor:'pointer', textDecoration:'none'}} >
-        <span  class="material-symbols-outlined" style={{color:'white'}}>arrow_back </span>
-          <h2 style={{marginTop:'0px',marginBottom:'0px'}}>Forgot Password</h2></Link>
+          <h2 style={{marginTop:'0px'}}>Forgot Password</h2>
 
           {showForgotPassword && (
             <form className={styles['login-form']} onSubmit={(e) => { e.preventDefault(); accountRecovery(); }}>
-              <div className={styles['input-set']} style={{ display: 'block', marginTop:'30px'}}>
+              <div className={styles['input-set']} style={{ display: 'block'}}>
                 
                 <label className={styles['input-label']} htmlFor="username">Username</label>
                 <input className={styles['login-input']} type="text" id="username" placeholder='Enter your username' value={username} onChange={(e) => setUsername(e.target.value)} />
               </div>      
               <div className={styles['input-set']} style={{marginBottom:'30px'}}>
-                {/* <button className={styles['login-button']} style={{ padding: "0px" }} type="button">
+                <button className={styles['login-button']} style={{ padding: "0px" }} type="button">
                   <Link to="/" style={{ color: '#ffffffbf', fontSize: '18px', textDecoration: 'none', display: 'flex',alignItems:'center',justifyContent:'center', borderRadius: '12px', height: '39px' }} 
                   onMouseEnter={(e) => { 
                     e.target.style.backgroundColor = ' rgba(255, 255, 255, 0.75)';
@@ -194,8 +144,8 @@ function ForgotPassword() {
                     e.target.style.backgroundColor = ' rgba(255, 255, 255, 0)';
                     e.target.style.color = 'rgba(255, 255, 255, 0.75)';
                   }}>Back</Link>
-                </button> */}
-              
+                </button>
+                &nbsp;&nbsp;
                 <button className={styles['login-button']} type="submit">Next</button>
               </div>
             </form>
@@ -210,16 +160,17 @@ function ForgotPassword() {
                 <input className={styles['login-input']} type="text" id="otp" placeholder='Enter OTP' value={otp} onChange={(e) => setOtp(e.target.value)} />
               </div>
               <div className={styles['input-set']} style={{marginBottom:'30px'}}>
-              <button
-                className={`${styles['login-button']} ${isResendEnabled ? '' : styles['disabled-button']}`}
-                type="button"
-                onClick={() => { if (isResendEnabled) { handleResendClick(); resendOTP(); } }}
-                disabled={!isResendEnabled}
-              >
-                {isResendEnabled ? 'Resend' : `Resend (${Math.floor(resendTimer / 60)}:${resendTimer % 60})`}
-              </button>
-
-
+                <button className={styles['login-button']} style={{ padding: "0px" }} type="button">
+                  <Link to="/" style={{ color: '#ffffffbf', fontSize: '18px', textDecoration: 'none', display: 'flex',alignItems:'center',justifyContent:'center', borderRadius: '12px', height: '39px' }} 
+                  onMouseEnter={(e) => { 
+                    e.target.style.backgroundColor = ' rgba(255, 255, 255, 0.75)';
+                    e.target.style.color = 'rgba(4, 15, 73, 0.65)';
+                  }}
+                  onMouseLeave={(e) => { 
+                    e.target.style.backgroundColor = ' rgba(255, 255, 255, 0)';
+                    e.target.style.color = 'rgba(255, 255, 255, 0.75)';
+                  }}>Resend</Link>
+                </button>
                 &nbsp;&nbsp;
                 <button className={styles['login-button']} type="submit">Verify</button>
               </div>
@@ -276,7 +227,7 @@ function ForgotPassword() {
             </div>
           )}
           {showResetSuccess && (
-            <form className={styles['login-form']} style={{marginTop:'10%'}} onSubmit={(e) => { e.preventDefault(); accountRecovery(); }}>
+            <form className={styles['login-form']} onSubmit={(e) => { e.preventDefault(); accountRecovery(); }}>
 
               <div style={{display:'block',width:'30%',alignItems:'center',justifyContent:'center',flexWrap:'wrap',marginLeft:'35%'}}><LottieAnimation />
               

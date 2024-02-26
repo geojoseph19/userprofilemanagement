@@ -39,7 +39,7 @@ def admin_remove_user():
 #View admin home details
 @admin_controller.route('/admin/home', methods=['GET'])
 def admin_home():
-   
+
     return fun_admin_home()
 
  # Route to add an admin

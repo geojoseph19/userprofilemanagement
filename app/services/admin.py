@@ -14,41 +14,46 @@ from ..utils.response_utils import *
 #--------------------------MODIFY-ADMIN-------------------------------------
 #----------------------------FUNCTIONS--------------------------------------
 
-
+#Display admin details
 def fun_admin_home():
-    # Check if the admin is logged in
-    if not check_login('admin'):
-        return generate_response('Unauthorized access! Please login first', 401)
+
+    if session.get('logged_in') != True:
+        response = jsonify({'error': 'Unauthorized access! Please login first', 'status': 'failed'})
+        response.status_code = 401  
+        return response
 
     admin_id = get_session_data('username')
     if not admin_id:
         return jsonify({'error': 'Admin not found'}), 404
+    
 
     try:
-        # Connect to the database and fetch admin details
         with psycopg2.connect(**db_params) as conn:
             with conn.cursor() as cursor:
                 cursor.execute('''SELECT cred_id FROM credentials WHERE username=%s''', (admin_id,))
                 cred_id = cursor.fetchone()[0]
 
-                cursor.execute('''SELECT * FROM admins WHERE admin_id=%s''', (cred_id,))
-                user = cursor.fetchone()
-
-        # Construct the response
-        if user:
-            response = {
-                'Username': user[5],
-                'First_Name': user[0],
-                'Middle_Name': user[1],
-                'Last_Name': user[2],
-                'Email_ID': user[3]
-            }
-            return generate_response(response, 200)
-        else:
-            return jsonify({'error': 'Admin not found'}), 404
-
     except psycopg2.Error as e:
-        return jsonify({'error': 'Error fetching admin details'}), 500
+            return jsonify({'error': 'Username not found'})
+
+    with psycopg2.connect(**db_params) as conn:
+        with conn.cursor() as cursor:
+
+            cursor.execute('''SELECT * FROM admins WHERE admin_id=%s''', (cred_id,))
+            user = cursor.fetchone()
+
+    response = {
+        'Username':user[5],
+        'First_Name':user[0],
+        'Middle_Name':user[1],
+        'Last_Name':user[2],
+        'Email_ID':user[3] 
+    }
+
+    if user:
+        return generate_response(response,200)
+    else:
+        return jsonify({'error': 'Admin not found'}), 404
  
 # Function to add new admin
 def add_new_admin():

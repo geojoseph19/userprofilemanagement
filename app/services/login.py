@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request, session, redirect, url_for
+from flask import Flask, jsonify, request, session, redirect, url_for, make_response
 from flask_session import Session
 import psycopg2
 import bcrypt
@@ -6,6 +6,7 @@ import json
 from config import db_params
 from ..utils.credential_generators import hash_password
 from ..utils.session_manager import *
+from ..utils.response_utils import *
 
 def fun_login():
     try:
@@ -23,9 +24,10 @@ def fun_login():
         return jsonify({'error': str(e)}), 400
     else:
         if not username:
-            return jsonify({'error':'Username field empty'})
+            #return generate_response('Username field empty',400)
+            return jsonify({'error':'Username field empty'}),400
         if not password:
-            return jsonify({'error':'Password field empty'})
+            return jsonify({'error':'Password field empty'}),400
         else:
             
             try:
@@ -65,12 +67,18 @@ def fun_login():
                             return jsonify({'error': 'Unable to fetch role type'}),e
 
                         if role_type == "admin":
-                            return jsonify({'success': 'login successful'}), 200
-                        #elif role_type == "mentor":
+                            #return redirect(url_for('admin.admin_home'))
+                            return jsonify({'success': 'Login successful','role_type':role_type}), 200
+                        
+                        elif role_type == "mentor":
                             #return redirect(url_for('mentor.mentor_home'))
-                        #elif role_type == "student":
+                            return jsonify({'success': 'Login successful','role_type':role_type}), 200
+                        
+                        elif role_type == "student":
                             #return redirect(url_for('student.student_home'))
-                        #else : return jsonify({'error': 'Role type not found'})
+                            return jsonify({'success': 'Login successful','role_type':role_type}), 200
+                        
+                        else : return jsonify({'error': 'Role type not found'})
                     
                         # return jsonify({'message': f'Authentication successful! Logging in as {username},{roles[role_id]}'}), 200
                     else:
@@ -85,8 +93,15 @@ def fun_login():
 
 def fun_logout():
     try:
+
         session.clear()
-        return jsonify({'success':'Logout successful'})
+        response = make_response({'success':'Logged out successfully'})
+
+        # Set the SameSite attribute to None
+        response.set_cookie('session', '', samesite='None', secure=True)    
+        #return redirect(url_for('login.temp'))
+        return response
+        
     
     except Exception as e:
         # Log the exception or handle it as needed

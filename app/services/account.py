@@ -52,7 +52,7 @@ def get_mail_from_username(username):
                 else:
                     return None  # No mail ID found for the username
     except psycopg2.Error as e:
-        return jsonify({'error': str(e), 'message': 'An error has occurred!', 'status': 'failed'})
+        return jsonify({'error': str(e), 'message': 'An error has occurred!', 'status': 'failed'}),400
  
  
  
@@ -62,16 +62,17 @@ def otp_mail():
         subject = 'OTP for account recovery'
         data = request.json
         username = data.get('username')
+        if not username: return jsonify({'error':'Enter username'}),400
         set_session_data('username',username)
         mailID = get_mail_from_username(username)
-        query_admin = 'SELECT admin_fname, admin_mname, admin_lname FROM admins WHERE admin_id=%s'
-        query_student = 'SELECT fname, mname, lname FROM student WHERE st_id=%s'
-        query_mentor = 'SELECT m_fname, m_mname, m_lname FROM mentor WHERE m_id=%s'
+        query_admin = 'SELECT a.admin_fname, a.admin_mname, a.admin_lname FROM admins a JOIN credentials c ON a.cred_id=c.cred_id WHERE username=%s'
+        query_student = 'SELECT s.fname, s.mname, s.lname FROM student s JOIN credentials c ON s.cred_id=c.cred_id WHERE username=%s'
+        query_mentor = 'SELECT a.m_fname, a.m_mname, a.m_lname FROM mentor a JOIN credentials c ON a.cred_id=c.cred_id WHERE username=%s'
         
         if not mailID:
-            return jsonify({'error': 'No matching mail id found',
+            return jsonify({'error': 'User not found!',
                             'message': 'The given username has no associated mail id',
-                            'status': 'failed'})
+                            'status': 'failed'}),400
         
         # Generate OTP
         otp = generate_otp()
@@ -98,24 +99,25 @@ def otp_mail():
                 else:
                     return jsonify({'error': 'User not found',
                                     'message': 'The user doesn\'t exist',
-                                    'status': 'failed'})
+                                    'status': 'failed'}),400
                 
                 cursor.execute(query, (username,))
                 details = cursor.fetchone()
+    
                 
         fname, mname, lname = details[0], details[1], details[2]
         #message = f'Hello {fname},\n Your OTP for account recovery is {otp}'
         
         content_type = "otp"
         data = otp
-        send_mail(mailID,username,fname,mname,lname,content_type,data)
+        #send_mail(mailID,username,fname,mname,lname,content_type,data)
         
-        return jsonify({'message': f'A mail with OTP for resetting your password is sent to your mail id {mailID}'})
+        return jsonify({'message': f'An OTP for resetting password has been sent to mail id {hide_email(mailID)} <Debug otp {data}>'}),200
  
     except psycopg2.Error as e:
         return jsonify({'error': str(e),
                         'message': 'An error has occurred! Couldn\'t send mail',
-                        'status': 'failed'})
+                        'status': 'failed'}),400
  
  
  
@@ -140,37 +142,40 @@ def verify_otp():
                     return jsonify({'error':'Invalid OTP',
                                     'status':'failed',
                                     'status_code':400
-                                    })
+                                    }),400
                 
     except Exception as e:
         return jsonify({'error': 'An error occurred',
                         'message': str(e),
                         'status_code':500
-                        })
+                        }),500
  
  
 #Reset the user password
 def reset_password():
     try:
         username=get_session_data('username')
-        new_password=request.json.get('new_password')
-        with psycopg2.connect(**db_params) as conn:
-            with conn.cursor() as cursor:
-                 cursor.execute('UPDATE credentials SET password_hash=%s WHERE username=%s',(hash_password(new_password),username,))
-                 conn.commit()
-                 clear_session()
+        new_password=request.json.get('password')
+        if is_valid_password(new_password):
+            with psycopg2.connect(**db_params) as conn:
+                with conn.cursor() as cursor:
+                    cursor.execute('UPDATE credentials SET password_hash=%s WHERE username=%s',(hash_password(new_password),username,))
+                    conn.commit()
+                    clear_session()
 
-        return jsonify({'message':'Password reset successfully',
-                                    'status':'success',
-                                    'status_code':200
-                                    })
-    
+            return jsonify({'message':'Password reset successfully',
+                                        'status':'success',
+                                        'status_code':200
+                                        }),200
+        else:
+            return jsonify({'error':'Invalid password'}),400
+        
     except Exception as e:
         return jsonify({'error':str(e),
                         'message':'Couldn\'t reset password. Please try again!',
                         'status':'failed',
                         'status_code':500
-                        })
+                        }),500
                       
     
 

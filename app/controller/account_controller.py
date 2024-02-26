@@ -12,7 +12,7 @@ def api_v1_accountRecovery():
     return otp_mail()
  
 #Route to verify OTP
-@account_controller.route('/verifyOTP',methods=['GET'])
+@account_controller.route('/verifyOTP',methods=['POST'])
 def api_v1_verifyOTP():
     return verify_otp()
  

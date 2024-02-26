@@ -1,0 +1,23 @@
+*{
+    margin-top: 0%;
+    margin-bottom: 0%;
+    margin-left: 0%;
+    margin-right: 0%;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  body {
+    font-family: 'Poppins',sans-serif; /* Specify Poppins as the preferred font family */
+    margin: 0;
+  }
+.userInfo{
+    color: black;
+    width: 500px;
+    height: 500px;
+    margin-top: 600px;
+    font-size: large;
+    font-stretch: expanded;
+    text-align: center;
+    line-height: 150%;
+  }
+  

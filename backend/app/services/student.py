@@ -179,13 +179,12 @@ def fun_view_assigned_project():
             
             project_details = {
     row[0]: {
+        'project_id':row[0],
         'project_name': row[1],
         'start_date': row[2],
         'end_date': row[3],
         'mentor_id': row[4],
-        'mentor_fname': row[5],
-        'mentor_mname': row[6],
-        'mentor_lname': row[7]
+        'mentor_in-charge': f"{row[5]} {row[6]} {row[7]}",
     }
     for row in project
 }

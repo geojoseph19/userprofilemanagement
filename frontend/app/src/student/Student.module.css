@@ -1,4 +1,4 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 *{
   margin-top: 0%;
   margin-bottom: 0%;
@@ -7,31 +7,49 @@
   font-family: 'Poppins', sans-serif;
 }
 
-body {
-   /* Specify Poppins as the preferred font family */
+body *{
+  font-family: 'Poppins',sans-serif; /* Specify Poppins as the preferred font family */
   margin: 0;
 }
 
-.main{
+.Main{
 background-color: #040F49;
 width: 100%;
 height: 100vh;
+color: white;
 }/*Main student container*/
 
-.info{
+@keyframes floatUp {
+  from {
+    transform: translateY(400px); /* Initial position: move 100px down */
+    opacity: 0; /* Initial opacity: hidden */
+  }
+  to {
+    transform: translateY(0); /* Final position: no translation */
+    opacity: 1; /* Final opacity: fully visible */
+  }
+}
+
+.info {
   background-color: whitesmoke;
   width: 100%;
   height: 100%;
   border-radius: 30px;
   border-bottom-left-radius: 0%;
   border-bottom-right-radius: 0%;
-  margin-top: 300px;
+  margin-top: 175px;
   display: flex;
   flex-direction: column;
-  align-items: center; 
+  align-items: center;
+  animation: floatUp 0.8s ease forwards; /* Apply animation */
 }
 
-.info1{
+.info *{
+  color: black;
+}
+
+
+.info1 {
   text-align: center;
   line-height: 200%;
 }
@@ -43,7 +61,7 @@ height: 100vh;
   background-color: whitesmoke;
 }
 
-  .profile-pic-container{
+  .profilePicContainer{
     width: 300px;
     height: 300px;
     background-color: gray;
@@ -55,8 +73,12 @@ height: 100vh;
     align-items: center;
     margin-top: -150px;
   }
-
-  .profile-pic{
+     
+  .material-symbols-outlined {
+    margin-right: 8px; /* Add right margin to create space between icon and link */
+  }
+  
+  .profilePic{
     display: flex;
     max-width: max-content;
     max-height: max-content;
@@ -68,7 +90,6 @@ height: 100vh;
 
 
   .userInfo{
-    color: black;
     width: 500px;
     height: 500px;
     margin-top: 600px;
@@ -93,40 +114,14 @@ height: 100vh;
     justify-content: flex-start;
   } */
 
-  .dashLinks{
-    background-color: white;
-    display: flex;
-    flex-direction: column;
-    list-style-type: none;
-    justify-content: flex-start;
-    padding: 60px;
-    
-  }
-
-.dashLinks li{
-  margin-bottom: 30px;
-  width: max-content;
-  
-}
-
-  .link a{
-    text-decoration: none;
-    color: black;
-    font-size: larger;
-  }
-
-  .link a:hover{
-    color: lightseagreen;
-  }
-
 
   .mainContainer {
     width: 100vw; 
     height: 100vh; 
-    overflow: hidden; 
+    display: flex;
   }
 
-  .layout-container{
+  .layoutContainer{
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -154,6 +149,9 @@ height: 100vh;
     background-color: white;
    }
 
-   .header{
-    width: 100vw;
+   .basicDetails{
+    background-color: white;
+    border-radius: 10%;
+    padding: 10%;
+    width: max-content;
    }

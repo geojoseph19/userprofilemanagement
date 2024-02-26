@@ -2,15 +2,16 @@ import React from "react";
 import StudentSidebar from "./student/StudentSidebar";
 import DisplayBoard from "./DisplayBoard";
 import Header from "./Header";
+import styles from "./Layout.module.css"
 
 const Layout = ({ childComponent }) => {
   return (
-    <div className="mainContainer">
+    <div className={styles.mainContainer}>
     
       <Header />
-      <div className="layout-container">
+      <div className={styles.layoutContainer}>
         <StudentSidebar />
-        <div className="contentBoard">
+        <div className={styles.contentBoard}>
           <DisplayBoard childComponent={childComponent} />
         </div>
       </div>

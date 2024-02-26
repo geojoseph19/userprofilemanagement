@@ -1,0 +1,59 @@
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 407-288-027
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2024 21:11:49] "OPTIONS /api/v1/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2024 21:11:50] "POST /api/v1/login HTTP/1.1" 200 -
+ERROR:root:An error occurred:
+Traceback (most recent call last):
+  File "/home/thejkiranp/.local/lib/python3.8/site-packages/flask/app.py", line 870, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/thejkiranp/.local/lib/python3.8/site-packages/flask/app.py", line 844, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/home/thejkiranp/.local/lib/python3.8/site-packages/flask/app.py", line 453, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+  File "/home/thejkiranp/.local/lib/python3.8/site-packages/flask/ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/home/thejkiranp/.local/lib/python3.8/site-packages/werkzeug/routing/map.py", line 624, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2024 21:11:50] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2024 21:11:57] "GET /api/v1/student/project HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2024 21:11:59] "GET /api/v1/student/achievements HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2024 21:12:00] "GET /api/v1/student/project HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2024 21:12:14] "GET /api/v1/student/project HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2024 21:12:15] "GET /api/v1/student/achievements HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2024 21:12:17] "GET /api/v1/student/project HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2024 21:12:42] "GET /api/v1/student/project HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2024 21:13:37] "GET /api/v1/student/project HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2024 21:13:40] "GET /api/v1/student/project HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2024 21:17:25] "POST /api/v1/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2024 21:17:34] "GET /api/v1/student/project HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2024 21:22:10] "GET /api/v1/student/project HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2024 21:22:19] "GET /api/v1/student/project HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2024 21:22:22] "GET /api/v1/student/project HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2024 21:22:51] "GET /api/v1/student/project HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2024 21:22:51] "GET /api/v1/student/project HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2024 21:23:01] "GET /api/v1/student/project HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2024 21:23:02] "GET /api/v1/student/project HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2024 21:23:09] "GET /api/v1/student/project HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2024 21:23:56] "GET /api/v1/student/project HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2024 21:24:10] "GET /api/v1/student/project HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2024 21:24:15] "GET /api/v1/student/project HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2024 21:24:26] "GET /api/v1/student/project HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2024 21:24:35] "GET /api/v1/student/project HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2024 21:24:41] "GET /api/v1/student/project HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2024 21:24:54] "GET /api/v1/student/project HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2024 21:25:12] "GET /api/v1/student/project HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2024 21:25:26] "GET /api/v1/student/project HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2024 21:25:33] "GET /api/v1/student/project HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2024 21:28:03] "GET /api/v1/student/project HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2024 21:28:36] "GET /api/v1/student/project HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2024 21:30:04] "GET /api/v1/student/project HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2024 21:30:20] "GET /api/v1/student/project HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2024 21:30:41] "GET /api/v1/student/project HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2024 21:32:06] "GET /api/v1/student/project HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2024 21:34:14] "GET /api/v1/student/project HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2024 21:34:21] "GET /api/v1/student/project HTTP/1.1" 200 -

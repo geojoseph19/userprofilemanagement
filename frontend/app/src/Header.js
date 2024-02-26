@@ -2,7 +2,7 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom'; // Import the useLocation hook
 import Logout from './Logout'; // Import the Logout component
-import './Header.css';
+import styles from './Header.module.css';
 
 function Header() {
   const location = useLocation();
@@ -11,11 +11,11 @@ function Header() {
   const isSecondPage = location.pathname === '/home';
 
   return (
-    <header className="header">
-      <div className="container">
-        <h1 className="logo">Hogwarts University</h1>
+    <header className={styles.header}>
+      <div className={styles.container}>
+        <h1 className={styles.logo}>Hogwarts University</h1>
         <nav>
-          <ul className="nav-links">
+          <ul className={styles.navLinks}>
             {isSecondPage && <li><Logout /></li>} {/* Render the Logout component only on the SecondPage */}
           </ul>
         </nav>

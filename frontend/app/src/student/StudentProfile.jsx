@@ -1,18 +1,18 @@
 import React, { useContext, useEffect, useState } from "react";
 import { SharedUserContext } from "../UserContextShare";
 import styles from './Profile.module.css'
-
+ 
 const StudentProfile = () => {
-  const { sharedStudentData } = useContext(SharedUserContext);
-  const [studentData, setStudentData] = useState(sharedStudentData);
-
+  const { sharedUserData } = useContext(SharedUserContext);
+  const [studentData, setStudentData] = useState(sharedUserData);
+ 
   useEffect(() => {
-    const storedData = localStorage.getItem('studentData');
+    const storedData = localStorage.getItem('userData');
     if (storedData) {
       setStudentData(JSON.parse(storedData));
     }
   }, []);
-
+ 
   return (
     <>
     <div className={styles.mainContainer}>
@@ -94,5 +94,6 @@ const StudentProfile = () => {
   
   );
 }
-
+ 
 export default StudentProfile;
+ 

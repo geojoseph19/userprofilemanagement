@@ -4,6 +4,7 @@
   width: 100%;
   height: 100vh;
   color: white;
+  margin-left: 2%;
   }/*Main student container*/
 
   .Main h1{
@@ -61,3 +62,5 @@
  .projectPanel *{
   max-width: max-content;
  }
+
+ 

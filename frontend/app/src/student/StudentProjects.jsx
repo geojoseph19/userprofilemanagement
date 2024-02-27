@@ -26,8 +26,8 @@ const StudentProjects = () => {
 
   // Define the order of keys for displaying in the table
   const keyOrder = [
-    'project_id',
     'project_name',
+    'project_id',
     'start_date',
     'end_date',
     'mentor_id',
@@ -40,23 +40,31 @@ const StudentProjects = () => {
       <div className={styles.info}>
         {projects && (
           <div className={styles.projectPanel}>
-          <div className={styles.projectDetails}>
-            <table>
-              <tbody>
-                {Object.entries(projects).map(([projectId, project]) => (
-                  <React.Fragment key={projectId}>
-                    {keyOrder.map((key) => (
-                      <tr key={key}>
-                        <td><strong>{key.charAt(0).toUpperCase()+key.slice(1).replace(/_/g, ' ')}</strong></td>
-                        <td>:</td>
-                        <td>{key.includes('date') ? formatDate(project[key]) : project[key]}</td>
+            <div className={styles.projectDetails}>
+              <table>
+                <tbody>
+                  {Object.entries(projects).map(([projectId, project]) => (
+                    <React.Fragment key={projectId}>
+                      <tr>
+                        <td colSpan="3"><strong>{project.project_name}</strong></td>
                       </tr>
-                    ))}
-                  </React.Fragment>
-                ))}
-              </tbody>
-            </table>
-          </div>
+                      <tr>
+                        <td colSpan="3"><hr /></td>
+                      </tr>
+                      {keyOrder.map((key) => (
+                        key !== 'project_name' && (
+                          <tr key={key}>
+                            <td><strong>{key.charAt(0).toUpperCase()+key.slice(1).replace(/_/g, ' ')}</strong></td>
+                            <td>:</td>
+                            <td>{key.includes('date') ? formatDate(project[key]) : project[key]}</td>
+                          </tr>
+                        )
+                      ))}
+                    </React.Fragment>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         )}
       </div>

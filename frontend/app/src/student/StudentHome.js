@@ -1,34 +1,34 @@
 import React, { useState, useEffect, useContext } from "react";
 import { SharedUserContext } from '../UserContextShare';
- 
+
 import { useNavigate } from "react-router-dom";
 import styles from "./Student.module.css";
 import axios from "axios";
 axios.defaults.withCredentials = true;
- 
- 
+
+
 function StudentHome() {
   const [studentData, setStudentData] = useState(null);
   const navigate = useNavigate();
   const { setSharedUserData } = useContext(SharedUserContext);
- 
+
   useEffect(() => {
     const fetchStudentData = async () => {
       try {
         const rawstoredData = localStorage.getItem('userData');
         const rawloggedUsername = localStorage.getItem('username');
         const rawloggedUserRole = localStorage.getItem('userRole');
- 
+
         const storedData = JSON.parse(rawstoredData);
         const loggedUsername = JSON.parse(rawloggedUsername);
         const loggedUserRole = JSON.parse(rawloggedUserRole);
- 
+
         if (loggedUserRole === 'student'){
           if(storedData){
             if(storedData.username === loggedUsername){
               setStudentData(storedData);
               setSharedUserData(storedData);
- 
+
             }else{
               // 404 unauthorized
               window.location.href = '/';
@@ -41,7 +41,7 @@ function StudentHome() {
             setSharedUserData(responseData);
           }
         }else{
- 
+
           // 404 unauthorized
           window.location.href = '/';
         }
@@ -50,10 +50,10 @@ function StudentHome() {
         navigate("/");
       }
     };
- 
+
     fetchStudentData();
   }, [navigate, setSharedUserData]);
- 
+
   return (
     <>
       {studentData ? (
@@ -75,7 +75,7 @@ function StudentHome() {
               </h2>
               <p>Student</p>
             </div>
- 
+
             {/* Basic Student Details */}
             <div className={styles.basicDetailContainer}>
               <div className={styles.basicDetails}>
@@ -109,8 +109,8 @@ function StudentHome() {
             </table>
               </div>
             </div>
- 
- 
+
+
               {/* Projects Container */}
             
           </div>
@@ -121,5 +121,5 @@ function StudentHome() {
     </>
   );
 }
- 
+
 export default StudentHome;

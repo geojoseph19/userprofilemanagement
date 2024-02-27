@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import styles from './AdminHome.module.css'; // Import CSS module
+import style from './AdminHome.module.css'; // Import CSS module
 import axios from 'axios'; 
 axios.defaults.withCredentials = true;
 
@@ -23,29 +23,28 @@ function AdminHome() {
   }, [navigate]);
 
   return (
-    <div className={styles.main}>
+    <div className={style.adminMain}>
       {adminData ? (
-        <div className={styles.info}>
-          <div className={styles['profile-pic-container']}>
-            <img className={styles['profile-pic']} src='https://t4.ftcdn.net/jpg/05/89/93/27/360_F_589932782_vQAEAZhHnq1QCGu5ikwrYaQD0Mmurm0N.jpg' alt='Admin Profile'/>
+        <div className={style.adminInfo}>
+          <div className={style.adminProfilePicContainer}>
+            <img className={style.adminProfilePic} src='https://t4.ftcdn.net/jpg/05/89/93/27/360_F_589932782_vQAEAZhHnq1QCGu5ikwrYaQD0Mmurm0N.jpg' alt='Admin Profile'/>
           </div>
-          <div className={styles.info1}>
-  <h2><strong>{adminData.First_Name} {adminData.Middle_Name} {adminData.Last_Name}</strong></h2>
-  <p>Admin</p>
-  <table className={styles.infoTable}>
-    <tbody>
-      <tr>
-        <td><h2>Username</h2></td>
-        <td><h3>: {adminData.Username}</h3></td>
-      </tr>
-      <tr>
-        <td><h2>Email</h2></td>
-        <td><h3>: {adminData.Email_ID}</h3></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
+          <div className={style.adminInfo1}>
+            <h2><strong>{adminData.First_Name} {adminData.Middle_Name} {adminData.Last_Name}</strong></h2>
+            <p>Admin</p>
+            <table className={style.adminInfoTable}>
+              <tbody>
+                <tr>
+                  <td><h2>Username</h2></td>
+                  <td><h3>: {adminData.Username}</h3></td>
+                </tr>
+                <tr>
+                  <td><h2>Email</h2></td>
+                  <td><h3>: {adminData.Email_ID}</h3></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       ) : (
         <p>Loading data...</p>

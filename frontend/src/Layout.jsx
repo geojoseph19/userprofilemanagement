@@ -1,6 +1,5 @@
 import React from "react";
 import DisplayBoard from "./DisplayBoard";
-import Header from "./Header";
 
 const Layout = (props) => {
   return (

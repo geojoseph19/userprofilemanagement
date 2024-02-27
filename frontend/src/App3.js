@@ -15,7 +15,7 @@ import Layout from './Layout';
 import AddUser from './admin/AddUser/AddUser';
 import UpdateUser from './admin/UpdateUser/UpdateUser';
 import DeleteUser from './admin/DeleteUser/DeleteUser';
-import AdminSidebar from './admin/AdminSidebar/AdminSidebar';
+import AdminSidebar from './Sidebar/AdminSidebar/AdminSidebar';
 
 function App() {
   return (

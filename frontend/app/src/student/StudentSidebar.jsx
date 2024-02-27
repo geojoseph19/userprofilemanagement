@@ -1,33 +1,19 @@
 // StudentSidebar.js
 
 import React from 'react';
-import { Link } from 'react-router-dom';
-import styles from './StudentSidebar.module.css'; // Import module.css file
+import Sidebar from '../Sidebar';
+
 
 const StudentSidebar = () => {
+  const Studentlinks = [
+    { name: 'Home', to: '/student/home' },
+    { name: 'View full profile', to: '/student/profile' },
+    { name: 'Course progress', to: '/student/progress' },
+    { name: 'My Projects', to: '/student/projects' },
+    { name: 'My Achievements', to: '/student/achievements' }
+  ];
   return (
-    <nav className={styles.studentDash}> {/* Use styles from module.css */}
-      <ul className={styles.dashLinks}> {/* Use styles from module.css */}
-        <li className={styles.link}> {/* Use styles from module.css */}
-          <Link to='/student/home'>
-            
-            Home
-          </Link>
-        </li>
-        <li className={styles.link}> {/* Use styles from module.css */}
-          <Link to='/student/profile'>View full profile</Link>
-        </li>
-        <li className={styles.link}> {/* Use styles from module.css */}
-          <Link to='/student/progress'>Course progress</Link>
-        </li>
-        <li className={styles.link}> {/* Use styles from module.css */}
-          <Link to='/student/projects'>My Projects</Link>
-        </li>
-        <li className={styles.link}> {/* Use styles from module.css */}
-          <Link to='/student/achievements'>My Achievements</Link>
-        </li>
-      </ul>
-    </nav>
+   <Sidebar links={Studentlinks} />
   );
 };
 

@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
-import { SharedStudentContext } from "../StudentContextShare";
+import { SharedUserContext } from "../UserContextShare";
 import styles from './Profile.module.css'
 
 const StudentProfile = () => {
-  const { sharedStudentData } = useContext(SharedStudentContext);
+  const { sharedStudentData } = useContext(SharedUserContext);
   const [studentData, setStudentData] = useState(sharedStudentData);
 
   useEffect(() => {
@@ -54,10 +54,11 @@ const StudentProfile = () => {
                   <td><strong>Permanent Address</strong></td>
                   <td>:</td>
                   <td>
-                    {studentData.address &&
-                      studentData.address.split(',').map((line, index) => (
-                        <span key={index}>{line.trim()+' ,'}</span>
-                      ))}
+                    {studentData.address && typeof studentData.address === 'object' ? (
+                      <div>{`${studentData.address.address_line}, ${studentData.address.city}, ${studentData.address.state}, ${studentData.address.country}, PIN: ${studentData.address.pincode}`}</div>
+                    ) : (
+                      <div>{studentData.address}</div>
+                    )}
                   </td>
                 </tr>
                 <tr>

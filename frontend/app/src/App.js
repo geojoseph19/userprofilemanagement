@@ -12,9 +12,10 @@ import StudentProjects from './student/StudentProjects';
 import Achievements from './student/Achievements';
 import styles from './App.module.css'
 import Layout from './Layout';
-import { SharedStudentDataProvider } from './StudentContextShare';
+import { SharedUserDataProvider } from './UserContextShare';
 import AuthWrapper from './AuthWrapper';
-import Header from './Header';
+import StudentSidebar from './student/StudentSidebar';
+
 
 
 function App() {
@@ -34,20 +35,20 @@ function AppContent() {
    
       <div>
       {!isLoginPage && !isForgotPassword}
-        <SharedStudentDataProvider>
+        <SharedUserDataProvider>
         <Routes>
           <Route exact path="/" element={<AuthWrapper><LoginPage /></AuthWrapper>} />
           <Route path="/forgot-password" element={<AuthWrapper><ForgotPassword /></AuthWrapper>} />
           <Route path="/home/*" element={<Home />} />
           <Route path="/student" >
-            <Route path='home' element={<Layout childComponent={<StudentHome />}/>}/>
-            <Route path='profile' element={<Layout childComponent={<StudentProfile />}/>} />
-            <Route path='progress' element={<Layout childComponent={<Progress />}/>} />
-            <Route path='projects' element={<Layout childComponent={<StudentProjects />} />} />
-            <Route path='achievements' element={<Layout childComponent={<Achievements />} />} />
+            <Route path='home' element={<Layout sidebar={<StudentSidebar/>} childComponent={<StudentHome />}/>}/>
+            <Route path='profile' element={<Layout sidebar={<StudentSidebar/>} childComponent={<StudentProfile />}/>} />
+            <Route path='progress' element={<Layout sidebar={<StudentSidebar/>} childComponent={<Progress />}/>} />
+            <Route path='projects' element={<Layout sidebar={<StudentSidebar/>} childComponent={<StudentProjects />} />} />
+            <Route path='achievements' element={<Layout sidebar={<StudentSidebar/>} childComponent={<Achievements />} />} />
           </Route>
         </Routes>
-        </SharedStudentDataProvider>
+        </SharedUserDataProvider>
       </div>
   
   );
@@ -63,7 +64,7 @@ function Home() {
     case 'student':
       return (
         <div className={styles.studentPage}>
-         <Layout childComponent={<StudentHome />}/>
+         <Layout  sidebar={<StudentSidebar/>} childComponent={<StudentHome />}/>
         </div>
       );
     case 'admin':

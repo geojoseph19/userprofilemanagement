@@ -1,22 +1,14 @@
-*{
-    margin-top: 0%;
-    margin-bottom: 0%;
-    margin-left: 0%;
-    margin-right: 0%;
-    font-family: 'Poppins', sans-serif;
-  }
-  
-  body *{
-    font-family: 'Poppins',sans-serif; /* Specify Poppins as the preferred font family */
-    margin: 0;
-  }
-  
+
   .Main{
   background-color: #040F49;
   width: 100%;
   height: 100vh;
   color: white;
   }/*Main student container*/
+
+  .Main h1{
+    width: fit-content;
+  }
   
   @keyframes floatUp {
     from {
@@ -40,6 +32,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow-y: auto;
     animation: floatUp 0.8s ease forwards; /* Apply animation */
   }
   
@@ -53,6 +46,8 @@
     padding: 1%;
     width: max-content;
     line-height: 200%;
+    min-width: 30%;
+    max-width: max-content;
     margin-top: 5%;
 }
   

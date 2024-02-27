@@ -1,15 +1,4 @@
-*{
-    margin-top: 0%;
-    margin-bottom: 0%;
-    margin-left: 0%;
-    margin-right: 0%;
-    font-family: 'Poppins', sans-serif;
-  }
-  
-  body *{
-    font-family: 'Poppins',sans-serif; /* Specify Poppins as the preferred font family */
-  }
-  
+
   .Main{
   background-color: #040F49;
   width: 100%;
@@ -38,16 +27,17 @@
 
   .info {
     background-color: whitesmoke;
+    display: flex;
     width: 100%;
     height: 100%;
     border-radius: 30px;
     border-bottom-left-radius: 0%;
     border-bottom-right-radius: 0%;
     margin-top: 5%;
-    display: flex;
     flex-direction: column;
     align-items: center;
     animation: floatUp 0.8s ease forwards; 
+    overflow-y: scroll;
   }
   
   .info *{
@@ -74,9 +64,11 @@
   .wheel{
     width: max-content;
     background-color: white;
-    padding: 2%;
+    padding: 1%;
     margin: 2%;
-   border-radius: 50%;
+   border-radius: 3px;
+   text-align: center;
+   color: lightseagreen;
   }
 
  .progressRing{
@@ -101,7 +93,7 @@
     max-height: max-content;
     border: 1px solid gray;
     border-radius: 10px;
-    width: 40%;
+    width: 50%;
     padding: 2%;
     height:auto;
     line-height: 200%;
@@ -113,13 +105,13 @@
     margin: 2%;
   }
 
-  .achievementDetails{
-    background-color: white;
-    border-radius: 10%;
-    padding: 3%;
-    max-width: 30%;
-    width: fit-content;
-    line-height: 200%;
-    margin-top: 5%;
+  .Main
+
+tspan{
+    font-size: small;
+    max-width: fit-content;
 }
-  
+
+td{
+  padding-top: 0.5%;
+}

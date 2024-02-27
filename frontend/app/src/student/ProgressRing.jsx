@@ -29,14 +29,15 @@ const ProgressRing = ({ currentSemester, totalSemesters }) => {
         cy="50"
         r={radius}
         fill="transparent"
-        stroke="#007bff"
+        stroke="#20B2AA"
         strokeWidth="10"
         strokeDasharray={circumference}
         strokeDashoffset={dashOffset}
         strokeLinecap="round"
         transform="rotate(-90 50 50)"
       />
-      <text x="50" y="50" dominantBaseline="middle" textAnchor="middle" fontSize="20" fill="#007bff">
+     
+      <text x="50" y="54" dominantBaseline="middle" textAnchor="middle" fontSize="14" fill="#20B2AA">
         {currentSemester}/{totalSemesters}
       </text>
     </svg>

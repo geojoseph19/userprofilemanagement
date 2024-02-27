@@ -4,15 +4,15 @@ import DisplayBoard from "./DisplayBoard";
 import Header from "./Header";
 import styles from "./Layout.module.css"
 
-const Layout = ({ childComponent }) => {
+const Layout = (props) => {
   return (
     <div className={styles.mainContainer}>
     
       <Header />
       <div className={styles.layoutContainer}>
-        <StudentSidebar />
+        {props.sidebar}
         <div className={styles.contentBoard}>
-          <DisplayBoard childComponent={childComponent} />
+          <DisplayBoard childComponent={props.childComponent} />
         </div>
       </div>
     </div>

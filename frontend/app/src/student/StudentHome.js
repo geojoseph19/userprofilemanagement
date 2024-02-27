@@ -1,41 +1,59 @@
 import React, { useState, useEffect, useContext } from "react";
-import { SharedStudentContext } from '../StudentContextShare';
-
+import { SharedUserContext } from '../UserContextShare';
+ 
 import { useNavigate } from "react-router-dom";
 import styles from "./Student.module.css";
 import axios from "axios";
 axios.defaults.withCredentials = true;
-
-
+ 
+ 
 function StudentHome() {
   const [studentData, setStudentData] = useState(null);
   const navigate = useNavigate();
-  const { setSharedStudentData } = useContext(SharedStudentContext);
-
+  const { setSharedUserData } = useContext(SharedUserContext);
+ 
   useEffect(() => {
     const fetchStudentData = async () => {
       try {
-        const storedData = localStorage.getItem('studentData');
-        if (storedData) {
-          const parsedData = JSON.parse(storedData);
-          setStudentData(parsedData);
-          setSharedStudentData(parsedData);
-        } else {
-          const response = await axios.get("http://127.0.0.1:5000/api/v1/student/home");
-          const responseData = response.data.response;
-          setStudentData(responseData);
-          localStorage.setItem('studentData', JSON.stringify(responseData));
-          setSharedStudentData(responseData);
+        const rawstoredData = localStorage.getItem('userData');
+        const rawloggedUsername = localStorage.getItem('username');
+        const rawloggedUserRole = localStorage.getItem('userRole');
+ 
+        const storedData = JSON.parse(rawstoredData);
+        const loggedUsername = JSON.parse(rawloggedUsername);
+        const loggedUserRole = JSON.parse(rawloggedUserRole);
+ 
+        if (loggedUserRole === 'student'){
+          if(storedData){
+            if(storedData.username === loggedUsername){
+              setStudentData(storedData);
+              setSharedUserData(storedData);
+ 
+            }else{
+              // 404 unauthorized
+              window.location.href = '/';
+            }
+          }else{
+            const response = await axios.get("http://127.0.0.1:5000/api/v1/student/home");
+            const responseData = response.data.response;
+            setStudentData(responseData);
+            localStorage.setItem('userData', JSON.stringify(responseData));
+            setSharedUserData(responseData);
+          }
+        }else{
+ 
+          // 404 unauthorized
+          window.location.href = '/';
         }
       } catch (error) {
         console.error("Error fetching student data:", error);
         navigate("/");
       }
     };
-
+ 
     fetchStudentData();
-  }, [navigate, setSharedStudentData]);
-
+  }, [navigate, setSharedUserData]);
+ 
   return (
     <>
       {studentData ? (
@@ -57,7 +75,7 @@ function StudentHome() {
               </h2>
               <p>Student</p>
             </div>
-
+ 
             {/* Basic Student Details */}
             <div className={styles.basicDetailContainer}>
               <div className={styles.basicDetails}>
@@ -91,8 +109,8 @@ function StudentHome() {
             </table>
               </div>
             </div>
-
-
+ 
+ 
               {/* Projects Container */}
             
           </div>
@@ -103,5 +121,5 @@ function StudentHome() {
     </>
   );
 }
-
+ 
 export default StudentHome;

@@ -1,16 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-*{
-  margin-top: 0%;
-  margin-bottom: 0%;
-  margin-left: 0%;
-  margin-right: 0%;
-  font-family: 'Poppins', sans-serif;
-}
 
-body *{
-  font-family: 'Poppins',sans-serif; /* Specify Poppins as the preferred font family */
-  margin: 0;
-}
+
 
 .Main{
 background-color: #040F49;
@@ -37,7 +27,7 @@ color: white;
   border-radius: 30px;
   border-bottom-left-radius: 0%;
   border-bottom-right-radius: 0%;
-  margin-top: 175px;
+  margin-top: 15%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -46,12 +36,13 @@ color: white;
 
 .info *{
   color: black;
+  font-size: x-large;
 }
 
 
 .info1 {
   text-align: center;
-  line-height: 200%;
+  line-height: 120%;
 }
 
 
@@ -66,12 +57,13 @@ color: white;
     height: 300px;
     background-color: gray;
     border-radius: 50%;
-    border: 5px solid white;
+    border: 1px solid white;
     overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: -150px;
+    box-shadow: 2px;
   }
      
   .material-symbols-outlined {
@@ -99,22 +91,6 @@ color: white;
     line-height: 150%;
   }
   
-  .role{
-      font-family: Poppins;
-  }
-  
-  
-  
-  /* .studentDash{
-    width: 200px;
-    display: flex;
-    justify-content: flex-start;
-    height: 100vh;
-    display: flex;
-    justify-content: flex-start;
-  } */
-
-
   .mainContainer {
     width: 100vw; 
     height: 100vh; 
@@ -154,4 +130,7 @@ color: white;
     border-radius: 10%;
     padding: 10%;
     width: max-content;
+    line-height: 150%;
    }
+
+   

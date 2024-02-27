@@ -1,14 +1,6 @@
-*{
-    margin-top: 0%;
-    margin-bottom: 0%;
-    margin-left: 0%;
-    margin-right: 0%;
-    font-family: 'Poppins', sans-serif;
-  }
+
   
-  body *{
-    font-family: 'Poppins',sans-serif; /* Specify Poppins as the preferred font family */
-  }
+  
   
   .Main{
   background-color: #040F49;
@@ -43,11 +35,12 @@
     border-radius: 30px;
     border-bottom-left-radius: 0%;
     border-bottom-right-radius: 0%;
-    margin-top: 5%;
+    margin-top: 7%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    animation: floatUp 0.8s ease forwards; /* Apply animation */
+    animation: floatUp 0.8s ease forwards; 
+    overflow-y: auto;
   }
   
   .info *{
@@ -82,8 +75,8 @@
     background-color: white;
     border-radius: 10%;
     padding: 3%;
-    max-width: 30%;
-    width: fit-content;
+    max-width: max-content;
+    min-width:  20%;
     line-height: 200%;
     margin-top: 5%;
 }

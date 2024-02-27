@@ -58,7 +58,6 @@ def fun_admin_home():
 # Function to add new admin
 def add_new_admin():
 
-    if not check_login('admin'): return generate_response('Unauthorized access! Please login first',401)
 
     try:
         roleID = 0

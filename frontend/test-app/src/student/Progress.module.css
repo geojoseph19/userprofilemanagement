@@ -1,0 +1,115 @@
+
+  
+  .Main{
+  background-color: #040F49;
+  width: 100%;
+  height: 100vh;
+  color: white;
+  }
+  
+  @keyframes floatUp {
+    from {
+      transform: translateY(400px); /* Initial position: move 100px down */
+      opacity: 0; /* Initial opacity: hidden */
+    }
+    to {
+      transform: translateY(0); /* Final position: no translation */
+      opacity: 1; /* Final opacity: fully visible */
+    }
+  }
+  
+.Main h1{
+  width: fit-content;
+  display: flex;
+  flex-shrink: 1;
+  margin-top: 2%;
+  margin-left: 2%;
+}
+
+  .info {
+    background-color: whitesmoke;
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+    border-bottom-left-radius: 0%;
+    border-bottom-right-radius: 0%;
+    margin-top: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: floatUp 0.8s ease forwards; 
+  }
+  
+  .info *{
+    color: black;
+  }
+  
+  .totalPoints {
+    background-color: whitesmoke;
+    border-radius: 50%;
+    padding: 2%;
+    width: max-content;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 2%;
+  }
+
+  .totalPoints *{
+    color: black;
+    text-align: center;
+    font-size: x-large;
+  }
+
+  .wheel{
+    width: max-content;
+    background-color: white;
+    padding: 2%;
+    margin: 2%;
+   border-radius: 50%;
+  }
+
+ .progressRing{
+    width: 100%;
+ }
+
+  .progressInfo{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  circle{
+    width: max-content;
+  }
+
+  .semester {
+    background-color: white;
+    max-width: max-content;
+    max-height: max-content;
+    border: 1px solid gray;
+    border-radius: 10px;
+    width: 40%;
+    padding: 2%;
+    height:auto;
+    line-height: 200%;
+    flex-grow: 1;
+    margin: 2%;
+  }
+
+  .semester hr{
+    margin: 2%;
+  }
+
+  .achievementDetails{
+    background-color: white;
+    border-radius: 10%;
+    padding: 3%;
+    max-width: 30%;
+    width: fit-content;
+    line-height: 200%;
+    margin-top: 5%;
+}
+  

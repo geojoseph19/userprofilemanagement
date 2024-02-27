@@ -18,9 +18,7 @@ from ..utils.response_utils import *
 def fun_admin_home():
 
     if session.get('logged_in') != True:
-        response = jsonify({'error': 'Unauthorized access! Please login first', 'status': 'failed'})
-        response.status_code = 401  
-        return response
+        return jsonify({'error': 'Unauthorized access! Please login first', 'status': 'failed'}),401
 
     admin_id = get_session_data('username')
     if not admin_id:
@@ -140,7 +138,6 @@ def fun_admin_create_mentor():
 # Create a student account
 def fun_admin_create_student():
 
-    if not check_login('admin'): return generate_response('Unauthorized access! Please login first',401)
     role_id = 2
  
     data = request.json
@@ -179,21 +176,23 @@ def fun_admin_create_student():
         hashed_password = hash_password(password)
     except Exception as e:
         return jsonify({'error': 'Password encryption error', 'message': str(e)}), 500
- 
-    with psycopg2.connect(**db_params) as conn:
-        with conn.cursor() as cursor:
-            cursor.execute('INSERT INTO credentials(cred_id, username, password_hash, role_id) VALUES (%s,%s,%s,%s)',
-                           (cred_id, username, hashed_password, role_id))
- 
-            cursor.execute(
-                'INSERT INTO student(st_id, fname, mname, lname, sex, sphoneno, address, guardian, gphoneno, dob, semester, dept_id, cred_id, email) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)',
-                (username, fname, mname, lname, sex, sphoneno, address, guardian, gphoneno, dob, semester, dept_id,
-                 cred_id, email))
+    try:
+        with psycopg2.connect(**db_params) as conn:
+            with conn.cursor() as cursor:
+                cursor.execute('INSERT INTO credentials(cred_id, username, password_hash, role_id) VALUES (%s,%s,%s,%s)',
+                            (cred_id, username, hashed_password, role_id))
+    
+                cursor.execute(
+                    'INSERT INTO student(st_id, fname, mname, lname, sex, sphoneno, address, guardian, gphoneno, dob, semester, dept_id, cred_id, email) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)',
+                    (username, fname, mname, lname, sex, sphoneno, address, guardian, gphoneno, dob, semester, dept_id,
+                    cred_id, email))
+    except psycopg2.Error as e:
+        return jsonify({'error': str(e)}),e
             
     data = password
     content_type = "newuser"
  
-    send_mail(email,username,fname,mname,lname,content_type,data)
+    #send_mail(email,username,fname,mname,lname,content_type,data)
  
     return jsonify({'message': 'Student record added'})
 

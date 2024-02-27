@@ -23,6 +23,7 @@ function ForgotPassword() {
   const [resendTimer, setResendTimer] = useState(300); // 5 minutes in seconds
   const [isResendEnabled, setIsResendEnabled] = useState(false); // Initially disabled
   const [resendButtonText, setResendButtonText] = useState('Resend');
+  console.log(resendButtonText);
 
   useEffect(() => {
     let interval;
@@ -174,7 +175,7 @@ function ForgotPassword() {
         <div className={styles['login-left-container']}>
          <Link to="/" style={{ display:'flex', alignItems:'center', cursor:'pointer', textDecoration:'none'}} >
         <span  class="material-symbols-outlined" style={{color:'white'}}>arrow_back </span>
-          <h2 style={{marginTop:'0px',marginBottom:'0px'}}>Forgot Password</h2></Link>
+          <h2 className={styles['forgot-pwd-h2']} style={{marginTop:'0px',marginBottom:'0px'}}>Forgot Password</h2></Link>
 
           {showForgotPassword && (
             <form className={styles['login-form']} onSubmit={(e) => { e.preventDefault(); accountRecovery(); }}>
@@ -204,7 +205,7 @@ function ForgotPassword() {
 
           {showOtpInput && (
             <form className={styles['login-form']} onSubmit={(e) => { e.preventDefault(); verifyOTP(); }}>
-              <p>{mailSuccess}</p>
+              <p className={styles['forgot-pwd-p']}>{mailSuccess}</p>
               <div className={styles['input-set']} style={{ display: 'block'}}>
                 <label className={styles['input-label']} htmlFor="otp">Enter OTP</label>
                 <input className={styles['login-input']} type="text" id="otp" placeholder='Enter OTP' value={otp} onChange={(e) => setOtp(e.target.value)} />
@@ -228,7 +229,7 @@ function ForgotPassword() {
 
           {showNewPasswordInput && (
             <form className={styles['login-form']} onSubmit={(e) => { e.preventDefault(); submitNewPassword(); }}>
-              <p style={{textAlign:'justify'}}>Please ensure your password is at least <strong>8 characters long</strong>, contains at least <strong>one uppercase letter</strong>, <strong>one lowercase letter</strong>, <strong>one number</strong>, and <strong>one special character</strong>.</p>
+              <p className={styles['forgot-pwd-p']} style={{textAlign:'justify'}}>Please ensure your password is at least <strong>8 characters long</strong>, contains at least <strong>one uppercase letter</strong>, <strong>one lowercase letter</strong>, <strong>one number</strong>, and <strong>one special character</strong>.</p>
               <div className={styles['input-set']} style={{ display: 'block'}}>
               <label className={styles['input-label']} htmlFor="password">New password</label>
               <div className={styles['password-input-container']} style={{marginBottom:"30px"}}>
@@ -270,9 +271,9 @@ function ForgotPassword() {
           )}
 
           {isErrorMessageVisible && (
-            <div className={styles['error-message']}>
+            <div className={styles['error-message']} >
               <span className='material-symbols-outlined'>error</span>
-              <p style={{ display: 'inline' }}> &nbsp; {errorMessage}</p>
+              <p className={styles['forgot-pwd-p']} style={{ display: 'inline' }}> &nbsp; {errorMessage}</p>
             </div>
           )}
           {showResetSuccess && (
@@ -281,7 +282,7 @@ function ForgotPassword() {
               <div style={{display:'block',width:'30%',alignItems:'center',justifyContent:'center',flexWrap:'wrap',marginLeft:'35%'}}><LottieAnimation />
               
               </div>
-              <p style={{marginLeft:'15.5%', marginTop:'0px',marginBottom:'0px'}}>Password reset success!</p>
+              <p className={styles['forgot-pwd-p']} style={{marginLeft:'15.5%', marginTop:'0px',marginBottom:'0px'}}>Password reset success!</p>
                 
                
               <div className={styles['input-set']} style={{marginBottom:'30px'}}>
@@ -304,8 +305,8 @@ function ForgotPassword() {
         </div>
         
         <div className={styles['login-right-container']}>
-          <h1>Hogwarts University.</h1> 
-          <p><TypingAnimation text="Igniting Futures, Inspiring Minds.." speed={100} initialDelay={1500} /></p>
+          <h1 className={styles['forgot-pwd-h1']} >Hogwarts University.</h1> 
+          <p className={styles['forgot-pwd-p']}><TypingAnimation text="Igniting Futures, Inspiring Minds.." speed={100} initialDelay={1500} /></p>
         </div>
       </div>
     </div>

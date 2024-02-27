@@ -1,0 +1,56 @@
+
+  .Main{
+  background-color: #040F49;
+  width: 100%;
+  height: 100vh;
+  color: white;
+  }/*Main student container*/
+  
+  @keyframes floatUp {
+    from {
+      transform: translateY(400px); /* Initial position: move 100px down */
+      opacity: 0; /* Initial opacity: hidden */
+    }
+    to {
+      transform: translateY(0); /* Final position: no translation */
+      opacity: 1; /* Final opacity: fully visible */
+    }
+  }
+  
+  .info {
+    background-color: whitesmoke;
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+    border-bottom-left-radius: 0%;
+    border-bottom-right-radius: 0%;
+    margin-top: 1%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: floatUp 0.8s ease forwards; /* Apply animation */
+  }
+  
+  .info *{
+    color: black;
+  }
+
+.projectDetails {
+  background-color: white;
+    border-radius: 10%;
+    padding: 1%;
+    width: max-content;
+    line-height: 200%;
+    margin-top: 5%;
+}
+  
+ .projectPanel{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 30%;
+ } 
+  
+ .projectPanel *{
+  max-width: max-content;
+ }

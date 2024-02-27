@@ -9,28 +9,19 @@ admin_controller = Blueprint('admin', __name__, url_prefix="/api/v1")
 @admin_controller.route('/admin/createUser', methods=['POST'])
 def admin_create_user():
 
-    if session.get('logged_in') != True:
-        response = jsonify({'error': 'Unauthorized access! Please login first', 'status': 'failed'})
-        response.status_code = 401  
-        return response
+    if not check_login('admin'): return jsonify({'error': 'Unauthorized access! Please login first', 'status': 'failed'}),401
     return fun_admin_create_user()
 
 #Admin - update user
 @admin_controller.route('/admin/updateUser', methods=['POST'])
 def admin_update_user():
-    if session.get('logged_in') != True:
-        response = jsonify({'error': 'Unauthorized access! Please login first', 'status': 'failed'})
-        response.status_code = 401  
-        return response
+    if not check_login('admin'): return jsonify({'error': 'Unauthorized access! Please login first', 'status': 'failed'}),401
     return fun_admin_update_user()
 
 #Admin - remove user
 @admin_controller.route('/admin/removeUser', methods=['DELETE'])
 def admin_remove_user():
-    if session.get('logged_in') != True:
-        response = jsonify({'error': 'Unauthorized access! Please login first', 'status': 'failed'})
-        response.status_code = 401  
-        return response
+    if not check_login('admin'): return jsonify({'error': 'Unauthorized access! Please login first', 'status': 'failed'}),401
     return fun_admin_delete_user()
 
 
@@ -39,6 +30,7 @@ def admin_remove_user():
 #View admin home details
 @admin_controller.route('/admin/home', methods=['GET'])
 def admin_home():
+    if not check_login('admin'): return jsonify({'error': 'Unauthorized access! Please login first', 'status': 'failed'}),401
 
     return fun_admin_home()
 
@@ -52,6 +44,7 @@ def add_admin():
 #Admin - Add new mentor
 @admin_controller.route('/admin/addMentor', methods=['POST'])
 def admin_create_mentor():
+    if not check_login('admin'): return jsonify({'error': 'Unauthorized access! Please login first', 'status': 'failed'}),401
     return fun_admin_create_mentor()
 
 #-----------------------------ADMIN-STUDENT------------------------------------------
@@ -59,4 +52,5 @@ def admin_create_mentor():
 #Add new student
 @admin_controller.route('/admin/addStudent', methods=['POST'])
 def admin_create_student():
+    if not check_login('admin'): return jsonify({'error': 'Unauthorized access! Please login first', 'status': 'failed'}),401
     return fun_admin_create_student()

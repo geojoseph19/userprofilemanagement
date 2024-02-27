@@ -1,8 +1,3 @@
-/* Global styles */
-body {
-  font-family: 'Poppins', sans-serif; /* Specify Poppins as the preferred font family */
-  margin: 0;
-}
 
 
 /* Add a slide-in-from-bottom animation */
@@ -67,7 +62,7 @@ body {
 
 }
 
-h1{
+.login-h1 {
   color: aliceblue;
   font-size: 55px;
   font-weight: 700;
@@ -76,13 +71,14 @@ h1{
   width: 249px;
   top: 301px;
   left: 347px;
+  margin-top: 0px;
 }
 
 .login-right-container h1 {
   padding-top: 110px;
 }
 
-p{
+.login-p{
   color: white;
 }
 

@@ -5,6 +5,7 @@ import axios from 'axios'; // Import Axios
 function Logout() {
   const handleLogout = async () => {
     try {
+      localStorage.clear();
       const response = await axios.post('http://127.0.0.1:5000/api/v1/logout');
 
       if (response.status === 200) {

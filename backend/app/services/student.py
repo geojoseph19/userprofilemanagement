@@ -48,7 +48,7 @@ def fun_student_home():
                 return generate_response(f'Error fetching department for student {st_id}',e.pgcode)
 
     response = {
-        'username':user[0],
+        'username':st_id,
         'first_name':user[1],
         'middle_name':user[2],
         'last_name':user[3],

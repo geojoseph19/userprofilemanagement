@@ -39,6 +39,7 @@ def fun_mentor_home():
             dept = cursor.fetchone()[0]
     if mentor:
         response={
+            'username' : username,
             'first_name' : mentor[1],
             'middle_name' : mentor[2],
             'last_name' : mentor[3],

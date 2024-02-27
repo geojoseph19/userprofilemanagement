@@ -1,0 +1,19 @@
+.mainContainer {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.layoutContainer {
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  max-height: 100vh;
+}
+
+.contentBoard {
+  flex-grow: 1;
+  width: 100%;
+  position: relative;
+  margin-right: 1%;
+}

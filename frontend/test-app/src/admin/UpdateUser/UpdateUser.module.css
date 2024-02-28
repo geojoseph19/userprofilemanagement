@@ -1,0 +1,155 @@
+
+  .adminMain {
+    background-color: #040F49;
+    width: 100%;
+    height: 100vh;
+    padding-top: 10px;
+  }
+  
+  @keyframes floatUp {
+    from {
+      transform: translateY(400px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  .adminInfo {
+    background-color: whitesmoke;
+    width: 100%;
+    height: 94%;
+    border-radius: 30px;
+    border-bottom-left-radius: 0%;
+    border-bottom-right-radius: 0%;
+    margin-top: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-right: 5%;
+    animation: floatUp 0.8s ease forwards;
+    color: #040F49;
+  }
+  
+  .adminInfo h1 {
+    text-align: left;
+    color: #040F49;
+    
+  }
+  
+  .adminTabs {
+    margin-top: -1.5%;
+    width: 40%;
+    display: flex;
+    margin-left: 5%;
+  }
+  
+  .adminTabs button {
+    width: 100%;
+    padding: 1.7%;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 35px;
+    background-color: white;
+    color: #040F49;
+    border: 2px solid #040F49;
+    transition: background-color 0.5s ease;
+    margin-right: 2%;
+    font-weight: 700;
+    font-size: large;
+  }
+  
+  .adminTabs button:hover {
+    background-color: navy;
+    color: white;
+    transform: scale(1.05);
+    border: 2px solid white;
+  }
+  
+  .adminTabs button.active {
+    background-color: navy;
+    color: white;
+    border: 3px solid white;
+}
+
+
+  
+  .adminTabContent {
+    padding: 10px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+  .adminScrollableContent{
+    width: 100%;
+  }
+  .updateForm {
+    padding: 1%;
+    width: 100%;
+    display: block;
+  }
+  
+  .updateTable {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .updateHalf{
+    width: 30%;
+    display: inline-table;
+    margin-right: 20%;
+  }
+  /* module.css */
+  .updateHalfColumn {
+    width: 5%;
+}
+.updateAddress{
+    width: 113%;
+}
+.updateTable th, td {
+    padding: 0.5%;
+    padding-left: 0.05%;
+    text-align: left;
+    width: 35%; /* Adjust this value as needed */
+}
+
+.updateTable th {
+    background-color: #040F49;
+    color: whitesmoke;
+  }
+  
+  .updateLabel {
+    display: block;
+    margin-bottom: 10px;
+    color: #040F49;
+    font-weight: 500;
+  }
+  
+  .updateForm input, select, textarea {
+    width: 80%;
+    padding: 8px;
+    display: block;
+    margin-top: 5px;
+    border: 2px solid #040F49;
+    border-radius: 15px;
+    box-sizing: border-box;
+  }
+  
+  .updatebtn[type="submit"] {
+    padding: 10px 20px;
+    background-color: #040F49;
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: 600;
+  }
+  
+  .updatebtn[type="submit"]:hover {
+    background-color: white;
+    border: 1px solid #040F49;
+    color: #040F49;
+  }
+  

@@ -12,9 +12,11 @@ import AdminHome from './admin/AdminHome/AdminHome';
 import AddUser from './admin/AddUser/AddUser';
 import UpdateUser from './admin/UpdateUser/UpdateUser';
 import DeleteUser from './admin/DeleteUser/DeleteUser';
-import AdminSidebar from './admin/AdminSidebar/AdminSidebar';
+import AdminSidebar from './admin/AdminSidebar';
 
 import MentorHome from './mentor/MentorHome';
+import MentorProfile from './mentor/MentorProfile';
+import MentorProjects from './mentor/MentorProjects';
 
 import StudentHome from './student/StudentHome';
 import StudentProfile from './student/StudentProfile';
@@ -22,6 +24,8 @@ import Progress from './student/Progress';
 import StudentProjects from './student/StudentProjects';
 import Achievements from './student/Achievements';
 import { SharedUserDataProvider } from './UserContextShare';
+import StudentSidebar from './student/StudentSidebar';
+import MentorSidebar from './mentor/MentorSidebar';
 
 
 function App() {
@@ -77,15 +81,17 @@ function AppContent() {
         </Route>
 
         <Route path="/student" >
-            <Route path='home' element={<Layout childComponent={<StudentHome />}/>}/>
-            <Route path='profile' element={<Layout childComponent={<StudentProfile />}/>} />
-            <Route path='progress' element={<Layout childComponent={<Progress />}/>} />
-            <Route path='projects' element={<Layout childComponent={<StudentProjects />} />} />
-            <Route path='achievements' element={<Layout childComponent={<Achievements />} />} />
+            <Route path='home' element={<Layout sidebar={<StudentSidebar/>} childComponent={<StudentHome />}/>}/>
+            <Route path='profile' element={<Layout sidebar={<StudentSidebar/>} childComponent={<StudentProfile />}/>} />
+            <Route path='progress' element={<Layout sidebar={<StudentSidebar/>} childComponent={<Progress />}/>} />
+            <Route path='projects' element={<Layout sidebar={<StudentSidebar/>} childComponent={<StudentProjects />} />} />
+            <Route path='achievements' element={<Layout sidebar={<StudentSidebar/>} childComponent={<Achievements />} />} />
         </Route>
 
         <Route path="/mentor" >
-            <Route path='home' element={<Layout childComponent={<MentorHome />}/>}/>
+            <Route path='home' element={<Layout sidebar={<MentorSidebar/>} childComponent={<MentorHome />}/>}/>
+            <Route path='profile' element={<Layout sidebar={<MentorSidebar/>} childComponent={<MentorProfile />}/>}/>
+            <Route path='projects' element={<Layout sidebar={<MentorSidebar/>} childComponent={<MentorProjects />}/>}/>
       
         </Route>
       </Routes>
@@ -104,16 +110,21 @@ function Home() {
       return (
         
         <div className={styles.studentPage}>
-         <Layout childComponent={<StudentHome />}/>
+         <Layout sidebar={<StudentSidebar/>} childComponent={<StudentHome />}/>
         </div>
       );
     case 'admin':
-      return <AdminHome />;
+      return (
+        
+        <div className={styles.studentPage}>
+         <Layout sidebar={<AdminSidebar/>} childComponent={<AdminHome />}/>
+        </div>
+      );
       
     case 'mentor':
       return (
       <div className={styles.studentPage}>
-      <Layout childComponent={<MentorHome />}/>
+      <Layout sidebar={<MentorSidebar/>} childComponent={<MentorHome />}/>
      </div>
    );
     default:

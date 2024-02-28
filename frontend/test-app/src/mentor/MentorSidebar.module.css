@@ -1,60 +1,59 @@
 
 .studentDash {
-    width: 200px;
-    display: flex;
-    justify-content: flex-start;
-    height: 100vh;
-    left: 0;
-  }
-  
-  
-  
-  .dashLinks {
-    background-color: white;
-    display: flex;
-    flex-direction: column;
-    list-style-type: none;
-    justify-content: flex-start;
-    padding: 20px;
-    width: 100%;
-    max-width: max-content;
-  }
-  
-  .link {
-    margin-bottom: 15px;
-  }
-  
-  .link a {
-    display: block;
-    width: 200px;
-    padding: 15px 20px;
-    border-left: none; /* Remove left border */
-    border-right: none; /* Remove right border */
-    border-bottom: 1px solid #D9D9D9; /* Add bottom border */
-    border-radius: 0; /* Remove border-radius */
-    color: black;
-    font-size: larger;
-    font-weight: 600;
-    align-items: center;
-    margin-bottom: 0px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    transition: all 0.3s ease;
-    position: relative;
-    text-decoration: none;
-  }
-  
-  .link a:hover {
-    color: #D9D9D9;
-    transform: scale(1.05);
-    border-radius: 10px;
-    background-color: darkblue;
-  }
-  
-  .link a :active {
-    background-color: rgb(4, 16, 73, 0.75);
-    color: whitesmoke;
-    border: 1 px solid transparent;
-    border-radius: 10px;
-  }
-  
+  width: 200px;
+  display: flex;
+  justify-content: flex-start;
+  height: 100vh;
+  left: 0;
+}
+
+
+
+.dashLinks {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  justify-content: flex-start;
+  padding: 20px;
+  width: 100%;
+  max-width: max-content;
+}
+
+.link {
+  margin-bottom: 15px;
+}
+
+.link a {
+  display: block;
+  width: 200px;
+  padding: 15px 20px;
+  border-left: none; /* Remove left border */
+  border-right: none; /* Remove right border */
+  border-bottom: 1px solid #D9D9D9; /* Add bottom border */
+  border-radius: 0; /* Remove border-radius */
+  color: black;
+  font-size: larger;
+  font-weight: 600;
+  align-items: center;
+  margin-bottom: 0px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  transition: all 0.3s ease;
+  position: relative;
+  text-decoration: none;
+}
+
+.link a:hover {
+  color: #D9D9D9;
+  transform: scale(1.05);
+  border-radius: 10px;
+  background-color: darkblue;
+}
+
+.link a :active {
+  background-color: rgb(4, 16, 73, 0.75);
+  color: whitesmoke;
+  border: 1 px solid transparent;
+  border-radius: 10px;
+}

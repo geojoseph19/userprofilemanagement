@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import style from './AdminHome.module.css'; // Import CSS module
-import axios from 'axios';
+import axios from 'axios'; 
 axios.defaults.withCredentials = true;
- 
+
 function AdminHome() {
   const [adminData, setAdminData] = useState(null);
   const navigate = useNavigate();
- 
+
   useEffect(() => {
     const fetchAdminData = async () => {
       try {
@@ -16,12 +16,12 @@ function AdminHome() {
       } catch (error) {
         console.error('Error fetching admin data:', error);
         navigate('/');
-      }
+      } 
     };
- 
+
     fetchAdminData();
   }, [navigate]);
- 
+
   return (
     <div className={style.adminMain}>
       {adminData ? (
@@ -52,6 +52,5 @@ function AdminHome() {
     </div>
   );
 }
- 
+
 export default AdminHome;
- 

@@ -52,7 +52,7 @@
   background-color: darkblue;
 }
 
-.link a :active {
+.link a.active {
   background-color: rgb(4, 16, 73, 0.75);
   color: whitesmoke;
   border: 1 px solid transparent;

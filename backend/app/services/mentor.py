@@ -69,7 +69,10 @@ def get_mentor_projects(mentor_id):
     try:
         with psycopg2.connect(**db_params) as conn:
             with conn.cursor() as cursor:
-                cursor.execute('''SELECT * FROM project WHERE m_id=%s''', (mentor_id,))
+                cursor.execute('''SELECT cred_id FROM credentials WHERE username=%s''', (mentor_id,))
+                cred_id = cursor.fetchone()[0]
+                print(cred_id)
+                cursor.execute('''SELECT * FROM project WHERE m_id=%s''', (cred_id,))
                 projects = cursor.fetchall()
                 if projects:
                     response=format_query_results(projects)

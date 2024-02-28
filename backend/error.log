@@ -6605,3 +6605,706 @@ Traceback (most recent call last):
 werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
 INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 10:34:16] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
 INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 10:34:16] "GET /api/v1/mentor/home HTTP/1.1" 200 -
+ERROR:root:An error occurred:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1458, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1440, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/flask/ctx.py", line 353, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/routing/map.py", line 655, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 10:40:23] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+ERROR:root:An error occurred:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1458, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1440, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/flask/ctx.py", line 353, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/routing/map.py", line 655, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 10:40:40] "[33mGET /main.764aaf4d14b325f982ab.hot-update.json HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 10:44:34] "OPTIONS /api/v1/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 10:44:34] "POST /api/v1/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 10:44:35] "GET /api/v1/student/home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 10:44:38] "GET /api/v1/student/progress HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 10:44:42] "POST /api/v1/logout HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 10:44:50] "OPTIONS /api/v1/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 10:44:50] "POST /api/v1/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 10:44:51] "GET /api/v1/mentor/home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 10:45:46] "POST /api/v1/logout HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 10:46:04] "OPTIONS /api/v1/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 10:46:05] "POST /api/v1/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 10:46:05] "GET /api/v1/mentor/home HTTP/1.1" 200 -
+ERROR:root:An error occurred:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1458, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1440, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/flask/ctx.py", line 353, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/routing/map.py", line 655, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 10:54:04] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+ERROR:root:An error occurred:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1458, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1440, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/flask/ctx.py", line 353, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/routing/map.py", line 655, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:06:58] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+ERROR:root:An error occurred:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1458, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1440, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/flask/ctx.py", line 353, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/routing/map.py", line 655, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:08:56] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:16:50] "POST /api/v1/logout HTTP/1.1" 200 -
+ERROR:root:An error occurred:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1458, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1440, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/flask/ctx.py", line 353, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/routing/map.py", line 655, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:16:51] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:16:56] "OPTIONS /api/v1/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:16:56] "[31m[1mPOST /api/v1/login HTTP/1.1[0m" 400 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:17:03] "OPTIONS /api/v1/accountRecovery HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:17:03] "[31m[1mPOST /api/v1/accountRecovery HTTP/1.1[0m" 400 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:17:13] "OPTIONS /api/v1/accountRecovery HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:17:13] "[31m[1mPOST /api/v1/accountRecovery HTTP/1.1[0m" 400 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:17:29] "OPTIONS /api/v1/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:17:29] "POST /api/v1/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:17:30] "GET /api/v1/admin/home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:17:40] "GET /api/v1/admin/home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:17:45] "GET /api/v1/admin/home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:17:50] "GET /api/v1/admin/home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:17:59] "POST /api/v1/logout HTTP/1.1" 200 -
+ERROR:root:An error occurred:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1458, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1440, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/flask/ctx.py", line 353, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/routing/map.py", line 655, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:17:59] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:24:06] "OPTIONS /api/v1/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:24:06] "[31m[1mPOST /api/v1/login HTTP/1.1[0m" 400 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:24:07] "[31m[1mPOST /api/v1/login HTTP/1.1[0m" 400 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:24:40] "OPTIONS /api/v1/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:24:40] "[31m[1mPOST /api/v1/login HTTP/1.1[0m" 400 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:24:41] "[31m[1mPOST /api/v1/login HTTP/1.1[0m" 400 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:25:32] "OPTIONS /api/v1/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:25:32] "[31m[1mPOST /api/v1/login HTTP/1.1[0m" 400 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:25:45] "OPTIONS /api/v1/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:25:45] "POST /api/v1/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:25:46] "GET /api/v1/admin/home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:26:15] "OPTIONS /api/v1/admin/removeUser?username=USRX241019 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:26:15] "DELETE /api/v1/admin/removeUser?username=USRX241019 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:26:50] "GET /api/v1/admin/home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:26:56] "POST /api/v1/logout HTTP/1.1" 200 -
+ERROR:root:An error occurred:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1458, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1440, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/flask/ctx.py", line 353, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/routing/map.py", line 655, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:26:57] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:27:09] "OPTIONS /api/v1/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:27:10] "POST /api/v1/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:27:10] "GET /api/v1/student/home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:27:14] "GET /api/v1/student/progress HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:27:20] "GET /api/v1/student/project HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:27:21] "GET /api/v1/student/achievements HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:27:25] "GET /api/v1/student/progress HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:27:29] "GET /api/v1/student/progress HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:27:30] "GET /api/v1/student/project HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:27:36] "POST /api/v1/logout HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:29:34] "OPTIONS /api/v1/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:29:35] "POST /api/v1/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:29:35] "GET /api/v1/mentor/home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:36:22] "POST /api/v1/logout HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:36:30] "OPTIONS /api/v1/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:36:30] "POST /api/v1/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:36:31] "GET /api/v1/admin/home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:36:48] "OPTIONS /api/v1/admin/removeUser?username= HTTP/1.1" 200 -
+ERROR:root:An error occurred:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "/home/geojoseph/Desktop/Mini Project/userprofilemanagement/backend/app/controller/admin_controller.py", line 25, in admin_remove_user
+    return fun_admin_delete_user()
+  File "/home/geojoseph/Desktop/Mini Project/userprofilemanagement/backend/app/services/admin.py", line 320, in fun_admin_delete_user
+    role_type = cursor.fetchone()[0]
+TypeError: 'NoneType' object is not subscriptable
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:36:48] "[35m[1mDELETE /api/v1/admin/removeUser?username= HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:37:01] "GET /api/v1/admin/home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:37:13] "OPTIONS /api/v1/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:37:14] "POST /api/v1/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:37:14] "GET /api/v1/mentor/home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:37:18] "[31m[1mGET /api/v1/admin/home HTTP/1.1[0m" 401 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:37:57] "OPTIONS /api/v1/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:37:57] "POST /api/v1/login HTTP/1.1" 200 -
+ERROR:root:An error occurred:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1458, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1440, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/flask/ctx.py", line 353, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/routing/map.py", line 655, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:37:57] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:37:58] "GET /api/v1/admin/home HTTP/1.1" 200 -
+ERROR:root:An error occurred:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1458, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1440, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/flask/ctx.py", line 353, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/routing/map.py", line 655, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:39:10] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:47:27] "POST /api/v1/logout HTTP/1.1" 200 -
+ERROR:root:An error occurred:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1458, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1440, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/flask/ctx.py", line 353, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/routing/map.py", line 655, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:47:28] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:47:32] "OPTIONS /api/v1/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:47:32] "[31m[1mPOST /api/v1/login HTTP/1.1[0m" 400 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:47:43] "OPTIONS /api/v1/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:47:43] "[31m[1mPOST /api/v1/login HTTP/1.1[0m" 400 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:47:52] "OPTIONS /api/v1/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:47:53] "POST /api/v1/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:47:53] "GET /api/v1/mentor/home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:48:02] "POST /api/v1/logout HTTP/1.1" 200 -
+ERROR:root:An error occurred:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1458, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1440, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/flask/ctx.py", line 353, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/routing/map.py", line 655, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:48:02] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:53:34] "OPTIONS /api/v1/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:53:35] "POST /api/v1/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:53:35] "GET /api/v1/mentor/home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:55:41] "POST /api/v1/logout HTTP/1.1" 200 -
+ERROR:root:An error occurred:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1458, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1440, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/flask/ctx.py", line 353, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/routing/map.py", line 655, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:55:41] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:55:49] "OPTIONS /api/v1/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:55:49] "POST /api/v1/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:55:50] "GET /api/v1/student/home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:55:53] "GET /api/v1/student/progress HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:55:55] "GET /api/v1/student/project HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:55:57] "GET /api/v1/student/progress HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:56:01] "GET /api/v1/student/progress HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:56:02] "GET /api/v1/student/project HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:56:03] "GET /api/v1/student/progress HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:56:08] "GET /api/v1/student/project HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:56:09] "GET /api/v1/student/progress HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:56:15] "GET /api/v1/student/progress HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:56:22] "POST /api/v1/logout HTTP/1.1" 200 -
+ERROR:root:An error occurred:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1458, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1440, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/flask/ctx.py", line 353, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/routing/map.py", line 655, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:56:22] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:56:32] "OPTIONS /api/v1/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:56:32] "POST /api/v1/login HTTP/1.1" 200 -
+ERROR:root:An error occurred:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1458, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1440, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/flask/ctx.py", line 353, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/routing/map.py", line 655, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:56:33] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 11:56:33] "GET /api/v1/mentor/home HTTP/1.1" 200 -
+ERROR:root:An error occurred:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1458, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1440, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/flask/ctx.py", line 353, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/routing/map.py", line 655, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 12:03:54] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+ERROR:root:An error occurred:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1458, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1440, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/flask/ctx.py", line 353, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/routing/map.py", line 655, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 12:04:15] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 12:04:50] "POST /api/v1/logout HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 12:05:03] "OPTIONS /api/v1/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 12:05:03] "POST /api/v1/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 12:05:04] "GET /api/v1/admin/home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 12:05:13] "GET /api/v1/admin/home HTTP/1.1" 200 -
+ERROR:root:An error occurred:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1458, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1440, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/flask/ctx.py", line 353, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/routing/map.py", line 655, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 12:05:21] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 12:05:21] "GET /api/v1/admin/home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 12:05:27] "POST /api/v1/logout HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 12:05:35] "OPTIONS /api/v1/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 12:05:36] "POST /api/v1/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 12:05:36] "GET /api/v1/student/home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 12:05:57] "POST /api/v1/logout HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 12:06:05] "OPTIONS /api/v1/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 12:06:05] "POST /api/v1/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 12:06:06] "GET /api/v1/mentor/home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 13:05:23] "POST /api/v1/logout HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 13:05:26] "OPTIONS /api/v1/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 13:05:26] "[31m[1mPOST /api/v1/login HTTP/1.1[0m" 400 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 13:05:42] "OPTIONS /api/v1/accountRecovery HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 13:05:42] "POST /api/v1/accountRecovery HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 13:06:44] "OPTIONS /api/v1/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 13:06:44] "[31m[1mPOST /api/v1/login HTTP/1.1[0m" 400 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 13:06:53] "OPTIONS /api/v1/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 13:06:53] "POST /api/v1/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 13:06:54] "GET /api/v1/student/home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 13:08:32] "GET /api/v1/student/progress HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 13:08:33] "GET /api/v1/student/project HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 13:08:35] "GET /api/v1/student/progress HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 13:08:39] "GET /api/v1/student/progress HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 13:08:42] "GET /api/v1/student/progress HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 14:04:17] "POST /api/v1/logout HTTP/1.1" 200 -
+ERROR:root:An error occurred:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1458, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1440, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/flask/ctx.py", line 353, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/routing/map.py", line 655, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 14:04:17] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 14:04:27] "OPTIONS /api/v1/accountRecovery HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 14:04:28] "POST /api/v1/accountRecovery HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 14:04:36] "OPTIONS /api/v1/verifyOTP HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 14:04:37] "POST /api/v1/verifyOTP HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 14:04:50] "OPTIONS /api/v1/resetPassword HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 14:04:51] "POST /api/v1/resetPassword HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 14:07:05] "OPTIONS /api/v1/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 14:07:05] "POST /api/v1/login HTTP/1.1" 200 -
+ERROR:root:An error occurred:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1458, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1440, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/flask/ctx.py", line 353, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/routing/map.py", line 655, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 14:07:05] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 14:07:05] "GET /api/v1/admin/home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 14:07:16] "GET /api/v1/admin/home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 14:07:26] "POST /api/v1/logout HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 14:07:37] "OPTIONS /api/v1/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 14:07:37] "POST /api/v1/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 14:07:38] "GET /api/v1/student/home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 14:07:41] "GET /api/v1/student/progress HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 14:07:42] "GET /api/v1/student/project HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 14:07:43] "GET /api/v1/student/achievements HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 14:07:44] "GET /api/v1/student/project HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 14:07:44] "GET /api/v1/student/progress HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 14:08:03] "GET /api/v1/student/progress HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 14:08:07] "GET /api/v1/student/progress HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 14:08:59] "GET /api/v1/student/progress HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 14:09:03] "GET /api/v1/student/progress HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 14:09:36] "GET /api/v1/student/progress HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 14:09:52] "GET /api/v1/student/progress HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 14:09:59] "GET /api/v1/student/progress HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 14:10:03] "GET /api/v1/student/progress HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 14:10:14] "POST /api/v1/logout HTTP/1.1" 200 -
+ERROR:root:An error occurred:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1458, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1440, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/flask/ctx.py", line 353, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/routing/map.py", line 655, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 14:10:14] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 14:18:11] "OPTIONS /api/v1/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 14:18:11] "[31m[1mPOST /api/v1/login HTTP/1.1[0m" 400 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 14:18:19] "OPTIONS /api/v1/accountRecovery HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 14:18:19] "POST /api/v1/accountRecovery HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 14:18:33] "OPTIONS /api/v1/verifyOTP HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 14:18:33] "POST /api/v1/verifyOTP HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 14:18:46] "OPTIONS /api/v1/resetPassword HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 14:18:47] "POST /api/v1/resetPassword HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 14:19:00] "OPTIONS /api/v1/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 14:19:01] "POST /api/v1/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 14:19:01] "GET /api/v1/admin/home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 14:19:53] "OPTIONS /api/v1/admin/removeUser?username=USRX241016 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 14:19:53] "DELETE /api/v1/admin/removeUser?username=USRX241016 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 14:20:49] "OPTIONS /api/v1/admin/createUser HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 14:20:49] "POST /api/v1/admin/createUser HTTP/1.1" 200 -
+ERROR:root:An error occurred:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1458, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1440, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/flask/ctx.py", line 353, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/routing/map.py", line 655, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 14:21:30] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 14:21:37] "GET /api/v1/admin/home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 14:21:56] "OPTIONS /api/v1/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 14:21:57] "POST /api/v1/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 14:21:57] "GET /api/v1/mentor/home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 14:22:07] "POST /api/v1/logout HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 14:22:20] "OPTIONS /api/v1/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 14:22:21] "POST /api/v1/login HTTP/1.1" 200 -
+ERROR:root:An error occurred:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1458, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1440, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/flask/ctx.py", line 353, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/routing/map.py", line 655, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 14:22:21] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 14:22:21] "GET /api/v1/student/home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 14:22:46] "GET /api/v1/student/progress HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 14:23:11] "POST /api/v1/logout HTTP/1.1" 200 -
+ERROR:root:An error occurred:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1458, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1440, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/flask/ctx.py", line 353, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/routing/map.py", line 655, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 14:23:12] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 15:14:12] "OPTIONS /api/v1/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 15:14:12] "[31m[1mPOST /api/v1/login HTTP/1.1[0m" 400 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 15:14:24] "OPTIONS /api/v1/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 15:14:24] "POST /api/v1/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 15:14:25] "GET /api/v1/student/home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 15:14:31] "GET /api/v1/student/progress HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 15:14:33] "GET /api/v1/student/project HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 15:14:43] "GET /api/v1/student/achievements HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 15:14:45] "GET /api/v1/student/project HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Feb/2024 15:14:46] "GET /api/v1/student/progress HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Feb/2024 09:51:27] "GET /api/v1/student/progress HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Feb/2024 09:51:46] "GET /api/v1/student/progress HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Feb/2024 09:51:50] "POST /api/v1/logout HTTP/1.1" 200 -
+ERROR:root:An error occurred:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1458, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1440, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/flask/ctx.py", line 353, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/routing/map.py", line 655, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+INFO:werkzeug:127.0.0.1 - - [28/Feb/2024 09:51:50] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [28/Feb/2024 09:52:07] "OPTIONS /api/v1/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Feb/2024 09:52:07] "POST /api/v1/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Feb/2024 09:52:08] "GET /api/v1/admin/home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Feb/2024 09:52:22] "POST /api/v1/logout HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Feb/2024 09:52:35] "OPTIONS /api/v1/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Feb/2024 09:52:35] "POST /api/v1/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Feb/2024 09:52:35] "GET /api/v1/student/home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Feb/2024 09:52:41] "GET /api/v1/student/progress HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Feb/2024 09:52:47] "POST /api/v1/logout HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Feb/2024 09:52:53] "OPTIONS /api/v1/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Feb/2024 09:52:53] "POST /api/v1/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Feb/2024 09:52:54] "GET /api/v1/admin/home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Feb/2024 09:53:01] "GET /api/v1/admin/home HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Feb/2024 09:53:09] "POST /api/v1/logout HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Feb/2024 09:53:37] "OPTIONS /api/v1/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Feb/2024 09:53:38] "POST /api/v1/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Feb/2024 09:53:38] "GET /api/v1/mentor/home HTTP/1.1" 200 -
+ERROR:root:An error occurred:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1458, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1440, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/flask/ctx.py", line 353, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/routing/map.py", line 655, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+INFO:werkzeug:127.0.0.1 - - [28/Feb/2024 09:55:50] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [28/Feb/2024 10:00:31] "POST /api/v1/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [28/Feb/2024 10:00:39] "[35m[1mGET /api/v1/mentor/projects HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/backend/app/services/mentor.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-218-037
+ERROR:root:An error occurred:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "/home/geojoseph/Desktop/Mini Project/userprofilemanagement/backend/app/controller/mentor_contoller.py", line 37, in mentor_projects
+    return get_mentor_projects(username)
+  File "/home/geojoseph/Desktop/Mini Project/userprofilemanagement/backend/app/services/mentor.py", line 78, in get_mentor_projects
+    return generate_response(response)
+  File "/home/geojoseph/Desktop/Mini Project/userprofilemanagement/backend/app/utils/response_utils.py", line 35, in generate_response
+    return jsonify(response_data)
+  File "/usr/local/lib/python3.8/dist-packages/flask/json/__init__.py", line 170, in jsonify
+    return current_app.json.response(*args, **kwargs)
+  File "/usr/local/lib/python3.8/dist-packages/flask/json/provider.py", line 215, in response
+    f"{self.dumps(obj, **dump_args)}\n", mimetype=self.mimetype
+  File "/usr/local/lib/python3.8/dist-packages/flask/json/provider.py", line 180, in dumps
+    return json.dumps(obj, **kwargs)
+  File "/usr/lib/python3.8/json/__init__.py", line 234, in dumps
+    return cls(
+  File "/usr/lib/python3.8/json/encoder.py", line 201, in encode
+    chunks = list(chunks)
+  File "/usr/lib/python3.8/json/encoder.py", line 431, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "/usr/lib/python3.8/json/encoder.py", line 405, in _iterencode_dict
+    yield from chunks
+  File "/usr/lib/python3.8/json/encoder.py", line 438, in _iterencode
+    o = _default(o)
+  File "/usr/local/lib/python3.8/dist-packages/flask/json/provider.py", line 120, in _default
+    raise TypeError(f"Object of type {type(o).__name__} is not JSON serializable")
+TypeError: Object of type Response is not JSON serializable
+INFO:werkzeug:127.0.0.1 - - [28/Feb/2024 10:03:58] "[35m[1mGET /api/v1/mentor/projects HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Detected change in '/home/geojoseph/Desktop/Mini Project/userprofilemanagement/backend/app/services/mentor.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 139-218-037
+ERROR:root:An error occurred:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "/home/geojoseph/Desktop/Mini Project/userprofilemanagement/backend/app/controller/mentor_contoller.py", line 37, in mentor_projects
+    return get_mentor_projects(username)
+  File "/home/geojoseph/Desktop/Mini Project/userprofilemanagement/backend/app/services/mentor.py", line 79, in get_mentor_projects
+    return generate_response(response)
+  File "/home/geojoseph/Desktop/Mini Project/userprofilemanagement/backend/app/utils/response_utils.py", line 35, in generate_response
+    return jsonify(response_data)
+  File "/usr/local/lib/python3.8/dist-packages/flask/json/__init__.py", line 170, in jsonify
+    return current_app.json.response(*args, **kwargs)
+  File "/usr/local/lib/python3.8/dist-packages/flask/json/provider.py", line 215, in response
+    f"{self.dumps(obj, **dump_args)}\n", mimetype=self.mimetype
+  File "/usr/local/lib/python3.8/dist-packages/flask/json/provider.py", line 180, in dumps
+    return json.dumps(obj, **kwargs)
+  File "/usr/lib/python3.8/json/__init__.py", line 234, in dumps
+    return cls(
+  File "/usr/lib/python3.8/json/encoder.py", line 201, in encode
+    chunks = list(chunks)
+  File "/usr/lib/python3.8/json/encoder.py", line 431, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "/usr/lib/python3.8/json/encoder.py", line 405, in _iterencode_dict
+    yield from chunks
+  File "/usr/lib/python3.8/json/encoder.py", line 438, in _iterencode
+    o = _default(o)
+  File "/usr/local/lib/python3.8/dist-packages/flask/json/provider.py", line 120, in _default
+    raise TypeError(f"Object of type {type(o).__name__} is not JSON serializable")
+TypeError: Object of type Response is not JSON serializable
+INFO:werkzeug:127.0.0.1 - - [28/Feb/2024 10:04:19] "[35m[1mGET /api/v1/mentor/projects HTTP/1.1[0m" 500 -
+ERROR:root:An error occurred:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "/home/geojoseph/Desktop/Mini Project/userprofilemanagement/backend/app/controller/mentor_contoller.py", line 43, in project_students
+    students = get_project_students()
+  File "/home/geojoseph/Desktop/Mini Project/userprofilemanagement/backend/app/services/mentor.py", line 99, in get_project_students
+    response=format_query_results()
+TypeError: format_query_results() missing 1 required positional argument: 'results'
+INFO:werkzeug:127.0.0.1 - - [28/Feb/2024 10:05:26] "[35m[1mGET /api/v1/mentor/projects/students HTTP/1.1[0m" 500 -
+ERROR:root:An error occurred:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "/home/geojoseph/Desktop/Mini Project/userprofilemanagement/backend/app/controller/mentor_contoller.py", line 37, in mentor_projects
+    return get_mentor_projects(username)
+  File "/home/geojoseph/Desktop/Mini Project/userprofilemanagement/backend/app/services/mentor.py", line 79, in get_mentor_projects
+    return generate_response(response)
+  File "/home/geojoseph/Desktop/Mini Project/userprofilemanagement/backend/app/utils/response_utils.py", line 35, in generate_response
+    return jsonify(response_data)
+  File "/usr/local/lib/python3.8/dist-packages/flask/json/__init__.py", line 170, in jsonify
+    return current_app.json.response(*args, **kwargs)
+  File "/usr/local/lib/python3.8/dist-packages/flask/json/provider.py", line 215, in response
+    f"{self.dumps(obj, **dump_args)}\n", mimetype=self.mimetype
+  File "/usr/local/lib/python3.8/dist-packages/flask/json/provider.py", line 180, in dumps
+    return json.dumps(obj, **kwargs)
+  File "/usr/lib/python3.8/json/__init__.py", line 234, in dumps
+    return cls(
+  File "/usr/lib/python3.8/json/encoder.py", line 201, in encode
+    chunks = list(chunks)
+  File "/usr/lib/python3.8/json/encoder.py", line 431, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "/usr/lib/python3.8/json/encoder.py", line 405, in _iterencode_dict
+    yield from chunks
+  File "/usr/lib/python3.8/json/encoder.py", line 438, in _iterencode
+    o = _default(o)
+  File "/usr/local/lib/python3.8/dist-packages/flask/json/provider.py", line 120, in _default
+    raise TypeError(f"Object of type {type(o).__name__} is not JSON serializable")
+TypeError: Object of type Response is not JSON serializable
+INFO:werkzeug:127.0.0.1 - - [28/Feb/2024 10:05:36] "[35m[1mGET /api/v1/mentor/projects HTTP/1.1[0m" 500 -

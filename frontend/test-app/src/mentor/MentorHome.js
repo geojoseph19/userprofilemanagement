@@ -106,7 +106,6 @@ function MentorHome() {
                 
                
                 
-                {/* Add more student details as needed */}
               </tbody>
             </table>
               </div>

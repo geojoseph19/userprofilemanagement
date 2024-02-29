@@ -68,46 +68,54 @@ def fun_student_home():
         return jsonify({'error': 'Student not found'}), 404
     
 
-#Update student details
 def fun_update_student():
-
-    if not check_login(role_type): return generate_response('Unauthorized access! Please login first',401)
+    if not check_login(role_type):
+        return generate_response('Unauthorized access! Please login first', 401)
 
     data = request.json
     st_id = session.get('username')
 
     update_fields = {
-        'fname': data.get('student_first_name'),
-        'mname': data.get('student_middle_name'),
-        'lname': data.get('student_last_name'),
+        'fname': data.get('first_name'),
+        'mname': data.get('middle_name'),
+        'lname': data.get('last_name'),
         'sex': data.get('sex'),
-        'email': data.get('email'),
+        'email': data.get('email_id'),
         'sphoneno': data.get('student_phone_no'),
         'address': data.get('address'),
-        'guardian': data.get('guardian'),
+        'guardian': data.get('guardian_name'),
         'gphoneno': data.get('guardian_phone_no')
     }
-    if not is_valid_phone(update_fields['sphoneno']):
-        return generate_response('Invalid phone number',400)
+
+    # Check if any field is empty or null
+    # 
+    # Validate phone number
+    if not is_valid_phone(update_fields['sphoneno']) or not is_valid_phone(update_fields['gphoneno']):
+        return generate_response('Invalid phone number', 400)
 
     try:
         with psycopg2.connect(**db_params) as conn:
             with conn.cursor() as cursor:
                 # Construct SQL UPDATE statement dynamically based on provided fields
-                update_query = '''UPDATE student SET {} WHERE 
-                    st_id = %s'''.format(', '.join([f'{key} = %s' for key in update_fields if update_fields[key] is not None]))
+                update_query = '''
+                    UPDATE student SET {} WHERE st_id = %s
+                '''.format(', '.join([f'{key} = %s' for key in update_fields]))
 
                 # Extract values for the fields to update
-                update_values = [update_fields[key] for key in update_fields if update_fields[key] is not None]
+                update_values = [update_fields[key] for key in update_fields]
                 update_values.append(st_id)
 
                 cursor.execute(update_query, update_values)
 
         conn.commit()
 
-        return generate_response('Student information updated successfully',200)
-    except Exception as e:
-        return generate_response('Nothing to update',304)
+        # Update successful
+        return generate_response('Student information updated successfully', 200)
+    except psycopg2.Error as e:
+        # Log the error
+        print('Error updating student information:', e)
+        # Return error response
+        return generate_response('Failed to update student information', 500)
 
 
 #View student achievements

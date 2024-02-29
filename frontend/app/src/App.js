@@ -1,4 +1,5 @@
 // App.js
+
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import LoginPage from './LoginPage';
@@ -10,13 +11,12 @@ import StudentProfile from './student/StudentProfile';
 import Progress from './student/Progress';
 import StudentProjects from './student/StudentProjects';
 import Achievements from './student/Achievements';
+import EditProfile from './EditProfile'; // Import EditProfile component
 import styles from './App.module.css'
 import Layout from './Layout';
 import { SharedUserDataProvider } from './UserContextShare';
 import AuthWrapper from './AuthWrapper';
 import StudentSidebar from './student/StudentSidebar';
-
-
 
 function App() {
   return (
@@ -32,14 +32,14 @@ function AppContent() {
   const isForgotPassword = location.pathname === '/forgot-password';
   
   return (
-   
-      <div>
+    <div>
       {!isLoginPage && !isForgotPassword}
-        <SharedUserDataProvider>
+      <SharedUserDataProvider>
         <Routes>
           <Route exact path="/" element={<AuthWrapper><LoginPage /></AuthWrapper>} />
           <Route path="/forgot-password" element={<AuthWrapper><ForgotPassword /></AuthWrapper>} />
           <Route path="/home/*" element={<Home />} />
+          <Route path="/edit-profile" element={<Layout sidebar={<StudentSidebar/>} childComponent={<EditProfile />}/>} />
           <Route path="/student" >
             <Route path='home' element={<Layout sidebar={<StudentSidebar/>} childComponent={<StudentHome />}/>}/>
             <Route path='profile' element={<Layout sidebar={<StudentSidebar/>} childComponent={<StudentProfile />}/>} />
@@ -48,9 +48,8 @@ function AppContent() {
             <Route path='achievements' element={<Layout sidebar={<StudentSidebar/>} childComponent={<Achievements />} />} />
           </Route>
         </Routes>
-        </SharedUserDataProvider>
-      </div>
-  
+      </SharedUserDataProvider>
+    </div>
   );
 }
 
@@ -64,7 +63,7 @@ function Home() {
     case 'student':
       return (
         <div className={styles.studentPage}>
-         <Layout  sidebar={<StudentSidebar/>} childComponent={<StudentHome />}/>
+          <Layout  sidebar={<StudentSidebar/>} childComponent={<StudentHome />}/>
         </div>
       );
     case 'admin':
@@ -76,6 +75,5 @@ function Home() {
       return <LoginPage />;
   }
 }
-
 
 export default App;

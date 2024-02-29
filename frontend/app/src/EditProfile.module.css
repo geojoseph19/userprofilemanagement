@@ -1,0 +1,168 @@
+/* EditProfile.module.css */
+
+.Main {
+    background-color: #040F49;
+    width: 100%;
+    min-height: 100vh;
+    color: white;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .Main h1 {
+    width: fit-content;
+    display: flex;
+    flex-shrink: 1;
+    margin-top: 2%;
+    margin-left: 2%;
+  }
+  
+  .pageTitle {
+    display: flex;
+    flex-direction: row;
+    height: fit-content;
+  }
+  
+  .info {
+    background-color: whitesmoke;
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+    border-bottom-left-radius: 0%;
+    border-bottom-right-radius: 0%;
+    margin-top: 3%;
+    padding-bottom: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: floatUp 0.8s ease forwards; 
+    overflow-y: auto;
+  }
+  
+  .info * {
+    color: black;
+  }
+  
+  @keyframes floatUp {
+    from {
+      transform: translateY(400px); /* Initial position: move 100px down */
+      opacity: 0; /* Initial opacity: hidden */
+    }
+    to {
+      transform: translateY(0); /* Final position: no translation */
+      opacity: 1; /* Final opacity: fully visible */
+    }
+  }
+  
+
+  .totalPoints {
+    background-color: whitesmoke;
+    border-radius: 50%;
+    padding: 2%;
+    position: absolute;
+    right: 2%;
+    top: 2%;
+  }
+  
+  .totalPoints * {
+    color: black;
+    text-align: center;
+    font-size: large;
+  }
+  
+  .achInfo {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+  
+  .achievements {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: fit-content;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .achievementDetails {
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 3%;
+    flex-grow: 1;
+    max-width: 30%;
+    line-height: 200%;
+    margin: 3%;
+  }
+  
+  /* EditProfile.module.css */
+
+/* Add/Edit styles specific to EditProfile component below */
+
+/* Container for form items */
+.info form {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1rem; /* Add padding to the form container */
+    overflow-y: auto; /* Enable vertical scrolling */
+    max-height: 80vh; /* Limit the height to 80% of the viewport height */
+    margin-bottom: 2rem; /* Add bottom margin for extra space */
+  }
+  
+  /* Individual form item */
+  .info form div {
+    width: 50%; /* Each item takes up 50% of the container width */
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Label styles */
+  .info form label {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: #333; /* Dark text color */
+    display: block;
+    font-weight: bold; /* Make label font bold */
+  }
+  
+  /* Input field styles */
+  .info form input[type="text"] {
+    width: calc(100% - 2rem); /* Take up 100% width with some padding */
+    padding: 0.8rem;
+    border: 2px solid black; /* Black border */
+    border-radius: 6px;
+    font-size: 1.1rem;
+    transition: border-color 0.3s ease; /* Smooth border color transition */
+    box-sizing: border-box; /* Include padding and border in the width calculation */
+  }
+  
+  .info form input[type="text"]:focus {
+    outline: none;
+    border-color: #0056b3; /* Darker blue color on focus */
+  }
+  
+  /* Submit button styles */
+  .info form button[type="submit"] {
+    padding: 0.8rem 1.5rem;
+    background-color: #007bff; /* Blue button color */
+    color: #fff; /* White text color */
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth color transition */
+  }
+  
+  .info form button[type="submit"]:hover {
+    background-color: #0056b3; /* Darker blue color on hover */
+  }
+  
+  /* Adjust for small screens */
+  @media (max-width: 768px) {
+    .info form div {
+      width: 100%; /* Each item takes up full width on small screens */
+    }
+  }
+  
+  

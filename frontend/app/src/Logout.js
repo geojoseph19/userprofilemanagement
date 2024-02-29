@@ -14,7 +14,7 @@ function Logout() {
         window.location.href = '/';
       } else {
         // Handle logout error
-        alert('Logout failed');
+        alert('Couldn\'t logout at the moment.\nPlease try again');
       }
     } catch (error) {
       console.error('Error logging out:', error.message);

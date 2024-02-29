@@ -17,8 +17,8 @@
   list-style-type: none;
   justify-content: flex-start;
   padding: 20px;
-  width: 100%;
-  max-width: max-content;
+  min-width:fit-content;
+  max-width: 100%;
 }
 
 .link {

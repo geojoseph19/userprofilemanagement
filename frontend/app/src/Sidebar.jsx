@@ -4,6 +4,7 @@ import styles from './Sidebar.module.css';
 
 const Sidebar = ({ links, activeTab, handleTabClick }) => {
   return (
+    <div className={styles.sidebar}>
     <nav className={styles.studentDash}>
       <ul className={styles.dashLinks}>
         {links.map((link, index) => (
@@ -11,14 +12,14 @@ const Sidebar = ({ links, activeTab, handleTabClick }) => {
             <Link
               to={link.to}
               className={`${activeTab === link.page ? styles.active : ''}`}
-              onClick={() => handleTabClick(link.page)}
-            >
+              onClick={() => handleTabClick(link.page)}>
               {link.name}
             </Link>
           </li>
         ))}
       </ul>
     </nav>
+    </div>
   );
 };
 

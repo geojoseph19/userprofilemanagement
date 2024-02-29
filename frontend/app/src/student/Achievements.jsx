@@ -29,18 +29,19 @@ const StudentAchievements = () => {
 
   return (
     <div className={styles.Main}>
-      <div className="pageTitle"><h1>My Achievements</h1></div>
+      <div className={styles.pageTitle}><h1>My Achievements</h1>
       <div className={styles.totalPoints}>
               <h2>Total points</h2>
               <hr />
-              <div>{totalPoints}</div>
+              <div><strong>{totalPoints}</strong></div>
+            </div>
             </div>
       <div className={styles.info}>
         {achievements && (
           <div className={styles.achInfo}>
-            <div className={styles.achievementDetails}>
+            <div className={styles.achievements}>
               {Object.entries(achievements).map(([achievementId, achievement]) => (
-                <div key={achievementId} className={styles.achievement}>
+                <div key={achievementId} className={styles.achievementDetails}>
                   <React.Fragment>
                     <div ><h3>{achievement.achievement_name}</h3></div>
                     <hr />

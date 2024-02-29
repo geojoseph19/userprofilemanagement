@@ -11,9 +11,8 @@ const Layout = (props) => {
       <Header />
       <div className={styles.layoutContainer}>
         {props.sidebar}
-        <div className={styles.contentBoard}>
-          <DisplayBoard childComponent={props.childComponent} />
-        </div>
+        <DisplayBoard childComponent={props.childComponent} />
+        
       </div>
     </div>
     

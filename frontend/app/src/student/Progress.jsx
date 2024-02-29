@@ -37,7 +37,7 @@ const Progress = () => {
             <div className={styles.progressInfo}>
               {[...Array(progress.current_semester)].map((_, semesterIndex) => {
                 const semesterCourses = progress.courses_completed.filter(course => course.semester === semesterIndex + 1);
-                if (semesterCourses.length === 0) return null; // Skip rendering if no courses completed in this semester
+                if (semesterCourses.length === 0) return null; 
                 return (
                   <div key={semesterIndex} className={styles.semester}>
                     <h2>{`Semester ${semesterIndex + 1}`}</h2>

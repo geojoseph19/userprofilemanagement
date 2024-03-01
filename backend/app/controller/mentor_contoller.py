@@ -37,11 +37,10 @@ def mentor_projects():
     return get_mentor_projects(username)
  
 # Route to get students under a given project
-@mentor_controller.route('/mentor/projects/students', methods=['GET'])
+@mentor_controller.route('/mentor/projects/students', methods=['POST'])
 def project_students():
     if not check_login('mentor'): return jsonify({'error': 'Unauthorized access! Please login first', 'status': 'failed'}),401
-    students = get_project_students()
-    return jsonify(students)
+    return get_project_students()
  
 # Route to add a new student under a project
 @mentor_controller.route('/mentor/projects/addStudent', methods=['POST'])

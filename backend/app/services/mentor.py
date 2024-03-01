@@ -71,12 +71,11 @@ def get_mentor_projects(mentor_id):
             with conn.cursor() as cursor:
                 cursor.execute('''SELECT cred_id FROM credentials WHERE username=%s''', (mentor_id,))
                 cred_id = cursor.fetchone()[0]
-                print(cred_id)
                 cursor.execute('''SELECT * FROM project WHERE m_id=%s''', (cred_id,))
                 projects = cursor.fetchall()
-                if projects:
-                    response=format_query_results(projects)
-                    return generate_response(response)
+                    
+                response=format_query_results(projects)
+                return jsonify({'response':projects}),200
     except psycopg2.Error as e:
         error_message=get_database_error_message(e.pgcode)
         return custom_response(None,'Error has occured!',error_message,'failed',400)
@@ -96,8 +95,8 @@ def get_project_students():
                     WHERE sp.prj_id = %s
                 ''', (project_id,))
                 students_in_project = cursor.fetchall()
-        response=format_query_results()
-        return generate_response(response,200)
+            print(students_in_project)
+            return jsonify({'response':students_in_project}),200
     except psycopg2.Error as e:
         error_message=get_database_error_message(e.pgcode)
         return custom_response(None,'Error has occured!',error_message,'failed',400)
@@ -111,12 +110,17 @@ def add_student_to_project():
         project_id = request.json.get('project_id')
         student_id = request.json.get('student_id')
         if not project_id:
-            return custom_response(None,'Error has occured!','Please provide a valid project ID','failed',400)
+            return jsonify({'error'}),400
         if not student_id:
-            return custom_response(None,'Error has occured!','Please provide a valid student ID','failed',400)
+            return jsonify({'error'}),400
+        
         try:
             with psycopg2.connect(**db_params) as conn:
                 with conn.cursor() as cursor:
+                    cursor.execute('select cred_id from credentials where username =%s',(student_id,))
+                    student_id = cursor.fetchone()[0]
+                    cursor.execute('select * from student where st_id = %s',(student_id,))
+                    stdata = cursor.fetchall()
                     # # Check if the student is already assigned to the project
                     # cursor.execute('SELECT EXISTS(SELECT 1 FROM st_project WHERE st_id=%s AND prj_id=%s)',(student_id,project_id))
                     # exists = cursor.fetchone()[0]
@@ -127,13 +131,10 @@ def add_student_to_project():
                     cursor.execute('INSERT INTO st_project(st_id, prj_id) VALUES (%s, %s)', (student_id, project_id))
                     conn.commit()
                     
-            return generate_response(None,200)
-        except errors.UniqueViolation as e:
-            return custom_response(None,'Error has occured!',f'Student {student_id} is already assigned to a project','failed',304)
-        except psycopg2.Error as e:
-            error_message=get_database_error_message(e.pgcode)
-            return custom_response(None,'Error has occured!',error_message,'failed',400)
- 
+            return jsonify({'success':'student added','student_data':stdata}),200
+        except Exception as e:
+            return jsonify({'error':'Unable to add student'}),400
+
  
 # Function to remove a student from a project
 def remove_student_from_project():
@@ -202,7 +203,7 @@ def add_project(m_id,project_id, project_name, start_date, end_date):
                                (project_name,project_id, start_date, end_date, m_id))
                 conn.commit()
                 
-        return custom_response(None,f'Project {project_id} ({project_name}) created!',None,'success',200)
+        return jsonify({'message':f'Project {project_id} ({project_name}) created!','project_id':project_id}),200
     except errors.UniqueViolation as e:
         return custom_response(None,'Project already exists and is active','Unique record violation','failed',400)
     except psycopg2.Error as e:

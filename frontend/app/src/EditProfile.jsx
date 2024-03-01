@@ -1,9 +1,9 @@
+
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styles from './EditProfile.module.css'; 
 
-const EditProfile = () => {
-  const [formData, setFormData] = useState(null); 
+const EditProfile = ({ formData, setFormData, fieldOrder, role }) => {
   const [errors, setErrors] = useState({}); 
 
   useEffect(() => {
@@ -36,7 +36,7 @@ const EditProfile = () => {
     e.preventDefault();
     if (validateForm()) {
       try {
-        const response = await axios.put('http://127.0.0.1:5000/api/v1/student/editProfile', formData);
+        const response = await axios.put(`http://127.0.0.1:5000/api/v1/${role}/editProfile`, formData);
         console.log(response.data);
         localStorage.setItem('userData', JSON.stringify(formData));
         alert("User details updated!");
@@ -57,8 +57,6 @@ const EditProfile = () => {
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
-
-  const fieldOrder = ['username', 'first_name', 'middle_name', 'last_name', 'sex', 'email_id', 'student_phone_no', 'address', 'guardian_name', 'guardian_phone_no', 'department', 'semester'];
 
   return (
     <div className={styles.Main}>

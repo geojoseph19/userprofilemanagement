@@ -19,27 +19,26 @@ import StudentSidebar from './student/StudentSidebar';
 function App() {
   const [formData, setFormData] = useState(null);
   
-  // Define editProfileProps for the "student" case
-  const editProfileProps = {
-    formData: formData,
-    setFormData: setFormData,
-    fieldOrder: ['username', 'first_name', 'middle_name', 'last_name', 'sex', 'email_id', 'student_phone_no', 'address', 'guardian_name', 'guardian_phone_no', 'department', 'semester'],
-    role: 'student'
-  };
-
   return (
     <Router>
-      <AppContent formData={formData} setFormData={setFormData} editProfileProps={editProfileProps} />
+      <AppContent formData={formData} setFormData={setFormData} />
     </Router>
   );
 }
 
-function AppContent({ formData, setFormData, editProfileProps }) {
+function AppContent({ formData, setFormData }) {
   const location = useLocation();
   const isLoginPage = location.pathname === '/';
   const isForgotPassword = location.pathname === '/forgot-password';
-  const searchParams = new URLSearchParams(location.search);
-  // const userRole = searchParams.get('role') || 'guest'; // Default role if not provided
+
+  // Retrieve user role from local storage
+  let userRole = localStorage.getItem('userRole');
+  userRole = userRole ? userRole.replace(/"/g, '') : 'guest'; // Default role if not provided
+
+  // Define fieldOrder based on userRole
+  const fieldOrder = userRole === 'student'
+    ? ['username', 'first_name', 'middle_name', 'last_name', 'sex', 'email_id', 'student_phone_no', 'address', 'guardian_name', 'guardian_phone_no', 'department', 'semester']
+    : ['username', 'first_name', 'last_name', 'email_id', 'mentor_phone_no', 'department', 'expertise'];
 
   return (
     <div>
@@ -49,7 +48,7 @@ function AppContent({ formData, setFormData, editProfileProps }) {
           <Route exact path="/" element={<AuthWrapper><LoginPage /></AuthWrapper>} />
           <Route path="/forgot-password" element={<AuthWrapper><ForgotPassword /></AuthWrapper>} />
           <Route path="/home/*" element={<Home />} />
-          <Route path="/edit-profile" element={<Layout sidebar={<StudentSidebar/>} childComponent={<EditProfile {...editProfileProps} />} />} />
+          <Route path="/edit-profile" element={<Layout sidebar={<StudentSidebar/>} childComponent={<EditProfile formData={formData} setFormData={setFormData} role={userRole} fieldOrder={fieldOrder} />} />} />
           <Route path="/student" >
             <Route path='home' element={<Layout sidebar={<StudentSidebar/>} childComponent={<StudentHome />}/>}/>
             <Route path='profile' element={<Layout sidebar={<StudentSidebar/>} childComponent={<StudentProfile />}/>} />
@@ -57,11 +56,18 @@ function AppContent({ formData, setFormData, editProfileProps }) {
             <Route path='projects' element={<Layout sidebar={<StudentSidebar/>} childComponent={<StudentProjects />} />} />
             <Route path='achievements' element={<Layout sidebar={<StudentSidebar/>} childComponent={<Achievements />} />} />
           </Route>
+          <Route path="/mentor" >
+            <Route path='home' element={<Layout sidebar={<StudentSidebar/>} childComponent={<MentorHome />}/>}/>
+            <Route path='edit-profile' element={<Layout sidebar={<StudentSidebar/>} childComponent={<EditProfile formData={formData} setFormData={setFormData} role={userRole} fieldOrder={fieldOrder} />} />} />
+            {/* Add mentor-specific routes if needed */}
+          </Route>
+          <Route path="/admin" element={<AdminHome />} />
         </Routes>
       </SharedUserDataProvider>
     </div>
   );
 }
+
 
 function Home() {
   const location = useLocation();

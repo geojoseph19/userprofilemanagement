@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styles from './Projects.module.css';
+import InfoCard from '../InfoCard';
 
 const StudentProjects = () => {
   const [projects, setProjects] = useState(null);
@@ -45,21 +46,17 @@ const StudentProjects = () => {
                 <tbody>
                   {Object.entries(projects).map(([projectId, project]) => (
                     <React.Fragment key={projectId}>
-                      <tr>
-                        <td colSpan="3"><strong>{project.project_name}</strong></td>
-                      </tr>
-                      <tr>
-                        <td colSpan="3"><hr /></td>
-                      </tr>
-                      {keyOrder.map((key) => (
-                        key !== 'project_name' && (
-                          <tr key={key}>
-                            <td><strong>{key.charAt(0).toUpperCase()+key.slice(1).replace(/_/g, ' ')}</strong></td>
-                            <td>:</td>
-                            <td>{key.includes('date') ? formatDate(project[key]) : project[key]}</td>
-                          </tr>
-                        )
-                      ))}
+                      <InfoCard title={project.project_name} content={(
+                        <>
+                          {keyOrder.map((key) => (
+                            key !== 'project_name' && (
+                              <React.Fragment key={key}>
+                                <p><strong>{key.charAt(0).toUpperCase()+key.slice(1).replace(/_/g, ' ')}</strong>: {key.includes('date') ? formatDate(project[key]) : project[key]}</p>
+                              </React.Fragment>
+                            )
+                          ))}
+                        </>
+                      )} />
                     </React.Fragment>
                   ))}
                 </tbody>

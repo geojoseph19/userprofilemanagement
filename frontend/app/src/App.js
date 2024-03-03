@@ -41,7 +41,7 @@ function AppContent({ formData, setFormData }) {
     { name: 'View full profile', to: '/student/profile', page: 'profile',icon:'account_circle' },
     { name: 'Course progress', to: '/student/progress', page: 'progress',icon:'donut_small' },
     { name: 'My Projects', to: '/student/projects', page: 'projects',icon:'content_paste'},
-    { name: 'My Achievements', to: '/student/achievements', page: 'achievements',icon:'emoji_events' }
+    { name: 'Achievements', to: '/student/achievements', page: 'achievements',icon:'emoji_events' }
   ];
 
   const Adminlinks = [

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styles from './Achievements.module.css';
+import InfoCard from '../InfoCard';
 
 const StudentAchievements = () => {
   const [achievements, setAchievements] = useState(null);
@@ -42,12 +43,7 @@ const StudentAchievements = () => {
             <div className={styles.achievements}>
               {Object.entries(achievements).map(([achievementId, achievement]) => (
                 <div key={achievementId} className={styles.achievementDetails}>
-                  <React.Fragment>
-                    <div ><h3>{achievement.achievement_name}</h3></div>
-                    <hr />
-                    <div >{achievement.description}</div>
-                    <hr />
-                  </React.Fragment>
+                  <InfoCard title={achievement.achievement_name} content={achievement.description}/>
                   <div className={styles.points}><strong>Points:</strong> {achievement.points}</div>
                 </div>
               ))}

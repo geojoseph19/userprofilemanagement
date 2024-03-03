@@ -85,7 +85,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     width: fit-content;
-    justify-content: center;
+    justify-content: left;
     width: 100%;
   }
 
@@ -93,7 +93,7 @@
     background-color: white;
     border: 1px solid black;
     border-radius: 10px;
-    padding: 3%;
+    padding: 2%;
     flex-grow: 1;
     max-width: 30%;
     line-height: 200%;

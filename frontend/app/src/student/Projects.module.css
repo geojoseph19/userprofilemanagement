@@ -1,16 +1,22 @@
 
-  .Main{
+.Main {
   background-color: #040F49;
   width: 100%;
-  height: 100vh;
+  min-height: 100vh; /* Change height to min-height */
   color: white;
-  margin-left: 2%;
-  }/*Main student container*/
+  position: relative; /* Add position: relative */
+  display: flex; /* Use flexbox */
+  flex-direction: column; /* Arrange children in a column */
+}
 
-  .Main h1{
-    width: fit-content;
-  }
   
+.Main h1{
+  width: fit-content;
+  display: flex;
+  flex-shrink: 1;
+  margin-top: 2%;
+  margin-left: 2%;
+}
   @keyframes floatUp {
     from {
       transform: translateY(400px); /* Initial position: move 100px down */

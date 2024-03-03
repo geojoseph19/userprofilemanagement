@@ -1,11 +1,9 @@
-// EditProfile.js
-
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import styles from './EditProfile.module.css'; 
+import styles from './EditProfile.module.css';
 
 const EditProfile = ({ formData, setFormData, fieldOrder, role }) => {
-  const [errors, setErrors] = useState({}); 
+  const [errors, setErrors] = useState({});
 
   useEffect(() => {
     const storedData = localStorage.getItem('userData');
@@ -44,7 +42,7 @@ const EditProfile = ({ formData, setFormData, fieldOrder, role }) => {
         console.log(response.data);
         localStorage.setItem('userData', JSON.stringify(formData));
         alert("User details updated!");
-        console.log('The user is a ',role)
+        console.log('The user is a ', role)
       } catch (error) {
         console.error('Error updating user data:', error);
       }
@@ -78,7 +76,11 @@ const EditProfile = ({ formData, setFormData, fieldOrder, role }) => {
             {fieldOrder.map(key => (
               <div key={key}>
                 <label htmlFor={key}>{key.charAt(0).toUpperCase() + key.slice(1).replace(/_/g, ' ')}</label>
-                <input type="text" id={key} name={key} value={formData[key]} onChange={handleChange} />
+                {key === 'semester' || key === 'department' || key === 'username' ? (
+                  <input type="text" id={key} name={key} value={formData[key]} onChange={handleChange} disabled />
+                ) : (
+                  <input type="text" id={key} name={key} value={formData[key]} onChange={handleChange} />
+                )}
                 {errors[key] && <p className={styles.error}>{errors[key]}</p>}
               </div>
             ))}

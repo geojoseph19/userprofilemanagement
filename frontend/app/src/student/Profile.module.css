@@ -1,23 +1,23 @@
 
 
-.mainContainer {
-    background-color: #040F49;
-    color: white;
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: end;
-    margin-left: 2%;
-    flex: 1;
-  }
-  
-  .mainContainer h1 {
-    padding-left: 5%;
-    padding-bottom: 2%;
-    font-size: 3rem; /* Updated font size */
-  }
+.Main {
+  background-color: #040F49;
+  width: 100%;
+  min-height: 100vh; /* Change height to min-height */
+  color: white;
+  position: relative; /* Add position: relative */
+  display: flex; /* Use flexbox */
+  flex-direction: column; /* Arrange children in a column */
+}
 
+  
+.Main h1{
+  width: fit-content;
+  display: flex;
+  flex-shrink: 1;
+  margin-top: 2%;
+  margin-left: 2%;
+}
   @keyframes floatUp {
     from {
       transform: translateY(400px); /* Initial position: move 100px down */

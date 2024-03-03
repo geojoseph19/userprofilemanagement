@@ -58,3 +58,13 @@
   border: 1 px solid transparent;
   border-radius: 10px;
 }
+
+.icon {
+  display: flex;
+  align-items: center;
+}
+ 
+.icon span {
+  margin-right: 8px;
+  margin-top: -4px;
+}

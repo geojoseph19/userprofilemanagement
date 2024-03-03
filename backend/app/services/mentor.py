@@ -175,13 +175,18 @@ def remove_student_achievement(student_id, achievement_id):
     try:
         with psycopg2.connect(**db_params) as conn:
             with conn.cursor() as cursor:
+                cursor.execute('SELECT * FROM std_ach WHERE st_id=%s AND ach_id=%s',(student_id,achievement_id,))
+                result=cursor.fetchall()
+                if not result:
+                    return custom_response(None,'No such entry exists!','Record not found!','failed',404) 
+
+        with psycopg2.connect(**db_params) as conn:
+            with conn.cursor() as cursor:
                 # If the entry exists, remove it from std_ach
-                cursor.execute('DELETE FROM std_ach WHERE st_id=%s AND ach_id=%s', (student_id, achievement_id))
+                cursor.execute('DELETE FROM std_ach WHERE st_id=%s AND ach_id=%s', (student_id, achievement_id,))
                 conn.commit()
                 
         return custom_response(None,f'Achievement {achievement_id} removed for student {student_id}',None,'success',200)
-    except errors.NoData as e:  
-        return custom_response(None,'No such entry exists!','Record not found!','failed',404)  # Return appropriate response with 404 status code
     except psycopg2.Error as e:
         return custom_response(None,'Database error!',f'{e.pgcode}','failed',400)
         

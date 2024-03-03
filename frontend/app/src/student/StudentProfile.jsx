@@ -15,7 +15,7 @@ const StudentProfile = () => {
  
   return (
     <>
-    <div className={styles.mainContainer}>
+    <div className={styles.Main}>
       <h1>My Profile</h1>
       <div className={styles.info}>
         <h3>Personal Details</h3>

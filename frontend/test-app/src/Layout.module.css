@@ -12,8 +12,8 @@
 }
 
 .contentBoard {
-  flex-grow: 1;
+
   width: 100%;
-  position: relative;
-  margin-right: 1%;
+  background-color: #040f49;
+
 }

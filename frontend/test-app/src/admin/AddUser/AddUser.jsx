@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styles from './AddUser.module.css';
 import axios from 'axios';
+import { toast, ToastContainer } from 'react-toastify';
 
 const AddUser = () => {
   const [activeTab, setActiveTab] = useState('admin');
@@ -57,12 +58,11 @@ const AddUser = () => {
 
       console.log('User created successfully:', response.data);
       
-      setSuccessMessage('User created successfully');
-      setErrorMessage('');
+      toast.success("User created successfully",{ autoClose : 5000});
+ 
     } catch (error) {
       console.error('Error creating user:', error);
-      setErrorMessage('Error creating user. Please try again.');
-      setSuccessMessage('');
+      toast.error("Error creating user. please try again.",{ autoClose : 5000});
     } finally {
       setLoading(false);
     }
@@ -330,6 +330,7 @@ const AddUser = () => {
           </div>
         </div>
       </div>
+      <ToastContainer/>
     </div>
   );
 };

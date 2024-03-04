@@ -5,6 +5,7 @@ import axios from 'axios'; // Import Axios
 function Logout() {
   const handleLogout = async () => {
     try {
+
       localStorage.clear();
       const response = await axios.post('http://127.0.0.1:5000/api/v1/logout');
 
@@ -13,7 +14,7 @@ function Logout() {
         window.location.href = '/';
       } else {
         // Handle logout error
-        alert('Logout failed');
+        alert('Couldn\'t logout at the moment.\nPlease try again');
       }
     } catch (error) {
       console.error('Error logging out:', error.message);

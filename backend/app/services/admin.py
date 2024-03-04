@@ -83,6 +83,8 @@ def add_new_admin():
         content_type = "newuser"
         data = password
         send_mail(adminMail,username,admin_fname,admin_mname,admin_lname,content_type,data)
+
+        print("New user added --------- ",username)
         return jsonify({'status': 'Success!', 'message': 'New admin added!'}), 200
     except AttributeError as e:
         return jsonify({'error': 'Missing data', 'message': 'Please provide complete data'}), 400
@@ -128,6 +130,8 @@ def fun_admin_create_mentor():
     content_type = "newuser"
     data = password
     send_mail(email,username,m_fname,m_mname,m_lname,content_type,data)
+
+    print("New user added --------- ",username)
 
     return jsonify({'message': 'Mentor record added'})
 
@@ -192,7 +196,9 @@ def fun_admin_create_student():
     data = password
     content_type = "newuser"
  
-    #send_mail(email,username,fname,mname,lname,content_type,data)
+    send_mail(email,username,fname,mname,lname,content_type,data)
+
+    print("New user added --------- ",username)
  
     return jsonify({'message': 'Student record added'})
 

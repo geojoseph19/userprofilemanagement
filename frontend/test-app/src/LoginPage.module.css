@@ -12,10 +12,6 @@
   }
 }
 
-
-
-
-
 .login-container {
   display: flex;
   justify-content: center; /* Horizontally center content */
@@ -36,6 +32,7 @@
   top: 219px;
   left: 289px;
   padding: 5% 20px 20px 5%; /* top right bottom left */
+  margin-left: 2%;
 
   /* Add blur effect */
   backdrop-filter: blur(4px); /* Adjust the blur radius as needed */
@@ -55,6 +52,7 @@
   top: 219px;
   left: 734px;
   padding: 5% 20px 20px 5%; /* top right bottom left */
+  margin-right: 2%;
 
   display: block; /* Use Flexbox */
   align-items: center; /* Vertically center the content */
@@ -155,9 +153,9 @@
 }
 
 .eye-icon {
-  position: absolute;
-  top: 55%;
-  right: 170px;
+  position: relative;
+  top: -20px;
+  right: -252px;
   transform: translateY(-50%);
   cursor: pointer;
   color: white;
@@ -196,3 +194,55 @@
   margin-top: 30px;
 }
 
+@media (max-width: 768px) {
+  .login-container {
+    flex-direction: column; /* Stack items vertically on smaller screens */
+  }
+
+  .login-left-container,
+  .login-right-container {
+
+    width: 80%; /* Make containers full width on smaller screens */
+    border-radius: 0; /* Remove border radius on smaller screens */
+    border-left: none; /* Remove left border on smaller screens */
+    border-right: none; /* Remove right border on smaller screens */
+    order: 2; /* Change the order of the containers */
+    margin-left: 2%;
+    margin-right: 2%;
+  }
+  .login-left-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    border-bottom-left-radius: 50px; /* Restore bottom border radius for the right container */
+    border-bottom-right-radius: 50px;
+    margin-bottom: 5%;
+  }
+  .login-left-container h1{
+    font-size: 30px;
+    margin: 0%;
+
+  }
+
+  .login-right-container {
+    height: auto;
+    display: flex;
+    border-top: none; /* Remove top border on smaller screens */
+    order: 1; /* Change the order of the containers */
+    border-top-left-radius: 50px; /* Restore bottom border radius for the right container */
+    border-top-right-radius: 50px;
+    margin-top: 5%;
+  }
+  .login-right-container h1 {
+    font-size: 30px;
+    line-height: 140%;
+    padding: 0%;
+    
+  }
+
+  .eye-icon {
+    
+    right: -252px; /* Adjust position for smaller screens */
+  }
+
+}

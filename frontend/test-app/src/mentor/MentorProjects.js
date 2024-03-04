@@ -18,6 +18,7 @@ const MentorProfile = () => {
     end_date: new Date() // Initialize with current date
   });
   const [showAddProjectForm, setShowAddProjectForm] = useState(false);
+  const [projectsVisible, setProjectsVisible] = useState(true); // Track if project cards are visible
 
   useEffect(() => {
     const storedData = localStorage.getItem('userData');
@@ -62,6 +63,7 @@ const MentorProfile = () => {
 
   const handleProjectClick = (project) => {
     setSelectedProject(project);
+    setProjectsVisible(false); // Hide project cards when a project is selected
 
     // Fetch students assigned to the selected project
     axios.post('http://127.0.0.1:5000/api/v1/mentor/projects/students', {
@@ -77,6 +79,7 @@ const MentorProfile = () => {
 
   const handleClearSelection = () => {
     setSelectedProject(null);
+    setProjectsVisible(true); // Show project cards when selection is cleared
   };
 
   const handleAddStudent = () => {
@@ -100,23 +103,6 @@ const MentorProfile = () => {
     });
   };
   
-  const handleRemoveStudent = (studentId) => {
-    // Remove student from the selected project
-    axios.delete('http://127.0.0.1:5000/api/v1/mentor/projects/removeStudent', {
-      data: {
-        student_id: studentId,
-        project_id: selectedProject[0]
-      }
-    })
-    .then(response => {
-      // Update project students after successful removal
-      setProjectStudents(projectStudents.filter(student => student[0] !== studentId));
-    })
-    .catch(error => {
-      console.error('Error removing student:', error);
-    });
-  };
-
   const handleInputChange = (name, value) => {
     setNewProjectData(prevData => ({
       ...prevData,
@@ -162,65 +148,41 @@ const MentorProfile = () => {
     });
   };
 
+  const handleRemoveStudent = (studentId) => {
+    // Remove student from the selected project
+    axios.delete('http://127.0.0.1:5000/api/v1/mentor/projects/removeStudent', {
+      data: {
+        student_id: studentId,
+        project_id: selectedProject[0]
+      }
+    })
+    .then(response => {
+      // Update project students after successful removal
+      setProjectStudents(projectStudents.filter(student => student[0] !== studentId));
+    })
+    .catch(error => {
+      console.error('Error removing student:', error);
+    });
+  };
+
   return (
     <div className={styles.mainContainer}>
       <h1>Projects</h1>
       <div className={styles.infoContainer}>
-        {selectedProject ? (
-          <div className={`${styles['mentor-project-card']} ${styles.expanded}`}>
-            <h3 style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingLeft: '0px' }}>
-              {selectedProject[1]}
-              <span style={{ cursor: 'pointer', fontSize: '45px' }} className="material-symbols-outlined" onClick={handleClearSelection}>close</span>
-            </h3>
-            <p>Start Date: {selectedProject[2]}</p>
-            <p>End Date: {selectedProject[3]}</p>
-            <h4 className={styles['mentor-h4']}>Students</h4>
-
-            {projectStudents && projectStudents.map(student => (
-            <div key={student && student[0]} style={{width:'100%'}}>
-              {student && Array.isArray(student) && student.length >= 4 ? (
-                <p style={{ width: '100%', display: 'flex', alignItems: 'center' }}>
-                <span>● &nbsp; {student[0]} : {student[1]} {student[2]} {student[3]}</span>
-                <button className={styles['mentor-btn']} style={{ marginLeft: 'auto' }} onClick={() => handleRemoveStudent(student[0])}>Remove</button>
-              </p>
-          
-              
-              ) : (
-                <p>Error: Invalid student data</p>
-              )} 
-              
-            </div>
-          ))}<p style={{display:'flex',justifyContent:'center'}}>---------------</p>
-   <h4 className={styles['mentor-h4']}>Add Students</h4>
-            <div style={{display:'flex', gap:'2%', marginBottom:'4%',width:'100%'}}>
-           
-              <input
-                type="text"
-                value={newStudentId}
-                onChange={(e) => setNewStudentId(e.target.value)}
-                placeholder="Enter Student ID"
-              />
-              <button className={styles['mentor-btn']} onClick={handleAddStudent}>Add</button>
-            </div>
-            <button className={styles['mentor-delete-btn']} onClick={() => handleRemoveProject(selectedProject[0])}>Delete Project</button>
+        {projectsVisible && !showAddProjectForm && projects.map(project => (
+          <div 
+            key={project[0]} 
+            className={styles['mentor-project-card']} 
+            onClick={() => handleProjectClick(project)}
+          >
+            <h3 style={{color:'rgb(49, 49, 49)'}}>{project[0]} : {project[1]}</h3>
           </div>
-        ) : (
-          projects.map(project => (
-            <div 
-              key={project[0]} 
-              className={styles['mentor-project-card']} 
-              onClick={() => handleProjectClick(project)}
-            >
-              <h3 style={{color:'rgb(49, 49, 49)'}}>{project[0]} : {project[1]}</h3>
-            </div>
-          ))
-        )}
+        ))}
         {!selectedProject && !showAddProjectForm && (
           <div className={styles['mentor-project-card']} onClick={() => setShowAddProjectForm(true)}>
             <span 
               className="material-symbols-outlined" 
               style={{ color: 'grey', fontSize: '600%', cursor: 'pointer' }} 
-              
             >
               add
             </span>
@@ -257,8 +219,43 @@ const MentorProfile = () => {
                 placeholderText="End Date (DD/MM/YYYY)"
               />
               <button className={styles['mentor-btn']} style={{width:'100%'}} onClick={handleAddProject}>Add</button>
-              
             </div>
+          </div>
+        )}
+        {selectedProject && (
+          <div className={`${styles['mentor-project-card']} ${styles.expanded}`}>
+            <h3 style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingLeft: '0px' }}>
+              {selectedProject[1]}
+              <span style={{ cursor: 'pointer', fontSize: '45px' }} className="material-symbols-outlined" onClick={handleClearSelection}>close</span>
+            </h3>
+            <p>Start Date: {selectedProject[2]}</p>
+            <p>End Date: {selectedProject[3]}</p>
+            <h4 className={styles['mentor-h4']}>Students</h4>
+
+            {projectStudents && projectStudents.map(student => (
+              <div key={student && student[0]} style={{width:'100%'}}>
+                {student && Array.isArray(student) && student.length >= 4 ? (
+                  <p style={{ width: '100%', display: 'flex', alignItems: 'center' }}>
+                    <span>● &nbsp; {student[0]} : {student[1]} {student[2]} {student[3]}</span>
+                    <button className={styles['mentor-btn']} style={{ marginLeft: 'auto' }} onClick={() => handleRemoveStudent(student[0])}>Remove</button>
+                  </p>
+                ) : (
+                  <p>Error: Invalid student data</p>
+                )}
+              </div>
+            ))}
+            <p style={{display:'flex',justifyContent:'center'}}>---------------</p>
+            <h4 className={styles['mentor-h4']}>Add Students</h4>
+            <div style={{display:'flex', gap:'2%', marginBottom:'4%',width:'100%'}}>
+              <input
+                type="text"
+                value={newStudentId}
+                onChange={(e) => setNewStudentId(e.target.value)}
+                placeholder="Enter Student ID"
+              />
+              <button className={styles['mentor-btn']} onClick={handleAddStudent}>Add</button>
+            </div>
+            <button className={styles['mentor-delete-btn']} onClick={() => handleRemoveProject(selectedProject[0])}>Delete Project</button>
           </div>
         )}
       </div>

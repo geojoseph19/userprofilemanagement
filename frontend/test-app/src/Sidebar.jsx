@@ -1,6 +1,8 @@
+// Sidebar.js
+
 import React from 'react';
 import { Link } from 'react-router-dom';
-import styles from './Sidebar.module.css';
+import styles from './Sidebar.module.css'; // Assuming you have a CSS module for styling
 
 const Sidebar = ({ links, activeTab, handleTabClick }) => {
   return (
@@ -13,7 +15,10 @@ const Sidebar = ({ links, activeTab, handleTabClick }) => {
               className={`${activeTab === link.page ? styles.active : ''}`}
               onClick={() => handleTabClick(link.page)}
             >
-              {link.name}
+              <div className={styles.icon}>
+                <span className="material-symbols-outlined">{link.icon}</span> 
+                {link.name}
+              </div>
             </Link>
           </li>
         ))}

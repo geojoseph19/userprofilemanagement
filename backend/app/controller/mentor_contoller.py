@@ -14,7 +14,7 @@ def mentor_home():
     return fun_mentor_home()
 
 # Route to update mentor profile
-@mentor_controller.route('/mentor/profile', methods=['PUT'])
+@mentor_controller.route('/mentor/editProfile', methods=['PUT'])
 def update_profile():
     if not check_login('mentor'): return jsonify({'error': 'Unauthorized access! Please login first', 'status': 'failed'}),401
     request_data = request.json

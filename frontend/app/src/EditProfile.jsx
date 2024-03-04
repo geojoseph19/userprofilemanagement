@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styles from './EditProfile.module.css';
+import {toast,ToastContainer} from 'react-toastify'
 
 const EditProfile = ({ formData, setFormData, fieldOrder, role }) => {
   const [errors, setErrors] = useState({});
@@ -41,10 +42,11 @@ const EditProfile = ({ formData, setFormData, fieldOrder, role }) => {
 
         console.log(response.data);
         localStorage.setItem('userData', JSON.stringify(formData));
-        alert("User details updated!");
+        toast.success("User profile has been updated",{autoClose:5000})
         console.log('The user is a ', role)
       } catch (error) {
         console.error('Error updating user data:', error);
+        toast.error("Couldn\'t update user profile. Please try again!",{autoClose:5000})
       }
     }
   };
@@ -88,6 +90,7 @@ const EditProfile = ({ formData, setFormData, fieldOrder, role }) => {
           </form>
         )}
       </div>
+      <ToastContainer/>
     </div>
   );
 };

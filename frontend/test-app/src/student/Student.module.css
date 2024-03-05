@@ -1,12 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 
-.Main{
-background-color: #040F49;
-width: 100%;
-height: 100vh;
-color: white;
-}/*Main student container*/
 
+.Main {
+  background-color: #040F49;
+  width: 100%;
+  min-height: 100vh; /* Change height to min-height */
+  color: white;
+  position: relative; /* Add position: relative */
+  display: flex; /* Use flexbox */
+  flex-direction: column; /* Arrange children in a column */
+}
+
+  
+.Main h1{
+  width: fit-content;
+  display: flex;
+  flex-shrink: 1;
+  margin-top: 2%;
+  margin-left: 2%;
+}
 @keyframes floatUp {
   from {
     transform: translateY(400px); /* Initial position: move 100px down */
@@ -21,11 +34,11 @@ color: white;
 .info {
   background-color: whitesmoke;
   width: 100%;
-  height: 100%;
+  height: 75vh;
   border-radius: 30px;
   border-bottom-left-radius: 0%;
   border-bottom-right-radius: 0%;
-  margin-top: 175px;
+  margin-top: 15%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -34,32 +47,30 @@ color: white;
 
 .info *{
   color: black;
+  font-size: x-large;
 }
 
 
 .info1 {
   text-align: center;
-  line-height: 200%;
+  line-height: 120%;
 }
 
 
-.infoPanel{
-  width: 100%;
-  height: 500px;
-  background-color: whitesmoke;
-}
+
 
   .profilePicContainer{
     width: 300px;
     height: 300px;
     background-color: gray;
     border-radius: 50%;
-    border: 5px solid white;
+    border: 1px solid white;
     overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: -150px;
+    box-shadow: 2px;
   }
      
   .material-symbols-outlined {
@@ -87,22 +98,6 @@ color: white;
     line-height: 150%;
   }
   
-  .role{
-      font-family: Poppins;
-  }
-  
-  
-  
-  /* .studentDash{
-    width: 200px;
-    display: flex;
-    justify-content: flex-start;
-    height: 100vh;
-    display: flex;
-    justify-content: flex-start;
-  } */
-
-
   .mainContainer {
     width: 100vw; 
     height: 100vh; 
@@ -117,12 +112,15 @@ color: white;
     margin-left: 30px;
   }
 
-  
-  .userData{
+  .homeDetails{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
     width: 100%;
-    max-height: max-content;
-    margin: 0%;
   }
+  
+  
    .contentBoard{
     flex-grow: 1;
     width: 100%;
@@ -133,13 +131,34 @@ color: white;
     margin-left: 0%;
    }
 
-   .studentDash{
-    background-color: white;
-   }
-
+   
    .basicDetails{
     background-color: white;
-    border-radius: 10%;
+    border: 2px solid black;
+    border-radius: 10px;
     padding: 10%;
-    width: max-content;
+    width: 100%;
+    line-height: 120%;
    }
+
+   .projectDetails{
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 3%;
+    width: fit-content;
+    display: flex;
+    line-height: 150%;
+    margin: 5%;
+   }
+   
+   .wheel{
+    width: 20%;
+    background-color: white;
+    border: 1px solid black;
+    padding: 0.5%;
+    margin: 2%;
+   border-radius: 10px;
+   text-align: center;
+   color: lightseagreen;
+  }

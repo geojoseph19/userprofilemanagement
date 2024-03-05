@@ -112,7 +112,7 @@
 .adminAddress{
     width: 113%;
 }
-.adminFormTable th, td {
+.adminFormTable th,.adminFormTable td {
     padding: 0.5%;
     padding-left: 0.05%;
     text-align: left;
@@ -132,7 +132,7 @@
     color: navy;
   }
   
-.adminForm input, select, textarea {
+.adminForm input,.adminForm select,.adminForm textarea {
     width: 80%;
     padding: 8px;
     display: block;

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styles from './Achievements.module.css';
+import InfoCard from '../InfoCard';
 
 const StudentAchievements = () => {
   const [achievements, setAchievements] = useState(null);
@@ -29,29 +30,25 @@ const StudentAchievements = () => {
 
   return (
     <div className={styles.Main}>
-      <div className="pageTitle"><h1>My Achievements</h1></div>
+      <div className={styles.pageTitle}><h1>My Achievements</h1>
       <div className={styles.totalPoints}>
               <h2>Total points</h2>
               <hr />
-              <div>{totalPoints}</div>
+              <div><strong>{totalPoints}</strong></div>
+            </div>
             </div>
       <div className={styles.info}>
-        {achievements && (
-          <div className={styles.achInfo}>
-            <div className={styles.achievementDetails}>
+        {achievements && ( 
+            <div className={styles.achievements}>
               {Object.entries(achievements).map(([achievementId, achievement]) => (
-                <div key={achievementId} className={styles.achievement}>
-                  <React.Fragment>
-                    <div ><h3>{achievement.achievement_name}</h3></div>
-                    <hr />
-                    <div >{achievement.description}</div>
-                    <hr />
-                  </React.Fragment>
+                <div key={achievementId} className={styles.achievementDetails}>
+                  <InfoCard title={achievement.achievement_name} content={achievement.description}/>
+                  <hr />
                   <div className={styles.points}><strong>Points:</strong> {achievement.points}</div>
                 </div>
               ))}
             </div>
-          </div>
+          
         )}
       </div>
     </div>

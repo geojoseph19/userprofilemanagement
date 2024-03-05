@@ -1,23 +1,23 @@
 import React, { useContext, useEffect, useState } from "react";
 import { SharedUserContext } from "../UserContextShare";
 import styles from './Profile.module.css'
-
+ 
 const StudentProfile = () => {
   const { sharedUserData } = useContext(SharedUserContext);
   const [studentData, setStudentData] = useState(sharedUserData);
-
+ 
   useEffect(() => {
     const storedData = localStorage.getItem('userData');
     if (storedData) {
       setStudentData(JSON.parse(storedData));
     }
   }, []);
-
+ 
   return (
     <>
-    <div className={styles.mainContainer}>
+    <div className={styles.Main}>
       <h1>My Profile</h1>
-      <div className={styles.infoContainer}>
+      <div className={styles.info}>
         <h3>Personal Details</h3>
         <hr />
         <div className={styles.details}>
@@ -54,10 +54,11 @@ const StudentProfile = () => {
                   <td><strong>Permanent Address</strong></td>
                   <td>:</td>
                   <td>
-                    {studentData.address &&
-                      studentData.address.split(',').map((line, index) => (
-                        <span key={index}>{line.trim()+' ,'}</span>
-                      ))}
+                    {studentData.address && typeof studentData.address === 'object' ? (
+                      <div>{`${studentData.address.address_line}, ${studentData.address.city}, ${studentData.address.state}, ${studentData.address.country}, PIN: ${studentData.address.pincode}`}</div>
+                    ) : (
+                      <div>{studentData.address}</div>
+                    )}
                   </td>
                 </tr>
                 <tr>
@@ -93,5 +94,6 @@ const StudentProfile = () => {
   
   );
 }
-
+ 
 export default StudentProfile;
+ 

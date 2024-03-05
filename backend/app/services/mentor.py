@@ -80,7 +80,8 @@ def get_mentor_projects(mentor_id):
                 return jsonify({'response':projects}),200
     except psycopg2.Error as e:
         error_message=get_database_error_message(e.pgcode)
-        return custom_response(None,'Error has occured!',error_message,'failed',400)
+        return jsonify({'error':'Unable to fetch mentor projects'}),400
+        #return custom_response(None,'Error has occured!',error_message,'failed',400)
  
        
  
@@ -101,7 +102,7 @@ def get_project_students():
             return jsonify({'response':students_in_project}),200
     except psycopg2.Error as e:
         error_message=get_database_error_message(e.pgcode)
-        return custom_response(None,'Error has occured!',error_message,'failed',400)
+        return jsonify({'error':'Unable to fetch students in project'}),400
         
  
 # Function to add a new student under a project
@@ -114,7 +115,7 @@ def add_student_to_project():
         if not project_id:
             return jsonify({'error'}),400
         if not student_id:
-            return jsonify({'error'}),400
+            return jsonify({'error':'Enter student ID'}),400
         
         try:
             with psycopg2.connect(**db_params) as conn:
@@ -127,7 +128,7 @@ def add_student_to_project():
                     cursor.execute('SELECT EXISTS(SELECT 1 FROM st_project WHERE st_id=%s AND prj_id=%s)',(student_id,project_id))
                     exists = cursor.fetchone()[0]
                     if exists:
-                        return jsonify({'message':'The student is already assigned to this project!'})
+                        return jsonify({'error':f'{student_id} is already assigned to this project!'}),400
                     
                     # If the student is not already assigned, insert into st_project
                     cursor.execute('INSERT INTO st_project(st_id, prj_id) VALUES (%s, %s)', (student_id, project_id))
@@ -145,15 +146,15 @@ def remove_student_from_project():
         student_id = request.json.get('student_id')
     except: return custom_response(None,'Error has occured!','Please provide valid credentials','failed',400)
     if not project_id:
-        return custom_response(None,'Missing Credential','Project ID not found','failed',404)
+        return jsonify({'error','Project ID not found'}),400
     if not student_id:
-        return custom_response(None,'Missing credential','Student ID not found','failed',404)
+        return jsonify({'error','Enter student ID'}),400
     try:
         with psycopg2.connect(**db_params) as conn:
             with conn.cursor() as cursor:
                 cursor.execute('DELETE FROM st_project WHERE st_id=%s AND prj_id=%s', (student_id, project_id))
                 conn.commit()
-        return custom_response(None,f'Student {student_id} removed from project {project_id}',None,'success',200)
+        return jsonify({'success':f'Student {student_id} removed from project {project_id}'}),200
     except errors.NoData:
         return custom_response(None,'No such entry exists!','Record not found','failed',404)
     except psycopg2.Error as e:
@@ -170,9 +171,9 @@ def add_student_achievement(student_id, achievement_id):
                 conn.commit()
         return custom_response(None,f'Achievement {achievement_id} awarded to student {student_id}',None,'success',200)
     except errors.UniqueViolation:
-        return custom_response(None,f'Student {student_id} already has achievement {achievement_id}',None,'success',400)
+        return jsonify({'error':f'Student {student_id} already has achievement {achievement_id}'}),400
     except psycopg2.Error as e:
-        return custom_response(None,'Database error!',f'{e.pgcode}','failed',400)
+        return jsonify({'error':'Unable to add achievement'}),400
     
  
 #Function to remove an achievement from student
@@ -183,18 +184,22 @@ def remove_student_achievement(student_id, achievement_id):
             with conn.cursor() as cursor:
                 cursor.execute('SELECT * FROM std_ach WHERE st_id=%s AND ach_id=%s',(student_id,achievement_id,))
                 result=cursor.fetchall()
-                if not result:
-                    return custom_response(None,'No such entry exists!','Record not found!','failed',404)
- 
-        with psycopg2.connect(**db_params) as conn:
-            with conn.cursor() as cursor:
-                # If the entry exists, remove it from std_ach
-                cursor.execute('DELETE FROM std_ach WHERE st_id=%s AND ach_id=%s', (student_id, achievement_id,))
-                conn.commit()
-                
-        return custom_response(None,f'Achievement {achievement_id} removed for student {student_id}',None,'success',200)
-    except psycopg2.Error as e:
-        return custom_response(None,'Database error!',f'{e.pgcode}','failed',400)
+    except:
+        return jsonify({'error':'Record not found'}),400
+    
+    if result:
+        try:
+            with psycopg2.connect(**db_params) as conn:
+                with conn.cursor() as cursor:
+                    # If the entry exists, remove it from std_ach
+                    cursor.execute('DELETE FROM std_ach WHERE st_id=%s AND ach_id=%s', (student_id, achievement_id,))
+                    conn.commit()
+                    
+            return custom_response(None,f'Achievement {achievement_id} removed for student {student_id}',None,'success',200)
+        except psycopg2.Error as e:
+            return jsonify({'error':'Unable to remove achievement'}),400
+    else:
+        return jsonify({'error':'Record not found'}),400
         
  
     

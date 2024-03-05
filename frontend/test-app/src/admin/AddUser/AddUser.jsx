@@ -226,7 +226,7 @@ const AddUser = () => {
                       <td>
                         <label>
                           First Name:
-                          <input type="text" name="first_name" placeholder='Enter yur first name'/>
+                          <input type="text" name="first_name" placeholder='Enter your first name'/>
                         </label>
                       </td>
                       <td>

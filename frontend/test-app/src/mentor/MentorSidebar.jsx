@@ -8,7 +8,7 @@ const MentorSidebar = () => {
     { name: 'Home', to: '/mentor/home', page: 'home', icon: 'home' },
     { name: 'View full profile', to: '/mentor/profile', page: 'Profile', icon: 'account_circle' },
     { name: 'Projects', to: '/mentor/projects', page: 'Projects', icon: 'content_paste' },
-    { name: 'Achievements', to: '/mentor/achievements', page: 'Achievements', icon: 'content_paste' }
+    { name: 'Achievements', to: '/mentor/achievements', page: 'Achievements', icon: 'emoji_events' }
   ];
  
   // State to manage the active tab

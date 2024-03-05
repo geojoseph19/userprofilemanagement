@@ -1,16 +1,14 @@
 import React, { useState, useEffect, useContext } from "react";
 import { SharedUserContext } from '../UserContextShare';
-
 import { useNavigate } from "react-router-dom";
 import styles from "./Student.module.css";
 import axios from "axios";
 axios.defaults.withCredentials = true;
 
-
 function StudentHome() {
   const [studentData, setStudentData] = useState(null);
   const navigate = useNavigate();
-  const { setSharedUserData } = useContext(SharedUserContext);
+  const { setSharedUserData, projectDetails } = useContext(SharedUserContext);
 
   useEffect(() => {
     const fetchStudentData = async () => {
@@ -23,24 +21,24 @@ function StudentHome() {
         const loggedUsername = JSON.parse(rawloggedUsername);
         const loggedUserRole = JSON.parse(rawloggedUserRole);
 
-        if (loggedUserRole === 'student'){
-          if(storedData){
-            if(storedData.username === loggedUsername){
+        if (loggedUserRole === 'student') {
+          if (storedData) {
+            if (storedData.username === loggedUsername) {
               setStudentData(storedData);
               setSharedUserData(storedData);
 
-            }else{
+            } else {
               // 404 unauthorized
               window.location.href = '/';
             }
-          }else{
+          } else {
             const response = await axios.get("http://127.0.0.1:5000/api/v1/student/home");
             const responseData = response.data.response;
             setStudentData(responseData);
             localStorage.setItem('userData', JSON.stringify(responseData));
             setSharedUserData(responseData);
           }
-        }else{
+        } else {
 
           // 404 unauthorized
           window.location.href = '/';
@@ -52,7 +50,14 @@ function StudentHome() {
     };
 
     fetchStudentData();
-  }, [navigate, setSharedUserData]);
+  }, [navigate, setSharedUserData, projectDetails]);
+
+  // Array containing the fields to display
+  const fieldsToDisplay = [
+    { label: "Username", key: "username" },
+    { label: "Department", key: "department" }
+    // You can add more fields here if needed in the future
+  ];
 
   return (
     <>
@@ -82,37 +87,23 @@ function StudentHome() {
                 <div className={styles.sectionTitle}>
                   <h2 className={styles.title}>Basic details</h2>
                 </div>
-                <hr/>
+                <hr />
                 <table>
-              <tbody>
-                <tr>
-                  <td><strong>Username</strong></td>
-                  <td>:</td>
-                  <td>{studentData.username}</td>
-                </tr>
-               
-                <tr>
-                  <td><strong>Department</strong></td>
-                  <td>:</td>
-                  <td>{studentData.department}</td>
-                </tr>
-                <tr>
-                  <td><strong>Semester</strong></td>
-                  <td>:</td>
-                  <td>{studentData.semester}</td>
-                </tr>
-                
-               
-                
-                {/* Add more student details as needed */}
-              </tbody>
-            </table>
+                  <tbody>
+                    {/* Map over the fieldsToDisplay array */}
+                    {fieldsToDisplay.map((field) => (
+                      <tr key={field.key}>
+                        <td><strong>{field.label}</strong></td>
+                        <td>:</td>
+                        <td>{studentData[field.key]}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
               </div>
             </div>
 
-
-              {/* Projects Container */}
-            
+            {/* Projects Container */}
           </div>
         </div>
       ) : (

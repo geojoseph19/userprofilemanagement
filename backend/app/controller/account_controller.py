@@ -57,4 +57,7 @@ def user_delete_profile_pic():
         return jsonify({'error': 'Unauthorized access! Please login first', 'status': 'failed'}),401
     return delete_profile_pic()
 
+@account_controller.route('/data',methods=['GET'])
+def fetch_data():
+    return fun_fetch_data(cursor)
 

@@ -33,7 +33,7 @@
     }
   }
   
-  .infoContainer {
+  .ach-infoContainer {
     background-color: whitesmoke;
     max-width: 100%;
     height: 74vh;
@@ -43,20 +43,14 @@
     padding-right: 5%;
     padding-bottom: 5%;
     padding: 1%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap; /* Allow cards to wrap to the next line */
-  
-    overflow-y: auto; /* Add scroll if content exceeds container height */
   }
   
-  .infoContainer h3 {
+  .ach-infoContainer h3 {
     color: black;
-    padding-left: 5%;
     
-    padding-top: 1%;
+    margin-top: -5%;
     padding-bottom: 1%;
+    font-size: x-large;
   }
   
   hr {
@@ -65,6 +59,7 @@
     background-color: #D9D9D9;
     margin: 0 2%;
   }
+
   .mentor-h4{
     margin-bottom: 3%;
   }
@@ -156,7 +151,7 @@
   .mentor-btn {
     padding: 1.5%; /* Adjust as needed */
     height: 40px;
-    width:75px;
+    width:50%;
     background-color: #040F49;
     color: #fff;
     border: none;
@@ -164,6 +159,8 @@
     cursor: pointer;
     transition: background-color 0.3s ease;
     font-weight: 600;
+
+    margin-left: 23%;
   }
   
   .mentor-btn:hover {
@@ -195,7 +192,7 @@
   }
   
   
-  .mentor-project-card.expanded input, select, textarea {
+  .mentor-project-card.expanded input, .mentor-project-card.expanded select, .mentor-project-card.expanded textarea {
     width: 100%;
     padding: 10px;
     display: block;
@@ -208,8 +205,7 @@
   .mentor-project-card.expanded span:hover{
     color: grey;
   }
-  
-  
+
   .adminForm input:hover{
     border-color: navy;
     transform: scale(1.05);
@@ -227,3 +223,85 @@
     }
   }
   
+
+  .adminLabel {
+    display: block;
+    margin-bottom: 10px;
+    color: #040F49;
+    font-weight: 500;
+    transition: color 0.3s ease;
+
+  }
+   
+  .adminLabel:hover {
+    color: navy;
+  }
+   
+.addach input,.addach select,.addach textarea{
+    display:block;
+    padding: 10px;
+    width: 100%;
+    border: 2px solid #040F49;
+    border-radius: 15px;
+    box-sizing: border-box;
+    transition: transform 0.3s ease,border-color 0.3s ease;
+
+}
+.addach input{
+    margin-bottom: 5%;
+}
+
+.addach{
+    width: 30%;
+    margin-left: 2.5%;
+    margin-top: 5%;
+}
+
+
+.adminTabs {
+    margin-top: -2.5%;
+    width: 40%;
+    display: flex;
+    margin-left: 5%;
+
+  }
+  
+  .adminTabs .adminButton {
+    width: 100%;
+    padding: 1.7%;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 35px;
+    background-color: white;
+    color: #040F49;
+    border: 2px solid #040F49;
+    transition: background-color 0.5s ease;
+    transition: transform 0.3s ease;
+    margin-right: 2%;
+    font-weight: 700;
+    font-size: large;
+
+  }
+  
+  .adminTabs .adminButton:hover {
+    background-color: navy;
+    color: white;
+    transform: scale(1.05);
+    border: 2px solid white;
+  }
+  
+  .adminTabs .adminButton.active {
+    background-color: navy;
+    color: white;
+    border: 3px solid white;
+}
+
+
+  
+  .adminTabContent {
+    padding: 10px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+  }

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from 'axios';
 import styles from "./Header.module.css";
+import logoImage from "./assets/headerLogo.png"; 
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -29,7 +30,8 @@ const Header = () => {
 
   return (
     <header className={styles.header}>
-      <h1 className={styles.logo}>Hogwarts University</h1>
+      <img src={logoImage} alt="Hogwarts University" className={styles.logo} />
+
       <div className={styles.dropdown}>
         <button className={styles.dropbutton} onClick={toggleDropdown}>
           ☰

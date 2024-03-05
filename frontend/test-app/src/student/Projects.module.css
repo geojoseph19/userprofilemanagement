@@ -1,11 +1,22 @@
 
-  .Main{
+.Main {
   background-color: #040F49;
   width: 100%;
-  height: 100vh;
+  min-height: 100vh; /* Change height to min-height */
   color: white;
-  }/*Main student container*/
+  position: relative; /* Add position: relative */
+  display: flex; /* Use flexbox */
+  flex-direction: column; /* Arrange children in a column */
+}
+
   
+.Main h1{
+  width: fit-content;
+  display: flex;
+  flex-shrink: 1;
+  margin-top: 2%;
+  margin-left: 2%;
+}
   @keyframes floatUp {
     from {
       transform: translateY(400px); /* Initial position: move 100px down */
@@ -20,14 +31,15 @@
   .info {
     background-color: whitesmoke;
     width: 100%;
-    height: 100%;
+    height: 74vh;
     border-radius: 30px;
     border-bottom-left-radius: 0%;
     border-bottom-right-radius: 0%;
     margin-top: 1%;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
+    overflow-y: auto;
     animation: floatUp 0.8s ease forwards; /* Apply animation */
   }
   
@@ -35,14 +47,24 @@
     color: black;
   }
 
+  hr {
+    border: none;
+    height: 1px;
+    background-color: #D9D9D9;
+  }
+  
 .projectDetails {
   background-color: white;
-    border-radius: 10%;
-    padding: 1%;
-    width: max-content;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 2%;
+    flex-grow: 1;
+    max-width: 30%;
     line-height: 200%;
-    margin-top: 5%;
+    
 }
+
+
   
  .projectPanel{
   display: flex;
@@ -54,3 +76,5 @@
  .projectPanel *{
   max-width: max-content;
  }
+
+ 

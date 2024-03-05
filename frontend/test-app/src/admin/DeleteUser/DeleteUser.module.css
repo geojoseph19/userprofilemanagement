@@ -4,7 +4,7 @@
   height: 100vh;
   padding-top: 10px;
 }
-
+ 
 @keyframes floatUp {
   from {
     transform: translateY(400px);
@@ -15,7 +15,7 @@
     opacity: 1;
   }
 }
-
+ 
 .adminInfo {
   background-color: whitesmoke;
   width: 100%;
@@ -39,17 +39,18 @@
   border: 3px solid #040F49;
   border-radius: 30px;
   cursor: pointer;
+  margin-top: 15px;
   transition: background-color 0.3s ease, transform 0.5s ease;
   font-weight: 600;
 }
-
+ 
 .deleteBtn:hover {
   background-color: white;
   border: 3px solid #040F49;
   color: #040F49;
   transform: scale(1.1);
 }
-
+ 
 .adminTabContent {
   padding: 10px;
   overflow-y: scroll;
@@ -58,10 +59,10 @@
   margin: 0 auto;
  
 }
-
+ 
 .deleteForm {
   padding: 1%;
-  width: 0%;
+  width: 30%;
   display: block;
   align-items: left;
   color: #040F49;
@@ -74,26 +75,26 @@
   width: 100%;
   border-collapse: collapse;
 }
-
+ 
 .adminHalf {
   width: 45%;
   display: inline-table;
 }
-
-.deleteFormTable th, td {
+ 
+.deleteFormTable th,.deleteFormTable td {
   padding: 0.5%;
   padding-left: 0.05%;
   text-align: left;
 }
-
-
+ 
+ 
 .adminLabel {
   display: block;
   margin-bottom: 10px;
   color: #040F49;
   font-weight: 500;
 }
-.deleteForm input, select, textarea {
+.deleteForm input,.deleteForm select,.deleteForm textarea {
   width: 100%;
   padding: 8px;
   display: block;
@@ -102,7 +103,7 @@
   border-radius: 15px;
   box-sizing: border-box;
 }
-
+ 
 .deleteForm .deleteBtn[type="submit"] {
   padding: 10px 20px;
   background-color: #040F49;
@@ -114,7 +115,7 @@
   transition: transform 0.5s ease;
   font-weight: 600;
 }
-
+ 
 .deleteForm .deleteBtn[type="submit"]:hover {
   background-color: white;
   border: 3px solid #040F49;

@@ -17,7 +17,7 @@ def send_mail(email,username,fname,mname,lname,content_type,data):
     port = 587
     smtp_username = 'admn17843@gmail.com'
     smtp_password = 'AdtfBJznNx6cCOX0' 
-    smtp_sender_email = 'admin@university.com'
+    smtp_sender_email = 'admin@hogwarts.com'
 
     # Create a multipart message
     message = MIMEMultipart()
@@ -42,7 +42,7 @@ For security reasons, please keep your login credentials confidential.
  
 Best regards,
  
-X University
+Hogwarts University
 Tower C - 11th Floor, 
 IBC KNOWLEDGE PARK, 
 4/1, Bannerghatta Rd, 
@@ -62,7 +62,7 @@ If you did not request this password reset, please ignore this email.
 
 Sincerely,
  
-X University
+Hogwarts University
 Tower C - 11th Floor, 
 IBC KNOWLEDGE PARK, 
 4/1, Bannerghatta Rd, 

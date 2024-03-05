@@ -112,7 +112,7 @@ hr {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 20%;
+  height: 25%;
   border-radius: 50px;
   border: 2px solid rgba(224, 224, 224, 0.925);
   width: 47%;
@@ -137,6 +137,7 @@ hr {
 
 .mentor-project-card:hover {
   background-color: #dfdfdf;
+  border: 2px solid rgb(204, 204, 204);
 }
 
 /* Expanded style */
@@ -195,18 +196,25 @@ hr {
 }
 
 
-.mentor-project-card.expanded input, select, textarea {
+.mentor-project-card.expanded input,.mentor-project-card.expanded select,.mentor-project-card.expanded textarea {
   width: 100%;
   padding: 10px;
   display: block;
+
+  margin-bottom: 5%;
 
   border: 2px solid #040F49;
   border-radius: 15px;
   box-sizing: border-box;
   transition: transform 0.3s ease,border-color 0.3s ease;
+
 }
 .mentor-project-card.expanded span:hover{
   color: grey;
+}
+.mentor-project-card.expanded input{
+  width:100%;
+  padding-right: 230px;
 }
 
 
@@ -225,4 +233,28 @@ hr {
   100% {
     transform: scale(1.05);
   }
+}
+
+.addprjbtn {
+  position: absolute;
+  top: 102px; /* Adjust the top position as needed */
+  right: 60px; /* Adjust the right position as needed */
+
+}
+ 
+.addprjbtn button {
+  padding: 10px 20px;
+  background-color: #040F49;
+  color: white;
+  border-radius: 35px;
+  border: 2px solid white; /* Adjust the padding as needed */
+  transition: background-color 0.3s ease, transform 0.5s ease;
+  font-weight: 600;
+  cursor: pointer;
+}
+.addprjbtn button:hover{
+  background-color: white;
+  border: 3px solid #040F49;
+  color: #040F49;
+  transform: scale(1.1);
 }

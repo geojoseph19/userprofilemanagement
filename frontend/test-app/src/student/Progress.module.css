@@ -1,10 +1,21 @@
-
-  .Main{
+.Main {
   background-color: #040F49;
   width: 100%;
-  height: 100vh;
+  min-height: 100vh; /* Change height to min-height */
   color: white;
-  }
+  position: relative; /* Add position: relative */
+  display: flex; /* Use flexbox */
+  flex-direction: column; /* Arrange children in a column */
+}
+
+  
+.Main h1{
+  width: fit-content;
+  display: flex;
+  flex-shrink: 1;
+  margin-top: 2%;
+  margin-left: 2%;
+}
   
   @keyframes floatUp {
     from {
@@ -17,18 +28,12 @@
     }
   }
   
-.Main h1{
-  width: fit-content;
-  display: flex;
-  flex-shrink: 1;
-  margin-top: 2%;
-  margin-left: 2%;
-}
+
 
 .info {
   background-color: whitesmoke;
   width: 100%;
-  height: 100%;
+  height: 74vh;
   border-radius: 30px;
   border-bottom-left-radius: 0%;
   border-bottom-right-radius: 0%;

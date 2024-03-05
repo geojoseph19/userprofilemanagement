@@ -108,7 +108,7 @@
   width: 113%;
 }
  
-.adminFormTable th,
+.adminFormTable th,.adminFormTable
 td {
   padding: 0.5%;
   padding-left: 0.05%;
@@ -128,10 +128,10 @@ td {
   color: navy;
 }
  
-.adminForm input,
-select,
+.adminForm input,.adminForm
+select,.adminForm
 textarea {
-  width: 80%;
+  width: 20%;
   padding: 8px;
   display: block;
   margin-top: 5px;

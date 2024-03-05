@@ -8,10 +8,13 @@
 }
 
 .logo {
+
   margin-right: auto; /* Pushes the dropdown button to the right */
-  font-size: 1.5rem;
   width: fit-content;
-  color: black;
+  width: 243px;
+  padding-top: 1%;
+  padding-right: 1%;
+  padding-bottom: 1.5%;
 }
 
 .dropdown {

@@ -1,9 +1,15 @@
 
-  .Main{
-  background-color: #040F49;
-  width: 100%;
-  height: 100vh;
-  color: white;
+  
+  
+  
+  .Main {
+    background-color: #040F49;
+    width: 100%;
+    min-height: 100vh; /* Change height to min-height */
+    color: white;
+    position: relative; /* Add position: relative */
+    display: flex; /* Use flexbox */
+    flex-direction: column; /* Arrange children in a column */
   }
   
   @keyframes floatUp {
@@ -25,39 +31,46 @@
   margin-left: 2%;
 }
 
+.pageTitle{
+  display: flex;
+  flex-direction: row;
+  height: fit-content;
+}
+
   .info {
     background-color: whitesmoke;
     width: 100%;
-    height: 100%;
+    height: 76vh;
     border-radius: 30px;
     border-bottom-left-radius: 0%;
     border-bottom-right-radius: 0%;
-    margin-top: 5%;
+    margin-top: 3%;
+    padding-bottom: 5%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    animation: floatUp 0.8s ease forwards; /* Apply animation */
+    animation: floatUp 0.8s ease forwards; 
+    overflow-y: auto;
   }
   
   .info *{
     color: black;
   }
   
-  .totalPoints {
-    background-color: whitesmoke;
-    border-radius: 50%;
-    padding: 2%;
-    width: max-content;
-    position: absolute;
-    top: 0;
-    right: 0;
-    margin: 2%;
-  }
+ 
+.totalPoints {
+  background-color: whitesmoke;
+  border-radius: 50%;
+  padding: 2%;
+  position: absolute;
+  right: 2%; /* Adjust right position */
+  top: 2%; /* Add top position */
+}
 
   .totalPoints *{
     color: black;
     text-align: center;
-    font-size: x-large;
+    font-size: large;
   }
 
 
@@ -67,14 +80,24 @@
     justify-content: center;
   }
 
+  .achievements{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: fit-content;
+    justify-content: left;
+    width: 100%;
+  }
+
   .achievementDetails{
     background-color: white;
-    border-radius: 10%;
-    padding: 3%;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 2%;
+    flex-grow: 1;
     max-width: 30%;
-    width: fit-content;
     line-height: 200%;
-    margin-top: 5%;
+    margin: 3%;
 }
   
   

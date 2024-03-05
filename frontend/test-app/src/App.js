@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import styles from './App.module.css'
 import LoginPage from './LoginPage';
 import ForgotPassword from './ForgotPassword';
@@ -74,10 +75,10 @@ function AppContent({ formData, setFormData }) {
   const Mentorlinks = [
     { name: 'Home', to: '/mentor/home', page: 'home', icon: 'home' },
     { name: 'View full profile', to: '/mentor/profile', page: 'Profile', icon: 'account_circle' },
-    { name: 'Projects', to: '/mentor/projects', page: 'Projects', icon: 'content_paste' }
+    { name: 'Projects', to: '/mentor/projects', page: 'Projects', icon: 'content_paste' },
+    { name: 'Achievements', to: '/mentor/achievements', page: 'Achievements', icon: 'emoji_events' }
   ];
 
-  // Define fieldOrder based on userRole
   // Define fieldOrder based on userRole
 const LayoutVariables = userRole === 'student'
 ? {
@@ -97,25 +98,31 @@ const LayoutVariables = userRole === 'student'
 : { fieldOrder: [], sidebarLinks: [] };
 
 
-  useEffect(() => {
-    const interceptor = axios.interceptors.response.use(
-      response => {
-        return response;
-      },
-      error => {
-        if (error.response && error.response.status === 401) {
-          // Redirect to login page
-          navigate('/login');
-        }
-        return Promise.reject(error);
+useEffect(() => {
+  console.log('useEffect triggered');
+  
+  const interceptor = axios.interceptors.response.use(
+    response => {
+      console.log('Interceptor - Response:', response);
+      return response;
+    },
+    error => {
+      console.log('Interceptor - Error:', error);
+      if (error.response && error.response.status === 401) {
+        console.log('Interceptor - Redirecting to login page');
+        // Redirect to login page
+        window.location.href = "/";
       }
-    );
+      return Promise.reject(error);
+    }
+  );
 
-    // Clean up the interceptor
-    return () => {
-      axios.interceptors.response.eject(interceptor);
-    };
-  }, [navigate]);
+  // Clean up the interceptor
+  return () => {
+    axios.interceptors.response.eject(interceptor);
+  };
+}, [navigate]);
+
 
   return (
     <div>
@@ -135,7 +142,7 @@ const LayoutVariables = userRole === 'student'
             <Route path='projects' element={<Layout sidebar={<Sidebar links={LayoutVariables.sidebarLinks}  />} childComponent={<StudentProjects />} />} />
             <Route path='achievements' element={<Layout sidebar={<Sidebar links={LayoutVariables.sidebarLinks}  />} childComponent={<Achievements />} />} />
         </Route>
-        
+
         <Route path="/admin" >
             <Route path='home' element={<Layout sidebar={<AdminSidebar/>}childComponent={<AdminHome/>}/>}/>
             <Route path='addUser' element={<Layout sidebar={<AdminSidebar/>} childComponent={<AddUser/>}/>} />
@@ -150,6 +157,8 @@ const LayoutVariables = userRole === 'student'
             <Route path='achievements' element={<Layout sidebar={<MentorSidebar/>} childComponent={<MentorAchievements />}/>}/>
       
         </Route>
+        <Route path="/login" element={<Navigate to="/" />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
       </SharedUserDataProvider>
     </div>

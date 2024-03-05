@@ -61,25 +61,27 @@ def student_achievement():
     try:
         student_id = request.json.get('student_id')
         achievement_id = request.json.get('achievement_id')
-    except: return jsonify({'error': 'Invalid inputs'})
-    if not achievement_id:
-        return jsonify({'error': 'Achievement ID not found'})
+    except: return jsonify({'error': 'Invalid inputs'}),400
     if not student_id:
-        return jsonify({'error': 'Student ID not found'})
+        return jsonify({'error': 'Enter student ID'}),400
+    if not achievement_id:
+        return jsonify({'error': 'Enter achievement ID'}),400
+    
     return add_student_achievement(student_id, achievement_id)
  
  #Remove achievement
-@mentor_controller.route('/mentor/removeAchievement', methods=['DELETE'])
+@mentor_controller.route('/mentor/removeAchievement', methods=['POST'])
 def del_student_achievement():
     if not check_login('mentor'): return jsonify({'error': 'Unauthorized access! Please login first', 'status': 'failed'}),401
     try:
-        student_id = request.args.get('student_id')
-        achievement_id = request.args.get('achievement_id')
-    except: return jsonify({'error': 'Invalid inputs'})
-    if not achievement_id:
-        return jsonify({'error': 'Achievement ID not found'})
+        student_id = request.json.get('student_id')
+        achievement_id = request.json.get('achievement_id')
+    except: return jsonify({'error': 'Invalid inputs'}),400
     if not student_id:
-        return jsonify({'error': 'Student ID not found'})
+        return jsonify({'error': 'Enter student ID'}),400
+    if not achievement_id:
+        return jsonify({'error': 'Enter achievement ID'}),400
+    
     return remove_student_achievement(student_id, achievement_id)
  
  #Add project

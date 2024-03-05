@@ -4,6 +4,7 @@ import DatePicker from "react-datepicker"; // Import DatePicker
 import { SharedUserContext } from "../UserContextShare";
 import "react-datepicker/dist/react-datepicker.css"; // Import styles for DatePicker
 import styles from './MentorProjects.module.css';
+import { toast, ToastContainer } from 'react-toastify';
 
 const MentorProfile = () => {
   const { sharedUserData } = useContext(SharedUserContext);
@@ -42,7 +43,7 @@ const MentorProfile = () => {
         setProjects(formattedProjects);
       })
       .catch(error => {
-        console.error('Error fetching projects:', error);
+        toast.error(error.response.data.error, { autoClose : 5000});
       });
   }, []);
 
@@ -97,9 +98,10 @@ const MentorProfile = () => {
       ]);
       // Clear the new student ID input field
       setNewStudentId("");
+      toast.success("Added "+newStudentId+" to project", { autoClose : 5000});
     })
     .catch(error => {
-      console.error('Error adding student:', error);
+      toast.error(error.response.data.error, { autoClose : 5000});
     });
   };
   
@@ -125,6 +127,7 @@ const MentorProfile = () => {
       });
       // Hide the add project form
       setShowAddProjectForm(false);
+      toast.success("New project added!", { autoClose : 5000});
     })
     .catch(error => {
       console.error('Error adding project:', error);
@@ -142,9 +145,11 @@ const MentorProfile = () => {
       // Update projects after successful removal
       setProjects(projects.filter(project => project[0] !== projectId));
       setSelectedProject(null); // Clear selected project if removed
+      handleClearSelection();
+      toast.success("Project "+projectId+" deleted", { autoClose : 5000});
     })
     .catch(error => {
-      console.error('Error removing project:', error);
+      toast.error('Error removing project:', { autoClose : 5000});
     });
   };
 
@@ -159,6 +164,7 @@ const MentorProfile = () => {
     .then(response => {
       // Update project students after successful removal
       setProjectStudents(projectStudents.filter(student => student[0] !== studentId));
+      toast.success("Removed "+studentId+" from project", { autoClose : 5000});
     })
     .catch(error => {
       console.error('Error removing student:', error);
@@ -167,7 +173,13 @@ const MentorProfile = () => {
 
   return (
     <div className={styles.mainContainer}>
-      <h1>Projects</h1>
+      <h1>Projects
+      <div className={styles.addprjbtn}>
+      {!selectedProject && !showAddProjectForm && (
+        <button onClick={() => setShowAddProjectForm(true)}>Add Project</button>
+        )}
+      </div>
+      </h1>
       <div className={styles.infoContainer}>
         {projectsVisible && !showAddProjectForm && projects.map(project => (
           <div 
@@ -178,16 +190,9 @@ const MentorProfile = () => {
             <h3 style={{color:'rgb(49, 49, 49)'}}>{project[0]} : {project[1]}</h3>
           </div>
         ))}
-        {!selectedProject && !showAddProjectForm && (
-          <div className={styles['mentor-project-card']} onClick={() => setShowAddProjectForm(true)}>
-            <span 
-              className="material-symbols-outlined" 
-              style={{ color: 'grey', fontSize: '600%', cursor: 'pointer' }} 
-            >
-              add
-            </span>
-          </div>
-        )}
+        
+    
+        
         {showAddProjectForm && (
           <div className={`${styles['mentor-project-card']} ${styles.expanded}`}>
             <h3 style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingLeft: '0px' }}>Add new project <span 
@@ -205,6 +210,9 @@ const MentorProfile = () => {
                 onChange={(e) => handleInputChange("project_name", e.target.value)}
                 placeholder="Project Name"
               />
+
+              <div style={{display:'flex',width:'100%',flexWrap:'wrap'}}><p style={{width:'100%'}}>Start Date: </p>  
+        
               <DatePicker // Use DatePicker for start date
                 selected={newProjectData.start_date}
                 onChange={(date) => handleInputChange("start_date", date)}
@@ -212,12 +220,14 @@ const MentorProfile = () => {
                 placeholderText="Start Date (DD/MM/YYYY)"
                 style={{width:'100%'}}
               />
+              <p style={{width:'100%'}}>End Date: </p>
               <DatePicker // Use DatePicker for end date
                 selected={newProjectData.end_date}
                 onChange={(date) => handleInputChange("end_date", date)}
                 dateFormat="dd/MM/yyyy"
                 placeholderText="End Date (DD/MM/YYYY)"
               />
+              </div>
               <button className={styles['mentor-btn']} style={{width:'100%'}} onClick={handleAddProject}>Add</button>
             </div>
           </div>
@@ -259,6 +269,7 @@ const MentorProfile = () => {
           </div>
         )}
       </div>
+      <ToastContainer/>
     </div>
   );
 }

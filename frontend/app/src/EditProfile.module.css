@@ -79,17 +79,19 @@
     color: #333; 
     display: block;
     font-weight: bold; 
+    margin-left: 5%;
   }
   
  
   .info form input[type="text"] {
-    width: calc(100% - 2rem); 
+    width: calc(100% - 5rem); 
     padding: 0.8rem;
     border: 2px solid black; 
     border-radius: 6px;
     font-size: 1.1rem;
     transition: border-color 0.3s ease; 
     box-sizing: border-box; 
+    margin-left: 5%;
   }
   
   .info form input[type="text"]:focus {
@@ -100,19 +102,20 @@
   
   .info form button[type="submit"] {
     padding: 0.8rem 1.5rem;
-    background-color: #007bff; 
+    background-color: #040F49; 
     color: #fff; 
     border: none;
     border-radius: 6px;
     font-size: 1.1rem;
     cursor: pointer;
     transition: background-color 0.3s ease; 
+    margin-left: 2.5%;
   }
   
   .info form button[type="submit"]:hover {
     background-color: white;
-    color: #0056b3; 
-    border: 1px solid #0056b3;
+    color: #040F49; 
+    border: 1px solid #040F49;
   }
 
   .error{

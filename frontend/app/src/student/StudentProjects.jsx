@@ -1,19 +1,17 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styles from './Achievements.module.css';
 import InfoCard from '../InfoCard';
 
 const StudentProjects = () => {
   const [projects, setProjects] = useState(null);
- 
 
   useEffect(() => {
     const fetchProjects = async () => {
       try {
         const projectInfo = localStorage.getItem('projectData');
         if (projectInfo) {
-          setProjects(JSON.parse(projectInfo)); // Parse the stored JSON string
-          
+          setProjects(JSON.parse(projectInfo));
         } else {
           const response = await axios.get('http://127.0.0.1:5000/api/v1/student/project');
           const responseData = response.data.response;
@@ -26,7 +24,7 @@ const StudentProjects = () => {
     };
 
     fetchProjects();
-  }, []); // Make sure to include setProjectDetails in dependency array
+  }, []);
 
   // Function to format date string
   const formatDate = (dateStr) => {
@@ -36,7 +34,6 @@ const StudentProjects = () => {
 
   // Define the order of keys for displaying in the table
   const keyOrder = [
-    'project_name',
     'project_id',
     'start_date',
     'end_date',
@@ -46,30 +43,30 @@ const StudentProjects = () => {
 
   return (
     <div className={styles.Main}>
-      <div className="pageTitle"><h1>My Projects</h1></div>
+      <div className={styles.pageTitle}><h1>My Projects</h1></div>
+    
       <div className={styles.info}>
-
-        {projects && (
-          <div className={styles.achievements}>
-            <div className={styles.achievementDetails}>
-                  {Object.entries(projects).map(([projectId, project]) => (
-                    <React.Fragment key={projectId}>
-                      <InfoCard title={project.project_name} content={(
-                        <>
-                          {keyOrder.map((key) => (
-                            key !== 'project_name' && (
-                              <React.Fragment key={key}>
-                                <p><strong>{key.charAt(0).toUpperCase() + key.slice(1).replace(/_/g, ' ')}</strong>: {key.includes('date') ? formatDate(project[key]) : project[key]}</p>
-                              </React.Fragment>
-                            )
-                          ))}
-                        </>
-                      )} />
-                    </React.Fragment>
-                  ))}
-               
+        {projects && ( 
+            <div className={styles.achievements}>
+              {Object.entries(projects).map(([projectId, project]) => (
+                <div key={projectId} className={styles.achievementDetails}>
+                  <InfoCard title={project.project_name} content={(
+                    <table>
+                      <tbody>
+                        {keyOrder.map((key) => (
+                          <tr key={key}>
+                            <td><strong>{key.charAt(0).toUpperCase()+key.slice(1).replace(/_/g, ' ')}</strong></td>
+                            <td>:</td>
+                            <td>{key.includes('date') ? formatDate(project[key]) : project[key]}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  )}/>
+                </div>
+              ))}
             </div>
-          </div>
+          
         )}
       </div>
     </div>

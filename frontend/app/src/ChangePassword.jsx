@@ -98,7 +98,7 @@ const ChangePassword = ({ formData, setFormData, role }) => {
         </form>
        </div>
       </div>
-      <ToastContainer /> 
+      <ToastContainer position='top-center' /> 
       
     </div>
   );

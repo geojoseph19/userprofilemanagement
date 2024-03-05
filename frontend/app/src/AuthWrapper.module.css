@@ -14,7 +14,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url(../assets/MicrosoftTeams-image.jpeg);
+    background-image: url(./assets/MicrosoftTeams-image.jpeg);
     background-size: cover; /* Zoom and fill the screen as needed */
     background-position: fixed; /* Fix the background position */
     animation: zoomRotateBackground 120s infinite linear alternate; /* Increase the animation duration */

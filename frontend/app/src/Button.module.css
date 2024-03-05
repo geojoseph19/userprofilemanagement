@@ -1,0 +1,19 @@
+
+button[type='submit']{
+    margin: 2%;
+    width: 10%;
+    height: 5%;
+    font-weight: bold;
+    font-size: medium;
+    background-color: #040F49;
+    color: white;
+    border: 1px solid black;
+    border-radius: 15px;
+  }
+
+  button[type='submit'] :hover{
+    background-color: white;
+    color: #040F49;
+    border: 1px solid #040F49;
+    cursor: pointer;
+  }

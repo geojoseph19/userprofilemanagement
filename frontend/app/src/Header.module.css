@@ -32,9 +32,10 @@
   top: 100%;
   right: 0;
   background-color: #f9f9f9;
-  min-width: 160px;
+  min-width: 200px;
   z-index: 1;
   border: 1px solid #ccc;
+  margin-right: 10%;
 }
 
 .link {
@@ -45,4 +46,14 @@
 
 .link:hover {
   background-color: #ddd;
+}
+
+.logo {
+ 
+  margin-right: auto; /* Pushes the dropdown button to the right */
+  width: fit-content;
+  width: 243px;
+  padding-top: 1%;
+  padding-right: 1%;
+  padding-bottom: 1.5%;
 }

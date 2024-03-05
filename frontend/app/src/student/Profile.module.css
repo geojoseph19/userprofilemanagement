@@ -41,6 +41,11 @@
     flex:1;
 
   }
+
+  .infoheader{
+    display: flex;
+    flex-direction: row;
+  }
   
   .info h3 {
     color: black;
@@ -48,6 +53,27 @@
     padding-top: 1%;
     padding-bottom: 1%;
   }
+
+ .editButton{
+    background-color: #040F49;
+    color: white;
+    border: 1px solid black;
+    border-radius: 15px;
+    width: 10%;
+    height: 5%;
+    position: fixed;
+    right: 0;
+    margin: 2%;
+    font-weight: bold;
+    font-size: medium;
+  }
+
+  .editButton:hover{
+    background-color: white;
+    color: #040F49;
+    border: 1px solid #040F49;
+  }
+
   
   hr {
     border: none;
@@ -92,3 +118,5 @@
     line-height: 200%;
     font-size: large;
   }
+
+  

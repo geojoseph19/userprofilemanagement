@@ -1,10 +1,15 @@
 import React, { useContext, useEffect, useState } from "react";
 import { SharedUserContext } from "../UserContextShare";
 import styles from './Profile.module.css'
+
  
 const StudentProfile = () => {
   const { sharedUserData } = useContext(SharedUserContext);
   const [studentData, setStudentData] = useState(sharedUserData);
+
+  const toEditProfile=()=>{
+    window.location.href='/edit-profile'
+  }
  
   useEffect(() => {
     const storedData = localStorage.getItem('userData');
@@ -18,11 +23,16 @@ const StudentProfile = () => {
     <div className={styles.Main}>
       <h1>My Profile</h1>
       <div className={styles.info}>
+        <div className={styles.infoheader}>
         <h3>Personal Details</h3>
+        
+       <button type="submit" className={styles.editButton} onClick={toEditProfile}>Edit Profile</button>
+        
+        </div>
         <hr />
         <div className={styles.details}>
           {studentData && (
-            <div className="profileData">
+            <div>
               <table>
               <tbody>
                 <tr>
@@ -82,7 +92,6 @@ const StudentProfile = () => {
                   <td>{studentData.guardian_phone_no}</td>
                 </tr>
                 
-                {/* Add more student details as needed */}
               </tbody>
             </table>
             </div>

@@ -46,7 +46,7 @@ const EditProfile = ({ formData, setFormData, fieldOrder, role }) => {
         console.log('The user is a ', role)
       } catch (error) {
         console.error('Error updating user data:', error);
-        toast.error("Couldn\'t update user profile. Please try again!",{autoClose:5000})
+        toast.error("Couldn't update user profile. Please try again!",{autoClose:5000})
       }
     }
   };
@@ -90,7 +90,7 @@ const EditProfile = ({ formData, setFormData, fieldOrder, role }) => {
           </form>
         )}
       </div>
-      <ToastContainer/>
+      <ToastContainer position='top-center'/>
     </div>
   );
 };

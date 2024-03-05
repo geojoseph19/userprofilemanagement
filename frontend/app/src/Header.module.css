@@ -6,7 +6,8 @@
 }
 
 .logo {
-  margin-right: auto; /* Pushes the dropdown button to the right */
+  margin-right: auto; 
+  margin-left: 2%;/* Pushes the dropdown button to the right */
   font-size: 1.5rem;
   width: fit-content;
   color: black;

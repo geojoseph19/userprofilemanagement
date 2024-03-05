@@ -557,3 +557,37 @@ def delete_profile_pic():
     except Exception as e:
         return jsonify({'error': str(e)})
  
+
+ #Fectch user data to be edited (Admin - edit user functionality)
+def fun_fetch_data(cursor):
+    username = request.args.get('username')
+    role = request.args.get('role')
+ 
+    if username is None:
+        return jsonify({'error': 'Username parameter is missing'}), 400
+    if role is None:
+        return jsonify({'error': 'Role parameter is missing'}), 400
+ 
+    # Fetch cred_id corresponding to the username
+    cursor.execute("SELECT cred_id FROM credentials WHERE username=%s", (username,))
+    cred_id = cursor.fetchone()
+ 
+    if cred_id is None:
+        return jsonify({'error': 'Username not found'}), 404
+ 
+    cred_id = cred_id[0]
+ 
+    # Fetch data from the corresponding table using cred_id
+    cursor.execute(f"SELECT * FROM {role} WHERE cred_id=%s", (cred_id,))
+    data = cursor.fetchone()
+ 
+    if data is None:
+        return jsonify({'error': f'{role.capitalize()} not found for the given username'}), 404
+ 
+    # Get column names from the cursor description
+    column_names = [desc[0] for desc in cursor.description]
+ 
+    # Combine column names with data into a dictionary
+    data_dict = dict(zip(column_names, data))
+ 
+    return jsonify({'data': data_dict}), 200

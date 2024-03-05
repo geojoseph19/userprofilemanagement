@@ -38,17 +38,17 @@ const StudentAchievements = () => {
             </div>
             </div>
       <div className={styles.info}>
-        {achievements && (
-          <div className={styles.achInfo}>
+        {achievements && ( 
             <div className={styles.achievements}>
               {Object.entries(achievements).map(([achievementId, achievement]) => (
                 <div key={achievementId} className={styles.achievementDetails}>
                   <InfoCard title={achievement.achievement_name} content={achievement.description}/>
+                  <hr />
                   <div className={styles.points}><strong>Points:</strong> {achievement.points}</div>
                 </div>
               ))}
             </div>
-          </div>
+          
         )}
       </div>
     </div>

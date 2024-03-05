@@ -1,23 +1,32 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
-import styles from './Projects.module.css';
+import styles from './Achievements.module.css';
 import InfoCard from '../InfoCard';
 
 const StudentProjects = () => {
   const [projects, setProjects] = useState(null);
+ 
 
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:5000/api/v1/student/project');
-        setProjects(response.data.response);
+        const projectInfo = localStorage.getItem('projectData');
+        if (projectInfo) {
+          setProjects(JSON.parse(projectInfo)); // Parse the stored JSON string
+          
+        } else {
+          const response = await axios.get('http://127.0.0.1:5000/api/v1/student/project');
+          const responseData = response.data.response;
+          setProjects(responseData);
+          localStorage.setItem('projectData', JSON.stringify(responseData)); 
+        }
       } catch (error) {
         console.error('Error fetching Projects:', error);
       }
     };
 
     fetchProjects();
-  }, []);
+  }, []); // Make sure to include setProjectDetails in dependency array
 
   // Function to format date string
   const formatDate = (dateStr) => {
@@ -39,11 +48,10 @@ const StudentProjects = () => {
     <div className={styles.Main}>
       <div className="pageTitle"><h1>My Projects</h1></div>
       <div className={styles.info}>
+
         {projects && (
-          <div className={styles.projectPanel}>
-            <div className={styles.projectDetails}>
-              <table>
-                <tbody>
+          <div className={styles.achievements}>
+            <div className={styles.achievementDetails}>
                   {Object.entries(projects).map(([projectId, project]) => (
                     <React.Fragment key={projectId}>
                       <InfoCard title={project.project_name} content={(
@@ -51,7 +59,7 @@ const StudentProjects = () => {
                           {keyOrder.map((key) => (
                             key !== 'project_name' && (
                               <React.Fragment key={key}>
-                                <p><strong>{key.charAt(0).toUpperCase()+key.slice(1).replace(/_/g, ' ')}</strong>: {key.includes('date') ? formatDate(project[key]) : project[key]}</p>
+                                <p><strong>{key.charAt(0).toUpperCase() + key.slice(1).replace(/_/g, ' ')}</strong>: {key.includes('date') ? formatDate(project[key]) : project[key]}</p>
                               </React.Fragment>
                             )
                           ))}
@@ -59,8 +67,7 @@ const StudentProjects = () => {
                       )} />
                     </React.Fragment>
                   ))}
-                </tbody>
-              </table>
+               
             </div>
           </div>
         )}

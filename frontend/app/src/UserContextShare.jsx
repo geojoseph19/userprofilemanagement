@@ -7,6 +7,7 @@ export const SharedUserDataProvider = ({ children }) => {
   const [sharedUserData, setSharedUserData] = useState({}); // Provide default empty object
   const [currentSemester, setCurrentSemester] = useState(0);
   const [totalSemesters, setTotalSemesters] = useState(0);
+  const [projectDetails,setProjectDetails]=useState('');
 
   return (
     <SharedUserContext.Provider
@@ -16,7 +17,9 @@ export const SharedUserDataProvider = ({ children }) => {
         currentSemester,
         setCurrentSemester,
         totalSemesters,
-        setTotalSemesters
+        setTotalSemesters,
+        projectDetails,
+        setProjectDetails
       }}
     >
       {children}

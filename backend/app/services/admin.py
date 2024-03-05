@@ -249,7 +249,7 @@ def fun_admin_update_user():
     except psycopg2.Error as e:
         return jsonify({'error': 'Unable to fetch role type'}),e
 
-    update_fields = {
+    student_fields = {
         'fname': data.get('first_name'),
         'mname': data.get('middle_name'),
         'lname': data.get('last_name'),
@@ -260,32 +260,50 @@ def fun_admin_update_user():
         'guardian': data.get('guardian'),
         'gphoneno': data.get('guardian_phone_no'),
         'dept_id': data.get('department_id'),
-        'qualification': data.get('qualification'),
         'dob': data.get('date_of_birth'),
         'semester': data.get('semester')
     }
-    if update_fields['sphoneno']:
-        if not is_valid_phone(update_fields['sphoneno']):
+    if student_fields['sphoneno']:
+        if not is_valid_phone(student_fields['sphoneno']):
             return jsonify({'Error': 'Invalid phone number'})
     
 
+    mentor_fields={
+         'm_fname': data.get('first_name'),
+        'm_mname': data.get('middle_name'),
+        'm_lname': data.get('last_name'),
+        'email': data.get('email'),
+        'dept_id': data.get('department_id'),
+        'qualification': data.get('qualification'),
+    }
+
+    admin_fields={
+        'admin_fname': data.get('first_name'),
+        'admin_mname': data.get('middle_name'),
+        'admin_lname': data.get('last_name'),
+        'email': data.get('email')
+    }
+
     # Construct SQL UPDATE statement dynamically based on provided fields
     admin_update_query = '''UPDATE admins SET {} WHERE 
-        admin_id = %s'''.format(', '.join([f'{key} = %s' for key in update_fields if update_fields[key] is not None]))
+        admin_id = %s'''.format(', '.join([f'{key} = %s' for key in admin_fields if admin_fields[key] is not None]))
     
     mentor_update_query = '''UPDATE mentor SET {} WHERE 
-        m_id = %s'''.format(', '.join([f'{key} = %s' for key in update_fields if update_fields[key] is not None]))
+        m_id = %s'''.format(', '.join([f'{key} = %s' for key in mentor_fields if mentor_fields[key] is not None]))
     
     student_update_query = '''UPDATE student SET {} WHERE 
-        st_id = %s'''.format(', '.join([f'{key} = %s' for key in update_fields if update_fields[key] is not None]))
+        st_id = %s'''.format(', '.join([f'{key} = %s' for key in student_fields if student_fields[key] is not None]))
     
 
     if role_type == "admin":
         update_query = admin_update_query
+        update_fields=admin_fields
     elif role_type == "mentor":
         update_query = mentor_update_query
+        update_fields=mentor_fields
     elif role_type == "student":
         update_query = student_update_query
+        update_fields=student_fields
     else : return jsonify({'error': 'Role type not found'})
 
     try:

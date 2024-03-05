@@ -64,3 +64,6 @@ def user_delete_profile_pic():
     return delete_profile_pic()
 
 
+@account_controller.route('/data',methods=['GET'])
+def fetch_data():
+    return fun_fetch_data(cursor)

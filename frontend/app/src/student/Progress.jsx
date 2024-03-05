@@ -14,8 +14,7 @@ const Progress = () => {
         const response = await axios.get('http://127.0.0.1:5000/api/v1/student/progress');
         const progressData = response.data.response;
         setProgress(progressData);
-        setCurrentSemester(progressData.current_semester);
-        setTotalSemesters(progressData.total_semesters);
+        localStorage.setItem('progress',JSON.stringify(progressData));
       } catch (error) {
         console.error('Error fetching Progress:', error);
       }

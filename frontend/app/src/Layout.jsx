@@ -1,5 +1,4 @@
 import React from "react";
-import StudentSidebar from "./student/StudentSidebar";
 import DisplayBoard from "./DisplayBoard";
 import Header from "./Header";
 import styles from "./Layout.module.css"

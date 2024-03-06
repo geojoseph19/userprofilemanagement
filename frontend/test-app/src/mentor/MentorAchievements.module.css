@@ -1,0 +1,229 @@
+/* StudentProfile.module.css */
+
+.mainContainer {
+    background-color: #040F49;
+    color: white;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    flex: 1;
+  }
+  
+  .mainContainer h1 {
+    padding-left: 5%;
+    padding-bottom: 2%;
+    font-size: 3rem; /* Updated font size */
+  }
+  .mainContainer p {
+    margin-top: 0px;
+    padding-top: 0px;
+  
+  }
+  
+  @keyframes floatUp {
+    from {
+        transform: translateY(400px); /* Initial position: move 100px down */
+        opacity: 0; /* Initial opacity: hidden */
+    }
+    to {
+        transform: translateY(0); /* Final position: no translation */
+        opacity: 1; /* Final opacity: fully visible */
+    }
+  }
+  
+  .infoContainer {
+    background-color: whitesmoke;
+    max-width: 100%;
+    height: 74vh;
+    border-radius: 30px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    padding-right: 5%;
+    padding-bottom: 5%;
+    padding: 1%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap; /* Allow cards to wrap to the next line */
+  
+    overflow-y: auto; /* Add scroll if content exceeds container height */
+  }
+  
+  .infoContainer h3 {
+    color: black;
+    padding-left: 5%;
+    
+    padding-top: 1%;
+    padding-bottom: 1%;
+  }
+  
+  hr {
+    border: none;
+    height: 1px;
+    background-color: #D9D9D9;
+    margin: 0 2%;
+  }
+  .mentor-h4{
+    margin-bottom: 3%;
+  }
+  
+  
+  .details {
+    margin: 5%;
+    font-size: 1rem; /* Updated font size */
+    word-spacing: 5%;
+    color: black;
+    padding-left: 5%;
+    line-height: 200%;
+  }
+  
+  .profileData {
+    overflow-wrap: break-word;
+    width: fit-content;
+  }
+  
+  .tableContainer {
+    display: table; /* Display the container as a table */
+    width: 100%;
+  }
+  
+  .row {
+    display: table-row; /* Display each row as a table row */
+  }
+  
+  .cell {
+    display: table-cell; /* Display each cell as a table cell */
+    padding: 10px; /* Add padding to each cell */
+    vertical-align: top; /* Align cell content to the top */
+  }
+  
+  .cell strong {
+    font-weight: bold; /* Make the strong elements bold */
+  }
+  
+  /* MentorProjects.module.css */
+  
+  .mentor-project-card {
+    color:black;
+    margin: 1%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 20%;
+    border-radius: 50px;
+    border: 2px solid rgba(224, 224, 224, 0.925);
+    width: 47%;
+    background-color: #e9e9e994;
+    transition: all 0.3s ease; /* Add transition for smooth animation */
+  }
+  .mentor-project-card-add {
+    color:black;
+    margin: 1%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 20%;
+    border-radius: 50px;
+    border: 2px solid rgb(184, 184, 184);
+    width: 47%;
+    background-color: #e9e9e9;
+    transition: all 0.3s ease; /* Add transition for smooth animation */
+  }
+  
+  
+  .mentor-project-card:hover {
+    background-color: #dfdfdf;
+  }
+  
+  /* Expanded style */
+  .mentor-project-card.expanded {
+    background-color: #e9e9e9;
+    cursor: initial;
+    display: block;
+    width: 27%; /* Expand to full width */
+    height: auto; /* Allow height to adjust based on content */
+    padding-left: 2%;
+    padding-right: 2%;
+    padding-bottom: 2%;
+  
+  }
+  
+  
+  .mentor-btn {
+    padding: 1.5%; /* Adjust as needed */
+    height: 40px;
+    width:75px;
+    background-color: #040F49;
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: 600;
+  }
+  
+  .mentor-btn:hover {
+    background-color: white;
+    padding: calc(1.5% - 1px); /* Adjust padding to account for border width */
+    border: 1px solid #040F49;
+    border-style: inset;
+    color: #040F49;
+  }
+  .mentor-delete-btn {
+    padding: 1.5%; /* Adjust as needed */
+    height: 39px;
+    width:100%;
+    background-color: #e74539;
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: 600;
+  }
+  
+  .mentor-delete-btn:hover {
+    background-color: white;
+    padding: calc(1.5% - 1px); /* Adjust padding to account for border width */
+    border: 1px solid #e74539;
+    border-style: inset;
+    color: #e74539;
+  }
+  
+  
+  .mentor-project-card.expanded input,.mentor-project-card.expanded select,.mentor-project-card.expanded textarea {
+    width: 100%;
+    padding: 10px;
+    display: block;
+  
+    border: 2px solid #040F49;
+    border-radius: 15px;
+    box-sizing: border-box;
+    transition: transform 0.3s ease,border-color 0.3s ease;
+  }
+  .mentor-project-card.expanded span:hover{
+    color: grey;
+  }
+  
+  
+  .adminForm input:hover{
+    border-color: navy;
+    transform: scale(1.05);
+    }  
+  .adminForm input:focus{
+    outline: none;
+  }
+  @keyframes input-focus-animation {
+    0% {
+      transform: scale(1);
+    }
+    
+    100% {
+      transform: scale(1.05);
+    }
+  }
+  

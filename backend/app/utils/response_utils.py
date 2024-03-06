@@ -110,11 +110,10 @@ def format_query_results(results):
         return custom_response(None,None,error_message,'failed',500)
  
  
-def custom_response(response=None,message=None,error=None,status='success',status_code=200):
+def custom_response(response=None,message=None,error=None,status='success'):
     sys_response={}
     sys_response['response']=response
     sys_response['message']=message
     sys_response['error']=error
     sys_response['status']=status
-    sys_response['status_code']=status_code
     return jsonify(sys_response)

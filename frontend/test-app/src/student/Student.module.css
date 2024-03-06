@@ -1,0 +1,145 @@
+
+
+.Main{
+background-color: #040F49;
+width: 100%;
+height: 100vh;
+color: white;
+}/*Main student container*/
+
+@keyframes floatUp {
+  from {
+    transform: translateY(400px); /* Initial position: move 100px down */
+    opacity: 0; /* Initial opacity: hidden */
+  }
+  to {
+    transform: translateY(0); /* Final position: no translation */
+    opacity: 1; /* Final opacity: fully visible */
+  }
+}
+
+.info {
+  background-color: whitesmoke;
+  width: 100%;
+  height: 100%;
+  border-radius: 30px;
+  border-bottom-left-radius: 0%;
+  border-bottom-right-radius: 0%;
+  margin-top: 175px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: floatUp 0.8s ease forwards; /* Apply animation */
+}
+
+.info *{
+  color: black;
+}
+
+
+.info1 {
+  text-align: center;
+  line-height: 200%;
+}
+
+
+.infoPanel{
+  width: 100%;
+  height: 500px;
+  background-color: whitesmoke;
+}
+
+  .profilePicContainer{
+    width: 300px;
+    height: 300px;
+    background-color: gray;
+    border-radius: 50%;
+    border: 5px solid white;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -150px;
+  }
+     
+  .material-symbols-outlined {
+    margin-right: 8px; /* Add right margin to create space between icon and link */
+  }
+  
+  .profilePic{
+    display: flex;
+    max-width: max-content;
+    max-height: max-content;
+    width: 100%;
+    height: 100%;
+    object-position: center;
+    object-fit: cover;
+  }
+
+
+  .userInfo{
+    width: 500px;
+    height: 500px;
+    margin-top: 600px;
+    font-size: large;
+    font-stretch: expanded;
+    text-align: center;
+    line-height: 150%;
+  }
+  
+  .role{
+      font-family: Poppins;
+  }
+  
+  
+  
+  /* .studentDash{
+    width: 200px;
+    display: flex;
+    justify-content: flex-start;
+    height: 100vh;
+    display: flex;
+    justify-content: flex-start;
+  } */
+
+
+  .mainContainer {
+    width: 100vw; 
+    height: 100vh; 
+    display: flex;
+  }
+
+  .layoutContainer{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    max-height: 100vh;
+    margin-left: 30px;
+  }
+
+  
+  .userData{
+    width: 100%;
+    max-height: max-content;
+    margin: 0%;
+  }
+   .contentBoard{
+    flex-grow: 1;
+    width: 100%;
+    overflow-y: auto;
+   }
+
+   .layout-container{
+    margin-left: 0%;
+   }
+
+   .studentDash{
+    background-color: white;
+   }
+
+   .basicDetails{
+    background-color: white;
+    border-radius: 10%;
+    padding: 10%;
+    width: max-content;
+   }

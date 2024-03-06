@@ -39,6 +39,7 @@ def fun_mentor_home():
             dept = cursor.fetchone()[0]
     if mentor:
         response={
+            'username' : username,
             'first_name' : mentor[1],
             'middle_name' : mentor[2],
             'last_name' : mentor[3],
@@ -57,6 +58,8 @@ def update_mentor_profile(username, qualification):
     try:
         with psycopg2.connect(**db_params) as conn:
             with conn.cursor() as cursor:
+                cursor.execute('''SELECT cred_id FROM credentials WHERE username=%s''', (username,))
+                username = cursor.fetchone()[0]
                 cursor.execute('''UPDATE mentor SET qualification=%s WHERE m_id=%s''', (qualification, username))
                 conn.commit()
         return True
@@ -68,11 +71,13 @@ def get_mentor_projects(mentor_id):
     try:
         with psycopg2.connect(**db_params) as conn:
             with conn.cursor() as cursor:
-                cursor.execute('''SELECT * FROM project WHERE m_id=%s''', (mentor_id,))
+                cursor.execute('''SELECT cred_id FROM credentials WHERE username=%s''', (mentor_id,))
+                cred_id = cursor.fetchone()[0]
+                cursor.execute('''SELECT * FROM project WHERE m_id=%s''', (cred_id,))
                 projects = cursor.fetchall()
-                if projects:
-                    response=format_query_results(projects)
-                    return generate_response(response)
+                    
+                response=format_query_results(projects)
+                return jsonify({'response':projects}),200
     except psycopg2.Error as e:
         error_message=get_database_error_message(e.pgcode)
         return custom_response(None,'Error has occured!',error_message,'failed',400)
@@ -92,8 +97,8 @@ def get_project_students():
                     WHERE sp.prj_id = %s
                 ''', (project_id,))
                 students_in_project = cursor.fetchall()
-        response=format_query_results()
-        return generate_response(response,200)
+            print(students_in_project)
+            return jsonify({'response':students_in_project}),200
     except psycopg2.Error as e:
         error_message=get_database_error_message(e.pgcode)
         return custom_response(None,'Error has occured!',error_message,'failed',400)
@@ -107,29 +112,31 @@ def add_student_to_project():
         project_id = request.json.get('project_id')
         student_id = request.json.get('student_id')
         if not project_id:
-            return custom_response(None,'Error has occured!','Please provide a valid project ID','failed',400)
+            return jsonify({'error'}),400
         if not student_id:
-            return custom_response(None,'Error has occured!','Please provide a valid student ID','failed',400)
+            return jsonify({'error'}),400
+        
         try:
             with psycopg2.connect(**db_params) as conn:
                 with conn.cursor() as cursor:
-                    # # Check if the student is already assigned to the project
-                    # cursor.execute('SELECT EXISTS(SELECT 1 FROM st_project WHERE st_id=%s AND prj_id=%s)',(student_id,project_id))
-                    # exists = cursor.fetchone()[0]
-                    # if exists:
-                    #     return jsonify({'message':'The student is already assigned to this project!'})
+                    cursor.execute('select cred_id from credentials where username =%s',(student_id,))
+                    student_id = cursor.fetchone()[0]
+                    cursor.execute('select * from student where st_id = %s',(student_id,))
+                    stdata = cursor.fetchall()
+                    # Check if the student is already assigned to the project
+                    cursor.execute('SELECT EXISTS(SELECT 1 FROM st_project WHERE st_id=%s AND prj_id=%s)',(student_id,project_id))
+                    exists = cursor.fetchone()[0]
+                    if exists:
+                        return jsonify({'message':'The student is already assigned to this project!'})
                     
                     # If the student is not already assigned, insert into st_project
                     cursor.execute('INSERT INTO st_project(st_id, prj_id) VALUES (%s, %s)', (student_id, project_id))
                     conn.commit()
                     
-            return generate_response(None,200)
-        except errors.UniqueViolation as e:
-            return custom_response(None,'Error has occured!',f'Student {student_id} is already assigned to a project','failed',304)
-        except psycopg2.Error as e:
-            error_message=get_database_error_message(e.pgcode)
-            return custom_response(None,'Error has occured!',error_message,'failed',400)
- 
+            return jsonify({'success':'student added','student_data':stdata}),200
+        except Exception as e:
+            return jsonify({'error':'Unable to add student'}),400
+
  
 # Function to remove a student from a project
 def remove_student_from_project():
@@ -174,13 +181,18 @@ def remove_student_achievement(student_id, achievement_id):
     try:
         with psycopg2.connect(**db_params) as conn:
             with conn.cursor() as cursor:
+                cursor.execute('SELECT * FROM std_ach WHERE st_id=%s AND ach_id=%s',(student_id,achievement_id,))
+                result=cursor.fetchall()
+                if not result:
+                    return custom_response(None,'No such entry exists!','Record not found!','failed',404)
+ 
+        with psycopg2.connect(**db_params) as conn:
+            with conn.cursor() as cursor:
                 # If the entry exists, remove it from std_ach
-                cursor.execute('DELETE FROM std_ach WHERE st_id=%s AND ach_id=%s', (student_id, achievement_id))
+                cursor.execute('DELETE FROM std_ach WHERE st_id=%s AND ach_id=%s', (student_id, achievement_id,))
                 conn.commit()
                 
         return custom_response(None,f'Achievement {achievement_id} removed for student {student_id}',None,'success',200)
-    except errors.NoData as e:  
-        return custom_response(None,'No such entry exists!','Record not found!','failed',404)  # Return appropriate response with 404 status code
     except psycopg2.Error as e:
         return custom_response(None,'Database error!',f'{e.pgcode}','failed',400)
         
@@ -193,12 +205,14 @@ def add_project(m_id,project_id, project_name, start_date, end_date):
         with psycopg2.connect(**db_params) as conn:
             with conn.cursor() as cursor:
                 # Insert new project into the project table
+                cursor.execute('select cred_id from credentials where username = %s',(m_id,))
+                m_id = cursor.fetchone()[0]
              
                 cursor.execute('INSERT INTO project(pr_name,prj_id, start_date, end_date, m_id) VALUES (%s,%s, %s, %s, %s)',
                                (project_name,project_id, start_date, end_date, m_id))
                 conn.commit()
                 
-        return custom_response(None,f'Project {project_id} ({project_name}) created!',None,'success',200)
+        return jsonify({'message':f'Project {project_id} ({project_name}) created!','project_id':project_id}),200
     except errors.UniqueViolation as e:
         return custom_response(None,'Project already exists and is active','Unique record violation','failed',400)
     except psycopg2.Error as e:

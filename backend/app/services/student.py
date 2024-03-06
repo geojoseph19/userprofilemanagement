@@ -48,7 +48,7 @@ def fun_student_home():
                 return generate_response(f'Error fetching department for student {st_id}',e.pgcode)
 
     response = {
-        'username':user[0],
+        'username':st_id,
         'first_name':user[1],
         'middle_name':user[2],
         'last_name':user[3],
@@ -59,7 +59,7 @@ def fun_student_home():
         'guardian_name':user[8],
         'guardian_phone_no':user[9],
         'department':dept,
-        'semester':user[13]    
+        'semester':user[12]    
     }
 
     if user:
@@ -77,9 +77,9 @@ def fun_update_student():
     st_id = session.get('username')
 
     update_fields = {
-        'fname': data.get('student_first_name'),
-        'mname': data.get('student_middle_name'),
-        'lname': data.get('student_last_name'),
+        'fname': data.get('first_name'),
+        'mname': data.get('middle_name'),
+        'lname': data.get('last_name'),
         'sex': data.get('sex'),
         'email': data.get('email'),
         'sphoneno': data.get('student_phone_no'),
@@ -93,6 +93,9 @@ def fun_update_student():
     try:
         with psycopg2.connect(**db_params) as conn:
             with conn.cursor() as cursor:
+                cursor.execute('select cred_id from credentials where username = %s', (st_id,))
+                st_id = cursor.fetchone()[0]
+
                 # Construct SQL UPDATE statement dynamically based on provided fields
                 update_query = '''UPDATE student SET {} WHERE 
                     st_id = %s'''.format(', '.join([f'{key} = %s' for key in update_fields if update_fields[key] is not None]))
@@ -121,6 +124,8 @@ def fun_view_student_achievements():
         # Connect to the database
         with psycopg2.connect(**db_params) as conn:
             with conn.cursor() as cursor:
+                cursor.execute('''SELECT cred_id FROM credentials WHERE username=%s''', (st_id,))
+                st_id = cursor.fetchone()[0]
                 # Execute SQL query to retrieve achievement details for the student
                 cursor.execute('''
                     SELECT a.ach_id, a.ach_name, a.desc, a.points
@@ -163,6 +168,9 @@ def fun_view_assigned_project():
 
     with psycopg2.connect(**db_params) as conn:
         with conn.cursor() as cursor:
+            cursor.execute('''SELECT cred_id FROM credentials WHERE username=%s''', (st_id,))
+            st_id = cursor.fetchone()[0]
+
             cursor.execute('''
                             SELECT p.prj_id, p.pr_name, p.start_date, p.end_date,
                             m.m_id, m.m_fname, m.m_mname, m.m_lname
@@ -202,6 +210,9 @@ def fun_fetch_progress():
         username=session.get('username')
         with psycopg2.connect(**db_params) as conn:
             with conn.cursor() as cursor:
+                cursor.execute('''SELECT cred_id FROM credentials WHERE username=%s''', (username,))
+                username = cursor.fetchone()[0]
+
                 cursor.execute('SELECT semester FROM student WHERE st_id=%s',(username,))
                 currentSemester=cursor.fetchone()
                 cursor.execute('SELECT d.total_semester_count FROM student s JOIN departments d ON s.dept_id=d.dept_id WHERE s.st_id=%s',(username,))

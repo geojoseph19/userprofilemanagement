@@ -1,0 +1,78 @@
+body{
+    background-image: url('../src/assets/404\ error\ with\ people\ holding\ the\ numbers-pana.svg'); /* Add your custom image */
+    background-repeat: no-repeat;
+    background-size: 50%;
+    background-position-x: center;
+    justify-content: center;
+    align-items: center;
+}
+.btnn{
+    margin-left: 850px;
+    margin-top: 120px;
+}
+.buttonn{
+    
+    text-decoration: none;
+    
+    padding-top: 10px;
+    padding-left: 50px;
+    padding-bottom: 10px;
+    padding-right: 50px;
+    border-radius: 35px;
+    background-color: navy;
+    color: white;
+    font-size: larger;
+    font-weight: bolder;
+    width: 190px;
+    height: 50px;
+    border: 3px solid white;
+}
+.buttonn:hover{
+    background-color: white;
+    color: navy;
+    border: 3px solid navy;
+}
+  
+  .content {
+    text-align: center;
+  }
+  
+  .heading {
+    font-size: 8em;
+    margin-bottom: 20px;
+    color: #343a40;
+  }
+  
+  .content p {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    margin-right: 15px;
+    color: #6c757d;
+  }
+  
+  .content a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .content a:hover {
+    text-decoration: underline;
+  }
+  
+  .image {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    align-self: center;
+    justify-self: center;
+  }
+  
+  @keyframes shake {
+    from {
+      transform: rotate(-5deg);
+    }
+    to {
+      transform: rotate(5deg);
+    }
+  }
+  

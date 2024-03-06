@@ -82,10 +82,10 @@ def fun_login():
                     
                         # return jsonify({'message': f'Authentication successful! Logging in as {username},{roles[role_id]}'}), 200
                     else:
-                        return jsonify({'error': 'Incorrect password'}), 401
+                        return jsonify({'error': 'Incorrect password'}), 400
                     
 
-    return jsonify({'error': 'User not found!'}), 401
+    return jsonify({'error': 'User not found!'}), 400
                 
 
 
@@ -172,10 +172,10 @@ def fun_updatepwd():
                         else:
                             return jsonify({'Success': 'Password updated successfully!'}), 200
                     else:
-                        return jsonify({'error': 'Incorrect password'}), 401
+                        return jsonify({'error': 'Incorrect password'}), 400
                 
             else:
-                return jsonify({'error': 'New password and re-enter new password fields does not match'}), 401
+                return jsonify({'error': 'New password and re-enter new password fields does not match'}), 400
     
 
 

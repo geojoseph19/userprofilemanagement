@@ -76,7 +76,7 @@ def otp_mail():
         
         # Generate OTP
         otp = generate_otp()
-        expiry_time = datetime.datetime.now() + datetime.timedelta(minutes=600)
+        expiry_time = datetime.datetime.now() + datetime.timedelta(minutes=5)
         
         with psycopg2.connect(**db_params) as conn:
             with conn.cursor() as cursor:

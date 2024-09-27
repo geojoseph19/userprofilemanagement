@@ -1,0 +1,52 @@
+/* Header.module.css */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 1%;
+
+}
+
+.logo {
+
+  margin-right: auto; /* Pushes the dropdown button to the right */
+  width: fit-content;
+  width: 243px;
+  padding-top: 1%;
+  padding-right: 1%;
+  padding-bottom: 1.5%;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropbutton {
+  background-color: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin-right: 10px; /* Additional margin to the right */
+}
+
+.dropcontent {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  z-index: 1;
+  border: 1px solid #ccc;
+}
+
+.link {
+  color: black;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+}
+
+.link:hover {
+  background-color: #ddd;
+}

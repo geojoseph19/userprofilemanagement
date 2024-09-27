@@ -1,0 +1,148 @@
+
+
+.adminMain {
+  background-color: #040F49;
+  width: 100%;
+  height: 100vh;
+  padding-top: 0.05%;
+  overflow-y: hidden;
+}
+
+@keyframes floatUp {
+  from {
+    transform: translateY(400px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.adminInfo {
+  background-color: whitesmoke;
+  width: 100%;
+  height: 100%;
+  border-radius: 30px;
+  border-bottom-left-radius: 0%;
+  border-bottom-right-radius: 0%;
+  margin-top: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: floatUp 0.8s ease forwards;
+}
+
+.adminInfo1 {
+  text-align: center;
+}
+
+.adminInfo1 h2 {
+  color: black;
+}
+
+.adminInfo1 p {
+  color: black;
+}
+
+.adminInfoTable {
+  border-collapse: collapse;
+  width: 117%;
+}
+
+.adminInfoTable td {
+  padding: 8px;
+  border: 1px solid transparent;
+  text-align: left;
+  white-space: nowrap;
+  width: 120;
+}
+
+.adminInfoTable th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: transparent;
+  color: black;
+  white-space: nowrap;
+}
+
+.adminProfilePicContainer {
+  width: 300px;
+  height: 300px;
+  background-color: gray;
+  border-radius: 50%;
+  border: 1px solid white;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -150px;
+}
+
+.adminMaterialSymbolsOutlined {
+  margin-right: 8px;
+}
+
+.adminProfilePic {
+  display: flex;
+  max-width: max-content;
+  max-height: max-content;
+  width: 100%;
+  height: 100%;
+  object-position: center;
+  object-fit: cover;
+}
+
+.adminUserInfo {
+  color: black;
+  width: 500px;
+  height: 500px;
+  margin-top: 600px;
+  font-size: large;
+  font-stretch: expanded;
+  text-align: center;
+  line-height: 150%;
+}
+
+.adminRole {
+  font-family: Poppins;
+}
+
+.adminMainContainer {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.adminLayoutContainer {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  max-height: 100vh;
+  margin-left: 30px;
+}
+
+.adminUserData {
+  width: 100%;
+  max-height: max-content;
+  margin: 0%;
+}
+
+.adminContentBoard {
+  flex-grow: 1;
+  width: 100%;
+  overflow-y: auto;
+}
+
+.adminLayoutContainer {
+  margin-left: 0%;
+}
+
+.studentDash {
+  background-color: white;
+}
+
+.header {
+  width: 100vw;
+}

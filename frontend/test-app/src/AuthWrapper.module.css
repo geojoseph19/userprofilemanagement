@@ -1,0 +1,40 @@
+/* AuthWrapper.module.css */
+
+.body-container {
+    width: 100vw; /* Full width of the viewport */
+    height: 100vh; /* Full height of the viewport */
+    overflow: hidden; /* Hide overflow content */
+    position: relative; /* Make it relative to its containing block */
+  }
+  
+  .background-animation {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(./assets/unv.jpeg);
+    background-size: cover; /* Zoom and fill the screen as needed */
+    background-position: fixed; /* Fix the background position */
+    animation: zoomRotateBackground 120s infinite linear alternate; /* Increase the animation duration */
+  }
+  
+  
+  .content {
+    position: relative;
+    z-index: 1; /* Ensure content appears above the background */
+  }
+  
+  @keyframes zoomRotateBackground {
+    0% {
+      transform: scale(1) rotate(0deg);
+    }
+    50% {
+      transform: scale(1.2) rotate(5deg); /* Adjust the zoom level and rotation angle as needed */
+    }
+    100% {
+      transform: scale(1) rotate(0deg);
+    }
+  }
+  

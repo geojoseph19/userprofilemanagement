@@ -1,0 +1,287 @@
+.adminMain {
+  background-color: #040F49;
+  width: 100%;
+  height: 100vh;
+  padding-top: 10px;
+}
+ 
+@keyframes floatUp {
+  from {
+    transform: translateY(150px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+ 
+.adminInfo {
+  background-color: whitesmoke;
+  width: 100%;
+  height: 94%;
+  border-radius: 30px;
+  margin-top: 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-right: 5%;
+  animation: floatUp 0.8s ease forwards;
+  color: #040F49;
+}
+ 
+.adminInfo h1 {
+  text-align: left;
+  width: 30%;
+  color: #040F49;
+}
+ 
+.adminTabs {
+  margin-top: -1.5%;
+  width: 40%;
+  display: flex;
+  margin-left: 5%;
+}
+ 
+.adminTabs .adminButton {
+  width: 100%;
+  padding: 1.7%;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: 35px;
+  background-color: white;
+  color: #040F49;
+  border: 2px solid #040F49;
+  transition: background-color 0.5s ease;
+  transition: transform 0.3s ease;
+  margin-right: 2%;
+  font-weight: 700;
+  font-size: large;
+}
+ 
+.adminTabs .adminButton:hover {
+  background-color: navy;
+  color: white;
+  transform: scale(1.05);
+  border: 2px solid white;
+}
+ 
+.adminTabs .adminButton.active {
+  background-color: navy;
+  color: white;
+  border: 3px solid navy;
+}
+ 
+.adminTabContent {
+  padding: 20px;
+  margin-left: 20px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+ 
+.adminScrollableContent {
+  width: 100%;
+}
+ 
+.adminForm {
+  padding: 1%;
+  width: 100%;
+  display: block;
+}
+ 
+.adminFormTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+ 
+.adminHalf {
+  width: 30%;
+  display: inline-table;
+  margin-right: 15%;
+}
+ 
+.adminHalfColumn {
+  width: 5%;
+}
+ 
+.adminAddress {
+  width: 113%;
+}
+ 
+.adminFormTable th,
+td {
+  padding: 0.5%;
+  padding-left: 0.05%;
+  text-align: left;
+  width: 35%;
+}
+ 
+.adminLabel {
+  display: block;
+  margin-bottom: 10px;
+  color: #040F49;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+ 
+.adminLabel:hover {
+  color: navy;
+}
+ 
+.adminForm input,
+select,
+textarea {
+  width: 80%;
+  padding: 8px;
+  display: block;
+  margin-top: 5px;
+  border: 2px solid #040F49;
+  border-radius: 15px;
+  box-sizing: border-box;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+ 
+.adminForm input:hover {
+  border-color: navy;
+  transform: scale(1.015);
+}
+ 
+.adminForm input:focus {
+  outline: none;
+}
+ 
+@keyframes input-focus-animation {
+  0% {
+    transform: scale(1);
+  }
+ 
+  100% {
+    transform: scale(1.05);
+  }
+}
+ 
+ 
+.adminFormRow .check {
+  margin-right: 5px; /* Adjust the margin between the checkbox and the label */
+}
+.adminForm button[type="submit"] {
+  padding: 10px 20px;
+  background-color: #040F49;
+  color: #fff;
+  border: 3px solid #040F49;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  transition: transform 0.5s ease;
+  font-weight: 600;
+  margin-top: 20px;
+}
+ 
+.adminForm button[type="submit"]:hover {
+  background-color: white;
+  border: 3px solid #040F49;
+  color: #040F49;
+  transform: scale(1.1);
+}
+ 
+.adminTabContent {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+ 
+@media (max-width: 768px) {
+  .adminButton {
+    padding: 8px 16px;
+    font-size: 14px;
+    width: 55%;
+  }
+ 
+  .adminMain {
+    height: 100%;
+  }
+ 
+  .adminInfo {
+    height: 100%;
+    margin-top: 5%;
+    overflow-y: scroll;
+  }
+ 
+  .adminFormTable {
+    width: 100%;
+  }
+ 
+  .adminFormRow {
+    display: flex;
+    flex-wrap: wrap;
+    /* Wrap items to new line when there's not enough space */
+    margin-bottom: 10px;
+    /* Add some space between rows */
+  }
+ 
+  .adminFormRow label {
+    width: 100%;
+    /* Each label should take up full width */
+  }
+ 
+  .adminFormRow input,
+  .adminFormRow select,
+  .adminFormRow textarea {
+    width: calc(100% - 20px);
+    /* Adjust input width to fit within the label width */
+    margin-bottom: 5px;
+    /* Add some space between inputs */
+  }
+ 
+  .adminfalfColumn {
+    width: 100%;
+  }
+ 
+  .adminHalf {
+    width: calc(50% - 10px);
+    /* Adjust input width to fit within the half width */
+  }
+}
+@media screen and (max-width: 768px) {
+  .adminMain {
+    padding-top: 0;
+  }
+
+  .adminInfo {
+    margin-top: 100px;
+  }
+
+  .adminInfoTable {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .adminProfilePicContainer {
+    width: 200px;
+    height: 200px;
+    margin-top: -100px;
+  }
+  .adminTabs{
+    margin-top: 0.5%;
+    width: 87%;
+    align-content: center;
+    display: flex;
+    margin-left: 8%;
+  }
+  .adminUserInfo {
+    width: 100%;
+    height: auto;
+    margin-top: 200px;
+  }
+
+  .adminLayoutContainer {
+    flex-direction: column;
+    margin-left: 0;
+  }
+
+  .adminContentBoard {
+    width: 100%;
+    max-height: calc(100vh - 200px); /* Adjust height based on screen size */
+    overflow-y: auto;
+  }
+}

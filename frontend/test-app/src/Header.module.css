@@ -1,0 +1,85 @@
+/* Header.module.css */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 1%;
+
+}
+
+.logo {
+  margin-right: auto; /* Pushes the dropdown button to the right */
+  font-size: 1.5rem;
+  width: fit-content;
+  color: black;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropbutton {
+  background-color: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin-right: 10px;
+  /* Additional margin to the right */
+}
+
+.dropcontent {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #f9f9f9;
+  min-width: 180px;
+  z-index: 1;
+  border: 1px solid #ccc;
+}
+
+.link {
+  color: black;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+}
+
+.link:hover {
+  background-color: #ddd;
+}
+.popupContainer {
+  border-radius: 35px; /* Apply border radius of 35px */
+}
+
+/* Popup button styles */
+.popupButton {
+  border-radius: 15px; /* Apply border radius of 15px */
+}
+.adminProfilePicContainer {
+  width: 50px;
+  height: 50px;
+  background-color: gray;
+  border-radius: 50%;
+  border: 1px solid white;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.userName{
+  margin-right: 90px;
+  font-weight: bolder;
+}
+
+.adminProfilePic {
+  display: flex;
+  max-width: max-content;
+  max-height: max-content;
+  width: 100%;
+  height: 100%;
+  object-position: center;
+  object-fit: cover;
+}
